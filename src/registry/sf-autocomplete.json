@@ -1,0 +1,2073 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "simai.sf-autocomplete",
+  "registryVersion": "1.1.0",
+  "source": {
+    "contractId": "simai.vertical-sizing",
+    "contractVersion": "1.1.0",
+    "sha256": "333d78f0f3abe6f47c9caa1fc3c53c4d2894e122a922a400804383266cbd72f5",
+    "repository": "SIMAI/ui-loader",
+    "commit": "97b3df993a3250661a2d9e9db6500fad16b5b5cb",
+    "tree": "6cc9bda9aae2b5d86918d58c49c736af1708cf7e",
+    "path": "src/core/contracts/adaptive-sizing.v1.json"
+  },
+  "modes": {
+    "mobile": {
+      "minWidthPx": 0
+    },
+    "desktop": {
+      "minWidthPx": 960
+    }
+  },
+  "scope": {
+    "included": [
+      "root-rem-policy",
+      "mobile-desktop-mode",
+      "typography-size-line-height",
+      "control-height",
+      "block-padding",
+      "vertical-spacing",
+      "vertical-rhythm"
+    ],
+    "excluded": [
+      "menu-indentation",
+      "leading-slot-alignment",
+      "inline-padding-parity",
+      "container-gutters",
+      "container-width",
+      "cross-component-horizontal-relations"
+    ]
+  },
+  "entries": [
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.default.1",
+      "cssName": "--sf-ui-1--space-y-tightness-default",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "a8",
+          "px": 8
+        },
+        "desktop": {
+          "alias": "a8",
+          "px": 8
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:default",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1, tightness default"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.default.1/2",
+      "cssName": "--sf-ui-1\\/2--space-y-tightness-default",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "a6",
+          "px": 6
+        },
+        "desktop": {
+          "alias": "a6",
+          "px": 6
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:default",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/2, tightness default"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.default.1/3",
+      "cssName": "--sf-ui-1\\/3--space-y-tightness-default",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "a4",
+          "px": 4
+        },
+        "desktop": {
+          "alias": "a4",
+          "px": 4
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:default",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/3, tightness default"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.default.2",
+      "cssName": "--sf-ui-2--space-y-tightness-default",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "b0",
+          "px": 10
+        },
+        "desktop": {
+          "alias": "b0",
+          "px": 10
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:default",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 2, tightness default"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.default.3",
+      "cssName": "--sf-ui-3--space-y-tightness-default",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "b4",
+          "px": 14
+        },
+        "desktop": {
+          "alias": "b0",
+          "px": 10
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:default",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 3, tightness default"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.high.1",
+      "cssName": "--sf-ui-1--space-y-tightness-high",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "b2",
+          "px": 12
+        },
+        "desktop": {
+          "alias": "b2",
+          "px": 12
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:high",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1, tightness high"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.high.1/2",
+      "cssName": "--sf-ui-1\\/2--space-y-tightness-high",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "b0",
+          "px": 10
+        },
+        "desktop": {
+          "alias": "b0",
+          "px": 10
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:high",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/2, tightness high"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.high.1/3",
+      "cssName": "--sf-ui-1\\/3--space-y-tightness-high",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "a6",
+          "px": 6
+        },
+        "desktop": {
+          "alias": "a8",
+          "px": 8
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:high",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/3, tightness high"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.high.2",
+      "cssName": "--sf-ui-2--space-y-tightness-high",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "b4",
+          "px": 14
+        },
+        "desktop": {
+          "alias": "b4",
+          "px": 14
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:high",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 2, tightness high"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.high.3",
+      "cssName": "--sf-ui-3--space-y-tightness-high",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "c0",
+          "px": 20
+        },
+        "desktop": {
+          "alias": "b6",
+          "px": 16
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:high",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 3, tightness high"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.highest.1",
+      "cssName": "--sf-ui-1--space-y-tightness-highest",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "b6",
+          "px": 16
+        },
+        "desktop": {
+          "alias": "b6",
+          "px": 16
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:highest",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1, tightness highest"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.highest.1/2",
+      "cssName": "--sf-ui-1\\/2--space-y-tightness-highest",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "b4",
+          "px": 14
+        },
+        "desktop": {
+          "alias": "b4",
+          "px": 14
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:highest",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/2, tightness highest"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.highest.1/3",
+      "cssName": "--sf-ui-1\\/3--space-y-tightness-highest",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "b0",
+          "px": 10
+        },
+        "desktop": {
+          "alias": "b2",
+          "px": 12
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:highest",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/3, tightness highest"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.highest.2",
+      "cssName": "--sf-ui-2--space-y-tightness-highest",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "c0",
+          "px": 20
+        },
+        "desktop": {
+          "alias": "c0",
+          "px": 20
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:highest",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 2, tightness highest"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.highest.3",
+      "cssName": "--sf-ui-3--space-y-tightness-highest",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "c3",
+          "px": 26
+        },
+        "desktop": {
+          "alias": "c1",
+          "px": 22
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:highest",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 3, tightness highest"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.low.1",
+      "cssName": "--sf-ui-1--space-y-tightness-low",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "a4",
+          "px": 4
+        },
+        "desktop": {
+          "alias": "a4",
+          "px": 4
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:low",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1, tightness low"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.low.1/2",
+      "cssName": "--sf-ui-1\\/2--space-y-tightness-low",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "a4",
+          "px": 4
+        },
+        "desktop": {
+          "alias": "a4",
+          "px": 4
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:low",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/2, tightness low"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.low.1/3",
+      "cssName": "--sf-ui-1\\/3--space-y-tightness-low",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "a2",
+          "px": 2
+        },
+        "desktop": {
+          "alias": "a4",
+          "px": 4
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:low",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 1/3, tightness low"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.low.2",
+      "cssName": "--sf-ui-2--space-y-tightness-low",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "a6",
+          "px": 6
+        },
+        "desktop": {
+          "alias": "a6",
+          "px": 6
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:low",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 2, tightness low"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.block-padding.low.3",
+      "cssName": "--sf-ui-3--space-y-tightness-low",
+      "type": "length",
+      "category": "control-block-padding",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "b0",
+          "px": 10
+        },
+        "desktop": {
+          "alias": "a6",
+          "px": 6
+        }
+      },
+      "aliases": [],
+      "componentRelation": "control-tightness:low",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Control block padding 3, tightness low"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.height.1",
+      "cssName": "--sf-ui-1--control-height",
+      "type": "length",
+      "category": "control-height",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "formula:c0+2*a8",
+          "px": 36
+        },
+        "desktop": {
+          "alias": "formula:c2+2*a8",
+          "px": 40
+        }
+      },
+      "aliases": [],
+      "componentRelation": "representative-controls",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Default control height 1"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.height.1/2",
+      "cssName": "--sf-ui-1\\/2--control-height",
+      "type": "length",
+      "category": "control-height",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "formula:b6+2*a6",
+          "px": 28
+        },
+        "desktop": {
+          "alias": "formula:c0+2*a6",
+          "px": 32
+        }
+      },
+      "aliases": [],
+      "componentRelation": "representative-controls",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Default control height 1/2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.height.1/3",
+      "cssName": "--sf-ui-1\\/3--control-height",
+      "type": "length",
+      "category": "control-height",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "formula:b6+2*a4",
+          "px": 24
+        },
+        "desktop": {
+          "alias": "formula:b6+2*a4",
+          "px": 24
+        }
+      },
+      "aliases": [],
+      "componentRelation": "representative-controls",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Default control height 1/3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.height.2",
+      "cssName": "--sf-ui-2--control-height",
+      "type": "length",
+      "category": "control-height",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "formula:c2+2*b0",
+          "px": 44
+        },
+        "desktop": {
+          "alias": "formula:c4+2*b0",
+          "px": 48
+        }
+      },
+      "aliases": [],
+      "componentRelation": "representative-controls",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Default control height 2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.control.height.3",
+      "cssName": "--sf-ui-3--control-height",
+      "type": "length",
+      "category": "control-height",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "formula:c2+2*b4",
+          "px": 52
+        },
+        "desktop": {
+          "alias": "formula:c8+2*b0",
+          "px": 56
+        }
+      },
+      "aliases": [],
+      "componentRelation": "representative-controls",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Default control height 3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.0",
+      "cssName": "--sf-space-0",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "0",
+      "modes": {
+        "mobile": {
+          "alias": "zero",
+          "px": 0
+        },
+        "desktop": {
+          "alias": "zero",
+          "px": 0
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 0"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.1",
+      "cssName": "--sf-space-1",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "b2",
+          "px": 12
+        },
+        "desktop": {
+          "alias": "b6",
+          "px": 16
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 1"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.1/2",
+      "cssName": "--sf-space-1\\/2",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "a8",
+          "px": 8
+        },
+        "desktop": {
+          "alias": "b2",
+          "px": 12
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 1/2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.1/3",
+      "cssName": "--sf-space-1\\/3",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "a8",
+          "px": 8
+        },
+        "desktop": {
+          "alias": "a8",
+          "px": 8
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 1/3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.1/4",
+      "cssName": "--sf-space-1\\/4",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "1/4",
+      "modes": {
+        "mobile": {
+          "alias": "a4",
+          "px": 4
+        },
+        "desktop": {
+          "alias": "a4",
+          "px": 4
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 1/4"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.2",
+      "cssName": "--sf-space-2",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "b6",
+          "px": 16
+        },
+        "desktop": {
+          "alias": "c0",
+          "px": 20
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.3",
+      "cssName": "--sf-space-3",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "b6",
+          "px": 16
+        },
+        "desktop": {
+          "alias": "c2",
+          "px": 24
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.4",
+      "cssName": "--sf-space-4",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "4",
+      "modes": {
+        "mobile": {
+          "alias": "c2",
+          "px": 24
+        },
+        "desktop": {
+          "alias": "c6",
+          "px": 32
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 4"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.5",
+      "cssName": "--sf-space-5",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "5",
+      "modes": {
+        "mobile": {
+          "alias": "c6",
+          "px": 32
+        },
+        "desktop": {
+          "alias": "d0",
+          "px": 40
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 5"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.6",
+      "cssName": "--sf-space-6",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "6",
+      "modes": {
+        "mobile": {
+          "alias": "c6",
+          "px": 32
+        },
+        "desktop": {
+          "alias": "d2",
+          "px": 48
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 6"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.7",
+      "cssName": "--sf-space-7",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "7",
+      "modes": {
+        "mobile": {
+          "alias": "d0",
+          "px": 40
+        },
+        "desktop": {
+          "alias": "d6",
+          "px": 64
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 7"
+    },
+    {
+      "stableId": "simai.vertical-sizing.spacing.8",
+      "cssName": "--sf-space-8",
+      "type": "length",
+      "category": "vertical-spacing",
+      "role": "8",
+      "modes": {
+        "mobile": {
+          "alias": "d2",
+          "px": 48
+        },
+        "desktop": {
+          "alias": "e0",
+          "px": 80
+        }
+      },
+      "aliases": [],
+      "componentRelation": "block-axis-spacing",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive spacing 8"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.1",
+      "cssName": "--sf-text-height-1",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "c0",
+          "px": 20
+        },
+        "desktop": {
+          "alias": "c2",
+          "px": 24
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 1"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.1/2",
+      "cssName": "--sf-text-height-1\\/2",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "b6",
+          "px": 16
+        },
+        "desktop": {
+          "alias": "c0",
+          "px": 20
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 1/2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.1/3",
+      "cssName": "--sf-text-height-1\\/3",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "b6",
+          "px": 16
+        },
+        "desktop": {
+          "alias": "b6",
+          "px": 16
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 1/3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.1/4",
+      "cssName": "--sf-text-height-1\\/4",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "1/4",
+      "modes": {
+        "mobile": {
+          "alias": "b2",
+          "px": 12
+        },
+        "desktop": {
+          "alias": "b2",
+          "px": 12
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 1/4"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.10",
+      "cssName": "--sf-text-height-10",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "10",
+      "modes": {
+        "mobile": {
+          "alias": "d5",
+          "px": 60
+        },
+        "desktop": {
+          "alias": "e2",
+          "px": 96
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 10"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.11",
+      "cssName": "--sf-text-height-11",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "11",
+      "modes": {
+        "mobile": {
+          "alias": "d6",
+          "px": 64
+        },
+        "desktop": {
+          "alias": "e3",
+          "px": 104
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 11"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.12",
+      "cssName": "--sf-text-height-12",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "12",
+      "modes": {
+        "mobile": {
+          "alias": "d8",
+          "px": 72
+        },
+        "desktop": {
+          "alias": "e5",
+          "px": 120
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 12"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.2",
+      "cssName": "--sf-text-height-2",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "c2",
+          "px": 24
+        },
+        "desktop": {
+          "alias": "c4",
+          "px": 28
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.3",
+      "cssName": "--sf-text-height-3",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "c2",
+          "px": 24
+        },
+        "desktop": {
+          "alias": "c8",
+          "px": 36
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.4",
+      "cssName": "--sf-text-height-4",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "4",
+      "modes": {
+        "mobile": {
+          "alias": "c4",
+          "px": 28
+        },
+        "desktop": {
+          "alias": "d0",
+          "px": 40
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 4"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.5",
+      "cssName": "--sf-text-height-5",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "5",
+      "modes": {
+        "mobile": {
+          "alias": "c6",
+          "px": 32
+        },
+        "desktop": {
+          "alias": "d2",
+          "px": 48
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 5"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.6",
+      "cssName": "--sf-text-height-6",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "6",
+      "modes": {
+        "mobile": {
+          "alias": "c8",
+          "px": 36
+        },
+        "desktop": {
+          "alias": "d3",
+          "px": 52
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 6"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.7",
+      "cssName": "--sf-text-height-7",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "7",
+      "modes": {
+        "mobile": {
+          "alias": "d0",
+          "px": 40
+        },
+        "desktop": {
+          "alias": "d5",
+          "px": 60
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 7"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.8",
+      "cssName": "--sf-text-height-8",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "8",
+      "modes": {
+        "mobile": {
+          "alias": "d2",
+          "px": 48
+        },
+        "desktop": {
+          "alias": "d8",
+          "px": 72
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 8"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.line-height.9",
+      "cssName": "--sf-text-height-9",
+      "type": "length",
+      "category": "typography-line-height",
+      "role": "9",
+      "modes": {
+        "mobile": {
+          "alias": "d3",
+          "px": 52
+        },
+        "desktop": {
+          "alias": "e0",
+          "px": 80
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive line height 9"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1",
+      "cssName": "--sf-text-size-1",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1",
+      "modes": {
+        "mobile": {
+          "alias": "b4",
+          "px": 14
+        },
+        "desktop": {
+          "alias": "b6",
+          "px": 16
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1/2",
+      "cssName": "--sf-text-size-1\\/2",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1/2",
+      "modes": {
+        "mobile": {
+          "alias": "b2",
+          "px": 12
+        },
+        "desktop": {
+          "alias": "b4",
+          "px": 14
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1/2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1/3",
+      "cssName": "--sf-text-size-1\\/3",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1/3",
+      "modes": {
+        "mobile": {
+          "alias": "b2",
+          "px": 12
+        },
+        "desktop": {
+          "alias": "b2",
+          "px": 12
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1/3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1/4",
+      "cssName": "--sf-text-size-1\\/4",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1/4",
+      "modes": {
+        "mobile": {
+          "alias": "b0",
+          "px": 10
+        },
+        "desktop": {
+          "alias": "b0",
+          "px": 10
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1/4"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1/5",
+      "cssName": "--sf-text-size-1\\/5",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1/5",
+      "modes": {
+        "mobile": {
+          "alias": "a8",
+          "px": 8
+        },
+        "desktop": {
+          "alias": "a8",
+          "px": 8
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1/5"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1/6",
+      "cssName": "--sf-text-size-1\\/6",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1/6",
+      "modes": {
+        "mobile": {
+          "alias": "a6",
+          "px": 6
+        },
+        "desktop": {
+          "alias": "a6",
+          "px": 6
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1/6"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.1/7",
+      "cssName": "--sf-text-size-1\\/7",
+      "type": "length",
+      "category": "typography-size",
+      "role": "1/7",
+      "modes": {
+        "mobile": {
+          "alias": "a4",
+          "px": 4
+        },
+        "desktop": {
+          "alias": "a4",
+          "px": 4
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 1/7"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.10",
+      "cssName": "--sf-text-size-10",
+      "type": "length",
+      "category": "typography-size",
+      "role": "10",
+      "modes": {
+        "mobile": {
+          "alias": "d0",
+          "px": 40
+        },
+        "desktop": {
+          "alias": "d6",
+          "px": 64
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 10"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.11",
+      "cssName": "--sf-text-size-11",
+      "type": "length",
+      "category": "typography-size",
+      "role": "11",
+      "modes": {
+        "mobile": {
+          "alias": "d1",
+          "px": 44
+        },
+        "desktop": {
+          "alias": "d8",
+          "px": 72
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 11"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.12",
+      "cssName": "--sf-text-size-12",
+      "type": "length",
+      "category": "typography-size",
+      "role": "12",
+      "modes": {
+        "mobile": {
+          "alias": "d2",
+          "px": 48
+        },
+        "desktop": {
+          "alias": "e0",
+          "px": 80
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 12"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.2",
+      "cssName": "--sf-text-size-2",
+      "type": "length",
+      "category": "typography-size",
+      "role": "2",
+      "modes": {
+        "mobile": {
+          "alias": "b6",
+          "px": 16
+        },
+        "desktop": {
+          "alias": "c0",
+          "px": 20
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 2"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.3",
+      "cssName": "--sf-text-size-3",
+      "type": "length",
+      "category": "typography-size",
+      "role": "3",
+      "modes": {
+        "mobile": {
+          "alias": "b8",
+          "px": 18
+        },
+        "desktop": {
+          "alias": "c2",
+          "px": 24
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 3"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.4",
+      "cssName": "--sf-text-size-4",
+      "type": "length",
+      "category": "typography-size",
+      "role": "4",
+      "modes": {
+        "mobile": {
+          "alias": "c0",
+          "px": 20
+        },
+        "desktop": {
+          "alias": "c4",
+          "px": 28
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 4"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.5",
+      "cssName": "--sf-text-size-5",
+      "type": "length",
+      "category": "typography-size",
+      "role": "5",
+      "modes": {
+        "mobile": {
+          "alias": "c1",
+          "px": 22
+        },
+        "desktop": {
+          "alias": "c6",
+          "px": 32
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 5"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.6",
+      "cssName": "--sf-text-size-6",
+      "type": "length",
+      "category": "typography-size",
+      "role": "6",
+      "modes": {
+        "mobile": {
+          "alias": "c2",
+          "px": 24
+        },
+        "desktop": {
+          "alias": "c8",
+          "px": 36
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 6"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.7",
+      "cssName": "--sf-text-size-7",
+      "type": "length",
+      "category": "typography-size",
+      "role": "7",
+      "modes": {
+        "mobile": {
+          "alias": "c4",
+          "px": 28
+        },
+        "desktop": {
+          "alias": "d0",
+          "px": 40
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 7"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.8",
+      "cssName": "--sf-text-size-8",
+      "type": "length",
+      "category": "typography-size",
+      "role": "8",
+      "modes": {
+        "mobile": {
+          "alias": "c6",
+          "px": 32
+        },
+        "desktop": {
+          "alias": "d2",
+          "px": 48
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 8"
+    },
+    {
+      "stableId": "simai.vertical-sizing.typography.size.9",
+      "cssName": "--sf-text-size-9",
+      "type": "length",
+      "category": "typography-size",
+      "role": "9",
+      "modes": {
+        "mobile": {
+          "alias": "c8",
+          "px": 36
+        },
+        "desktop": {
+          "alias": "d4",
+          "px": 56
+        }
+      },
+      "aliases": [],
+      "componentRelation": "typography",
+      "lifecycle": {
+        "status": "active",
+        "deprecated": false,
+        "replacementStableId": null
+      },
+      "completionContexts": [
+        "cssVariable",
+        "cssValue"
+      ],
+      "description": "Adaptive font size 9"
+    }
+  ]
+}

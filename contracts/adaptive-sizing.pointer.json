@@ -1,0 +1,9 @@
+{
+  "sourceRepository": "SIMAI/ui-loader",
+  "sourceCommit": "97b3df993a3250661a2d9e9db6500fad16b5b5cb",
+  "sourceTree": "6cc9bda9aae2b5d86918d58c49c736af1708cf7e",
+  "sourcePath": "src/core/contracts/adaptive-sizing.v1.json",
+  "contractId": "simai.vertical-sizing",
+  "contractVersion": "1.1.0",
+  "sha256": "333d78f0f3abe6f47c9caa1fc3c53c4d2894e122a922a400804383266cbd72f5"
+}

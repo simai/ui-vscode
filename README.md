@@ -7,11 +7,24 @@
 $ npm install
 ```
 
-#### 2. Generate a JSON File with SF Modifiers for the Extension to Work
+#### 2. Generate the pinned SF registry
 ```sh
-$ npm run generate
+npm run generate
+npm run generate:check
 ```
-To generate the JSON file, there must be a `style.css` file in the `/src/generate/` directory.
+
+Generation uses the vendored, hash-checked
+`simai.vertical-sizing@1.1.0` contract. A local `styles.css` or
+`modifiers.json` is not required. The resulting
+`src/registry/sf-autocomplete.json` preserves mobile and desktop values instead
+of flattening the registry to one resolved mode.
+
+Run the owner checks before debugging:
+
+```sh
+npm test
+npm run generate:check
+```
 
 #### 3. Launch the Extension in Debugging Mode
 Open the top panel of VS Code, navigate to **Run -> Start Debugging**, or press the **F5** key.

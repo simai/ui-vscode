@@ -1,0 +1,187 @@
+{
+  "$schema": "./adaptive-sizing.schema.json",
+  "meta": {
+    "contractId": "simai.vertical-sizing",
+    "version": "1.1.0",
+    "unit": "rem",
+    "nominalRootPx": 16,
+    "rootPolicy": "preserve-user-agent-default",
+    "defaultTypographyOwner": "body-or-application-shell"
+  },
+  "modes": {
+    "mobile": {
+      "minWidthPx": 0
+    },
+    "desktop": {
+      "minWidthPx": 960
+    }
+  },
+  "primitives": {
+    "a": { "startPx": 0, "stepPx": 1, "count": 10 },
+    "b": { "startPx": 10, "stepPx": 1, "count": 10 },
+    "c": { "startPx": 20, "stepPx": 2, "count": 10 },
+    "d": { "startPx": 40, "stepPx": 4, "count": 10 },
+    "e": { "startPx": 80, "stepPx": 8, "count": 10 },
+    "f": { "startPx": 160, "stepPx": 16, "count": 10 },
+    "g": { "startPx": 320, "stepPx": 32, "count": 10 },
+    "h": { "startPx": 640, "stepPx": 64, "count": 10 },
+    "i": { "startPx": 1280, "stepPx": 128, "count": 10 }
+  },
+  "typography": {
+    "sizes": {
+      "1/7": { "mobile": "a4", "desktop": "a4" },
+      "1/6": { "mobile": "a6", "desktop": "a6" },
+      "1/5": { "mobile": "a8", "desktop": "a8" },
+      "1/4": { "mobile": "b0", "desktop": "b0" },
+      "1/3": { "mobile": "b2", "desktop": "b2" },
+      "1/2": { "mobile": "b2", "desktop": "b4" },
+      "1": { "mobile": "b4", "desktop": "b6" },
+      "2": { "mobile": "b6", "desktop": "c0" },
+      "3": { "mobile": "b8", "desktop": "c2" },
+      "4": { "mobile": "c0", "desktop": "c4" },
+      "5": { "mobile": "c1", "desktop": "c6" },
+      "6": { "mobile": "c2", "desktop": "c8" },
+      "7": { "mobile": "c4", "desktop": "d0" },
+      "8": { "mobile": "c6", "desktop": "d2" },
+      "9": { "mobile": "c8", "desktop": "d4" },
+      "10": { "mobile": "d0", "desktop": "d6" },
+      "11": { "mobile": "d1", "desktop": "d8" },
+      "12": { "mobile": "d2", "desktop": "e0" }
+    },
+    "lineHeights": {
+      "1/4": { "mobile": "b2", "desktop": "b2" },
+      "1/3": { "mobile": "b6", "desktop": "b6" },
+      "1/2": { "mobile": "b6", "desktop": "c0" },
+      "1": { "mobile": "c0", "desktop": "c2" },
+      "2": { "mobile": "c2", "desktop": "c4" },
+      "3": { "mobile": "c2", "desktop": "c8" },
+      "4": { "mobile": "c4", "desktop": "d0" },
+      "5": { "mobile": "c6", "desktop": "d2" },
+      "6": { "mobile": "c8", "desktop": "d3" },
+      "7": { "mobile": "d0", "desktop": "d5" },
+      "8": { "mobile": "d2", "desktop": "d8" },
+      "9": { "mobile": "d3", "desktop": "e0" },
+      "10": { "mobile": "d5", "desktop": "e2" },
+      "11": { "mobile": "d6", "desktop": "e3" },
+      "12": { "mobile": "d8", "desktop": "e5" }
+    },
+    "pairedRoles": [
+      "1/4",
+      "1/3",
+      "1/2",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "unpairedSizeRoles": ["1/7", "1/6", "1/5"]
+  },
+  "spacing": {
+    "0": { "mobile": "zero", "desktop": "zero" },
+    "1/4": { "mobile": "a4", "desktop": "a4" },
+    "1/3": { "mobile": "a8", "desktop": "a8" },
+    "1/2": { "mobile": "a8", "desktop": "b2" },
+    "1": { "mobile": "b2", "desktop": "b6" },
+    "2": { "mobile": "b6", "desktop": "c0" },
+    "3": { "mobile": "b6", "desktop": "c2" },
+    "4": { "mobile": "c2", "desktop": "c6" },
+    "5": { "mobile": "c6", "desktop": "d0" },
+    "6": { "mobile": "c6", "desktop": "d2" },
+    "7": { "mobile": "d0", "desktop": "d6" },
+    "8": { "mobile": "d2", "desktop": "e0" }
+  },
+  "controls": {
+    "sizeRoles": {
+      "1/3": { "lineHeightRole": "1/3" },
+      "1/2": { "lineHeightRole": "1/2" },
+      "1": { "lineHeightRole": "1" },
+      "2": { "lineHeightRole": "2" },
+      "3": { "lineHeightRole": "3" }
+    },
+    "tightness": {
+      "low": {
+        "1/3": { "mobile": "a2", "desktop": "a4" },
+        "1/2": { "mobile": "a4", "desktop": "a4" },
+        "1": { "mobile": "a4", "desktop": "a4" },
+        "2": { "mobile": "a6", "desktop": "a6" },
+        "3": { "mobile": "b0", "desktop": "a6" }
+      },
+      "default": {
+        "1/3": { "mobile": "a4", "desktop": "a4" },
+        "1/2": { "mobile": "a6", "desktop": "a6" },
+        "1": { "mobile": "a8", "desktop": "a8" },
+        "2": { "mobile": "b0", "desktop": "b0" },
+        "3": { "mobile": "b4", "desktop": "b0" }
+      },
+      "high": {
+        "1/3": { "mobile": "a6", "desktop": "a8" },
+        "1/2": { "mobile": "b0", "desktop": "b0" },
+        "1": { "mobile": "b2", "desktop": "b2" },
+        "2": { "mobile": "b4", "desktop": "b4" },
+        "3": { "mobile": "c0", "desktop": "b6" }
+      },
+      "highest": {
+        "1/3": { "mobile": "b0", "desktop": "b2" },
+        "1/2": { "mobile": "b4", "desktop": "b4" },
+        "1": { "mobile": "b6", "desktop": "b6" },
+        "2": { "mobile": "c0", "desktop": "c0" },
+        "3": { "mobile": "c3", "desktop": "c1" }
+      }
+    }
+  },
+  "invariants": {
+    "browserRemStableAcrossModes": true,
+    "modeSwitchCount": 1,
+    "controlHeightFormula": "lineHeight + 2 * blockPadding",
+    "structuralBorderAccounting": "inside-control-height",
+    "maxCrossControlErrorCssPx": 0.5
+  },
+  "projections": {
+    "scss": {
+      "typographySizes": "src/core/figma_variables/figma_text_text_size.scss",
+      "typographyLineHeights": "src/core/figma_variables/figma_text_body_text_height.scss",
+      "spacing": "src/core/figma_variables/figma_space.scss",
+      "tightnessLow": "src/core/figma_variables/figma_ui_tightness_low.scss",
+      "tightnessDefault": "src/core/figma_variables/figma_ui_tightness_default.scss",
+      "tightnessHigh": "src/core/figma_variables/figma_ui_tightness_high.scss",
+      "tightnessHighest": "src/core/figma_variables/figma_ui_tightness_highest.scss",
+      "controlHeights": "src/core/figma_variables/figma_ui_control_height.scss"
+    },
+    "externalCandidates": [
+      "figma-ready-diff",
+      "documentation",
+      "ide-registry",
+      "generated-core",
+      "generated-smart",
+      "ui-play",
+      "ui-admin"
+    ]
+  },
+  "scope": {
+    "included": [
+      "root-rem-policy",
+      "mobile-desktop-mode",
+      "typography-size-line-height",
+      "control-height",
+      "block-padding",
+      "vertical-spacing",
+      "vertical-rhythm"
+    ],
+    "excluded": [
+      "menu-indentation",
+      "leading-slot-alignment",
+      "inline-padding-parity",
+      "container-gutters",
+      "container-width",
+      "cross-component-horizontal-relations"
+    ]
+  }
+}

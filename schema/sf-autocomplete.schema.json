@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://simai.io/schema/sf-autocomplete.v1.json",
+  "title": "Simai Framework autocomplete registry",
+  "type": "object",
+  "required": ["schemaVersion", "registryId", "registryVersion", "source", "modes", "scope", "entries"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "registryId": {"const": "simai.sf-autocomplete"},
+    "registryVersion": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "source": {
+      "type": "object",
+      "required": ["contractId", "contractVersion", "sha256", "repository", "commit", "tree", "path"],
+      "properties": {
+        "contractId": {"type": "string"},
+        "contractVersion": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "repository": {"type": "string"},
+        "commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "tree": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "path": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "modes": {
+      "type": "object",
+      "required": ["mobile", "desktop"],
+      "properties": {
+        "mobile": {
+          "type": "object",
+          "required": ["minWidthPx"],
+          "properties": {"minWidthPx": {"const": 0}},
+          "additionalProperties": false
+        },
+        "desktop": {
+          "type": "object",
+          "required": ["minWidthPx"],
+          "properties": {"minWidthPx": {"const": 960}},
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": ["included", "excluded"],
+      "properties": {
+        "included": {"type": "array", "items": {"type": "string"}},
+        "excluded": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "stableId",
+          "cssName",
+          "type",
+          "category",
+          "role",
+          "modes",
+          "aliases",
+          "componentRelation",
+          "lifecycle",
+          "completionContexts",
+          "description"
+        ],
+        "properties": {
+          "stableId": {"type": "string", "minLength": 1},
+          "cssName": {"type": "string", "pattern": "^--sf-"},
+          "type": {"const": "length"},
+          "category": {"type": "string"},
+          "role": {"type": "string"},
+          "modes": {
+            "type": "object",
+            "required": ["mobile", "desktop"],
+            "properties": {
+              "mobile": {"$ref": "#/$defs/modeValue"},
+              "desktop": {"$ref": "#/$defs/modeValue"}
+            },
+            "additionalProperties": false
+          },
+          "aliases": {"type": "array", "items": {"type": "string"}},
+          "componentRelation": {"type": ["string", "null"]},
+          "lifecycle": {
+            "type": "object",
+            "required": ["status", "deprecated", "replacementStableId"],
+            "properties": {
+              "status": {"enum": ["active", "deprecated"]},
+              "deprecated": {"type": "boolean"},
+              "replacementStableId": {"type": ["string", "null"]}
+            },
+            "additionalProperties": false
+          },
+          "completionContexts": {
+            "type": "array",
+            "items": {"enum": ["cssVariable", "cssValue", "htmlClass"]}
+          },
+          "description": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "modeValue": {
+      "type": "object",
+      "required": ["alias", "px"],
+      "properties": {
+        "alias": {"type": "string"},
+        "px": {"type": "number"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -8,10 +8,21 @@ node_modules/
 dist/
 out/
 
+# Local environment and Codex working artifacts
+.env
+.env.*
+!.env.example
+/output/
+/source/output/
+/source/codex-local-check.txt
+*.bak
+*.bak_*
+*.bak-*
+*.codex-bak-*
+
 # Compiled suggestions
 *.vsix
 
-src/modifiers.json
 styles.css
 
 # Compiled Java class files
@@ -54,4 +65,3 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
-

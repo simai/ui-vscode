@@ -26,11 +26,13 @@
   "contributes": {},
   "scripts": {
     "compile": "tsc -p ./",
-    "generate": "tsc ./src/generate/generateJson.ts && node ./src/generate/generateJson.js",
+    "generate": "npm run compile && node ./out/generate/generateJson.js",
+    "generate:check": "npm run compile && node ./out/generate/generateJson.js --check",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "clean": "rm -rf out",
-    "test": "node ./out/test/runTest.js",
+    "test": "node --test ./out/test/*.unit.test.js",
+    "test:extension": "node ./out/test/runTest.js",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "prepublish": "npm run compile"
   },

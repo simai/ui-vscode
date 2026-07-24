@@ -1,66 +1,83 @@
-import * as vscode from 'vscode';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import * as vscode from 'vscode';
+import {
+    completionLabel,
+    detectCompletionRequest,
+    matchingEntries,
+} from './completion';
+import { validateRegistry } from './registry/validation';
 
-interface CssModifier {
-    modifier: string;
-    description: string;
-}
-
-console.log('The extension "sf-vscode" is connected!');
-
-export function activate(context: vscode.ExtensionContext) {
-
-    const modifiersPath = path.join(context.extensionPath, 'src', 'modifiers.json');
-    const data = fs.readFileSync(modifiersPath, 'utf-8');
-    const cssModifiers: CssModifier[] = JSON.parse(data);
+export function activate(context: vscode.ExtensionContext): void {
+    const registryPath = path.join(
+        context.extensionPath,
+        'src',
+        'registry',
+        'sf-autocomplete.json',
+    );
+    const registry = validateRegistry(
+        JSON.parse(fs.readFileSync(registryPath, 'utf8')),
+    );
 
     const provider = vscode.languages.registerCompletionItemProvider(
-        ['css', 'scss', 'sass', 'less', 'html', 'javascript', 'typescript', 'vue', 'react'],
+        [
+            'css',
+            'scss',
+            'sass',
+            'less',
+            'html',
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+            'react',
+        ],
         {
-            provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-               
+            provideCompletionItems(document, position) {
                 const line = document.lineAt(position).text;
-                const charBefore = position.character > 0 ? line[position.character - 1] : '';
+                const request = detectCompletionRequest(
+                    line,
+                    position.character,
+                    document.languageId,
+                );
+                if (!request) return undefined;
 
-                if (charBefore !== '.') {
-                    return undefined;
-                }
+                const entries = matchingEntries(registry.entries, request);
+                if (entries.length === 0) return undefined;
 
-                const linePrefix = line.substr(0, position.character);
-
-                const regex = /\.([\w-]*)$/;
-                const match = linePrefix.match(regex);
-
-                if (!match) {
-                    return undefined;
-                }
-
-                const currentWord = match[1].toLowerCase();
-
-                const filteredModifiers = cssModifiers.filter(mod => mod.modifier.startsWith(currentWord));
-
-                if (filteredModifiers.length === 0) {
-                    return undefined;
-                }
-
-                return filteredModifiers.map(mod => {
-                    const completionItem = new vscode.CompletionItem(mod.modifier, vscode.CompletionItemKind.Text);
-                    completionItem.detail = mod.description;
-
-                    const startPos = position.translate(0, -currentWord.length);
-                    const range = new vscode.Range(startPos, position);
-
-                    completionItem.range = range;
-
-                    return completionItem;
+                return entries.map(entry => {
+                    const label = completionLabel(entry, request);
+                    const item = new vscode.CompletionItem(
+                        label,
+                        request.context === 'htmlClass'
+                            ? vscode.CompletionItemKind.Value
+                            : vscode.CompletionItemKind.Variable,
+                    );
+                    item.detail = [
+                        entry.description,
+                        `mobile ${entry.modes.mobile.px}px`,
+                        `desktop ${entry.modes.desktop.px}px`,
+                        registry.source.contractVersion,
+                    ].join(' · ');
+                    item.documentation = new vscode.MarkdownString(
+                        `Source contract: \`${registry.source.sha256}\``,
+                    );
+                    item.range = new vscode.Range(
+                        position.translate(0, -request.replaceLength),
+                        position,
+                    );
+                    return item;
                 });
-            }
+            },
         },
-        '.'
+        '-',
+        '.',
+        '/',
+        ':',
     );
 
     context.subscriptions.push(provider);
 }
 
-export function deactivate() {}
+export function deactivate(): void {}
