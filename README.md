@@ -1,4 +1,4 @@
-# VS Code Extension for SF
+# VS Code extension for Simai Framework
 
 ## Running the Extension for Debugging
 

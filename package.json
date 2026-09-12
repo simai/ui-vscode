@@ -1,7 +1,7 @@
 {
   "name": "sf-vscode",
   "displayName": "SF Modifier Suggestions",
-  "description": "Extension for SF Modifier Tips",
+  "description": "VS Code autocomplete and modifier tips for Simai Framework",
   "version": "0.0.1",
   "publisher": "SIMAI",
   "repository": "https://github.com/simai/sf-vscode",
