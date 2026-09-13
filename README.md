@@ -52,3 +52,7 @@ This command will create a `.vsix` file in the current directory. This file cont
 ##### 3.1 Click on the three dots in the top right corner of the Extensions section and select **"Install from VSIX..."**
 ##### 3.2 In the opened window, locate and select the downloaded `.vsix` file
 ##### 3.3 After installing the extension, you may need to restart VS Code to apply the changes.
+
+## License
+
+The extension is available under the [MIT License](LICENSE).
