@@ -4,7 +4,7 @@
   "description": "VS Code autocomplete and modifier tips for Simai Framework",
   "version": "0.0.1",
   "publisher": "SIMAI",
-  "author": "Rim Rashitovich Zabarov and contributors",
+  "author": "Rim Zabarov and contributors",
   "license": "MIT",
   "repository": "https://github.com/simai/ui-vscode",
   "engines": {
