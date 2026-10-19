@@ -2,7 +2,7 @@
  * Takes the Marketplace screenshots from a running VS Code with the extension
  * loaded. VS Code is started with --remote-debugging-port (see
  * runScreenshots.ts); each scene opens a real file, shows the feature and
- * captures the workbench window with the Chrome DevTools Protocol, so no OS
+ * captures the workbench with the Chrome DevTools Protocol, so no OS
  * screen-recording permission is needed.
  */
 import * as fs from 'fs';
@@ -14,7 +14,53 @@ const port = Number(process.env.SF_DEBUG_PORT ?? 9333);
 const outputDir = process.env.SF_SCREENSHOT_DIR ?? path.resolve(__dirname, '..', '..', '..', 'images');
 const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
 
-async function capture(name: string): Promise<void> {
+/**
+ * Measures the strip worth capturing: the workbench down to the widget the
+ * scene is about, so a Marketplace screenshot is a wide, short band and not a
+ * window mostly full of empty editor. `shown` is false while the widget is
+ * still opening, which is what the capture waits for.
+ */
+const bandScript = (widget: Widget): string => `(() => {
+    const box = [...document.querySelectorAll('${widget.selector}')]
+        .map(node => node.getBoundingClientRect())
+        .filter(rect => rect.width > 0 && rect.height > 0)
+        .sort((left, right) => right.bottom - left.bottom)[0];
+    const editor = document.querySelector('.monaco-editor');
+    const floor = editor ? editor.getBoundingClientRect().top + 150 : 300;
+    return {
+        shown: Boolean(box),
+        width: window.innerWidth,
+        height: Math.min(window.innerHeight, Math.ceil(Math.max(floor, box ? box.bottom : 0)) + 12),
+    };
+})()`;
+
+/** Captured at 2x so the images stay crisp wherever they were taken. */
+const captureScale = 2;
+
+interface Widget {
+    selector: string;
+}
+
+interface Band {
+    shown: boolean;
+    width: number;
+    height: number;
+}
+
+type Call = <T>(method: string, params: unknown) => Promise<T>;
+
+async function measure(call: Call, widget: Widget): Promise<Band> {
+    const evaluated = await call<{ result: { value?: Band }; exceptionDetails?: unknown }>(
+        'Runtime.evaluate',
+        { expression: bandScript(widget), returnByValue: true },
+    );
+    if (evaluated.exceptionDetails || !evaluated.result.value) {
+        throw new Error(`measuring ${widget.selector}: ${JSON.stringify(evaluated.exceptionDetails)}`);
+    }
+    return evaluated.result.value;
+}
+
+async function capture(name: string, widget: Widget, settle: number): Promise<void> {
     const targets = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json() as {
         type: string;
         url: string;
@@ -27,18 +73,48 @@ async function capture(name: string): Promise<void> {
         socket.onopen = resolve;
         socket.onerror = reject;
     });
-    const data = await new Promise<string>((resolve, reject) => {
-        socket.onmessage = event => {
-            const message = JSON.parse(String(event.data)) as { id: number; result?: { data: string }; error?: unknown };
-            if (message.id !== 1) return;
-            if (message.result) resolve(message.result.data);
-            else reject(new Error(JSON.stringify(message.error)));
-        };
-        socket.send(JSON.stringify({ id: 1, method: 'Page.captureScreenshot', params: { format: 'png' } }));
-    });
-    socket.close();
-    fs.mkdirSync(outputDir, { recursive: true });
-    fs.writeFileSync(path.join(outputDir, `${name}.png`), Buffer.from(data, 'base64'));
+    let lastId = 0;
+    const call = <T>(method: string, params: unknown): Promise<T> => {
+        const id = (lastId += 1);
+        return new Promise<T>((resolve, reject) => {
+            const onMessage = (event: MessageEvent): void => {
+                const message = JSON.parse(String(event.data)) as {
+                    id: number;
+                    result?: T;
+                    error?: unknown;
+                };
+                if (message.id !== id) return;
+                socket.removeEventListener('message', onMessage);
+                if (message.result) resolve(message.result);
+                else reject(new Error(`${method}: ${JSON.stringify(message.error)}`));
+            };
+            socket.addEventListener('message', onMessage);
+            socket.send(JSON.stringify({ id, method, params }));
+        });
+    };
+    try {
+        // The widget opens asynchronously. Waiting for it beats a fixed sleep,
+        // which used to leave a scene without the feature it is meant to show.
+        let band: Band | undefined;
+        for (let attempt = 0; attempt < 40 && !band?.shown; attempt += 1) {
+            if (attempt > 0) await sleep(250);
+            band = await measure(call, widget);
+        }
+        if (!band?.shown) throw new Error(`${name}: ${widget.selector} never appeared`);
+        // Let the widget finish fading in and the editor finish marking the
+        // document, then measure again: a half-drawn widget ghosts the code
+        // underneath it.
+        await sleep(settle);
+        band = await measure(call, widget);
+        const shot = await call<{ data: string }>('Page.captureScreenshot', {
+            format: 'png',
+            clip: { x: 0, y: 0, width: band.width, height: band.height, scale: captureScale },
+        });
+        fs.mkdirSync(outputDir, { recursive: true });
+        fs.writeFileSync(path.join(outputDir, `${name}.png`), Buffer.from(shot.data, 'base64'));
+    } finally {
+        socket.close();
+    }
 }
 
 const root = fs.mkdtempSync(path.join(os.tmpdir(), 'sf-shots-'));
@@ -57,13 +133,27 @@ async function show(file: string, marked: string): Promise<vscode.TextEditor> {
     return editor;
 }
 
-async function scene(name: string, file: string, marked: string, command: string, wait = 1500): Promise<void> {
+// A suggest widget keeps its box while it is hidden and while it still shows
+// "Loading…", so measure the rows it ended up with instead of the box itself.
+const widgets: Record<string, Widget> = {
+    'editor.action.triggerSuggest': { selector: '.suggest-widget .monaco-list-row' },
+    'editor.action.showHover': { selector: '.monaco-hover' },
+};
+
+type Command = 'editor.action.triggerSuggest' | 'editor.action.showHover';
+
+async function scene(
+    name: string,
+    file: string,
+    marked: string,
+    command: Command,
+    settle = 600,
+): Promise<void> {
     await vscode.commands.executeCommand('workbench.action.closeAllEditors');
     await show(file, marked);
     await vscode.commands.executeCommand('notifications.clearAll');
     await vscode.commands.executeCommand(command);
-    await sleep(wait);
-    await capture(name);
+    await capture(name, widgets[command], settle);
     await vscode.commands.executeCommand('hideSuggestWidget');
     await vscode.commands.executeCommand('editor.action.hideHover');
 }
@@ -109,7 +199,9 @@ export async function run(): Promise<void> {
         'menu.html',
         '<sf-context-menu position="top"></sf-context-menu>\n<sf-button appe|rance="tonal" text="Save"></sf-button>\n<style>\n  .x { color: var(--sf-primay); }\n</style>\n',
         'editor.action.showHover',
-        2500,
+        // The scene is about the squiggles too, so give every analysed name
+        // time to be marked before the capture.
+        1500,
     );
     fs.rmSync(root, { recursive: true, force: true });
 }

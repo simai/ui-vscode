@@ -27,6 +27,13 @@ All notable changes to SIMAI Framework IntelliSense are listed here.
   does not call ready, so the index and the per-entry state cannot drift apart
   unnoticed.
 
+### Fixed
+
+- `npm run screenshots` waits for the suggest widget to hold its items instead
+  of sleeping, and captures the band down to the last row at 2x. A scene can no
+  longer be published showing "Loading…", a half-faded hover or a window mostly
+  full of empty editor, and the images come out the same size on every run.
+
 ## [0.2.0] - 2026-10-19
 
 ### Added
