@@ -6,18 +6,21 @@ import {
     detectCompletionRequest,
     matchingEntries,
 } from './completion';
+import { SfAutocompleteRegistry } from './registry/types';
 import { validateRegistry } from './registry/validation';
 
+// Activation runs at startup (onStartupFinished) so that the very first
+// completion request already reaches this provider. Keep it cheap: the
+// registry is read on first use, not during activation.
 export function activate(context: vscode.ExtensionContext): void {
-    const registryPath = path.join(
-        context.extensionPath,
-        'src',
-        'registry',
-        'sf-autocomplete.json',
-    );
-    const registry = validateRegistry(
-        JSON.parse(fs.readFileSync(registryPath, 'utf8')),
-    );
+    let cachedRegistry: SfAutocompleteRegistry | undefined;
+    const loadRegistry = (): SfAutocompleteRegistry => {
+        cachedRegistry ??= validateRegistry(JSON.parse(fs.readFileSync(
+            path.join(context.extensionPath, 'data', 'sf-autocomplete.json'),
+            'utf8',
+        )));
+        return cachedRegistry;
+    };
 
     const provider = vscode.languages.registerCompletionItemProvider(
         [
@@ -43,6 +46,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 );
                 if (!request) return undefined;
 
+                const registry = loadRegistry();
                 const entries = matchingEntries(registry.entries, request);
                 if (entries.length === 0) return undefined;
 
