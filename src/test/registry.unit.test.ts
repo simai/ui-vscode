@@ -19,10 +19,10 @@ const registry = JSON.parse(
 
 test('generated registry has the accepted adaptive contract identity', () => {
     const valid = validateRegistry(registry);
-    assert.equal(valid.source.contractVersion, '1.1.0');
+    assert.equal(valid.source.contractVersion, '1.3.0');
     assert.equal(
         valid.source.sha256,
-        '333d78f0f3abe6f47c9caa1fc3c53c4d2894e122a922a400804383266cbd72f5',
+        'b70d02d6902345e17954eafb44f24052b7478439184286bed5a8df6c69c1fe45',
     );
     assert.ok(valid.entries.length > 50);
 });

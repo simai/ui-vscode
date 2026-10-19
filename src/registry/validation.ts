@@ -6,8 +6,8 @@ import {
 
 export const expectedContract = {
     id: 'simai.vertical-sizing',
-    version: '1.1.0',
-    sha256: '333d78f0f3abe6f47c9caa1fc3c53c4d2894e122a922a400804383266cbd72f5',
+    version: '1.3.0',
+    sha256: 'b70d02d6902345e17954eafb44f24052b7478439184286bed5a8df6c69c1fe45',
 } as const;
 
 const allowedContexts = new Set<CompletionContext>([

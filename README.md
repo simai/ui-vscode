@@ -14,7 +14,7 @@ npm run generate:check
 ```
 
 Generation uses the vendored, hash-checked
-`simai.vertical-sizing@1.1.0` contract. A local `styles.css` or
+`simai.vertical-sizing@1.3.0` contract. A local `styles.css` or
 `modifiers.json` is not required. The resulting
 `src/registry/sf-autocomplete.json` preserves mobile and desktop values instead
 of flattening the registry to one resolved mode.

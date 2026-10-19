@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.0.0",
   "registryId": "simai.sf-autocomplete",
-  "registryVersion": "1.1.0",
+  "registryVersion": "1.3.0",
   "source": {
     "contractId": "simai.vertical-sizing",
-    "contractVersion": "1.1.0",
-    "sha256": "333d78f0f3abe6f47c9caa1fc3c53c4d2894e122a922a400804383266cbd72f5",
-    "repository": "SIMAI/ui-loader",
-    "commit": "97b3df993a3250661a2d9e9db6500fad16b5b5cb",
-    "tree": "6cc9bda9aae2b5d86918d58c49c736af1708cf7e",
+    "contractVersion": "1.3.0",
+    "sha256": "b70d02d6902345e17954eafb44f24052b7478439184286bed5a8df6c69c1fe45",
+    "repository": "simai/ui-source",
+    "commit": "1d26dd483201d24ad1af8419efc21b0d4a76a565",
+    "tree": "5b4d11c91ac0716e083554a9a358b0a9deaadab2",
     "path": "src/core/contracts/adaptive-sizing.v1.json"
   },
   "modes": {
