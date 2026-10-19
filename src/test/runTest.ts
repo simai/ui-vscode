@@ -1,34 +1,35 @@
+import * as fs from 'fs';
+import * as os from 'os';
 import * as path from 'path';
-import * as Mocha from 'mocha';
-import * as glob from 'glob';
+import { runTests } from '@vscode/test-electron';
 
-export function run(): Promise<void> {
-    const mocha = new Mocha({
-        ui: 'bdd',
-        color: true
-    });
-
-    const testsRoot = path.resolve(__dirname, '.');
-
-    return new Promise((resolve, reject) => {
-        glob('**/**.test.js', { cwd: testsRoot }, (err, files) => {
-            if (err) {
-                return reject(err);
-            }
-
-            files.forEach(file => mocha.addFile(path.join(testsRoot, file)));
-
-            try {
-                mocha.run(failures => {
-                    if (failures > 0) {
-                        reject(new Error(`${failures} tests failed.`));
-                    } else {
-                        resolve();
-                    }
-                });
-            } catch (err) {
-                reject(err);
-            }
+async function main(): Promise<void> {
+    const extensionDevelopmentPath = path.resolve(__dirname, '..', '..');
+    const extensionTestsPath = path.resolve(__dirname, 'suite', 'index');
+    // VS Code refuses a user data directory whose IPC socket path would
+    // exceed the 103-character Unix socket limit, so keep it short.
+    const shortRoot = os.platform() === 'win32' ? os.tmpdir() : '/tmp';
+    const userDataDir = fs.mkdtempSync(path.join(shortRoot, 'sfx.'));
+    try {
+        await runTests({
+            extensionDevelopmentPath,
+            extensionTestsPath,
+            vscodeExecutablePath: process.env.VSCODE_EXECUTABLE_PATH || undefined,
+            version: process.env.VSCODE_TEST_VERSION || undefined,
+            launchArgs: [
+                '--disable-extensions',
+                '--disable-workspace-trust',
+                '--skip-welcome',
+                '--skip-release-notes',
+                `--user-data-dir=${userDataDir}`,
+            ],
         });
-    });
+    } finally {
+        fs.rmSync(userDataDir, { recursive: true, force: true });
+    }
 }
+
+main().catch(error => {
+    console.error(error);
+    process.exit(1);
+});
