@@ -1,0 +1,1756 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    .xxl\:top-0 {
+      top: 0;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-0 {
+      right: 0;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-0 {
+      right: 0;
+      }
+    }
+    .xxl\:inline-end-0:where(:dir(ltr)) {
+      right: 0;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-0 {
+      left: 0;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-0 {
+      left: 0;
+      }
+    }
+    .xxl\:inline-end-0:where(:dir(rtl)) {
+      left: 0;
+    }
+    .xxl\:inline-end-0 {
+      inset-inline-end: 0;
+    }
+    .xxl\:bottom-0 {
+      bottom: 0;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-0 {
+      left: 0;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-0 {
+      left: 0;
+      }
+    }
+    .xxl\:inline-start-0:where(:dir(ltr)) {
+      left: 0;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-0 {
+      right: 0;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-0 {
+      right: 0;
+      }
+    }
+    .xxl\:inline-start-0:where(:dir(rtl)) {
+      right: 0;
+    }
+    .xxl\:inline-start-0 {
+      inset-inline-start: 0;
+    }
+    .xxl\:top-auto {
+      top: auto;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-auto {
+      right: auto;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-auto {
+      right: auto;
+      }
+    }
+    .xxl\:inline-end-auto:where(:dir(ltr)) {
+      right: auto;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-auto {
+      left: auto;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-auto {
+      left: auto;
+      }
+    }
+    .xxl\:inline-end-auto:where(:dir(rtl)) {
+      left: auto;
+    }
+    .xxl\:inline-end-auto {
+      inset-inline-end: auto;
+    }
+    .xxl\:bottom-auto {
+      bottom: auto;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-auto {
+      left: auto;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-auto {
+      left: auto;
+      }
+    }
+    .xxl\:inline-start-auto:where(:dir(ltr)) {
+      left: auto;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-auto {
+      right: auto;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-auto {
+      right: auto;
+      }
+    }
+    .xxl\:inline-start-auto:where(:dir(rtl)) {
+      right: auto;
+    }
+    .xxl\:inline-start-auto {
+      inset-inline-start: auto;
+    }
+    .xxl\:top-1\/2 {
+      top: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-1\/2 {
+      right: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-1\/2 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-end-1\/2:where(:dir(ltr)) {
+      right: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-1\/2 {
+      left: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-1\/2 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-end-1\/2:where(:dir(rtl)) {
+      left: 50%;
+    }
+    .xxl\:inline-end-1\/2 {
+      inset-inline-end: 50%;
+    }
+    .xxl\:bottom-1\/2 {
+      bottom: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-1\/2 {
+      left: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-1\/2 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-start-1\/2:where(:dir(ltr)) {
+      left: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-1\/2 {
+      right: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-1\/2 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-start-1\/2:where(:dir(rtl)) {
+      right: 50%;
+    }
+    .xxl\:inline-start-1\/2 {
+      inset-inline-start: 50%;
+    }
+    .xxl\:top-1\/3 {
+      top: 33.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-1\/3 {
+      right: 33.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-1\/3 {
+      right: 33.333333%;
+      }
+    }
+    .xxl\:inline-end-1\/3:where(:dir(ltr)) {
+      right: 33.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-1\/3 {
+      left: 33.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-1\/3 {
+      left: 33.333333%;
+      }
+    }
+    .xxl\:inline-end-1\/3:where(:dir(rtl)) {
+      left: 33.333333%;
+    }
+    .xxl\:inline-end-1\/3 {
+      inset-inline-end: 33.333333%;
+    }
+    .xxl\:bottom-1\/3 {
+      bottom: 33.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-1\/3 {
+      left: 33.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-1\/3 {
+      left: 33.333333%;
+      }
+    }
+    .xxl\:inline-start-1\/3:where(:dir(ltr)) {
+      left: 33.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-1\/3 {
+      right: 33.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-1\/3 {
+      right: 33.333333%;
+      }
+    }
+    .xxl\:inline-start-1\/3:where(:dir(rtl)) {
+      right: 33.333333%;
+    }
+    .xxl\:inline-start-1\/3 {
+      inset-inline-start: 33.333333%;
+    }
+    .xxl\:top-2\/3 {
+      top: 66.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-2\/3 {
+      right: 66.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-2\/3 {
+      right: 66.666667%;
+      }
+    }
+    .xxl\:inline-end-2\/3:where(:dir(ltr)) {
+      right: 66.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-2\/3 {
+      left: 66.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-2\/3 {
+      left: 66.666667%;
+      }
+    }
+    .xxl\:inline-end-2\/3:where(:dir(rtl)) {
+      left: 66.666667%;
+    }
+    .xxl\:inline-end-2\/3 {
+      inset-inline-end: 66.666667%;
+    }
+    .xxl\:bottom-2\/3 {
+      bottom: 66.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-2\/3 {
+      left: 66.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-2\/3 {
+      left: 66.666667%;
+      }
+    }
+    .xxl\:inline-start-2\/3:where(:dir(ltr)) {
+      left: 66.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-2\/3 {
+      right: 66.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-2\/3 {
+      right: 66.666667%;
+      }
+    }
+    .xxl\:inline-start-2\/3:where(:dir(rtl)) {
+      right: 66.666667%;
+    }
+    .xxl\:inline-start-2\/3 {
+      inset-inline-start: 66.666667%;
+    }
+    .xxl\:top-1\/4 {
+      top: 25%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-1\/4 {
+      right: 25%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-1\/4 {
+      right: 25%;
+      }
+    }
+    .xxl\:inline-end-1\/4:where(:dir(ltr)) {
+      right: 25%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-1\/4 {
+      left: 25%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-1\/4 {
+      left: 25%;
+      }
+    }
+    .xxl\:inline-end-1\/4:where(:dir(rtl)) {
+      left: 25%;
+    }
+    .xxl\:inline-end-1\/4 {
+      inset-inline-end: 25%;
+    }
+    .xxl\:bottom-1\/4 {
+      bottom: 25%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-1\/4 {
+      left: 25%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-1\/4 {
+      left: 25%;
+      }
+    }
+    .xxl\:inline-start-1\/4:where(:dir(ltr)) {
+      left: 25%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-1\/4 {
+      right: 25%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-1\/4 {
+      right: 25%;
+      }
+    }
+    .xxl\:inline-start-1\/4:where(:dir(rtl)) {
+      right: 25%;
+    }
+    .xxl\:inline-start-1\/4 {
+      inset-inline-start: 25%;
+    }
+    .xxl\:top-2\/4 {
+      top: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-2\/4 {
+      right: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-2\/4 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-end-2\/4:where(:dir(ltr)) {
+      right: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-2\/4 {
+      left: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-2\/4 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-end-2\/4:where(:dir(rtl)) {
+      left: 50%;
+    }
+    .xxl\:inline-end-2\/4 {
+      inset-inline-end: 50%;
+    }
+    .xxl\:bottom-2\/4 {
+      bottom: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-2\/4 {
+      left: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-2\/4 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-start-2\/4:where(:dir(ltr)) {
+      left: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-2\/4 {
+      right: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-2\/4 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-start-2\/4:where(:dir(rtl)) {
+      right: 50%;
+    }
+    .xxl\:inline-start-2\/4 {
+      inset-inline-start: 50%;
+    }
+    .xxl\:top-3\/4 {
+      top: 75%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-3\/4 {
+      right: 75%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-3\/4 {
+      right: 75%;
+      }
+    }
+    .xxl\:inline-end-3\/4:where(:dir(ltr)) {
+      right: 75%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-3\/4 {
+      left: 75%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-3\/4 {
+      left: 75%;
+      }
+    }
+    .xxl\:inline-end-3\/4:where(:dir(rtl)) {
+      left: 75%;
+    }
+    .xxl\:inline-end-3\/4 {
+      inset-inline-end: 75%;
+    }
+    .xxl\:bottom-3\/4 {
+      bottom: 75%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-3\/4 {
+      left: 75%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-3\/4 {
+      left: 75%;
+      }
+    }
+    .xxl\:inline-start-3\/4:where(:dir(ltr)) {
+      left: 75%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-3\/4 {
+      right: 75%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-3\/4 {
+      right: 75%;
+      }
+    }
+    .xxl\:inline-start-3\/4:where(:dir(rtl)) {
+      right: 75%;
+    }
+    .xxl\:inline-start-3\/4 {
+      inset-inline-start: 75%;
+    }
+    .xxl\:top-1\/5 {
+      top: 20%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-1\/5 {
+      right: 20%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-1\/5 {
+      right: 20%;
+      }
+    }
+    .xxl\:inline-end-1\/5:where(:dir(ltr)) {
+      right: 20%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-1\/5 {
+      left: 20%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-1\/5 {
+      left: 20%;
+      }
+    }
+    .xxl\:inline-end-1\/5:where(:dir(rtl)) {
+      left: 20%;
+    }
+    .xxl\:inline-end-1\/5 {
+      inset-inline-end: 20%;
+    }
+    .xxl\:bottom-1\/5 {
+      bottom: 20%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-1\/5 {
+      left: 20%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-1\/5 {
+      left: 20%;
+      }
+    }
+    .xxl\:inline-start-1\/5:where(:dir(ltr)) {
+      left: 20%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-1\/5 {
+      right: 20%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-1\/5 {
+      right: 20%;
+      }
+    }
+    .xxl\:inline-start-1\/5:where(:dir(rtl)) {
+      right: 20%;
+    }
+    .xxl\:inline-start-1\/5 {
+      inset-inline-start: 20%;
+    }
+    .xxl\:top-2\/5 {
+      top: 40%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-2\/5 {
+      right: 40%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-2\/5 {
+      right: 40%;
+      }
+    }
+    .xxl\:inline-end-2\/5:where(:dir(ltr)) {
+      right: 40%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-2\/5 {
+      left: 40%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-2\/5 {
+      left: 40%;
+      }
+    }
+    .xxl\:inline-end-2\/5:where(:dir(rtl)) {
+      left: 40%;
+    }
+    .xxl\:inline-end-2\/5 {
+      inset-inline-end: 40%;
+    }
+    .xxl\:bottom-2\/5 {
+      bottom: 40%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-2\/5 {
+      left: 40%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-2\/5 {
+      left: 40%;
+      }
+    }
+    .xxl\:inline-start-2\/5:where(:dir(ltr)) {
+      left: 40%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-2\/5 {
+      right: 40%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-2\/5 {
+      right: 40%;
+      }
+    }
+    .xxl\:inline-start-2\/5:where(:dir(rtl)) {
+      right: 40%;
+    }
+    .xxl\:inline-start-2\/5 {
+      inset-inline-start: 40%;
+    }
+    .xxl\:top-3\/5 {
+      top: 60%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-3\/5 {
+      right: 60%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-3\/5 {
+      right: 60%;
+      }
+    }
+    .xxl\:inline-end-3\/5:where(:dir(ltr)) {
+      right: 60%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-3\/5 {
+      left: 60%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-3\/5 {
+      left: 60%;
+      }
+    }
+    .xxl\:inline-end-3\/5:where(:dir(rtl)) {
+      left: 60%;
+    }
+    .xxl\:inline-end-3\/5 {
+      inset-inline-end: 60%;
+    }
+    .xxl\:bottom-3\/5 {
+      bottom: 60%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-3\/5 {
+      left: 60%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-3\/5 {
+      left: 60%;
+      }
+    }
+    .xxl\:inline-start-3\/5:where(:dir(ltr)) {
+      left: 60%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-3\/5 {
+      right: 60%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-3\/5 {
+      right: 60%;
+      }
+    }
+    .xxl\:inline-start-3\/5:where(:dir(rtl)) {
+      right: 60%;
+    }
+    .xxl\:inline-start-3\/5 {
+      inset-inline-start: 60%;
+    }
+    .xxl\:top-4\/5 {
+      top: 80%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-4\/5 {
+      right: 80%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-4\/5 {
+      right: 80%;
+      }
+    }
+    .xxl\:inline-end-4\/5:where(:dir(ltr)) {
+      right: 80%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-4\/5 {
+      left: 80%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-4\/5 {
+      left: 80%;
+      }
+    }
+    .xxl\:inline-end-4\/5:where(:dir(rtl)) {
+      left: 80%;
+    }
+    .xxl\:inline-end-4\/5 {
+      inset-inline-end: 80%;
+    }
+    .xxl\:bottom-4\/5 {
+      bottom: 80%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-4\/5 {
+      left: 80%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-4\/5 {
+      left: 80%;
+      }
+    }
+    .xxl\:inline-start-4\/5:where(:dir(ltr)) {
+      left: 80%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-4\/5 {
+      right: 80%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-4\/5 {
+      right: 80%;
+      }
+    }
+    .xxl\:inline-start-4\/5:where(:dir(rtl)) {
+      right: 80%;
+    }
+    .xxl\:inline-start-4\/5 {
+      inset-inline-start: 80%;
+    }
+    .xxl\:top-1\/6 {
+      top: 16.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-1\/6 {
+      right: 16.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-1\/6 {
+      right: 16.666667%;
+      }
+    }
+    .xxl\:inline-end-1\/6:where(:dir(ltr)) {
+      right: 16.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-1\/6 {
+      left: 16.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-1\/6 {
+      left: 16.666667%;
+      }
+    }
+    .xxl\:inline-end-1\/6:where(:dir(rtl)) {
+      left: 16.666667%;
+    }
+    .xxl\:inline-end-1\/6 {
+      inset-inline-end: 16.666667%;
+    }
+    .xxl\:bottom-1\/6 {
+      bottom: 16.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-1\/6 {
+      left: 16.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-1\/6 {
+      left: 16.666667%;
+      }
+    }
+    .xxl\:inline-start-1\/6:where(:dir(ltr)) {
+      left: 16.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-1\/6 {
+      right: 16.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-1\/6 {
+      right: 16.666667%;
+      }
+    }
+    .xxl\:inline-start-1\/6:where(:dir(rtl)) {
+      right: 16.666667%;
+    }
+    .xxl\:inline-start-1\/6 {
+      inset-inline-start: 16.666667%;
+    }
+    .xxl\:top-2\/6 {
+      top: 33.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-2\/6 {
+      right: 33.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-2\/6 {
+      right: 33.333333%;
+      }
+    }
+    .xxl\:inline-end-2\/6:where(:dir(ltr)) {
+      right: 33.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-2\/6 {
+      left: 33.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-2\/6 {
+      left: 33.333333%;
+      }
+    }
+    .xxl\:inline-end-2\/6:where(:dir(rtl)) {
+      left: 33.333333%;
+    }
+    .xxl\:inline-end-2\/6 {
+      inset-inline-end: 33.333333%;
+    }
+    .xxl\:bottom-2\/6 {
+      bottom: 33.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-2\/6 {
+      left: 33.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-2\/6 {
+      left: 33.333333%;
+      }
+    }
+    .xxl\:inline-start-2\/6:where(:dir(ltr)) {
+      left: 33.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-2\/6 {
+      right: 33.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-2\/6 {
+      right: 33.333333%;
+      }
+    }
+    .xxl\:inline-start-2\/6:where(:dir(rtl)) {
+      right: 33.333333%;
+    }
+    .xxl\:inline-start-2\/6 {
+      inset-inline-start: 33.333333%;
+    }
+    .xxl\:top-3\/6 {
+      top: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-3\/6 {
+      right: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-3\/6 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-end-3\/6:where(:dir(ltr)) {
+      right: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-3\/6 {
+      left: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-3\/6 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-end-3\/6:where(:dir(rtl)) {
+      left: 50%;
+    }
+    .xxl\:inline-end-3\/6 {
+      inset-inline-end: 50%;
+    }
+    .xxl\:bottom-3\/6 {
+      bottom: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-3\/6 {
+      left: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-3\/6 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-start-3\/6:where(:dir(ltr)) {
+      left: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-3\/6 {
+      right: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-3\/6 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-start-3\/6:where(:dir(rtl)) {
+      right: 50%;
+    }
+    .xxl\:inline-start-3\/6 {
+      inset-inline-start: 50%;
+    }
+    .xxl\:top-4\/6 {
+      top: 66.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-4\/6 {
+      right: 66.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-4\/6 {
+      right: 66.666667%;
+      }
+    }
+    .xxl\:inline-end-4\/6:where(:dir(ltr)) {
+      right: 66.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-4\/6 {
+      left: 66.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-4\/6 {
+      left: 66.666667%;
+      }
+    }
+    .xxl\:inline-end-4\/6:where(:dir(rtl)) {
+      left: 66.666667%;
+    }
+    .xxl\:inline-end-4\/6 {
+      inset-inline-end: 66.666667%;
+    }
+    .xxl\:bottom-4\/6 {
+      bottom: 66.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-4\/6 {
+      left: 66.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-4\/6 {
+      left: 66.666667%;
+      }
+    }
+    .xxl\:inline-start-4\/6:where(:dir(ltr)) {
+      left: 66.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-4\/6 {
+      right: 66.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-4\/6 {
+      right: 66.666667%;
+      }
+    }
+    .xxl\:inline-start-4\/6:where(:dir(rtl)) {
+      right: 66.666667%;
+    }
+    .xxl\:inline-start-4\/6 {
+      inset-inline-start: 66.666667%;
+    }
+    .xxl\:top-5\/6 {
+      top: 83.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-5\/6 {
+      right: 83.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-5\/6 {
+      right: 83.333333%;
+      }
+    }
+    .xxl\:inline-end-5\/6:where(:dir(ltr)) {
+      right: 83.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-5\/6 {
+      left: 83.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-5\/6 {
+      left: 83.333333%;
+      }
+    }
+    .xxl\:inline-end-5\/6:where(:dir(rtl)) {
+      left: 83.333333%;
+    }
+    .xxl\:inline-end-5\/6 {
+      inset-inline-end: 83.333333%;
+    }
+    .xxl\:bottom-5\/6 {
+      bottom: 83.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-5\/6 {
+      left: 83.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-5\/6 {
+      left: 83.333333%;
+      }
+    }
+    .xxl\:inline-start-5\/6:where(:dir(ltr)) {
+      left: 83.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-5\/6 {
+      right: 83.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-5\/6 {
+      right: 83.333333%;
+      }
+    }
+    .xxl\:inline-start-5\/6:where(:dir(rtl)) {
+      right: 83.333333%;
+    }
+    .xxl\:inline-start-5\/6 {
+      inset-inline-start: 83.333333%;
+    }
+    .xxl\:top-1\/12 {
+      top: 8.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-1\/12 {
+      right: 8.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-1\/12 {
+      right: 8.333333%;
+      }
+    }
+    .xxl\:inline-end-1\/12:where(:dir(ltr)) {
+      right: 8.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-1\/12 {
+      left: 8.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-1\/12 {
+      left: 8.333333%;
+      }
+    }
+    .xxl\:inline-end-1\/12:where(:dir(rtl)) {
+      left: 8.333333%;
+    }
+    .xxl\:inline-end-1\/12 {
+      inset-inline-end: 8.333333%;
+    }
+    .xxl\:bottom-1\/12 {
+      bottom: 8.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-1\/12 {
+      left: 8.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-1\/12 {
+      left: 8.333333%;
+      }
+    }
+    .xxl\:inline-start-1\/12:where(:dir(ltr)) {
+      left: 8.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-1\/12 {
+      right: 8.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-1\/12 {
+      right: 8.333333%;
+      }
+    }
+    .xxl\:inline-start-1\/12:where(:dir(rtl)) {
+      right: 8.333333%;
+    }
+    .xxl\:inline-start-1\/12 {
+      inset-inline-start: 8.333333%;
+    }
+    .xxl\:top-2\/12 {
+      top: 16.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-2\/12 {
+      right: 16.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-2\/12 {
+      right: 16.666667%;
+      }
+    }
+    .xxl\:inline-end-2\/12:where(:dir(ltr)) {
+      right: 16.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-2\/12 {
+      left: 16.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-2\/12 {
+      left: 16.666667%;
+      }
+    }
+    .xxl\:inline-end-2\/12:where(:dir(rtl)) {
+      left: 16.666667%;
+    }
+    .xxl\:inline-end-2\/12 {
+      inset-inline-end: 16.666667%;
+    }
+    .xxl\:bottom-2\/12 {
+      bottom: 16.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-2\/12 {
+      left: 16.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-2\/12 {
+      left: 16.666667%;
+      }
+    }
+    .xxl\:inline-start-2\/12:where(:dir(ltr)) {
+      left: 16.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-2\/12 {
+      right: 16.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-2\/12 {
+      right: 16.666667%;
+      }
+    }
+    .xxl\:inline-start-2\/12:where(:dir(rtl)) {
+      right: 16.666667%;
+    }
+    .xxl\:inline-start-2\/12 {
+      inset-inline-start: 16.666667%;
+    }
+    .xxl\:top-3\/12 {
+      top: 25%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-3\/12 {
+      right: 25%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-3\/12 {
+      right: 25%;
+      }
+    }
+    .xxl\:inline-end-3\/12:where(:dir(ltr)) {
+      right: 25%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-3\/12 {
+      left: 25%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-3\/12 {
+      left: 25%;
+      }
+    }
+    .xxl\:inline-end-3\/12:where(:dir(rtl)) {
+      left: 25%;
+    }
+    .xxl\:inline-end-3\/12 {
+      inset-inline-end: 25%;
+    }
+    .xxl\:bottom-3\/12 {
+      bottom: 25%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-3\/12 {
+      left: 25%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-3\/12 {
+      left: 25%;
+      }
+    }
+    .xxl\:inline-start-3\/12:where(:dir(ltr)) {
+      left: 25%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-3\/12 {
+      right: 25%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-3\/12 {
+      right: 25%;
+      }
+    }
+    .xxl\:inline-start-3\/12:where(:dir(rtl)) {
+      right: 25%;
+    }
+    .xxl\:inline-start-3\/12 {
+      inset-inline-start: 25%;
+    }
+    .xxl\:top-4\/12 {
+      top: 33.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-4\/12 {
+      right: 33.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-4\/12 {
+      right: 33.333333%;
+      }
+    }
+    .xxl\:inline-end-4\/12:where(:dir(ltr)) {
+      right: 33.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-4\/12 {
+      left: 33.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-4\/12 {
+      left: 33.333333%;
+      }
+    }
+    .xxl\:inline-end-4\/12:where(:dir(rtl)) {
+      left: 33.333333%;
+    }
+    .xxl\:inline-end-4\/12 {
+      inset-inline-end: 33.333333%;
+    }
+    .xxl\:bottom-4\/12 {
+      bottom: 33.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-4\/12 {
+      left: 33.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-4\/12 {
+      left: 33.333333%;
+      }
+    }
+    .xxl\:inline-start-4\/12:where(:dir(ltr)) {
+      left: 33.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-4\/12 {
+      right: 33.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-4\/12 {
+      right: 33.333333%;
+      }
+    }
+    .xxl\:inline-start-4\/12:where(:dir(rtl)) {
+      right: 33.333333%;
+    }
+    .xxl\:inline-start-4\/12 {
+      inset-inline-start: 33.333333%;
+    }
+    .xxl\:top-5\/12 {
+      top: 41.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-5\/12 {
+      right: 41.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-5\/12 {
+      right: 41.666667%;
+      }
+    }
+    .xxl\:inline-end-5\/12:where(:dir(ltr)) {
+      right: 41.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-5\/12 {
+      left: 41.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-5\/12 {
+      left: 41.666667%;
+      }
+    }
+    .xxl\:inline-end-5\/12:where(:dir(rtl)) {
+      left: 41.666667%;
+    }
+    .xxl\:inline-end-5\/12 {
+      inset-inline-end: 41.666667%;
+    }
+    .xxl\:bottom-5\/12 {
+      bottom: 41.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-5\/12 {
+      left: 41.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-5\/12 {
+      left: 41.666667%;
+      }
+    }
+    .xxl\:inline-start-5\/12:where(:dir(ltr)) {
+      left: 41.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-5\/12 {
+      right: 41.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-5\/12 {
+      right: 41.666667%;
+      }
+    }
+    .xxl\:inline-start-5\/12:where(:dir(rtl)) {
+      right: 41.666667%;
+    }
+    .xxl\:inline-start-5\/12 {
+      inset-inline-start: 41.666667%;
+    }
+    .xxl\:top-6\/12 {
+      top: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-6\/12 {
+      right: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-6\/12 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-end-6\/12:where(:dir(ltr)) {
+      right: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-6\/12 {
+      left: 50%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-6\/12 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-end-6\/12:where(:dir(rtl)) {
+      left: 50%;
+    }
+    .xxl\:inline-end-6\/12 {
+      inset-inline-end: 50%;
+    }
+    .xxl\:bottom-6\/12 {
+      bottom: 50%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-6\/12 {
+      left: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-6\/12 {
+      left: 50%;
+      }
+    }
+    .xxl\:inline-start-6\/12:where(:dir(ltr)) {
+      left: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-6\/12 {
+      right: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-6\/12 {
+      right: 50%;
+      }
+    }
+    .xxl\:inline-start-6\/12:where(:dir(rtl)) {
+      right: 50%;
+    }
+    .xxl\:inline-start-6\/12 {
+      inset-inline-start: 50%;
+    }
+    .xxl\:top-7\/12 {
+      top: 58.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-7\/12 {
+      right: 58.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-7\/12 {
+      right: 58.333333%;
+      }
+    }
+    .xxl\:inline-end-7\/12:where(:dir(ltr)) {
+      right: 58.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-7\/12 {
+      left: 58.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-7\/12 {
+      left: 58.333333%;
+      }
+    }
+    .xxl\:inline-end-7\/12:where(:dir(rtl)) {
+      left: 58.333333%;
+    }
+    .xxl\:inline-end-7\/12 {
+      inset-inline-end: 58.333333%;
+    }
+    .xxl\:bottom-7\/12 {
+      bottom: 58.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-7\/12 {
+      left: 58.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-7\/12 {
+      left: 58.333333%;
+      }
+    }
+    .xxl\:inline-start-7\/12:where(:dir(ltr)) {
+      left: 58.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-7\/12 {
+      right: 58.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-7\/12 {
+      right: 58.333333%;
+      }
+    }
+    .xxl\:inline-start-7\/12:where(:dir(rtl)) {
+      right: 58.333333%;
+    }
+    .xxl\:inline-start-7\/12 {
+      inset-inline-start: 58.333333%;
+    }
+    .xxl\:top-8\/12 {
+      top: 66.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-8\/12 {
+      right: 66.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-8\/12 {
+      right: 66.666667%;
+      }
+    }
+    .xxl\:inline-end-8\/12:where(:dir(ltr)) {
+      right: 66.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-8\/12 {
+      left: 66.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-8\/12 {
+      left: 66.666667%;
+      }
+    }
+    .xxl\:inline-end-8\/12:where(:dir(rtl)) {
+      left: 66.666667%;
+    }
+    .xxl\:inline-end-8\/12 {
+      inset-inline-end: 66.666667%;
+    }
+    .xxl\:bottom-8\/12 {
+      bottom: 66.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-8\/12 {
+      left: 66.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-8\/12 {
+      left: 66.666667%;
+      }
+    }
+    .xxl\:inline-start-8\/12:where(:dir(ltr)) {
+      left: 66.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-8\/12 {
+      right: 66.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-8\/12 {
+      right: 66.666667%;
+      }
+    }
+    .xxl\:inline-start-8\/12:where(:dir(rtl)) {
+      right: 66.666667%;
+    }
+    .xxl\:inline-start-8\/12 {
+      inset-inline-start: 66.666667%;
+    }
+    .xxl\:top-9\/12 {
+      top: 75%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-9\/12 {
+      right: 75%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-9\/12 {
+      right: 75%;
+      }
+    }
+    .xxl\:inline-end-9\/12:where(:dir(ltr)) {
+      right: 75%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-9\/12 {
+      left: 75%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-9\/12 {
+      left: 75%;
+      }
+    }
+    .xxl\:inline-end-9\/12:where(:dir(rtl)) {
+      left: 75%;
+    }
+    .xxl\:inline-end-9\/12 {
+      inset-inline-end: 75%;
+    }
+    .xxl\:bottom-9\/12 {
+      bottom: 75%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-9\/12 {
+      left: 75%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-9\/12 {
+      left: 75%;
+      }
+    }
+    .xxl\:inline-start-9\/12:where(:dir(ltr)) {
+      left: 75%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-9\/12 {
+      right: 75%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-9\/12 {
+      right: 75%;
+      }
+    }
+    .xxl\:inline-start-9\/12:where(:dir(rtl)) {
+      right: 75%;
+    }
+    .xxl\:inline-start-9\/12 {
+      inset-inline-start: 75%;
+    }
+    .xxl\:top-10\/12 {
+      top: 83.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-10\/12 {
+      right: 83.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-10\/12 {
+      right: 83.333333%;
+      }
+    }
+    .xxl\:inline-end-10\/12:where(:dir(ltr)) {
+      right: 83.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-10\/12 {
+      left: 83.333333%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-10\/12 {
+      left: 83.333333%;
+      }
+    }
+    .xxl\:inline-end-10\/12:where(:dir(rtl)) {
+      left: 83.333333%;
+    }
+    .xxl\:inline-end-10\/12 {
+      inset-inline-end: 83.333333%;
+    }
+    .xxl\:bottom-10\/12 {
+      bottom: 83.333333%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-10\/12 {
+      left: 83.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-10\/12 {
+      left: 83.333333%;
+      }
+    }
+    .xxl\:inline-start-10\/12:where(:dir(ltr)) {
+      left: 83.333333%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-10\/12 {
+      right: 83.333333%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-10\/12 {
+      right: 83.333333%;
+      }
+    }
+    .xxl\:inline-start-10\/12:where(:dir(rtl)) {
+      right: 83.333333%;
+    }
+    .xxl\:inline-start-10\/12 {
+      inset-inline-start: 83.333333%;
+    }
+    .xxl\:top-11\/12 {
+      top: 91.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-11\/12 {
+      right: 91.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-11\/12 {
+      right: 91.666667%;
+      }
+    }
+    .xxl\:inline-end-11\/12:where(:dir(ltr)) {
+      right: 91.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-11\/12 {
+      left: 91.666667%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-11\/12 {
+      left: 91.666667%;
+      }
+    }
+    .xxl\:inline-end-11\/12:where(:dir(rtl)) {
+      left: 91.666667%;
+    }
+    .xxl\:inline-end-11\/12 {
+      inset-inline-end: 91.666667%;
+    }
+    .xxl\:bottom-11\/12 {
+      bottom: 91.666667%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-11\/12 {
+      left: 91.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-11\/12 {
+      left: 91.666667%;
+      }
+    }
+    .xxl\:inline-start-11\/12:where(:dir(ltr)) {
+      left: 91.666667%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-11\/12 {
+      right: 91.666667%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-11\/12 {
+      right: 91.666667%;
+      }
+    }
+    .xxl\:inline-start-11\/12:where(:dir(rtl)) {
+      right: 91.666667%;
+    }
+    .xxl\:inline-start-11\/12 {
+      inset-inline-start: 91.666667%;
+    }
+    .xxl\:top-full {
+      top: 100%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-end-full {
+      right: 100%;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-end-full {
+      right: 100%;
+      }
+    }
+    .xxl\:inline-end-full:where(:dir(ltr)) {
+      right: 100%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-end-full {
+      left: 100%;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inline-end-full {
+      left: 100%;
+      }
+    }
+    .xxl\:inline-end-full:where(:dir(rtl)) {
+      left: 100%;
+    }
+    .xxl\:inline-end-full {
+      inset-inline-end: 100%;
+    }
+    .xxl\:bottom-full {
+      bottom: 100%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inline-start-full {
+      left: 100%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inline-start-full {
+      left: 100%;
+      }
+    }
+    .xxl\:inline-start-full:where(:dir(ltr)) {
+      left: 100%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inline-start-full {
+      right: 100%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inline-start-full {
+      right: 100%;
+      }
+    }
+    .xxl\:inline-start-full:where(:dir(rtl)) {
+      right: 100%;
+    }
+    .xxl\:inline-start-full {
+      inset-inline-start: 100%;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inset-0 {
+      right: 0;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inset-0 {
+      right: 0;
+      }
+    }
+    .xxl\:inset-0:where(:dir(ltr)) {
+      right: 0;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inset-0 {
+      left: 0;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inset-0 {
+      left: 0;
+      }
+    }
+    .xxl\:inset-0:where(:dir(rtl)) {
+      left: 0;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inset-0 {
+      left: 0;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inset-0 {
+      left: 0;
+      }
+    }
+    .xxl\:inset-0:where(:dir(ltr)) {
+      left: 0;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inset-0 {
+      right: 0;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inset-0 {
+      right: 0;
+      }
+    }
+    .xxl\:inset-0:where(:dir(rtl)) {
+      right: 0;
+    }
+    .xxl\:inset-0 {
+      top: 0;
+      inset-inline-end: 0;
+      bottom: 0;
+      inset-inline-start: 0;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inset-x-0 {
+      right: 0;
+    }
+    @supports not (inset-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:inset-x-0 {
+      right: 0;
+      }
+    }
+    .xxl\:inset-x-0:where(:dir(ltr)) {
+      right: 0;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inset-x-0 {
+      left: 0;
+    }
+    @supports not (inset-inline-end: initial) {
+    [dir="rtl"] .xxl\:inset-x-0 {
+      left: 0;
+      }
+    }
+    .xxl\:inset-x-0:where(:dir(rtl)) {
+      left: 0;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inset-x-0 {
+      left: 0;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inset-x-0 {
+      left: 0;
+      }
+    }
+    .xxl\:inset-x-0:where(:dir(ltr)) {
+      left: 0;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inset-x-0 {
+      right: 0;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inset-x-0 {
+      right: 0;
+      }
+    }
+    .xxl\:inset-x-0:where(:dir(rtl)) {
+      right: 0;
+    }
+    .xxl\:inset-x-0 {
+      inset-inline-end: 0;
+      inset-inline-start: 0;
+    }
+    .xxl\:inset-y-0 {
+      top: 0;
+      bottom: 0;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:inset-center {
+      left: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:inset-center {
+      left: 50%;
+      }
+    }
+    .xxl\:inset-center:where(:dir(ltr)) {
+      left: 50%;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:inset-center {
+      right: 50%;
+    }
+    @supports not (inset-inline-start: initial) {
+    [dir="rtl"] .xxl\:inset-center {
+      right: 50%;
+      }
+    }
+    .xxl\:inset-center:where(:dir(rtl)) {
+      right: 50%;
+    }
+    .xxl\:inset-center {
+      inset-inline-start: 50%;
+      top: 50%;
+    }
+  }
+}

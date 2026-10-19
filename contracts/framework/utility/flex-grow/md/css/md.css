@@ -1,0 +1,10 @@
+@layer sf.utilities {
+  @media (min-width: 44rem) {
+    .md\:grow {
+      flex-grow: 1;
+    }
+    .md\:grow-none {
+      flex-grow: 0;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@layer sf.utilities {
+  .query-container {
+    container-type: inline-size;
+  }
+  .query-container\/sidebar {
+    container-type: inline-size;
+    container-name: sidebar;
+  }
+}

@@ -1,0 +1,49 @@
+@layer sf.utilities {
+  @media (min-width: 60rem) {
+    .lg\:max-w-full {
+      max-width: 100%;
+    }
+    .lg\:max-w-screen {
+      max-width: 100vw;
+    }
+    .lg\:max-w-min {
+      max-width: -webkit-min-content;
+      max-width: -moz-min-content;
+      max-width: min-content;
+    }
+    .lg\:max-w-max {
+      max-width: -webkit-max-content;
+      max-width: -moz-max-content;
+      max-width: max-content;
+    }
+    .lg\:max-w-fit {
+      max-width: -webkit-fit-content;
+      max-width: -moz-fit-content;
+      max-width: fit-content;
+    }
+    .lg\:max-w-prose {
+      max-width: 65ch;
+    }
+    .lg\:max-w-0 {
+      max-width: 0;
+    }
+    .lg\:max-w-none {
+      max-width: none;
+    }
+    .lg\:max-w-sm {
+      max-width: 32rem;
+    }
+    .lg\:max-w-md {
+      max-width: 44rem;
+    }
+    .lg\:max-w-lg {
+      max-width: 60rem;
+    }
+    .lg\:max-w-xl {
+      max-width: 72rem;
+    }
+    .lg\:max-w-xxl {
+      max-width: 80rem;
+    }
+  }
+}

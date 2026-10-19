@@ -1,0 +1,43 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:regular {
+      font-weight: normal;
+    }
+    .xl\:bold {
+      font-weight: bold;
+    }
+    .xl\:lighter {
+      font-weight: lighter;
+    }
+    .xl\:bolder {
+      font-weight: bolder;
+    }
+    .xl\:weight-1 {
+      font-weight: 100;
+    }
+    .xl\:weight-2 {
+      font-weight: 200;
+    }
+    .xl\:weight-3 {
+      font-weight: 300;
+    }
+    .xl\:weight-4 {
+      font-weight: 400;
+    }
+    .xl\:weight-5 {
+      font-weight: 500;
+    }
+    .xl\:weight-6 {
+      font-weight: 600;
+    }
+    .xl\:weight-7 {
+      font-weight: 700;
+    }
+    .xl\:weight-8 {
+      font-weight: 800;
+    }
+    .xl\:weight-9 {
+      font-weight: 900;
+    }
+  }
+}

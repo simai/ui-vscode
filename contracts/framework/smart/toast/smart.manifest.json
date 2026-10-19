@@ -1,0 +1,395 @@
+{
+  "schema_version": 2,
+  "id": "smart.toast",
+  "version": "1.0.0",
+  "title": "Toast",
+  "summary": "Transient overlay feedback with semantic roles, optional action, pause-safe lifetime and dismiss behavior.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "toast"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-toast",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.toast",
+      "component.buttons",
+      "smart.icon-buttons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "default": "neutral",
+        "enum": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ],
+        "description": "What the message reports, in the shared status vocabulary. The words this component used before — default and primary — are still accepted and mean neutral and info."
+      },
+      "icon": {
+        "type": "string",
+        "default": "",
+        "description": "Optional decorative icon name."
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "description": "Short result heading."
+      },
+      "supporting-text": {
+        "type": "string",
+        "default": "",
+        "description": "Concise supporting text at the normal body size."
+      },
+      "action-text": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label of the one optional action."
+      },
+      "action": {
+        "type": "string",
+        "default": "action",
+        "description": "Stable action value emitted in sf-toast-action."
+      },
+      "closable": {
+        "type": "boolean",
+        "default": true,
+        "description": "Render an explicitly named close action."
+      },
+      "close-label": {
+        "type": "string",
+        "default": "",
+        "description": "Localized accessible name of the close action. Empty: the text of the page's language (\"Close message\" in English)."
+      },
+      "duration": {
+        "type": "number",
+        "default": 0,
+        "minimum": 0,
+        "description": "Explicit lifetime in milliseconds. Zero keeps the message until dismissed."
+      },
+      "role": {
+        "type": "string",
+        "default": "",
+        "description": "Live-region role for dynamically inserted feedback only.",
+        "enum": [
+          "",
+          "status",
+          "alert"
+        ]
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "neutral",
+        "description": "Legacy name for status, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "semantic_types": {
+      "type": "string",
+      "enum": [
+        "default",
+        "primary",
+        "error",
+        "warning",
+        "success"
+      ]
+    },
+    "canonical_behavior_attributes": {
+      "type": "string",
+      "enum": [
+        "data-action",
+        "data-close",
+        "data-duration"
+      ]
+    },
+    "dismissal_state": {
+      "const": "closing"
+    },
+    "lifetime": {
+      "persistent": "duration=0; required for messages whose action or content must not be missed",
+      "timed": "positive duration; pauses while pointer or keyboard focus is inside the toast",
+      "dismiss": "token motion completes before the visual owner is removed"
+    },
+    "live_region_guidance": {
+      "assertive": "role=alert only for a newly inserted urgent error",
+      "polite": "role=status for a newly inserted non-urgent result",
+      "static": "omit a live-region role when the toast is present on initial page load"
+    }
+  },
+  "methods": {
+    "close": {
+      "summary": "Same as dismiss: emits sf-toast-close and removes the toast.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setState": {
+      "summary": "Writes each key as its kebab-case attribute: false, null, undefined or empty removes it, true sets it empty, anything else is stringified.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAction": {
+      "summary": "Adds a listener for sf-toast-action; the handler is called with (action, detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onClose": {
+      "summary": "Adds a listener for sf-toast-close; the handler is called with (detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-toast-action": {
+      "summary": "Emitted once when the optional enabled action is activated.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "data-action or data-toast-action of the pressed control; empty when neither is set."
+          },
+          "toast": {
+            "type": "object",
+            "description": "The toast root element."
+          },
+          "trigger": {
+            "type": "object",
+            "description": "The pressed control."
+          }
+        },
+        "required": [
+          "action",
+          "toast",
+          "trigger"
+        ]
+      }
+    },
+    "sf-toast-close": {
+      "summary": "Emitted once before token-based dismissal removes the toast owner.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "toast": {
+            "type": "object",
+            "description": "The toast root element."
+          },
+          "trigger": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "The close control that was pressed; null when closed from code or by the timer."
+          }
+        },
+        "required": [
+          "toast",
+          "trigger"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "internal",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Native actions use focus-visible; a timed toast pauses while focus is inside it."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/toast/index.js",
+        "sha256": "f77b573bfe54ecc8b6df52692415a7ebdebd5130ba6d05e1951dc6409304f4fe"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/toast/js/toast.js",
+        "sha256": "9028d0dcc27cf70e910439ff4e923018e7c30f3e272ffdfcb6f16320ae53646d"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-toast for concise transient overlay feedback that does not block the current task.",
+    "do_not": [
+      "Do not use Toast for persistent inline guidance; use Alert",
+      "Do not auto-dismiss a message whose content or action must not be missed",
+      "Do not use role=alert for routine success feedback",
+      "Do not choose a semantic type only for its color",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-toast status=\"success\" title=\"Saved\" supporting-text=\"Your changes are available.\" role=\"status\" close-label=\"Close message\"></sf-toast>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

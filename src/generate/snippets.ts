@@ -5,8 +5,8 @@
  * so a repin that drops a name fails the generator instead of shipping a
  * broken snippet.
  *
- * Modal and table snippets are missing on purpose: the Framework registry
- * does not mark a modal or table component as safe to suggest yet.
+ * A table snippet is missing on purpose: the Framework registry does not mark
+ * a table component as safe to suggest yet.
  */
 import { FrameworkRegistry } from '../registry/frameworkTypes';
 
@@ -98,6 +98,21 @@ const specs: SnippetSpec[] = [
             tag: 'sf-dropdown',
             attributes: ['mode', 'label', 'name', 'placeholder'],
             values: { mode: ['select'] },
+        }],
+    },
+    {
+        name: 'SIMAI Framework modal',
+        prefix: 'sf-modal-dialog',
+        description: 'An sf-modal with an id, a title and a position.',
+        body: [
+            '<sf-modal modal-id="${1:example}" title="${2:Title}" position="${3|center,left,right,top,bottom|}">',
+            '  ${4:Content}',
+            '</sf-modal>$0',
+        ],
+        uses: [{
+            tag: 'sf-modal',
+            attributes: ['modal-id', 'title', 'position'],
+            values: { position: ['center', 'left', 'right', 'top', 'bottom'] },
         }],
     },
     {

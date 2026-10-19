@@ -1,0 +1,86 @@
+@layer sf.utilities {
+  .shadow-primary {
+    --sf-shadow--color: var(--sf-primary);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-primary) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-primary) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-primary) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+  .shadow-secondary {
+    --sf-shadow--color: var(--sf-secondary);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-secondary) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-secondary) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-secondary) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+  .shadow-tertiary {
+    --sf-shadow--color: var(--sf-tertiary);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-tertiary) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-tertiary) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-tertiary) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+  .shadow-error {
+    --sf-shadow--color: var(--sf-error);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-error) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-error) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-error) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+  .shadow-warning {
+    --sf-shadow--color: var(--sf-warning);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-warning) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-warning) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-warning) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+  .shadow-success {
+    --sf-shadow--color: var(--sf-success);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-success) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-success) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-success) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+  .shadow-on-surface {
+    --sf-shadow--color: var(--sf-on-surface);
+    --sf-shadow--color-fill: color-mix(in srgb, var(--sf-transparent), var(--sf-on-surface) var(--sf-shadow--alfa-fill));
+    --sf-shadow--color-outline: color-mix(in srgb, var(--sf-transparent), var(--sf-on-surface) var(--sf-shadow--alfa-outline));
+    --sf-shadow--color-shading: color-mix(in srgb, var(--sf-transparent), var(--sf-on-surface) var(--sf-shadow--alfa-shade));
+    --sf-shadow--color-shade: var(--sf-shadow--color-shading);
+    --sf-ui-shadow-1: 0 var(--sf-a2) var(--sf-a4) var(--sf-px) var(--sf-shadow--color-shading), 0 var(--sf-px) var(--sf-a3) 0 var(--sf-shadow--color-outline), 0 var(--sf-a2) var(--sf-a2) calc(-1 * var(--sf-px)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-2: 0 var(--sf-a4) var(--sf-a8) var(--sf-a2) var(--sf-shadow--color-shading), 0 var(--sf-a2) var(--sf-a6) 0 var(--sf-shadow--color-outline), 0 var(--sf-a4) var(--sf-a4) calc(-1 * var(--sf-a2)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-3: 0 var(--sf-a8) var(--sf-b6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a4) var(--sf-b2) 0 var(--sf-shadow--color-outline), 0 var(--sf-a8) var(--sf-a8) calc(-1 * var(--sf-a4)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-4: 0 var(--sf-b6) var(--sf-c6) var(--sf-a4) var(--sf-shadow--color-shading), 0 var(--sf-a8) var(--sf-c2) 0 var(--sf-shadow--color-outline), 0 var(--sf-b6) var(--sf-b6) calc(-1 * var(--sf-a8)) var(--sf-shadow--color-fill);
+    --sf-ui-shadow-5: 0 var(--sf-c6) var(--sf-d6) var(--sf-a8) var(--sf-shadow--color-shading), 0 var(--sf-b6) var(--sf-d2) 0 var(--sf-shadow--color-outline), 0 var(--sf-c6) var(--sf-c6) calc(-1 * var(--sf-b6)) var(--sf-shadow--color-fill);
+  }
+}

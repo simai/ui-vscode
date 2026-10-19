@@ -1,0 +1,384 @@
+{
+  "schema_version": 2,
+  "id": "smart.file-preview",
+  "version": "1.0.0",
+  "title": "File Preview",
+  "summary": "Accessible Smart projection of the ordinary File Preview row.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "file-preview"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive",
+    "events"
+  ],
+  "custom_element": "sf-file-preview",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.file-preview",
+      "component.icons",
+      "component.icon-buttons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "name": {
+        "type": "string",
+        "default": "File"
+      },
+      "file-name": {
+        "type": "string",
+        "default": "File"
+      },
+      "size": {
+        "type": "string",
+        "default": "",
+        "description": "Legacy name for file-size: the file's own size as text (\"12 KB\"), not the size ladder. Still honoured; pass file-size."
+      },
+      "file-size": {
+        "type": "string",
+        "default": "",
+        "description": "The file's size as text, for example 12 KB."
+      },
+      "icon": {
+        "type": "string",
+        "default": "description"
+      },
+      "href": {
+        "type": "string",
+        "default": ""
+      },
+      "kind": {
+        "type": "string",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "icon",
+          "image"
+        ],
+        "description": "What the preview shows: an icon, the image itself, or whichever suits the file."
+      },
+      "mime-type": {
+        "type": "string",
+        "default": ""
+      },
+      "image-url": {
+        "type": "string",
+        "default": ""
+      },
+      "avatar-size": {
+        "type": "string",
+        "default": ""
+      },
+      "open": {
+        "type": "boolean",
+        "default": false
+      },
+      "surface": {
+        "type": "boolean",
+        "default": false
+      },
+      "download": {
+        "type": "boolean",
+        "default": true
+      },
+      "target": {
+        "type": "string",
+        "default": "_blank"
+      },
+      "actions": {
+        "type": "boolean",
+        "default": true
+      },
+      "download-action": {
+        "type": "boolean",
+        "default": true
+      },
+      "remove-action": {
+        "type": "boolean",
+        "default": true
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "compact": {
+        "type": "boolean",
+        "default": false,
+        "description": "Only the leading visual, as tall as a list row's line: the image, or the file's extension in a tile. For a file in a table cell."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"File\" in English)."
+      },
+      "download-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Download file\" in English)."
+      },
+      "remove-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Remove file\" in English)."
+      },
+      "type": {
+        "type": "string",
+        "default": "auto",
+        "description": "Legacy name for kind, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "auto",
+          "icon",
+          "image"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "surface_variant": {
+      "const": "surface"
+    },
+    "event_delivery": {
+      "type": "object",
+      "properties": {
+        "bubbles": {
+          "const": true
+        },
+        "composed": {
+          "const": true
+        },
+        "cancelable": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "methods": {
+    "getValue": {
+      "summary": "Return the current file identity and presentation value.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "setOpen": {
+      "summary": "Legacy compatibility setter; actions remain visible.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "toggleOpen": {
+      "summary": "Legacy compatibility toggle; actions remain visible.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "onDownload": {
+      "summary": "Register a download-event listener.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "onRemove": {
+      "summary": "Register a remove-event listener.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    }
+  },
+  "events": {
+    "sf-file-preview:download": {
+      "summary": "A download action was requested. Bubbles, is composed and is cancelable: preventDefault() stops the built-in navigation to href.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "const": "download"
+          },
+          "value": {
+            "type": "object",
+            "description": "getValue(): fileName, fileSize, icon, href, type, mimeType, imageUrl, target."
+          }
+        }
+      }
+    },
+    "sf-file-preview:remove": {
+      "summary": "A remove action was requested. Bubbles, is composed and is cancelable; the component removes nothing itself.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "const": "remove"
+          },
+          "value": {
+            "type": "object",
+            "description": "getValue(): fileName, fileSize, icon, href, type, mimeType, imageUrl, target."
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "hidden floating action geometry",
+      "permission inference"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "file-name",
+      "file-size",
+      "href",
+      "image-url"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "group",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "Native file actions own focus-visible presentation."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [
+      "name",
+      "size",
+      "type=default",
+      "avatar-size",
+      "open"
+    ],
+    "deprecations": [
+      {
+        "path": "open",
+        "since": "1.0.0",
+        "replacement": null
+      }
+    ],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/file-preview/index.js",
+        "sha256": "d931978ca718763e8be3161f9b8dbb2ae95ebb716d2e2f1ea9689f7200096c6e"
+      },
+      {
+        "path": "src/smart/file-preview/js/templates/default.js",
+        "sha256": "f4347ab71d43d3e403469337e46e4a5e7a61ff22ea807bfd21889393b010d3fd"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-file-preview for an already selected or attached file with visible metadata and optional native actions.",
+    "do_not": [
+      "Do not use it for upload progress or transport",
+      "Do not hide actions in a hover-only or floating layer"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-file-preview file-name=\"File.pdf\"></sf-file-preview>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

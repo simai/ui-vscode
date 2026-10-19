@@ -1,0 +1,576 @@
+{
+  "schema_version": 2,
+  "id": "smart.file-upload",
+  "version": "1.0.0",
+  "title": "File Upload",
+  "summary": "A drop area that opens the platform file dialog or takes dropped files, filtered by accept, and lists each file with its upload progress, an error with a retry, and removal. The host uploads; the component shows the state the host sets.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "file-upload"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-file-upload",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ]
+      },
+      "icon": {
+        "type": "string",
+        "default": "upload_file"
+      },
+      "link-text": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Click to upload\" in English)."
+      },
+      "text": {
+        "type": "string",
+        "default": "or drag and drop"
+      },
+      "formats": {
+        "type": "string",
+        "default": "",
+        "description": "Formats line shown under the action. When not set it is derived from accept, and is empty when neither is given: the component names no formats it cannot know."
+      },
+      "supporting-text": {
+        "type": "string",
+        "default": "",
+        "description": "Supporting line; falls back to formats."
+      },
+      "accept": {
+        "type": "string",
+        "default": ""
+      },
+      "multiple": {
+        "type": "boolean",
+        "default": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getItems": {
+      "summary": "The listed files as item objects.",
+      "arguments": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      }
+    },
+    "setItems": {
+      "summary": "Replace the list with these items (name, fileSize, state, progress, errorMessage). Returns the element.",
+      "arguments": [
+        {
+          "name": "items",
+          "type": "array",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "removeItem": {
+      "summary": "Remove the item at this index from the list; an index outside the list does nothing. Returns the element.",
+      "arguments": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "clear": {
+      "summary": "Empty the list. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setState": {
+      "summary": "Apply several inputs at once (size, icon, linkText, text, formats, supportingText, accept, multiple, disabled, items). Returns the element.",
+      "arguments": [
+        {
+          "name": "state",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFileAdd": {
+      "summary": "Listen for sf-file-upload:file-add; handler receives the event. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFileError": {
+      "summary": "Listen for sf-file-upload:file-error; handler receives the event. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFileComplete": {
+      "summary": "Listen for sf-file-upload:file-complete; handler receives the event. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFileRemove": {
+      "summary": "Listen for sf-file-upload:remove; handler receives the event. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFileRetry": {
+      "summary": "Listen for sf-file-upload:retry; handler receives the event. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onComplete": {
+      "summary": "Listen for sf-file-upload:complete; handler receives the event. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "Files were chosen: the native event from the inner file input for a pick, and a CustomEvent from the area for a drop (detail files and source 'drop'), so a form hears of both.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      },
+      "canonical": true
+    },
+    "sf-file-upload:complete": {
+      "summary": "Every file finished.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "sf-file-upload:file-add": {
+      "summary": "A file entered the list.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "object",
+            "description": "name, fileName, fileSize, state (process, done, error), progress, errorMessage"
+          },
+          "index": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "source": {
+            "type": "string"
+          },
+          "multiple": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "sf-file-upload:file-complete": {
+      "summary": "A file finished uploading.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "object",
+            "description": "name, fileName, fileSize, state (process, done, error), progress, errorMessage"
+          },
+          "index": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "sf-file-upload:file-error": {
+      "summary": "A file failed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "object",
+            "description": "name, fileName, fileSize, state (process, done, error), progress, errorMessage"
+          },
+          "index": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "sf-file-upload:reject": {
+      "summary": "Dropped files the accept list does not name were left out, as the platform dialog would not have offered them.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array"
+          },
+          "accept": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-file-upload:remove": {
+      "summary": "A file was removed from the list.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "object",
+            "description": "name, fileName, fileSize, state (process, done, error), progress, errorMessage"
+          },
+          "index": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "sf-file-upload:retry": {
+      "summary": "A failed file was retried.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "object",
+            "description": "name, fileName, fileSize, state (process, done, error), progress, errorMessage"
+          },
+          "index": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "sf-file-upload:select": {
+      "summary": "Files were selected for upload.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "input",
+              "drop"
+            ]
+          },
+          "multiple": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "button",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "The enabled drop zone is the picker focus owner; nested file actions retain native activation. Use focus-visible and a real forced-colors outline. Disabled controls leave the tab order; re-enabling restores authored tabindex."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/file-upload/index.js",
+        "sha256": "1905e151b14d65eca2cc8f2e32d14cac94110047a8602f86c19acffb9d1a22fd"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/file-upload/js/file-upload.js",
+        "sha256": "e6618f055f643ec34bba3174d80ed654d7350fb3b6c869373b6ceff1bc2759fa"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-file-upload for local file selection and item-state presentation. Consumer code owns transport and server validation. Shared root-class/style/root-style customize the drop zone, not the adjacent file list; cosmetic renders preserve item File objects. afterRender(callback) uses the base registration API.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-file-upload></sf-file-upload>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

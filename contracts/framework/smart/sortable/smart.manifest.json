@@ -1,0 +1,306 @@
+{
+  "schema_version": 2,
+  "id": "smart.sortable",
+  "version": "1.0.0",
+  "title": "Sortable",
+  "summary": "Drag-and-drop list primitive for reordering, moving between lists and copying from a library by mouse, pen, touch and keyboard; reports intent only.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "sortable",
+    "drag-and-drop",
+    "editor"
+  ],
+  "capabilities": [
+    "interaction",
+    "keyboard",
+    "responsive"
+  ],
+  "custom_element": "sf-sortable",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "group": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]{0,31}$"
+      },
+      "accepts": {
+        "type": "string",
+        "default": ""
+      },
+      "mode": {
+        "type": "string",
+        "default": "move",
+        "enum": [
+          "move",
+          "copy"
+        ]
+      },
+      "orientation": {
+        "type": "string",
+        "default": "vertical",
+        "enum": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "preview": {
+        "type": "string",
+        "default": "silhouette",
+        "enum": [
+          "silhouette",
+          "line"
+        ],
+        "description": "How a pointer drag shows where the item lands: silhouette lifts the item out of the list and opens an outline of its size at the place it would take, the list making room; line draws a thin line there and leaves the list as it is. Keyboard moves and external targets always use the line; a list that wraps into a grid opens the outline as one of its cells, in reading order."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {
+    "type": "object",
+    "description": "Descendants with data-sf-sortable-item=\"<id>\" are items; an optional data-sf-sortable-handle inside an item limits dragging to the handle and is the touch target.",
+    "properties": {
+      "attribute": {
+        "const": "data-sf-sortable-item"
+      },
+      "handle": {
+        "const": "data-sf-sortable-handle"
+      }
+    }
+  },
+  "contracts": {
+    "drop_targets": {
+      "type": "object",
+      "description": "SF.Sortable.registerSortableDropTarget({resolve, keyboardTargets, drop, leave}) joins non-list targets such as sf-composition-overlay to the same drag session; the session is shared across Smart bundles. Once loaded, SF.Sortable exposes SORTABLE_INTENT_EVENT, SORTABLE_STATE_EVENT, activeSortableSession, registerSortableDropTarget and sortableIndexAt."
+    }
+  },
+  "methods": {},
+  "events": {
+    "sf-sortable-intent": {
+      "summary": "The person dropped an item; the host applies or refuses the change.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "item",
+          "from",
+          "to",
+          "index",
+          "mode"
+        ],
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mode": {
+            "enum": [
+              "move",
+              "copy"
+            ]
+          }
+        }
+      }
+    },
+    "sf-sortable-state": {
+      "summary": "A drag session started (picked) or ended (dropped, cancelled).",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "enum": [
+              "picked",
+              "dropped",
+              "cancelled"
+            ]
+          },
+          "item": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "drag": [
+        "idle",
+        "picked",
+        "dropped",
+        "cancelled"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "active"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention",
+      "saving or reordering host data"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Space",
+      "Enter",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Escape",
+      "Tab"
+    ],
+    "focus": "Items become focusable and describe the instructions. Space or Enter picks up, arrows move within a list and to other accepting lists or external targets, Space or Enter drops, Escape or Tab cancels. Every step is announced in a polite live region in the page language."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/sortable/index.js",
+        "sha256": "0f0f9384eb636383470aa59962c1f4e6665bb933bb7c189c273d612a048cb82d"
+      },
+      {
+        "path": "src/smart/sortable/scss/_smart__sortable.scss",
+        "sha256": "3f79884ef70991c250b802ada478b8fc9e97f7f1d50cd031e3ec6ab5cad55c12"
+      },
+      {
+        "path": "src/smart/sortable/rule.js",
+        "sha256": "24743a50d28b4dfaad57cbd24911a9a42f94e998ed9fd9941201f98640869469"
+      },
+      {
+        "path": "src/smart/sortable/docs.md",
+        "sha256": "5c4a69bed4f633e9ba5b0c2adbe31fe4b0b24db527bdd86901d9c1863a2d359a"
+      },
+      {
+        "path": "src/core/js/composition/sortable.mjs",
+        "sha256": "3d3e18a88181a12712eb8d812de87894d272fa656c26c70e52e0db8db3cc114a"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-sortable when people reorder or move host items, or drag library entries onto an editor canvas. Apply sf-sortable-intent to the host model with an expected revision; a refusal leaves the page unchanged.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not let the component move host DOM or save data",
+      "Do not rely on pointer dragging alone; keep the keyboard path",
+      "Do not bundle a private drag session; use SF.Sortable.registerSortableDropTarget"
+    ],
+    "required_reads": [
+      "inputs",
+      "item_contract",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-sortable id=\"sections\" group=\"sections\" label=\"Sections\"><div data-sf-sortable-item=\"s1\">Section 1</div><div data-sf-sortable-item=\"s2\">Section 2</div></sf-sortable>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

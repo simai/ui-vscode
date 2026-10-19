@@ -1,0 +1,405 @@
+{
+  "schema_version": 2,
+  "id": "smart.theme-generator",
+  "version": "1.0.0",
+  "title": "Theme generator",
+  "summary": "A theme from one colour: a person chooses the main colour (or the generator's hue and chroma) and it makes the Framework's eight tonal palettes, the 128 primitives every semantic token reads and the 98 translucent steps core derives from them, with a preview, events carrying the CSS, and an optional live application to the page.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "theme",
+    "color",
+    "palette",
+    "generator"
+  ],
+  "capabilities": [
+    "interaction",
+    "keyboard",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-theme-generator",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.color",
+      "smart.inputs",
+      "smart.buttons",
+      "smart.icon-buttons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "value": {
+        "type": "string",
+        "default": "",
+        "description": "The main colour, #rrggbb. Empty means the Framework's own colour (#005bbe) and draws the Framework's own theme."
+      },
+      "hue": {
+        "type": "string",
+        "default": "",
+        "description": "The generator's hue, 0-360, overriding the colour's reading; set by the fine-tuning fields. Empty reads it from the colour."
+      },
+      "chroma": {
+        "type": "string",
+        "default": "",
+        "description": "The generator's chroma, 0-150, overriding the colour's reading; set by the fine-tuning fields. Empty reads it from the colour."
+      },
+      "size": {
+        "type": "string",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ],
+        "default": "1"
+      },
+      "swatches": {
+        "type": "string",
+        "default": "",
+        "description": "The product's own colours offered beside the picker, as sf-color takes them: '#hex|Name, #hex'."
+      },
+      "apply": {
+        "type": "boolean",
+        "default": false,
+        "description": "Apply the theme to `target` as inline custom properties, live on every change, undoing the previous application first and on removal. Without it the page is not changed."
+      },
+      "target": {
+        "type": "string",
+        "default": "",
+        "description": "A CSS selector for the element the theme is applied to; empty is the document element. A target other than the root carries a theme class (theme-light or theme-dark): the semantic tokens are declared there, so without one only the primitives change on it."
+      },
+      "selector": {
+        "type": "string",
+        "default": ":root",
+        "description": "The selector of the rule in the events' css and in toCSS()."
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "template": {
+        "type": "string",
+        "default": "default"
+      }
+    },
+    "additionalProperties": false
+  },
+  "contracts": {},
+  "methods": {
+    "toCSS": {
+      "summary": "The theme as one stylesheet rule of its 128 primitives and 98 translucent steps, under the given selector or the `selector` attribute.",
+      "arguments": [
+        {
+          "name": "selector",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "CSS text."
+      }
+    },
+    "toJSON": {
+      "summary": "The theme object (simai.framework.theme.v1): source hue and chroma, and each palette's hue, chroma and tones.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "A copy of the theme."
+      }
+    },
+    "reset": {
+      "summary": "Back to the Framework's own colour; fires sf-theme-generator-change and sf-theme-generator-apply (and their first names until 2026-12-01).",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "Nothing."
+      }
+    }
+  },
+  "events": {
+    "sf-theme-generator-change": {
+      "summary": "The choice moved: a drag across the picker, a swatch, a number typed in a field.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The chosen colour, '' while the Framework's own one applies."
+          },
+          "hue": {
+            "type": "number"
+          },
+          "chroma": {
+            "type": "number"
+          },
+          "theme": {
+            "type": "object",
+            "description": "The theme object, as toJSON()."
+          },
+          "variables": {
+            "type": "object",
+            "description": "The 226 custom properties -- 128 tones and 98 translucent steps -- {name: value}."
+          },
+          "css": {
+            "type": "string",
+            "description": "The theme as a rule under `selector`."
+          }
+        }
+      }
+    },
+    "sf-theme-generator-apply": {
+      "summary": "The choice was committed: the picker's change, a swatch, Enter or leaving a field, Reset.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The chosen colour, '' while the Framework's own one applies."
+          },
+          "hue": {
+            "type": "number"
+          },
+          "chroma": {
+            "type": "number"
+          },
+          "theme": {
+            "type": "object",
+            "description": "The theme object, as toJSON()."
+          },
+          "variables": {
+            "type": "object",
+            "description": "The 226 custom properties -- 128 tones and 98 translucent steps -- {name: value}."
+          },
+          "css": {
+            "type": "string",
+            "description": "The theme as a rule under `selector`."
+          }
+        }
+      }
+    },
+    "sf-theme-change": {
+      "summary": "Its first name, still emitted with the same detail until 2026-12-01 (journal event-theme-generator-names); the Loader's light/dark event bears it too. Bind sf-theme-generator-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The chosen colour, '' while the Framework's own one applies."
+          },
+          "hue": {
+            "type": "number"
+          },
+          "chroma": {
+            "type": "number"
+          },
+          "theme": {
+            "type": "object",
+            "description": "The theme object, as toJSON()."
+          },
+          "variables": {
+            "type": "object",
+            "description": "The 226 custom properties -- 128 tones and 98 translucent steps -- {name: value}."
+          },
+          "css": {
+            "type": "string",
+            "description": "The theme as a rule under `selector`."
+          }
+        }
+      }
+    },
+    "sf-theme-apply": {
+      "summary": "Its first name, still emitted with the same detail until 2026-12-01 (journal event-theme-generator-names); the Loader's light/dark event bears it too. Bind sf-theme-generator-apply.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The chosen colour, '' while the Framework's own one applies."
+          },
+          "hue": {
+            "type": "number"
+          },
+          "chroma": {
+            "type": "number"
+          },
+          "theme": {
+            "type": "object",
+            "description": "The theme object, as toJSON()."
+          },
+          "variables": {
+            "type": "object",
+            "description": "The 226 custom properties -- 128 tones and 98 translucent steps -- {name: value}."
+          },
+          "css": {
+            "type": "string",
+            "description": "The theme as a rule under `selector`."
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "advanced": [
+        "folded",
+        "open"
+      ]
+    },
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "storing the chosen theme"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "group",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "The colour control, Reset, the «Advanced» disclosure and its two number fields are in the focus order; Enter in a field commits the theme. The preview is a named region of labelled swatches, each giving its palette, tone and hex."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/theme-generator/index.js",
+        "sha256": "514e405f20084aa7debee6194cb3d27f0b259870d4d5d661bcce52d5f3e8f13a"
+      },
+      {
+        "path": "src/smart/theme-generator/js/templates/default.js",
+        "sha256": "9adbb26fd16a779b524187e047ffd2c244198bb238962571b52603b1a5e132b8"
+      },
+      {
+        "path": "src/smart/theme-generator/scss/_smart__theme_generator.scss",
+        "sha256": "9c1a2e0dbd5cb4db72b295d28de0ace0e234b9a0b5a5b57bd378153aab0a4f75"
+      },
+      {
+        "path": "src/smart/theme-generator/rule.js",
+        "sha256": "9d25eecf429daa6938d8e9acd0e579b4e2752f8d66afb236fe150390c5327458"
+      },
+      {
+        "path": "src/smart/theme-generator/docs.md",
+        "sha256": "c4eb2570ecace352f12f417dcb5268e399daa54097098c50ff9e12eff872d2bc"
+      },
+      {
+        "path": "src/core/js/theme-palette.js",
+        "sha256": "1a1eadb297a50cd0c0a89e644d366cd2ed83b9401639cd10d4bda684f4c5ffa0"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-theme-generator where a person chooses a site's or a product's main colour and the rest of its palette should follow.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not copy the palette calculation; import core theme-palette",
+      "Do not expect the component to store the choice; the host keeps it"
+    ],
+    "required_reads": [
+      "inputs",
+      "events",
+      "methods",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-theme-generator value=\"#2e7d32\" apply></sf-theme-generator>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+@layer sf.utilities {
+  .hover\:border-transparent:hover {
+    border-color: var(--sf-transparent);
+  }
+  .hover\:border-current:hover {
+    border-color: var(--sf-current);
+  }
+  .hover\:border-outline:hover {
+    border-color: var(--sf-outline);
+  }
+  .hover\:border-outline-variant:hover {
+    border-color: var(--sf-outline-variant);
+  }
+  .hover\:border-surface:hover {
+    border-color: var(--sf-surface-1);
+  }
+  .hover\:border-surface-0:hover {
+    border-color: var(--sf-surface-0);
+  }
+  .hover\:border-surface-1:hover {
+    border-color: var(--sf-surface-1);
+  }
+  .hover\:border-surface-container:hover {
+    border-color: var(--sf-surface-container);
+  }
+  .hover\:border-surface-overlay:hover {
+    border-color: var(--sf-surface-overlay);
+  }
+  .hover\:border-surface-transparent-overlay:hover {
+    border-color: var(--sf-surface-transparent-overlay);
+  }
+  .hover\:border-surface-inverse:hover {
+    border-color: var(--sf-surface-inverse);
+  }
+  .hover\:border-on-surface:hover {
+    border-color: var(--sf-on-surface);
+  }
+  .hover\:border-on-surface-variant:hover {
+    border-color: var(--sf-on-surface-variant);
+  }
+  .hover\:border-primary:hover {
+    border-color: var(--sf-outline-primary);
+  }
+  .hover\:border-primary-container:hover {
+    border-color: var(--sf-primary-container);
+  }
+  .hover\:border-primary-transparent-overlay:hover {
+    border-color: var(--sf-primary-transparent-overlay);
+  }
+  .hover\:border-secondary:hover {
+    border-color: var(--sf-outline-secondary);
+  }
+  .hover\:border-secondary-container:hover {
+    border-color: var(--sf-secondary-container);
+  }
+  .hover\:border-secondary-transparent-overlay:hover {
+    border-color: var(--sf-secondary-transparent-overlay);
+  }
+  .hover\:border-tertiary:hover {
+    border-color: var(--sf-outline-tertiary);
+  }
+  .hover\:border-tertiary-container:hover {
+    border-color: var(--sf-tertiary-container);
+  }
+  .hover\:border-tertiary-transparent-overlay:hover {
+    border-color: var(--sf-tertiary-transparent-overlay);
+  }
+  .hover\:border-error:hover {
+    border-color: var(--sf-outline-error);
+  }
+  .hover\:border-error-container:hover {
+    border-color: var(--sf-error-container);
+  }
+  .hover\:border-error-transparent-overlay:hover {
+    border-color: var(--sf-error-transparent-overlay);
+  }
+  .hover\:border-warning:hover {
+    border-color: var(--sf-outline-warning);
+  }
+  .hover\:border-warning-container:hover {
+    border-color: var(--sf-warning-container);
+  }
+  .hover\:border-warning-transparent-overlay:hover {
+    border-color: var(--sf-warning-transparent-overlay);
+  }
+  .hover\:border-success:hover {
+    border-color: var(--sf-outline-success);
+  }
+  .hover\:border-success-container:hover {
+    border-color: var(--sf-success-container);
+  }
+  .hover\:border-success-transparent-overlay:hover {
+    border-color: var(--sf-success-transparent-overlay);
+  }
+  .hover\:border-info:hover {
+    border-color: var(--sf-outline-info);
+  }
+  .hover\:border-info-container:hover {
+    border-color: var(--sf-info-container);
+  }
+}

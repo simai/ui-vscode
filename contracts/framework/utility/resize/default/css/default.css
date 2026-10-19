@@ -1,0 +1,18 @@
+@layer sf.utilities {
+  .resize-none {
+    --sf-resize: none;
+    resize: var(--sf-resize);
+  }
+  .resize-y {
+    --sf-resize: vertical;
+    resize: var(--sf-resize);
+  }
+  .resize-x {
+    --sf-resize: horizontal;
+    resize: var(--sf-resize);
+  }
+  .resize {
+    --sf-resize: both;
+    resize: var(--sf-resize);
+  }
+}

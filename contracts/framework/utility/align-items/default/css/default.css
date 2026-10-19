@@ -1,0 +1,17 @@
+@layer sf.utilities {
+  .items-cross-start {
+    align-items: start;
+  }
+  .items-cross-end {
+    align-items: end;
+  }
+  .items-cross-center {
+    align-items: center;
+  }
+  .items-cross-baseline {
+    align-items: baseline;
+  }
+  .items-cross-stretch {
+    align-items: stretch;
+  }
+}

@@ -1,0 +1,19 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    .sm\:items-cross-start {
+      align-items: start;
+    }
+    .sm\:items-cross-end {
+      align-items: end;
+    }
+    .sm\:items-cross-center {
+      align-items: center;
+    }
+    .sm\:items-cross-baseline {
+      align-items: baseline;
+    }
+    .sm\:items-cross-stretch {
+      align-items: stretch;
+    }
+  }
+}

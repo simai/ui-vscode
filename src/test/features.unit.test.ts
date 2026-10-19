@@ -76,7 +76,15 @@ test('snippets use only names from the snapshot', () => {
     const snippets = buildSnippets(framework);
     assert.deepEqual(
         Object.values(snippets).map(item => item.prefix),
-        ['sf-field', 'sf-checkbox-field', 'sf-button-submit', 'sf-buttons', 'sf-select', 'sf-pagination-bar'],
+        [
+            'sf-field',
+            'sf-checkbox-field',
+            'sf-button-submit',
+            'sf-buttons',
+            'sf-select',
+            'sf-modal-dialog',
+            'sf-pagination-bar',
+        ],
     );
     const broken = structuredClone(framework);
     broken.tags.find(tag => tag.tag === 'sf-input')!.attributes =

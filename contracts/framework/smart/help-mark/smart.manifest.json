@@ -1,0 +1,267 @@
+{
+  "schema_version": 2,
+  "id": "smart.help-mark",
+  "version": "1.0.0",
+  "title": "Help mark",
+  "summary": "A «?» beside a label that opens a short explanation on a press -- a toggletip -- announced politely, closed by Escape, a second press or a click outside.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "help",
+    "toggletip",
+    "popover"
+  ],
+  "capabilities": [
+    "interaction",
+    "keyboard",
+    "responsive"
+  ],
+  "custom_element": "sf-help-mark",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.icon-buttons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "default": "",
+        "description": "The explanation; slot `content` takes links or lists instead."
+      },
+      "title": {
+        "type": "string",
+        "default": ""
+      },
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "The button's accessible name; «Подробнее» / More information by default, best naming the subject («Подробнее: код решения»)."
+      },
+      "size": {
+        "type": "string",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1"
+        ],
+        "default": "1/2"
+      },
+      "placement": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "top",
+          "bottom",
+          "start",
+          "end"
+        ],
+        "default": "auto"
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "template": {
+        "type": "string",
+        "default": "default"
+      }
+    },
+    "additionalProperties": false
+  },
+  "contracts": {},
+  "methods": {
+    "open": {
+      "summary": "Opens the explanation.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "A promise."
+      }
+    },
+    "close": {
+      "summary": "Closes it.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "Nothing."
+      }
+    }
+  },
+  "events": {
+    "sf-help-mark-open": {
+      "summary": "The explanation opened.",
+      "payload": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "sf-help-mark-close": {
+      "summary": "The explanation closed.",
+      "payload": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "panel": [
+        "closed",
+        "open"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "open"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "saving the width on a server"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "button",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Escape",
+      "Tab"
+    ],
+    "focus": "A button with aria-expanded and aria-controls; a press opens the explanation and it is announced in a polite status. Escape, a second press or a click outside close it and focus stays on the button. An explanation holding a link or control follows the button in the focus order and closes when focus leaves both."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/help-mark/index.js",
+        "sha256": "2c04f87c019c917209529db7065fc7fe68f3e6b0ed33d55a8a97c33338259ba3"
+      },
+      {
+        "path": "src/smart/help-mark/js/templates/default.js",
+        "sha256": "f9cc3b9e4a5f5e6554a6fa104991b1e5bca11fc541b120a61977291f898e031d"
+      },
+      {
+        "path": "src/smart/help-mark/scss/_smart__help_mark.scss",
+        "sha256": "f4ce5ff57016114a264d8dfd21185a80ec4717a3e7c4e1d9e791775d8ff22b1f"
+      },
+      {
+        "path": "src/smart/help-mark/rule.js",
+        "sha256": "77a1c64fdb59e7924fb633162a87b4472e5a50556141ed46465128a6af7f6ca2"
+      },
+      {
+        "path": "src/smart/help-mark/docs.md",
+        "sha256": "4d2ca000a7868b6934a0a20341c825fe97e82b4da54da6d643784f88e0b5efc0"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-help-mark beside a label whose meaning needs a sentence of explanation.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not open it on hover",
+      "Do not put essential information only behind it"
+    ],
+    "required_reads": [
+      "inputs",
+      "events",
+      "accessibility",
+      "provenance"
+    ],
+    "minimal_example": "<sf-help-mark label=\"Подробнее: код решения\" text=\"Уникальное имя модуля латиницей.\"></sf-help-mark>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

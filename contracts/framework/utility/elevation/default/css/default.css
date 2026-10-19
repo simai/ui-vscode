@@ -1,0 +1,31 @@
+@layer sf.utilities {
+  .elevation-1 {
+    background-color: var(--sf-elevation-1--surface);
+    box-shadow: var(--sf-elevation-1--shadow);
+    --sf-on-surface-variant: var(--sf-on-elevation-1--variant);
+  }
+  .elevation-2 {
+    background-color: var(--sf-elevation-2--surface);
+    box-shadow: var(--sf-elevation-2--shadow);
+    --sf-on-surface-variant: var(--sf-on-elevation-2--variant);
+  }
+  .elevation-3 {
+    background-color: var(--sf-elevation-3--surface);
+    box-shadow: var(--sf-elevation-3--shadow);
+    --sf-on-surface-variant: var(--sf-on-elevation-3--variant);
+  }
+  .elevation-4 {
+    background-color: var(--sf-elevation-4--surface);
+    box-shadow: var(--sf-elevation-4--shadow);
+    --sf-on-surface-variant: var(--sf-on-elevation-4--variant);
+  }
+  .elevation-5 {
+    background-color: var(--sf-elevation-5--surface);
+    box-shadow: var(--sf-elevation-5--shadow);
+    --sf-on-surface-variant: var(--sf-on-elevation-5--variant);
+  }
+  .elevation-0 {
+    background-color: var(--sf-surface-0);
+    box-shadow: none;
+  }
+}

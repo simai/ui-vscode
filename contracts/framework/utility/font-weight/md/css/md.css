@@ -1,0 +1,43 @@
+@layer sf.utilities {
+  @media (min-width: 44rem) {
+    .md\:regular {
+      font-weight: normal;
+    }
+    .md\:bold {
+      font-weight: bold;
+    }
+    .md\:lighter {
+      font-weight: lighter;
+    }
+    .md\:bolder {
+      font-weight: bolder;
+    }
+    .md\:weight-1 {
+      font-weight: 100;
+    }
+    .md\:weight-2 {
+      font-weight: 200;
+    }
+    .md\:weight-3 {
+      font-weight: 300;
+    }
+    .md\:weight-4 {
+      font-weight: 400;
+    }
+    .md\:weight-5 {
+      font-weight: 500;
+    }
+    .md\:weight-6 {
+      font-weight: 600;
+    }
+    .md\:weight-7 {
+      font-weight: 700;
+    }
+    .md\:weight-8 {
+      font-weight: 800;
+    }
+    .md\:weight-9 {
+      font-weight: 900;
+    }
+  }
+}

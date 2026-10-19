@@ -1,0 +1,282 @@
+{
+  "schema_version": 2,
+  "id": "smart.skeleton",
+  "version": "1.0.0",
+  "title": "Skeleton",
+  "summary": "Decorative loading placeholder that reserves source-backed content geometry with semantic tokens and reduced-motion support.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "skeleton"
+  ],
+  "capabilities": [
+    "render",
+    "loading-placeholder",
+    "token-geometry",
+    "reduced-motion",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-skeleton",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.skeleton"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/7",
+          "1/6",
+          "1/5",
+          "1/4",
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "width": {
+        "type": "string",
+        "default": "100%"
+      },
+      "height": {
+        "type": "string",
+        "default": ""
+      },
+      "count": {
+        "type": "number",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 20
+      },
+      "animation": {
+        "type": "string",
+        "default": "pulse",
+        "enum": [
+          "pulse",
+          "wave",
+          "none"
+        ]
+      },
+      "kind": {
+        "type": "string",
+        "default": "text",
+        "enum": [
+          "text",
+          "circle",
+          "square",
+          "rounded"
+        ],
+        "description": "What shape the placeholder takes: a line of text, a circle, a square or a rounded block."
+      },
+      "type": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "icon"
+        ],
+        "description": "type=\"icon\" marks a placeholder that stands in for an icon; it combines with any kind. Not a legacy name for kind (see contracts/public-api-axes.json), so it has no removal date."
+      },
+      "items": {
+        "type": "string",
+        "default": ""
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "variant": {
+        "type": "string",
+        "default": "text",
+        "description": "Legacy name for kind, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "text",
+          "circle",
+          "square",
+          "rounded"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "setState": {
+      "summary": "Writes each key as its kebab-case attribute: false, null, undefined or an empty string removes it, true sets it empty, anything else is stringified.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "none; generated placeholder geometry is aria-hidden",
+    "accessible_name": "recommended",
+    "keyboard": [],
+    "focus": "Skeleton is not interactive and never enters the tab order. The host content region owns aria-busy and any spoken loading status."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "reduced motion",
+      "content-matched geometry"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/skeleton/index.js",
+        "sha256": "35205633a81032512f023080b47eaf18dcc0948ef432742db1ac85749fb1486d"
+      },
+      {
+        "path": "src/smart/skeleton/js/templates/default.js",
+        "sha256": "b4852646eaad4562d8eba0bd0f869f983ebace74ea8e08bfd5c90e7de98b41a6"
+      },
+      {
+        "path": "src/smart/skeleton/rule.js",
+        "sha256": "713955c2a770ec01d06047be0760722949b29215c7dccc940fc494b7182e504e"
+      },
+      {
+        "path": "src/smart/skeleton/docs/docs.md",
+        "sha256": "69604e347d140de1d7a1a06bc42a9964163bdc51e4c3374bddd99cda646749f6"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/skeleton/js/skeleton.js",
+        "sha256": "daedaec564bbbe6d2567bdc4d268410ab70cf69ddde475dce96b4e3f63261c99"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-skeleton while content with predictable geometry is loading. Match the expected text, avatar, media or card shape closely and set aria-busy on the host content region until replacement is complete.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not use Skeleton as progress, empty, success or error feedback",
+      "Do not make placeholder geometry focusable or announce each shape",
+      "Do not use literal dimensions when a Framework token exists",
+      "Do not keep aria-busy true after real content is ready"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-skeleton></sf-skeleton>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

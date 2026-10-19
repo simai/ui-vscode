@@ -1,7 +1,7 @@
 {
   "SIMAI Framework form field": {
     "prefix": "sf-field",
-    "description": "A labelled sf-input with a hint. (SIMAI Framework ui-3521193e0c6b)",
+    "description": "A labelled sf-input with a hint. (SIMAI Framework ui-32c7a64e4575)",
     "body": [
       "<sf-input",
       "  label=\"${1:Label}\"",
@@ -15,21 +15,21 @@
   },
   "SIMAI Framework checkbox": {
     "prefix": "sf-checkbox-field",
-    "description": "A labelled sf-checkbox. (SIMAI Framework ui-3521193e0c6b)",
+    "description": "A labelled sf-checkbox. (SIMAI Framework ui-32c7a64e4575)",
     "body": [
       "<sf-checkbox label=\"${1:Label}\" name=\"${2:name}\" value=\"${3:1}\"></sf-checkbox>$0"
     ]
   },
   "SIMAI Framework button": {
     "prefix": "sf-button-submit",
-    "description": "An sf-button that submits its form. (SIMAI Framework ui-3521193e0c6b)",
+    "description": "An sf-button that submits its form. (SIMAI Framework ui-32c7a64e4575)",
     "body": [
       "<sf-button appearance=\"${1|default,tonal,outline,link,surface|}\" native-type=\"submit\" text=\"${2:Save}\"></sf-button>$0"
     ]
   },
   "SIMAI Framework button group": {
     "prefix": "sf-buttons",
-    "description": "A row of sf-button elements laid out with the flex and gap utilities. (SIMAI Framework ui-3521193e0c6b)",
+    "description": "A row of sf-button elements laid out with the flex and gap utilities. (SIMAI Framework ui-32c7a64e4575)",
     "body": [
       "<div class=\"flex g-1/2\">",
       "  <sf-button appearance=\"default\" text=\"${1:Save}\"></sf-button>",
@@ -39,14 +39,23 @@
   },
   "SIMAI Framework select": {
     "prefix": "sf-select",
-    "description": "An sf-dropdown in select mode. (SIMAI Framework ui-3521193e0c6b)",
+    "description": "An sf-dropdown in select mode. (SIMAI Framework ui-32c7a64e4575)",
     "body": [
       "<sf-dropdown mode=\"select\" label=\"${1:Label}\" name=\"${2:name}\" placeholder=\"${3:Choose}\"></sf-dropdown>$0"
     ]
   },
+  "SIMAI Framework modal": {
+    "prefix": "sf-modal-dialog",
+    "description": "An sf-modal with an id, a title and a position. (SIMAI Framework ui-32c7a64e4575)",
+    "body": [
+      "<sf-modal modal-id=\"${1:example}\" title=\"${2:Title}\" position=\"${3|center,left,right,top,bottom|}\">",
+      "  ${4:Content}",
+      "</sf-modal>$0"
+    ]
+  },
   "SIMAI Framework pagination": {
     "prefix": "sf-pagination-bar",
-    "description": "An sf-pagination with the current page and page size. (SIMAI Framework ui-3521193e0c6b)",
+    "description": "An sf-pagination with the current page and page size. (SIMAI Framework ui-32c7a64e4575)",
     "body": [
       "<sf-pagination current=\"${1:1}\" page-size=\"${2:20}\" show-page-size></sf-pagination>$0"
     ]

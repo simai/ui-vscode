@@ -1,0 +1,295 @@
+{
+  "schema_version": 2,
+  "id": "smart.slider",
+  "version": "1.0.0",
+  "title": "Slider",
+  "summary": "A row of slides moved by arrows, dots, swipe or keys, built on the shared Swiper adapter; with linked thumbnails a second slider picks the slide.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "slider"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-slider",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "button-type": {
+        "type": "string",
+        "default": "primary"
+      },
+      "button-size": {
+        "type": "string",
+        "default": "1"
+      },
+      "dots": {
+        "type": "boolean",
+        "default": true
+      },
+      "dots-type": {
+        "type": "string",
+        "default": "primary-dark"
+      },
+      "dots-size": {
+        "type": "string",
+        "default": "2"
+      },
+      "thumbs": {
+        "type": "boolean",
+        "default": false
+      },
+      "thumbs-class": {
+        "type": "string",
+        "default": ""
+      },
+      "thumb-class": {
+        "type": "string",
+        "default": ""
+      },
+      "arrows": {
+        "type": "boolean",
+        "default": true
+      },
+      "loop": {
+        "type": "boolean",
+        "default": false
+      },
+      "space-between": {
+        "type": "number",
+        "default": 12
+      },
+      "speed": {
+        "type": "number",
+        "default": 450
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "slide-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getSlider": {
+      "summary": "The Swiper instance behind the slider, or null before it is bound.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "refresh": {
+      "summary": "Rebind the slider after its slides changed: forwards the data attributes and rebuilds Swiper, keeping the events bound. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "slideNext": {
+      "summary": "Move to the next slide, as the next arrow does. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "slidePrev": {
+      "summary": "Move to the previous slide, as the previous arrow does. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-slide-change": {
+      "summary": "Runtime event sf-slide-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "activeIndex": {
+            "type": "number"
+          },
+          "realIndex": {
+            "type": "number"
+          },
+          "previousIndex": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "activeIndex",
+          "realIndex",
+          "previousIndex"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/slider/index.js",
+        "sha256": "311a51bb9a2eb5f169d3f6bc7aa74e4bd3890b326c018225f669be426672e5d9"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/slider/js/slider.js",
+        "sha256": "466a2028ac78ff053373cc675f860ec9ef28f61671e084605dcef28e554dc7cc"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-slider to project the shared Slider/Swiper behavior. In the default template, root-class, author style and root-style customize the existing root; root-style wins. Cosmetic-only changes preserve the active slide, focus and Swiper instances and emit sf-updated with updateMode=dom, not slide-change. afterRender(callback) uses the base lifecycle API. The shared adapter uses navigation aria-label as default Swiper a11y messages; explicit a11y messages override them, disabled a11y remains disabled and aria-labelledby retains native precedence. Omitted space-between and speed inherit Framework spacing and duration tokens; explicit numeric attributes remain compatibility overrides. Reduced motion disables transitions and autoplay. Explicit autoplay pauses on focus and document visibility, while non-visible slides stay outside the keyboard order.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "A slide is one meaningful slot item. Bare slot-only wrappers expose their children; attributed card roots remain whole. Whitespace-only text and comments do not become slides. Preserve composite cards inside one item; do not infer grouping from sibling headings or links.",
+      "Use existing root-class=sf-slider--content for text/card slides with controls in normal flow; default media overlay is preserved. Dot hit areas inherit semantic UI geometry from the shared Slider CSS.",
+      "Pagination inherits shared Slider CSS: inactive contour and current fill use semantic foreground roles; preserve focus-visible, forced-colors and the appropriate backdrop for transparent schemes. Do not create a Smart-only dot palette.",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-slider></sf-slider>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

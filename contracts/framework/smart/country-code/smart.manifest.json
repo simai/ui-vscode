@@ -1,0 +1,301 @@
+{
+  "schema_version": 2,
+  "id": "smart.country-code",
+  "version": "1.0.0",
+  "title": "Country Code",
+  "summary": "A telephone field with a country picker: a button opens a searchable listbox of countries, and the chosen country sets the dial code, flag and, optionally, the input mask of the native tel input.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "country-code"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-country-code",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ]
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "required": {
+        "type": "boolean",
+        "default": false,
+        "description": "Native required phone input; the country prefix alone does not satisfy the requirement."
+      },
+      "name": {
+        "type": "string",
+        "default": "",
+        "description": "Native input name used by FormData and form submission."
+      },
+      "form": {
+        "type": "string",
+        "default": "",
+        "description": "Optional id of the native owning form when the field is outside it."
+      },
+      "hint": {
+        "type": "string",
+        "default": ""
+      },
+      "value": {
+        "type": "string",
+        "default": ""
+      },
+      "placeholder": {
+        "type": "string",
+        "default": "+7(___)___-__-__"
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "open": {
+        "type": "boolean",
+        "default": false
+      },
+      "locale": {
+        "type": "string",
+        "default": "",
+        "description": "Language of the country names and the field's own words: ru or en. When not set it follows the page: Russian on a Russian page, English otherwise."
+      },
+      "use-mask": {
+        "type": "boolean",
+        "default": false
+      },
+      "use-country-masks": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-code": {
+        "type": "boolean",
+        "default": true
+      },
+      "mask-style": {
+        "type": "string",
+        "default": "native"
+      },
+      "multi-country": {
+        "type": "boolean",
+        "default": true
+      },
+      "iso2": {
+        "type": "string",
+        "default": ""
+      },
+      "dial-code": {
+        "type": "string",
+        "default": ""
+      },
+      "mask-pattern": {
+        "type": "string",
+        "default": ""
+      },
+      "flag-base": {
+        "type": "string",
+        "default": ""
+      },
+      "lazy-flags": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-mask-placeholder": {
+        "type": "boolean",
+        "default": false
+      },
+      "mask-placeholder-char": {
+        "type": "string",
+        "default": "_"
+      },
+      "max-items": {
+        "type": "number",
+        "default": 0
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "setState": {
+      "summary": "Applies disabled, open (or active), value, iso2 and dialCode to the rendered field; setting value dispatches native input and change from the inner input. Returns true when applied, false before render.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "boolean"
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The phone value or country was committed; the native event bubbles from the inner input, which is its target. It carries no detail. The name to bind.",
+      "payload": {
+        "type": "null",
+        "description": "A native Event: there is no detail."
+      },
+      "canonical": true
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space",
+      "Escape",
+      "ArrowDown",
+      "ArrowUp",
+      "Home",
+      "End",
+      "Typeahead"
+    ],
+    "focus": "Country-code button opens a single-select listbox. Arrows, Home, End and typeahead move focus without changing the phone; Enter/Space commit and Escape cancels. Closing by confirmation or Escape returns focus to the button; Tab leaves without trapping focus. Disabled fields do not open."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/country-code/index.js",
+        "sha256": "be531da05549bed63027e3cb619ac38582a01a3bb89e73db775b894a11d073b7"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/country-code/js/country-code.js",
+        "sha256": "8d9d0b4cc5347158c208d15130edfa6d14e39e6b5e0e451d395fc3eeeb6fd216"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-country-code when the interface needs the country code behavior.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-country-code></sf-country-code>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

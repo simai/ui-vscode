@@ -1,0 +1,19 @@
+@layer sf.utilities {
+  @media (min-width: 44rem) {
+    .md\:flex-1 {
+      flex: 1 1 0%;
+    }
+    .md\:flex-auto {
+      flex: 1 1 auto;
+    }
+    .md\:flex-content {
+      flex: 1 0 auto;
+    }
+    .md\:flex-initial {
+      flex: 0 1 auto;
+    }
+    .md\:flex-none {
+      flex: none;
+    }
+  }
+}

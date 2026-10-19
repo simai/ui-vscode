@@ -1,0 +1,549 @@
+{
+  "schema_version": 2,
+  "id": "smart.gallery",
+  "version": "1.0.0",
+  "title": "Gallery",
+  "summary": "An ordered media collection shown in an inline Slider, with an optional Modal lightbox holding a second Slider. The gallery owns the one-based current slide and keeps both views on it.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "gallery"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-gallery",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "modal-id": {
+        "type": "string",
+        "default": ""
+      },
+      "title": {
+        "type": "string",
+        "default": "Gallery"
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "open": {
+        "type": "boolean",
+        "default": false
+      },
+      "current": {
+        "type": "number",
+        "default": 1
+      },
+      "inline": {
+        "type": "boolean",
+        "default": true
+      },
+      "lightbox": {
+        "type": "boolean",
+        "default": true
+      },
+      "arrows": {
+        "type": "boolean",
+        "default": true
+      },
+      "dots": {
+        "type": "boolean",
+        "default": false
+      },
+      "thumbs": {
+        "type": "boolean",
+        "default": true
+      },
+      "loop": {
+        "type": "boolean",
+        "default": false
+      },
+      "space-between": {
+        "type": "number",
+        "default": 12
+      },
+      "speed": {
+        "type": "number",
+        "default": 450
+      },
+      "button-type": {
+        "type": "string",
+        "default": "primary"
+      },
+      "button-size": {
+        "type": "string",
+        "default": "1"
+      },
+      "dots-type": {
+        "type": "string",
+        "default": "primary-dark"
+      },
+      "dots-size": {
+        "type": "string",
+        "default": "2"
+      },
+      "thumbs-class": {
+        "type": "string",
+        "default": ""
+      },
+      "thumb-class": {
+        "type": "string",
+        "default": ""
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "slide-class": {
+        "type": "string",
+        "default": ""
+      },
+      "inline-class": {
+        "type": "string",
+        "default": ""
+      },
+      "lightbox-class": {
+        "type": "string",
+        "default": ""
+      },
+      "overlay": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-header": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-close": {
+        "type": "boolean",
+        "default": true
+      },
+      "close-on-esc": {
+        "type": "boolean",
+        "default": true
+      },
+      "close-on-overlay": {
+        "type": "boolean",
+        "default": true
+      },
+      "preserve-scroll-gap": {
+        "type": "boolean",
+        "default": true
+      },
+      "position": {
+        "type": "string",
+        "default": "center",
+        "enum": [
+          "center",
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ]
+      },
+      "fullscreen": {
+        "type": "boolean",
+        "default": false
+      },
+      "width": {
+        "type": "string",
+        "default": ""
+      },
+      "height": {
+        "type": "string",
+        "default": ""
+      },
+      "blur": {
+        "type": "boolean",
+        "default": false
+      },
+      "blur-type": {
+        "type": "string",
+        "default": "medium",
+        "enum": [
+          "none",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "overlay-class": {
+        "type": "string",
+        "default": ""
+      },
+      "close-class": {
+        "type": "string",
+        "default": ""
+      },
+      "surface-class": {
+        "type": "string",
+        "default": ""
+      },
+      "surface-padding": {
+        "type": "string",
+        "default": ""
+      },
+      "panel-class": {
+        "type": "string",
+        "default": ""
+      },
+      "header-class": {
+        "type": "string",
+        "default": ""
+      },
+      "body-class": {
+        "type": "string",
+        "default": ""
+      },
+      "content-class": {
+        "type": "string",
+        "default": ""
+      },
+      "footer-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getModal": {
+      "summary": "Returns the lightbox sf-modal, or null when there is none.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "getInlineSlider": {
+      "summary": "Returns the inline sf-slider, or null before render.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "getLightboxSlider": {
+      "summary": "Returns the lightbox sf-slider, or null when there is none.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "open": {
+      "summary": "Moves to the given one-based slide when an index is passed, sets open and opens the lightbox modal. Returns the element.",
+      "arguments": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "close": {
+      "summary": "Removes open and closes the lightbox modal. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "toggle": {
+      "summary": "Calls close() when open, open(index) otherwise. Returns the element.",
+      "arguments": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "goTo": {
+      "summary": "Moves to a one-based slide, clamped to the slide count, reflects it to the current attribute, syncs both sliders and dispatches sf-change when it moved. Returns the element.",
+      "arguments": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "next": {
+      "summary": "goTo(current + 1); stops at the last slide. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "prev": {
+      "summary": "goTo(current - 1); stops at the first slide. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-change": {
+      "summary": "The current slide changed through the API or either slider. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "The active template name."
+          },
+          "previous": {
+            "type": "number"
+          },
+          "current": {
+            "type": "number",
+            "description": "One-based."
+          },
+          "total": {
+            "type": "number"
+          },
+          "from": {
+            "enum": [
+              "api",
+              "inline",
+              "lightbox"
+            ],
+            "description": "What moved the gallery."
+          }
+        }
+      }
+    },
+    "sf-close": {
+      "summary": "The lightbox modal finished closing. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "The active template name."
+          },
+          "current": {
+            "type": "number",
+            "description": "One-based."
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "sf-open": {
+      "summary": "The lightbox modal finished opening. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "The active template name."
+          },
+          "current": {
+            "type": "number",
+            "description": "One-based."
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "open",
+      "closed"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/gallery/index.js",
+        "sha256": "34351de8e066380ed5d9253497de3be97326a2807497b01c5b1fb48ebdffb079"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/gallery/js/gallery.js",
+        "sha256": "50fca7e93de1ee70020f443c2c4c628edd719420eea654fea3c913ea53af3d21"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-gallery for one ordered media collection with one-based current state, an inline Slider and optional Modal lightbox. Nested Sliders inherit token-driven spacing, reduced-motion behavior, autoplay pause and hidden-slide focus protection unless the author supplies explicit compatibility overrides.",
+    "do_not": [
+      "The rendered Gallery root permits shrinking in grid/flex via min-width:0. Do not hide document overflow or reset Slider instances to compensate for parent intrinsic sizing; explicit author widths remain the author's responsive-layout responsibility.",
+      "current/open-only updates preserve the existing inline Slider and use updateMode:dom. Observe sf-updated for these state changes, not sf-after-render. Actual configuration and slot changes still render; do not recreate unchanged slide content just to open Modal.",
+      "Load the Gallery composition CSS declared by cl-gallery. Do not overwrite projected figure/image/caption inline styles. Reuse Slider dimension/fit tokens, --sf-gallery-media--max-height and Modal scrolling for long content; width/height/fullscreen remain Modal options.",
+      "Gallery owns the selected position across inline/lightbox rendering. Use its one-based current/goTo/open API; do not maintain a second current index on nested Sliders or repair their position with delayed callbacks.",
+      "Slide counts and inline/lightbox indices use meaningful slot items, excluding formatting whitespace and comments. Keep composite cards inside one attributed root or one child of a bare slot container; do not treat each sibling heading or link as part of an inferred card.",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-gallery></sf-gallery>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

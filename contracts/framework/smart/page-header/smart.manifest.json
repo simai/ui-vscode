@@ -1,0 +1,226 @@
+{
+  "schema_version": 2,
+  "id": "smart.page-header",
+  "version": "1.0.0",
+  "title": "Page header",
+  "summary": "The head of an admin page: path, heading, count, favourite star, install mark and main action. Replaces the admin top bar together with sf-admin-menu.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "page-header",
+    "admin",
+    "navigation"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive",
+    "i18n"
+  ],
+  "custom_element": "sf-page-header",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.badges",
+      "smart.icon-buttons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "heading": {
+        "type": "string",
+        "default": "",
+        "description": "The page heading."
+      },
+      "count": {
+        "type": "string",
+        "default": "",
+        "description": "How many records the page holds; empty draws no count. The admin menu carries no totals, so this is where they are."
+      },
+      "level": {
+        "type": "string",
+        "default": "site",
+        "enum": [
+          "site",
+          "install"
+        ],
+        "description": "install marks a page shared by every site."
+      },
+      "star": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "off",
+          "on"
+        ],
+        "description": "Empty draws no star; off and on draw it in that state."
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {},
+  "events": {
+    "sf-page-header-star": {
+      "summary": "The person pressed the star. Cancelable: a host that waits for its own answer cancels it and sets star itself.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "on"
+        ],
+        "properties": {
+          "on": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "selected"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "host",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention",
+      "keeping favourites"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "banner content; the heading is an h1",
+    "accessible_name": "internal",
+    "keyboard": [
+      "Tab reaches the star and the actions",
+      "Enter or Space toggles the star"
+    ],
+    "focus": "The star is a native button in sf-icon-button with aria-pressed and a label that says what pressing it does."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/page-header/index.js",
+        "sha256": "e4891a79a1b9ab42f93b157d5a27d76ae13f2575e29577b210d0a178af3911dd"
+      },
+      {
+        "path": "src/smart/page-header/js/templates/default.js",
+        "sha256": "a64aa587e463edca6e8998526bb96f7a632126c5b1fa6d905ecc63472f642188"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/page-header/js/page-header.js",
+        "sha256": "b69f38e73a1a04d77f2323fda3106af3ba10aae4b919091df4515f9dcbfb4032"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-page-header at the top of every admin page: it is the only place a page states its path, heading, count, favourite and main action once the admin top bar is gone.",
+    "do_not": [
+      "Do not keep favourites in the component; answer sf-page-header-star from the host",
+      "Do not put totals in the menu; they belong here",
+      "Do not style the heading yourself; it is the fourth heading step"
+    ],
+    "required_reads": [
+      "inputs",
+      "events",
+      "ownership"
+    ],
+    "minimal_example": "<sf-page-header heading=\"Каталог решений\" count=\"448\" star=\"off\"><sf-breadcrumbs slot=\"path\"><sf-breadcrumbs-item href=\"/\">simai.ru</sf-breadcrumbs-item><sf-breadcrumbs-item href=\"/data\">Данные</sf-breadcrumbs-item></sf-breadcrumbs><sf-button slot=\"actions\" icon-start=\"add\">Создать</sf-button></sf-page-header>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,472 @@
+{
+  "schema_version": 2,
+  "id": "smart.tree-item",
+  "version": "1.0.0",
+  "title": "Tree Item",
+  "summary": "One accessible node in a Smart Tree hierarchy.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "tree-item"
+  ],
+  "capabilities": [
+    "render",
+    "keyboard-focus",
+    "selection",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-tree-item",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.icon-buttons",
+      "component.tree",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "href": {
+        "type": "string",
+        "default": ""
+      },
+      "target": {
+        "type": "string",
+        "default": ""
+      },
+      "rel": {
+        "type": "string",
+        "default": ""
+      },
+      "kind": {
+        "type": "string",
+        "default": "folder",
+        "enum": [
+          "folder",
+          "file"
+        ],
+        "description": "What the tree item is: a folder or a file."
+      },
+      "value": {
+        "type": "string",
+        "default": ""
+      },
+      "open": {
+        "type": "boolean",
+        "default": false
+      },
+      "selected": {
+        "type": "boolean",
+        "default": false
+      },
+      "active": {
+        "type": "boolean",
+        "default": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "items-data": {
+        "type": "array",
+        "default": []
+      },
+      "open-icon": {
+        "type": "string",
+        "default": "folder_open"
+      },
+      "closed-icon": {
+        "type": "string",
+        "default": "folder"
+      },
+      "icon": {
+        "type": "boolean",
+        "default": true
+      },
+      "chevron-open-icon": {
+        "type": "string",
+        "default": "keyboard_arrow_down"
+      },
+      "chevron-closed-icon": {
+        "type": "string",
+        "default": "chevron_right"
+      },
+      "open-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Open item\" in English)."
+      },
+      "close-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Close item\" in English)."
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "item-class": {
+        "type": "string",
+        "default": ""
+      },
+      "container-class": {
+        "type": "string",
+        "default": ""
+      },
+      "name-class": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "folder",
+        "description": "Legacy name for kind, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "folder",
+          "file"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "setOpen": {
+      "summary": "Opens or closes a branch and emits sf-tree-item-toggle; does nothing for a file, a leaf, a disabled item or an unchanged state.",
+      "arguments": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "open": {
+      "summary": "Same as setOpen(true).",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "close": {
+      "summary": "Same as setOpen(false).",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "focusItem": {
+      "summary": "Moves DOM focus to this tree item.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object"
+        ]
+      }
+    },
+    "activate": {
+      "summary": "Activates the item link or emits the item click event.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object"
+        ]
+      }
+    },
+    "toggle": {
+      "summary": "Flips the open state through setOpen.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onToggle": {
+      "summary": "Adds a listener for sf-tree-item-toggle; the handler is called with (open, detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-tree-item-click": {
+      "summary": "Runtime event sf-tree-item-click.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "item": {
+            "type": "object",
+            "description": "The sf-tree-item."
+          },
+          "value": {
+            "type": "string"
+          },
+          "originalEvent": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "The click; null when activated from the keyboard (Enter) on an item without a link."
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "item",
+          "value",
+          "originalEvent"
+        ]
+      }
+    },
+    "sf-tree-item-toggle": {
+      "summary": "Runtime event sf-tree-item-toggle.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "item": {
+            "type": "object",
+            "description": "The sf-tree-item."
+          },
+          "open": {
+            "type": "boolean"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "item",
+          "open",
+          "value"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "disclosure": [
+        "closed",
+        "open"
+      ],
+      "focus": [
+        "active"
+      ],
+      "selection": [
+        "selected"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "open",
+      "closed",
+      "active",
+      "selected",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "treeitem",
+    "accessible_name": "required",
+    "keyboard": [
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Home",
+      "End",
+      "Enter",
+      "Space"
+    ],
+    "focus": "Tree owns roving focus; expansion, focus and selection are independent."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "line",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/tree-item/index.js",
+        "sha256": "65abd84acb6b5092fd5b7a0a75187dd1c68bc91009755db70f91170025b5b7e7"
+      },
+      {
+        "path": "src/smart/tree-item/js/templates/default.js",
+        "sha256": "7210b5b24fef76a0b65526f2778346a524f90f4333e61056d0ce7bce99a8c7f7"
+      },
+      {
+        "path": "src/smart/tree-item/rule.js",
+        "sha256": "9cc597ab7a53d4d8d34ecad62bc365ebfdeb28166beb4301d28e3bd4d37ae09b"
+      },
+      {
+        "path": "src/smart/tree-item/docs/docs.md",
+        "sha256": "9611f3f54df7a4815068f0706bdc7995322b607b0deae8ca51fd6748ea535091"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/tree-item/js/tree-item.js",
+        "sha256": "c35b2eca77e8d3dcd56955f2844102f2343c463d6e9ca231ad48285378e28e0b"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-tree-item only as a node owned by sf-tree or a nested tree group.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not use a standalone tree item as a generic list row",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-tree-item></sf-tree-item>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

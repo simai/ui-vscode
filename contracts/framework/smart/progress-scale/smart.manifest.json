@@ -1,0 +1,281 @@
+{
+  "schema_version": 2,
+  "id": "smart.progress-scale",
+  "version": "1.0.0",
+  "title": "Progress Scale",
+  "summary": "Segmented determinate progress with exact accessible value, explicit semantic tone and ten visual steps.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "progress-scale"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive",
+    "determinate-progress",
+    "accessible-range"
+  ],
+  "custom_element": "sf-progress-scale",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.progress-scale"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "line": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Takes the text line of this form size, for a table cell or a row of fields, so the row keeps its control height."
+      },
+      "value": {
+        "type": "string",
+        "default": "0",
+        "pattern": "^(?:100|[1-9]?[0-9])(?:\\.[0-9]+)?$"
+      },
+      "show-text": {
+        "type": "boolean",
+        "default": true
+      },
+      "status": {
+        "type": "string",
+        "default": "neutral",
+        "enum": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ],
+        "description": "What the progress reports, in the shared status vocabulary. The word this component used before, primary, is still accepted and means neutral."
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "value-text": {
+        "type": "string",
+        "default": ""
+      },
+      "tone": {
+        "type": "string",
+        "default": "neutral",
+        "description": "Legacy name for status, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getProgress": {
+      "summary": "Returns the value as a number clamped to 0..100; a non-numeric value reads as 0.",
+      "arguments": [],
+      "returns": {
+        "type": "number"
+      }
+    },
+    "setProgress": {
+      "summary": "Sets the value attribute; null or undefined removes it.",
+      "arguments": [
+        {
+          "name": "nextValue",
+          "type": "number|string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {},
+  "state": {
+    "machines": {
+      "progress": [
+        "active",
+        "complete",
+        "error"
+      ]
+    },
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention",
+      "running, cancelling or retrying the task",
+      "inferring semantic state from the current segment count",
+      "inventing the accessible process label"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "progressbar",
+    "accessible_name": "required",
+    "keyboard": [],
+    "focus": "Progress Scale is not interactive and never enters the focus order."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/progress-scale/index.js",
+        "sha256": "066b9d9ebc484e056f49b018c08b03c315642c8953ace3a2dab85236ec574aec"
+      },
+      {
+        "path": "src/smart/progress-scale/js/templates/default.js",
+        "sha256": "233027300700454bdf68818e1d4c8680915ff15c90897d7dca21dbf47f7d25b1"
+      },
+      {
+        "path": "src/smart/progress-scale/rule.js",
+        "sha256": "8a9ab151e4473f9a67ce33ed68e3cb8ce0d440b16e0f155a6dfe53971cd0e97a"
+      },
+      {
+        "path": "src/smart/progress-scale/docs/docs.md",
+        "sha256": "687982d50c998eed604cc2f87aa88074622a158299e8a76bf840a355b913d42a"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/progress-scale/js/progress-scale.js",
+        "sha256": "47e30ecb245752e6bb23a96370cb2809508b071e3e7488cd793f506e358867ad"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-progress-scale when a known progress value is meaningfully represented by ten coarse or staged segments.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not use segmented progress when continuous Progress Bar is clearer",
+      "Do not use Progress Scale for an unknown value; use Spinner",
+      "Do not infer error, warning or success from the percentage",
+      "Do not omit a localized accessible label"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-progress-scale label=\"Подготовка проекта\" value=\"40\"></sf-progress-scale>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

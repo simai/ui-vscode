@@ -1,0 +1,52 @@
+@layer sf.utilities {
+  .divider-transparent > :not([hidden]) ~ :not([hidden]),
+  .divide-transparent > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-transparent) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-transparent) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-current > :not([hidden]) ~ :not([hidden]),
+  .divide-current > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-current) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-current) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-outline > :not([hidden]) ~ :not([hidden]),
+  .divide-outline > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-outline-variant > :not([hidden]) ~ :not([hidden]),
+  .divide-outline-variant > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-variant) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-variant) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-primary > :not([hidden]) ~ :not([hidden]),
+  .divide-primary > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-primary) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-primary) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-secondary > :not([hidden]) ~ :not([hidden]),
+  .divide-secondary > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-secondary) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-secondary) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-tertiary > :not([hidden]) ~ :not([hidden]),
+  .divide-tertiary > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-tertiary) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-tertiary) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-error > :not([hidden]) ~ :not([hidden]),
+  .divide-error > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-error) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-error) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-warning > :not([hidden]) ~ :not([hidden]),
+  .divide-warning > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-warning) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-warning) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+  .divider-success > :not([hidden]) ~ :not([hidden]),
+  .divide-success > :not([hidden]) ~ :not([hidden]) {
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-success) calc(1 * 100%));
+    border-color: color-mix(in srgb, transparent, var(--sf-outline-success) calc(var(--sf-divider--alfa, 1) * 100%));
+  }
+}

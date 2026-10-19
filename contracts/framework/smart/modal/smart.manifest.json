@@ -1,0 +1,1065 @@
+{
+  "schema_version": 2,
+  "id": "smart.modal",
+  "version": "1.1.0",
+  "title": "Modal",
+  "summary": "A dialog window over the page in the shared modal stack: centered or at a side, top or bottom edge, with header, content and footer slots, focus trap, scroll lock and focus return. It can also be minimized, load its content by Ajax or into an iframe, or render inline in the page flow.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "modal"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-modal",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "modal-id": {
+        "type": "string",
+        "default": ""
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Dialog\" in English)."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "open": {
+        "type": "boolean",
+        "default": false
+      },
+      "autoload": {
+        "type": "boolean",
+        "default": false
+      },
+      "unclose": {
+        "type": "boolean",
+        "default": false
+      },
+      "hide": {
+        "type": "boolean",
+        "default": false
+      },
+      "hide-modifier": {
+        "type": "string",
+        "default": ""
+      },
+      "minimized": {
+        "type": "boolean",
+        "default": false
+      },
+      "overlay": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-header": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-close": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-footer": {
+        "type": "boolean",
+        "default": true
+      },
+      "close-on-esc": {
+        "type": "boolean",
+        "default": true
+      },
+      "close-on-overlay": {
+        "type": "boolean",
+        "default": true
+      },
+      "preserve-scroll-gap": {
+        "type": "boolean",
+        "default": true
+      },
+      "position": {
+        "type": "string",
+        "default": "center",
+        "enum": [
+          "center",
+          "left",
+          "right",
+          "inline-start",
+          "inline-end",
+          "top",
+          "bottom"
+        ]
+      },
+      "mode": {
+        "type": "string",
+        "default": "inline",
+        "enum": [
+          "inline",
+          "ajax",
+          "iframe"
+        ]
+      },
+      "display": {
+        "type": "string",
+        "default": "modal",
+        "enum": [
+          "modal",
+          "inline"
+        ]
+      },
+      "src": {
+        "type": "string",
+        "default": ""
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "preload": {
+        "type": "boolean",
+        "default": true
+      },
+      "fullscreen": {
+        "type": "boolean",
+        "default": false
+      },
+      "width": {
+        "type": "string",
+        "default": ""
+      },
+      "height": {
+        "type": "string",
+        "default": ""
+      },
+      "blur": {
+        "type": "string",
+        "default": ""
+      },
+      "blur-type": {
+        "type": "string",
+        "default": "medium",
+        "enum": [
+          "none",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "overlay-preset": {
+        "type": "string",
+        "default": "default",
+        "enum": [
+          "default",
+          "focus"
+        ]
+      },
+      "overlay-class": {
+        "type": "string",
+        "default": ""
+      },
+      "close-class": {
+        "type": "string",
+        "default": ""
+      },
+      "surface-class": {
+        "type": "string",
+        "default": ""
+      },
+      "surface-padding": {
+        "type": "string",
+        "default": ""
+      },
+      "panel-class": {
+        "type": "string",
+        "default": ""
+      },
+      "header-class": {
+        "type": "string",
+        "default": ""
+      },
+      "body-class": {
+        "type": "string",
+        "default": ""
+      },
+      "content-class": {
+        "type": "string",
+        "default": ""
+      },
+      "footer-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getSlotHtml": {
+      "summary": "Returns the HTML of the captured content for a named slot, with runtime data and event ids carried over.",
+      "arguments": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "string"
+      }
+    },
+    "open": {
+      "summary": "Opens the window, or brings it to the front when already open. Dispatches modal:before-open (cancelable), then modal:after-open once projected; loads remote content when src is set. options.animate (or a boolean) controls the opening transition. Returns the element.",
+      "arguments": [
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "close": {
+      "summary": "Closes the window after modal:before-close (cancelable), runs the close transition, restores focus and dispatches modal:after-close. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "hide": {
+      "summary": "Minimizes an open overlay window after modal:before-hide (cancelable) and dispatches modal:after-hide. Does nothing inline. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "show": {
+      "summary": "Restores a minimized window after modal:before-show (cancelable) and dispatches modal:after-show. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "toggle": {
+      "summary": "Calls close() when open, open() otherwise. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setSrc": {
+      "summary": "Sets the src attribute, aborts and resets the current remote content and loads the new source when it may load now. Returns the element.",
+      "arguments": [
+        {
+          "name": "src",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "getModalRoot": {
+      "summary": "Returns the rendered .sf-modal element, or null before render.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "onKeyDown": {
+      "summary": "The document keydown handler the modal binds itself: Escape closes the top open window when close-on-esc allows it, Tab is trapped inside it. Not meant to be called by a host.",
+      "arguments": [
+        {
+          "name": "event",
+          "type": "KeyboardEvent",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null",
+        "description": "Returns nothing."
+      }
+    },
+    "resetRemoteContent": {
+      "summary": "Clears the loaded remote HTML, error and loading state and aborts a running request.",
+      "arguments": [],
+      "returns": {
+        "type": "null",
+        "description": "Returns nothing."
+      }
+    },
+    "clearPortal": {
+      "summary": "Unrenders and removes the portal root the window was projected into, if any.",
+      "arguments": [],
+      "returns": {
+        "type": "null",
+        "description": "Returns nothing."
+      }
+    },
+    "onBeforeOpen": {
+      "summary": "Adds a listener for modal:before-open on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAfterOpen": {
+      "summary": "Adds a listener for modal:after-open on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBeforeClose": {
+      "summary": "Adds a listener for modal:before-close on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAfterClose": {
+      "summary": "Adds a listener for modal:after-close on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBeforeHide": {
+      "summary": "Adds a listener for modal:before-hide on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAfterHide": {
+      "summary": "Adds a listener for modal:after-hide on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBeforeShow": {
+      "summary": "Adds a listener for modal:before-show on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAfterShow": {
+      "summary": "Adds a listener for modal:after-show on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onModalReady": {
+      "summary": "Calls the handler at once with a modal:ready event when the modal has already rendered, otherwise adds a listener for its own modal:ready. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onModalUpdate": {
+      "summary": "Adds a listener for modal:update on the host that runs only for this modal's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "reloadContent": {
+      "summary": "Resets the remote content and loads src again, even when the window is closed and preload is off. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "modal:after-close": {
+      "summary": "Fired after the window closes. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "after-close"
+          }
+        }
+      }
+    },
+    "modal:after-hide": {
+      "summary": "Fired after the window is minimized. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "after-hide"
+          }
+        }
+      }
+    },
+    "modal:after-open": {
+      "summary": "Fired after the window opens. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "after-open"
+          }
+        }
+      }
+    },
+    "modal:after-show": {
+      "summary": "Fired after the window is shown again after being minimized. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "after-show"
+          }
+        }
+      }
+    },
+    "modal:before-close": {
+      "summary": "Fired before the window closes; cancelable -- preventDefault() keeps it as it is. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "before-close"
+          }
+        }
+      }
+    },
+    "modal:before-hide": {
+      "summary": "Fired before the window is minimized; cancelable -- preventDefault() keeps it as it is. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "before-hide"
+          }
+        }
+      }
+    },
+    "modal:before-open": {
+      "summary": "Fired before the window opens; cancelable -- preventDefault() keeps it as it is. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "before-open"
+          }
+        }
+      }
+    },
+    "modal:before-show": {
+      "summary": "Fired before the window is shown again after being minimized; cancelable -- preventDefault() keeps it as it is. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          },
+          "phase": {
+            "type": "string",
+            "const": "before-show"
+          }
+        }
+      }
+    },
+    "modal:ready": {
+      "summary": "The window rendered for the first time. Bubbles and is composed; detail.modal is the emitting sf-modal.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          }
+        }
+      }
+    },
+    "modal:update": {
+      "summary": "The window rendered again after its first render. Bubbles and is composed; detail.modal is the emitting sf-modal.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered .sf-modal element."
+          }
+        }
+      }
+    },
+    "sf-after-render": {
+      "summary": "The base lifecycle event after each render. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "The active template name."
+          },
+          "changedAttributes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "sf-before-render": {
+      "summary": "The base lifecycle event before each render. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "The active template name."
+          },
+          "changedAttributes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "modal:before-content-upload": {
+      "summary": "An Ajax content request (mode=ajax) is starting. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "src": {
+            "type": "string"
+          },
+          "remote": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "enum": [
+                  "idle",
+                  "loading",
+                  "success",
+                  "error"
+                ]
+              },
+              "error": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "modal:after-content-upload": {
+      "summary": "Remote content finished loading, with success or error in detail.remote; an aborted request does not emit it. Also fired when an iframe loads. Bubbles and is composed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-modal."
+          },
+          "modal": {
+            "description": "The emitting sf-modal."
+          },
+          "modalId": {
+            "type": "string"
+          },
+          "src": {
+            "type": "string"
+          },
+          "remote": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "enum": [
+                  "idle",
+                  "loading",
+                  "success",
+                  "error"
+                ]
+              },
+              "error": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "open",
+      "closed"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "dialog",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Shift+Tab",
+      "Escape"
+    ],
+    "focus": "Opening focuses the panel of the top window; Tab and Shift+Tab are trapped inside it and Escape closes it when close-on-esc allows. Closing returns focus to the opener. The default title names the dialog through aria-labelledby; supply aria-label for a custom or headerless header. display=inline keeps normal document navigation. With display=inline the window is a region in the page rather than a dialog."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": [
+      {
+        "from": "1.0.0",
+        "to": "1.1.0",
+        "changes": [
+          "modal:* events bubble and are composed, like the base modal component and sf-drawer; detail.modal names the emitting modal.",
+          "onBeforeOpen, onAfterOpen and the other on* helpers, and handlers passed to SF.create, still receive only that modal's own events.",
+          "Ancestor listeners added with addEventListener now also see events of nested modals; check event.detail.modal."
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/modal/index.js",
+        "sha256": "c03ae74338e728490601f8c67923ef8f21f0846d92e51c59cff0c9f5732fbaa1"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/modal/js/modal.js",
+        "sha256": "eeb8bb19013404b34bdddef52ab20225ed79b7bd161231ac334c5b10c957a1fe"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-modal for one bounded task that temporarily owns the top interaction layer. It shares stack, focus return and scroll-lock ownership with ordinary Modal. Prefer center or logical inline-start/inline-end/top/bottom positions; left/right are compatibility aliases. The dialog and iframe are large surfaces on --sf-radius--surface, while compact header actions retain --sf-radius--ui. Inline display stays in document flow and does not capture focus. Minimized instances remain open but leave the visible interaction stack.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not use Modal for a long independent workflow that belongs on its own page",
+      "Do not replace semantic spacing, motion, color or radius tokens with absolute design values",
+      "Do not assume remote or iframe content is trusted; the host owns CSP, permissions, errors and data decisions",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-modal></sf-modal>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

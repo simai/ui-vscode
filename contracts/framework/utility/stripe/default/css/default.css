@@ -1,0 +1,14 @@
+@layer sf.utilities {
+  .stripe-1 {
+    background-image: repeating-linear-gradient(90deg, var(--sf-stripe--color) 0 var(--sf-px), transparent var(--sf-px) var(--sf-stripe--size));
+  }
+  .stripe-2 {
+    background-image: repeating-linear-gradient(0deg, var(--sf-stripe--color) 0 var(--sf-px), transparent var(--sf-px) var(--sf-stripe--size));
+  }
+  .stripe-3 {
+    background-image: repeating-linear-gradient(0deg, var(--sf-stripe--color) 0 var(--sf-px), transparent var(--sf-px) var(--sf-stripe--size)), repeating-linear-gradient(90deg, var(--sf-stripe--color) 0 var(--sf-px), transparent var(--sf-px) var(--sf-stripe--size));
+  }
+  .stripe-4 {
+    background-image: repeating-linear-gradient(135deg, var(--sf-stripe--color) 0 var(--sf-px), transparent var(--sf-px) var(--sf-stripe--size));
+  }
+}

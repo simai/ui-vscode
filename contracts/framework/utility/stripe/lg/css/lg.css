@@ -1,0 +1,20 @@
+@layer sf.utilities {
+  @media (min-width: 60rem) {
+    .lg\:stripe-1 {
+      background-image: linear-gradient(90deg, var(--sf-stripe--color) 1%, transparent 1%, transparent 49%, var(--sf-stripe--color) 49%, var(--sf-stripe--color) 51%, transparent 51%, transparent 99%, var(--sf-stripe--color) 99%);
+      background-size: var(--sf-stripe--size) var(--sf-stripe--size);
+    }
+    .lg\:stripe-2 {
+      background-image: linear-gradient(0deg, var(--sf-stripe--color) 1%, transparent 1%, transparent 49%, var(--sf-stripe--color) 49%, var(--sf-stripe--color) 51%, transparent 51%, transparent 99%, var(--sf-stripe--color) 99%);
+      background-size: var(--sf-stripe--size) var(--sf-stripe--size);
+    }
+    .lg\:stripe-3 {
+      background-image: linear-gradient(0deg, var(--sf-stripe--color) 1%, transparent 1%, transparent 49%, var(--sf-stripe--color) 49%, var(--sf-stripe--color) 51%, transparent 51%, transparent 99%, var(--sf-stripe--color) 99%), linear-gradient(90deg, var(--sf-stripe--color) 1%, transparent 1%, transparent 49%, var(--sf-stripe--color) 49%, var(--sf-stripe--color) 51%, transparent 51%, transparent 99%, var(--sf-stripe--color) 99%);
+      background-size: var(--sf-stripe--size) var(--sf-stripe--size);
+    }
+    .lg\:stripe-4 {
+      background-image: linear-gradient(135deg, var(--sf-stripe--color) 1%, transparent 1%, transparent 49%, var(--sf-stripe--color) 49%, var(--sf-stripe--color) 51%, transparent 51%, transparent 99%, var(--sf-stripe--color) 99%);
+      background-size: var(--sf-stripe--size) var(--sf-stripe--size);
+    }
+  }
+}

@@ -1,0 +1,98 @@
+@layer sf.utilities {
+  .text-1\/4 {
+    font-size: var(--sf-text--size-1\/4);
+    line-height: var(--sf-text--height-1\/4);
+  }
+  .text-1\/3 {
+    font-size: var(--sf-text--size-1\/3);
+    line-height: var(--sf-text--height-1\/3);
+  }
+  .text-1\/2 {
+    font-size: var(--sf-text--size-1\/2);
+    line-height: var(--sf-text--height-1\/2);
+  }
+  .text-1 {
+    font-size: var(--sf-text--size-1);
+    line-height: var(--sf-text--height-1);
+  }
+  .text-2 {
+    font-size: var(--sf-text--size-2);
+    line-height: var(--sf-text--height-2);
+  }
+  .text-3 {
+    font-size: var(--sf-text--size-3);
+    line-height: var(--sf-text--height-3);
+  }
+  .text-4 {
+    font-size: var(--sf-text--size-4);
+    line-height: var(--sf-text--height-4);
+  }
+  .text-5 {
+    font-size: var(--sf-text--size-5);
+    line-height: var(--sf-text--height-5);
+  }
+  .text-6 {
+    font-size: var(--sf-text--size-6);
+    line-height: var(--sf-text--height-6);
+  }
+  .text-7 {
+    font-size: var(--sf-text--size-7);
+    line-height: var(--sf-text--height-7);
+  }
+  .text-8 {
+    font-size: var(--sf-text--size-8);
+    line-height: var(--sf-text--height-8);
+  }
+  .text-9 {
+    font-size: var(--sf-text--size-9);
+    line-height: var(--sf-text--height-9);
+  }
+  .text-10 {
+    font-size: var(--sf-text--size-10);
+    line-height: var(--sf-text--height-10);
+  }
+  .text-11 {
+    font-size: var(--sf-text--size-11);
+    line-height: var(--sf-text--height-11);
+  }
+  .text-12 {
+    font-size: var(--sf-text--size-12);
+    line-height: var(--sf-text--height-12);
+  }
+  .text-1.heading {
+    line-height: var(--sf-title--height-1);
+  }
+  .text-2.heading {
+    line-height: var(--sf-title--height-2);
+  }
+  .text-3.heading {
+    line-height: var(--sf-title--height-3);
+  }
+  .text-4.heading {
+    line-height: var(--sf-title--height-4);
+  }
+  .text-5.heading {
+    line-height: var(--sf-title--height-5);
+  }
+  .text-6.heading {
+    line-height: var(--sf-title--height-6);
+  }
+  .text-7.heading {
+    line-height: var(--sf-title--height-7);
+  }
+  .text-8.heading {
+    line-height: var(--sf-title--height-8);
+  }
+  .text-9.heading {
+    line-height: var(--sf-title--height-9);
+  }
+  .text-10.heading {
+    line-height: var(--sf-title--height-10);
+  }
+  .text-11.heading {
+    line-height: var(--sf-title--height-11);
+  }
+  .text-12.heading {
+    line-height: var(--sf-title--height-12);
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "schema_version": 2,
+  "id": "smart.steps",
+  "version": "1.0.0",
+  "title": "Steps",
+  "summary": "A row of labelled step buttons, separated by an icon, for a multi-step process: marks the current, completed and error steps and moves to an enabled step when it is pressed.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "steps"
+  ],
+  "capabilities": [
+    "render",
+    "interaction",
+    "keyboard",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-steps",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1",
+          "1/2"
+        ]
+      },
+      "items": {
+        "type": "string",
+        "default": []
+      },
+      "current": {
+        "type": "number",
+        "default": 0
+      },
+      "error-step": {
+        "type": "string",
+        "default": ""
+      },
+      "separator-icon": {
+        "type": "string",
+        "default": "chevron_right"
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Steps\" in English)."
+      },
+      "completed-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Completed\" in English)."
+      },
+      "error-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Error\" in English)."
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "setState": {
+      "summary": "Writes each key as its kebab-case attribute; an array (items) is serialised as label::disabled entries joined by |. false, null, undefined or empty removes the attribute, true sets it empty.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "goToStep": {
+      "summary": "Moves current to the step at index, clamped to the list; does nothing for a disabled or the current step. Emits sf-step-change.",
+      "arguments": [
+        {
+          "name": "index",
+          "type": "number|string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onStepChange": {
+      "summary": "Adds a listener for sf-step-change; the handler is called with (current, detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-step-change": {
+      "summary": "Runtime event sf-step-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "number"
+          },
+          "current": {
+            "type": "number"
+          },
+          "item": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "disabled": {
+                "type": "boolean"
+              }
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "disabled": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "previous",
+          "current",
+          "item",
+          "items"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "success",
+      "selected",
+      "error",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "group",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "Each enabled native step button remains keyboard reachable and uses the shared focus-visible indicator. The current step exposes aria-current=step; completed and error status are included in accessible names."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/steps/index.js",
+        "sha256": "cb4faf3b4263ca0c0eba2e54b61822b4f67640a8407307ec8b5447b9a93841f7"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/steps/js/steps.js",
+        "sha256": "3dd1dcd255a3752a1344d2f422288ce458314a526630fa801314b0f04c9f8d3f"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-steps when the interface needs the steps behavior.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-steps></sf-steps>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

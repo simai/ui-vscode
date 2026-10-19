@@ -1,0 +1,86 @@
+@layer sf.utilities {
+  .transition-none {
+    transition-property: none;
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition {
+    transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-shadow {
+    transition-property: box-shadow;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-transform {
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-width {
+    transition-property: width;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-height {
+    transition-property: height;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-size {
+    transition-property: width, height;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-max-width {
+    transition-property: max-width;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-max-height {
+    transition-property: max-height;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-max-size {
+    transition-property: max-width, max-height;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-flex {
+    transition-property: flex, flex-basis;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-flex-basis {
+    transition-property: flex-basis;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+  .transition-layout {
+    transition-property: flex-grow, flex-shrink, flex-basis, width, min-width, max-width;
+    transition-timing-function: var(--sf-ease-move);
+    transition-duration: var(--sf-duration-normal);
+  }
+}

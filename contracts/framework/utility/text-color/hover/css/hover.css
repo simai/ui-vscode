@@ -1,0 +1,95 @@
+@layer sf.utilities {
+  .hover\:color-transparent:hover {
+    color: var(--sf-transparent);
+  }
+  .hover\:color-on-surface:hover {
+    color: var(--sf-on-surface);
+  }
+  .hover\:color-on-surface-fixed:hover {
+    color: var(--sf-on-surface-fixed);
+  }
+  .hover\:color-on-surface-variant:hover {
+    color: var(--sf-on-surface-variant);
+  }
+  .hover\:color-on-surface-inverse:hover {
+    color: var(--sf-on-surface-inverse);
+  }
+  .hover\:color-on-surface-inverse-fixed:hover {
+    color: var(--sf-on-surface-inverse-fixed);
+  }
+  .hover\:color-on-disable:hover {
+    color: var(--sf-on-disable);
+  }
+  .hover\:color-primary:hover {
+    color: var(--sf-primary);
+  }
+  .hover\:color-on-primary:hover {
+    color: var(--sf-on-primary);
+  }
+  .hover\:color-on-primary-container:hover {
+    color: var(--sf-on-primary-container);
+  }
+  .hover\:color-on-primary-container-graphic:hover {
+    color: var(--sf-on-primary-container-graphic);
+  }
+  .hover\:color-secondary:hover {
+    color: var(--sf-secondary);
+  }
+  .hover\:color-on-secondary:hover {
+    color: var(--sf-on-secondary);
+  }
+  .hover\:color-on-secondary-container:hover {
+    color: var(--sf-on-secondary-container);
+  }
+  .hover\:color-on-secondary-container-graphic:hover {
+    color: var(--sf-on-secondary-container-graphic);
+  }
+  .hover\:color-tertiary:hover {
+    color: var(--sf-tertiary);
+  }
+  .hover\:color-on-tertiary:hover {
+    color: var(--sf-on-tertiary);
+  }
+  .hover\:color-on-tertiary-container:hover {
+    color: var(--sf-on-tertiary-container);
+  }
+  .hover\:color-on-tertiary-container-graphic:hover {
+    color: var(--sf-on-tertiary-container-graphic);
+  }
+  .hover\:color-error:hover {
+    color: var(--sf-error);
+  }
+  .hover\:color-on-error:hover {
+    color: var(--sf-on-error);
+  }
+  .hover\:color-on-error-container:hover {
+    color: var(--sf-on-error-container);
+  }
+  .hover\:color-on-error-container-graphic:hover {
+    color: var(--sf-on-error-container-graphic);
+  }
+  .hover\:color-warning:hover {
+    color: var(--sf-warning);
+  }
+  .hover\:color-on-warning:hover {
+    color: var(--sf-on-warning);
+  }
+  .hover\:color-on-warning-container:hover {
+    color: var(--sf-on-warning-container);
+  }
+  .hover\:color-on-warning-container-graphic:hover {
+    color: var(--sf-on-warning-container-graphic);
+  }
+  .hover\:color-success:hover {
+    color: var(--sf-success);
+  }
+  .hover\:color-on-success:hover {
+    color: var(--sf-on-success);
+  }
+  .hover\:color-on-success-container:hover {
+    color: var(--sf-on-success-container);
+  }
+  .hover\:color-on-success-container-graphic:hover {
+    color: var(--sf-on-success-container-graphic);
+  }
+}

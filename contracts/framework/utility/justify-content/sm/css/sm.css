@@ -1,0 +1,28 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    .sm\:justify-start,
+    .sm\:content-main-start {
+      justify-content: flex-start;
+    }
+    .sm\:justify-end,
+    .sm\:content-main-end {
+      justify-content: flex-end;
+    }
+    .sm\:justify-center,
+    .sm\:content-main-center {
+      justify-content: center;
+    }
+    .sm\:justify-between,
+    .sm\:content-main-between {
+      justify-content: space-between;
+    }
+    .sm\:justify-around,
+    .sm\:content-main-around {
+      justify-content: space-around;
+    }
+    .sm\:justify-evenly,
+    .sm\:content-main-evenly {
+      justify-content: space-evenly;
+    }
+  }
+}

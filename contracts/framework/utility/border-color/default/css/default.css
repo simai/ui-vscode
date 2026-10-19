@@ -1,0 +1,371 @@
+@layer sf.utilities {
+  .border-transparent {
+    border-color: var(--sf-transparent);
+  }
+  .border-current {
+    border-color: var(--sf-current);
+  }
+  .border-outline {
+    border-color: var(--sf-outline);
+  }
+  .border-outline-variant {
+    border-color: var(--sf-outline-variant);
+  }
+  .border-surface {
+    border-color: var(--sf-surface-1);
+  }
+  .border-surface-0 {
+    border-color: var(--sf-surface-0);
+  }
+  .border-surface-1 {
+    border-color: var(--sf-surface-1);
+  }
+  .border-surface-container {
+    border-color: var(--sf-surface-container);
+  }
+  .border-surface-overlay {
+    border-color: var(--sf-surface-overlay);
+  }
+  .border-surface-transparent-overlay {
+    border-color: var(--sf-surface-transparent-overlay);
+  }
+  .border-surface-inverse {
+    border-color: var(--sf-surface-inverse);
+  }
+  .border-on-surface {
+    border-color: var(--sf-on-surface);
+  }
+  .border-on-surface-variant {
+    border-color: var(--sf-on-surface-variant);
+  }
+  .border-primary {
+    border-color: var(--sf-outline-primary);
+  }
+  .border-primary-container {
+    border-color: var(--sf-primary-container);
+  }
+  .border-primary-transparent-overlay {
+    border-color: var(--sf-primary-transparent-overlay);
+  }
+  .border-secondary {
+    border-color: var(--sf-outline-secondary);
+  }
+  .border-secondary-container {
+    border-color: var(--sf-secondary-container);
+  }
+  .border-secondary-transparent-overlay {
+    border-color: var(--sf-secondary-transparent-overlay);
+  }
+  .border-tertiary {
+    border-color: var(--sf-outline-tertiary);
+  }
+  .border-tertiary-container {
+    border-color: var(--sf-tertiary-container);
+  }
+  .border-tertiary-transparent-overlay {
+    border-color: var(--sf-tertiary-transparent-overlay);
+  }
+  .border-error {
+    border-color: var(--sf-outline-error);
+  }
+  .border-error-container {
+    border-color: var(--sf-error-container);
+  }
+  .border-error-transparent-overlay {
+    border-color: var(--sf-error-transparent-overlay);
+  }
+  .border-warning {
+    border-color: var(--sf-outline-warning);
+  }
+  .border-warning-container {
+    border-color: var(--sf-warning-container);
+  }
+  .border-warning-transparent-overlay {
+    border-color: var(--sf-warning-transparent-overlay);
+  }
+  .border-success {
+    border-color: var(--sf-outline-success);
+  }
+  .border-success-container {
+    border-color: var(--sf-success-container);
+  }
+  .border-success-transparent-overlay {
+    border-color: var(--sf-success-transparent-overlay);
+  }
+  .border-info {
+    border-color: var(--sf-outline-info);
+  }
+  .border-info-container {
+    border-color: var(--sf-info-container);
+  }
+  .border-white {
+    border-color: rgb(255, 255, 255);
+  }
+  .border-black {
+    border-color: rgb(0, 0, 0);
+  }
+  .border-gray {
+    border-color: rgb(106, 115, 125);
+  }
+  .border-gray-0 {
+    border-color: rgb(250, 251, 252);
+  }
+  .border-gray-1 {
+    border-color: rgb(246, 248, 250);
+  }
+  .border-gray-2 {
+    border-color: rgb(225, 228, 232);
+  }
+  .border-gray-3 {
+    border-color: rgb(209, 213, 218);
+  }
+  .border-gray-4 {
+    border-color: rgb(149, 157, 165);
+  }
+  .border-gray-5 {
+    border-color: rgb(106, 115, 125);
+  }
+  .border-gray-6 {
+    border-color: rgb(88, 96, 105);
+  }
+  .border-gray-7 {
+    border-color: rgb(68, 77, 86);
+  }
+  .border-gray-8 {
+    border-color: rgb(47, 54, 61);
+  }
+  .border-gray-9 {
+    border-color: rgb(36, 41, 46);
+  }
+  .border-red {
+    border-color: rgb(215, 58, 73);
+  }
+  .border-red-0 {
+    border-color: rgb(255, 238, 240);
+  }
+  .border-red-1 {
+    border-color: rgb(255, 220, 224);
+  }
+  .border-red-2 {
+    border-color: rgb(253, 174, 183);
+  }
+  .border-red-3 {
+    border-color: rgb(249, 117, 131);
+  }
+  .border-red-4 {
+    border-color: rgb(234, 74, 90);
+  }
+  .border-red-5 {
+    border-color: rgb(215, 58, 73);
+  }
+  .border-red-6 {
+    border-color: rgb(203, 36, 49);
+  }
+  .border-red-7 {
+    border-color: rgb(179, 29, 40);
+  }
+  .border-red-8 {
+    border-color: rgb(158, 28, 35);
+  }
+  .border-red-9 {
+    border-color: rgb(134, 24, 29);
+  }
+  .border-orange {
+    border-color: rgb(246, 106, 10);
+  }
+  .border-orange-0 {
+    border-color: rgb(255, 248, 242);
+  }
+  .border-orange-1 {
+    border-color: rgb(255, 235, 218);
+  }
+  .border-orange-2 {
+    border-color: rgb(255, 209, 172);
+  }
+  .border-orange-3 {
+    border-color: rgb(255, 171, 112);
+  }
+  .border-orange-4 {
+    border-color: rgb(251, 133, 50);
+  }
+  .border-orange-5 {
+    border-color: rgb(246, 106, 10);
+  }
+  .border-orange-6 {
+    border-color: rgb(227, 98, 9);
+  }
+  .border-orange-7 {
+    border-color: rgb(209, 87, 4);
+  }
+  .border-orange-8 {
+    border-color: rgb(194, 78, 0);
+  }
+  .border-orange-9 {
+    border-color: rgb(160, 65, 0);
+  }
+  .border-yellow {
+    border-color: rgb(255, 211, 61);
+  }
+  .border-yellow-0 {
+    border-color: rgb(255, 253, 239);
+  }
+  .border-yellow-1 {
+    border-color: rgb(255, 251, 221);
+  }
+  .border-yellow-2 {
+    border-color: rgb(255, 245, 177);
+  }
+  .border-yellow-3 {
+    border-color: rgb(255, 234, 127);
+  }
+  .border-yellow-4 {
+    border-color: rgb(255, 223, 93);
+  }
+  .border-yellow-5 {
+    border-color: rgb(255, 211, 61);
+  }
+  .border-yellow-6 {
+    border-color: rgb(249, 197, 19);
+  }
+  .border-yellow-7 {
+    border-color: rgb(219, 171, 9);
+  }
+  .border-yellow-8 {
+    border-color: rgb(176, 136, 0);
+  }
+  .border-yellow-9 {
+    border-color: rgb(115, 92, 15);
+  }
+  .border-green {
+    border-color: rgb(40, 167, 69);
+  }
+  .border-green-0 {
+    border-color: rgb(240, 255, 244);
+  }
+  .border-green-1 {
+    border-color: rgb(220, 255, 228);
+  }
+  .border-green-2 {
+    border-color: rgb(190, 245, 203);
+  }
+  .border-green-3 {
+    border-color: rgb(133, 232, 157);
+  }
+  .border-green-4 {
+    border-color: rgb(52, 208, 88);
+  }
+  .border-green-5 {
+    border-color: rgb(40, 167, 69);
+  }
+  .border-green-6 {
+    border-color: rgb(34, 134, 58);
+  }
+  .border-green-7 {
+    border-color: rgb(23, 111, 44);
+  }
+  .border-green-8 {
+    border-color: rgb(22, 92, 38);
+  }
+  .border-green-9 {
+    border-color: rgb(20, 70, 32);
+  }
+  .border-blue {
+    border-color: rgb(3, 102, 214);
+  }
+  .border-blue-0 {
+    border-color: rgb(241, 248, 255);
+  }
+  .border-blue-1 {
+    border-color: rgb(219, 237, 255);
+  }
+  .border-blue-2 {
+    border-color: rgb(200, 225, 255);
+  }
+  .border-blue-3 {
+    border-color: rgb(121, 184, 255);
+  }
+  .border-blue-4 {
+    border-color: rgb(33, 136, 255);
+  }
+  .border-blue-5 {
+    border-color: rgb(3, 102, 214);
+  }
+  .border-blue-6 {
+    border-color: rgb(0, 92, 197);
+  }
+  .border-blue-7 {
+    border-color: rgb(4, 66, 137);
+  }
+  .border-blue-8 {
+    border-color: rgb(3, 47, 98);
+  }
+  .border-blue-9 {
+    border-color: rgb(5, 38, 76);
+  }
+  .border-purple {
+    border-color: rgb(111, 66, 193);
+  }
+  .border-purple-0 {
+    border-color: rgb(245, 240, 255);
+  }
+  .border-purple-1 {
+    border-color: rgb(230, 220, 253);
+  }
+  .border-purple-2 {
+    border-color: rgb(209, 188, 249);
+  }
+  .border-purple-3 {
+    border-color: rgb(179, 146, 240);
+  }
+  .border-purple-4 {
+    border-color: rgb(138, 99, 210);
+  }
+  .border-purple-5 {
+    border-color: rgb(111, 66, 193);
+  }
+  .border-purple-6 {
+    border-color: rgb(90, 50, 163);
+  }
+  .border-purple-7 {
+    border-color: rgb(76, 40, 136);
+  }
+  .border-purple-8 {
+    border-color: rgb(58, 29, 110);
+  }
+  .border-purple-9 {
+    border-color: rgb(41, 19, 78);
+  }
+  .border-pink {
+    border-color: rgb(234, 74, 170);
+  }
+  .border-pink-0 {
+    border-color: rgb(255, 238, 248);
+  }
+  .border-pink-1 {
+    border-color: rgb(254, 219, 240);
+  }
+  .border-pink-2 {
+    border-color: rgb(249, 179, 221);
+  }
+  .border-pink-3 {
+    border-color: rgb(246, 146, 206);
+  }
+  .border-pink-4 {
+    border-color: rgb(236, 108, 185);
+  }
+  .border-pink-5 {
+    border-color: rgb(234, 74, 170);
+  }
+  .border-pink-6 {
+    border-color: rgb(208, 53, 146);
+  }
+  .border-pink-7 {
+    border-color: rgb(185, 58, 134);
+  }
+  .border-pink-8 {
+    border-color: rgb(153, 48, 111);
+  }
+  .border-pink-9 {
+    border-color: rgb(109, 34, 79);
+  }
+}

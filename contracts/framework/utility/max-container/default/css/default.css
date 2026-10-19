@@ -1,0 +1,52 @@
+@layer sf.utilities {
+  .max-container-1 .container {
+    width: 100%;
+  }
+  .max-container-2 .container {
+    width: 100%;
+  }
+  .max-container-3 .container {
+    width: 100%;
+  }
+  .max-container-4 .container {
+    width: 100%;
+  }
+  .max-container-5 .container {
+    width: 100%;
+  }
+  .max-container-6 .container {
+    width: 100%;
+  }
+  .max-container-7 .container {
+    width: 100%;
+  }
+  .max-container-8 .container {
+    width: 100%;
+  }
+  @media (min-width: 60rem) {
+    .max-container-1 .container {
+      max-width: var(--sf-container-1--size-max);
+    }
+    .max-container-2 .container {
+      max-width: var(--sf-container-2--size-max);
+    }
+    .max-container-3 .container {
+      max-width: var(--sf-container-3--size-max);
+    }
+    .max-container-4 .container {
+      max-width: var(--sf-container-4--size-max);
+    }
+    .max-container-5 .container {
+      max-width: var(--sf-container-5--size-max);
+    }
+    .max-container-6 .container {
+      max-width: var(--sf-container-6--size-max);
+    }
+    .max-container-7 .container {
+      max-width: var(--sf-container-7--size-max);
+    }
+    .max-container-8 .container {
+      max-width: var(--sf-container-8--size-max);
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "schema_version": 2,
+  "id": "smart.reference-link",
+  "version": "1.0.0",
+  "title": "Reference Link",
+  "summary": "Navigation surface that pairs a real destination with a compact reference.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "reference-link"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-reference-link",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.reference-link",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "appearance": {
+        "type": "string",
+        "enum": [
+          "card",
+          "plain"
+        ],
+        "default": "card",
+        "description": "card is the reference as its own box: frame, fill and padding. plain is the link alone, taking the width of its text, for a reference inside something that is already a box -- a record’s field, a table cell -- where a second frame reads as a control the value is not."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Render an unavailable, non-focusable reference without navigation."
+      },
+      "href": {
+        "type": "string",
+        "default": "",
+        "description": "Real navigation destination. Required for an enabled reference."
+      },
+      "icon": {
+        "type": "string",
+        "default": "arrow_forward",
+        "description": "Decorative icon name. An absent attribute is the arrow; an empty one draws no icon, for a reference that stands beside its own label."
+      },
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "Destination-oriented visible link label."
+      },
+      "line": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Takes the text line of this form size as a link without the card, for a table cell, so the row keeps its control height."
+      },
+      "size": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Form size: the reference becomes a control of that size, for a row of fields or a table cell. Empty keeps the card spacing."
+      },
+      "target": {
+        "type": "string",
+        "default": "_self",
+        "description": "Native browsing-context target. Disclose new-context navigation in the name."
+      },
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "text": {
+        "type": "string",
+        "default": "",
+        "description": "Compact route, source or reference shown beside the label."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "navigation": {
+      "enabled": "native anchor with a real href",
+      "disabled": "non-interactive content with no href",
+      "boundary": "the complete reference surface is the pointer and keyboard-focus boundary"
+    },
+    "canonical_elements": {
+      "type": "string",
+      "enum": [
+        "sf-reference-link__main",
+        "sf-reference-link__link",
+        "sf-reference-link__icon",
+        "sf-reference-link__meta"
+      ]
+    },
+    "interaction_states": {
+      "type": "string",
+      "enum": [
+        "hover",
+        "active",
+        "focus-visible"
+      ]
+    }
+  },
+  "methods": {
+    "onClick": {
+      "summary": "Adds a click listener on the host.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "active",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/reference-link/index.js",
+        "sha256": "166cfd7a8dbfa8227126d3e8b0b7902637aa92fa6b2cf09c304010f960f4966e"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/reference-link/js/reference-link.js",
+        "sha256": "6aa49e834639b9d0a71746091942491515f6daec36edcbe6e3c8daa683303a35"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-reference-link when a real destination benefits from a visible route, source or other compact reference.",
+    "do_not": [
+      "Do not use Reference Link for a generic action or a plain text link",
+      "Do not render an enabled reference without href",
+      "Do not leave href on a disabled reference",
+      "Do not open a new context without disclosing it in the accessible name",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-reference-link label=\"Installation guide\" text=\"/start/install/\" href=\"/start/install/\"></sf-reference-link>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

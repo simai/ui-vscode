@@ -1,0 +1,290 @@
+{
+  "schema_version": 2,
+  "id": "smart.resizer",
+  "version": "1.0.0",
+  "title": "Resizer",
+  "summary": "A handle on a panel's edge that changes the panel's width by a drag, the keyboard or a double click back to the default, within limits; optionally remembered in the browser.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "resizer",
+    "splitter",
+    "layout"
+  ],
+  "capabilities": [
+    "interaction",
+    "keyboard",
+    "responsive"
+  ],
+  "custom_element": "sf-resizer",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "min": {
+        "type": "string",
+        "default": "12rem",
+        "description": "The narrowest width, a CSS length (tokens and percentages of the panel's parent too)."
+      },
+      "max": {
+        "type": "string",
+        "default": "40rem",
+        "description": "The widest width, a CSS length."
+      },
+      "property": {
+        "type": "string",
+        "default": "",
+        "description": "A CSS custom property the width is written to on the target; empty writes inline-size."
+      },
+      "target": {
+        "type": "string",
+        "default": "",
+        "description": "A selector of the closest ancestor that is the panel; empty is the parent."
+      },
+      "edge": {
+        "type": "string",
+        "default": "inline-end",
+        "enum": [
+          "inline-end",
+          "inline-start"
+        ]
+      },
+      "step": {
+        "type": "string",
+        "default": "16",
+        "description": "Pixels an arrow key moves; Shift moves four steps."
+      },
+      "storage-key": {
+        "type": "string",
+        "default": "",
+        "description": "Remembers the width in this browser as the view preference sf-resizer/<key> (SF.Preferences); a double click forgets it."
+      },
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name; defaults to the page language's «Resize»."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "value": {
+        "type": "string",
+        "default": "",
+        "description": "A width in pixels the host keeps (a person's settings); it wins over the browser's memory."
+      }
+    },
+    "additionalProperties": false
+  },
+  "contracts": {
+    "attach": {
+      "type": "object",
+      "description": "SF.Resizer.attach(root, {handles, session(handle) -> {measure, limits, apply, commit, reset, direction, step, start, end}}) gives any edge -- a table's column edges -- the same drag, keys, double click, cursor and separator value."
+    }
+  },
+  "methods": {},
+  "events": {
+    "sf-resize": {
+      "summary": "The width changed: while dragging (move), after a drag or a key (end), or back to the stylesheet's width (reset).",
+      "payload": {
+        "type": "object",
+        "required": [
+          "width",
+          "phase"
+        ],
+        "properties": {
+          "width": {
+            "type": "number"
+          },
+          "phase": {
+            "enum": [
+              "move",
+              "end",
+              "reset"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "drag": [
+        "idle",
+        "resizing"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "active",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "none",
+    "revision_field": null,
+    "view_preference": {
+      "key": "sf-resizer/<storage-key>",
+      "general_key": null,
+      "v": 1,
+      "fields": {
+        "width": {
+          "type": "integer",
+          "description": "The width the person dragged to, in CSS pixels, clamped to min and max when it is applied.",
+          "seed": true,
+          "written_by": [
+            "sf-resizer"
+          ]
+        }
+      }
+    }
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "saving the width on a server"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "separator",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "ArrowLeft",
+      "ArrowRight",
+      "Home",
+      "End",
+      "PageUp",
+      "PageDown",
+      "Enter",
+      "Space"
+    ],
+    "focus": "The handle is in the tab order with role separator, aria-orientation vertical and aria-valuenow/min/max in pixels. Arrows change the width by a step (Shift: four), Home and End set a limit, Enter, Space and a double click restore the stylesheet's width."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/resizer/index.js",
+        "sha256": "4dfc61356b7893fc835ff6aead80da238732f8b2f38126664b42e2f7ea10aa58"
+      },
+      {
+        "path": "src/smart/resizer/scss/_smart__resizer.scss",
+        "sha256": "d242b2984fb7f335bf75b7987e5b60dc5339fe0affa85d0320b878bcd905841f"
+      },
+      {
+        "path": "src/smart/resizer/rule.js",
+        "sha256": "dba7fc18309d260feb0cb0dc343ddde289ad68af8c99c750716d7c12175b69aa"
+      },
+      {
+        "path": "src/smart/resizer/docs.md",
+        "sha256": "e5eb7804b2d5c649ef0173b6fd77520a1179f6f75a5d24bd5cbc651515759808"
+      },
+      {
+        "path": "src/smart/resizer/engine.mjs",
+        "sha256": "258b529502181cd1241530e7594faeea9893390571d829fe3c54ae883a138b74"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-resizer when a person should widen or narrow a panel, a menu column or a side area by its edge. Put it inside the panel; give min and max; write the width to the variable the panel's stylesheet reads.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not rely on pointer dragging alone; keep the keyboard path",
+      "Do not save the width on a server from the component; listen to sf-resize"
+    ],
+    "required_reads": [
+      "inputs",
+      "events",
+      "accessibility",
+      "provenance"
+    ],
+    "minimal_example": "<nav style=\"inline-size: var(--menu-width, 16rem)\"><sf-resizer min=\"13rem\" max=\"24rem\" property=\"--menu-width\" storage-key=\"menu\" label=\"Menu width\"></sf-resizer></nav>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

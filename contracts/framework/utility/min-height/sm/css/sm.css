@@ -1,0 +1,28 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    .sm\:min-h-full {
+      min-height: 100%;
+    }
+    .sm\:min-h-screen {
+      min-height: 100vh;
+    }
+    .sm\:min-h-min {
+      min-height: -webkit-min-content;
+      min-height: -moz-min-content;
+      min-height: min-content;
+    }
+    .sm\:min-h-max {
+      min-height: -webkit-max-content;
+      min-height: -moz-max-content;
+      min-height: max-content;
+    }
+    .sm\:min-h-fit {
+      min-height: -webkit-fit-content;
+      min-height: -moz-fit-content;
+      min-height: fit-content;
+    }
+    .sm\:min-h-0 {
+      min-height: 0;
+    }
+  }
+}

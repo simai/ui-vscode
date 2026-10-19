@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "id": "smart.download-file",
+  "version": "1.0.0",
+  "title": "Download File",
+  "summary": "Native file download or application-owned file preparation action.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "download-file"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-download-file",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.download-file",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ],
+        "description": "Existing compact-to-prominent component size scale."
+      },
+      "file-name": {
+        "type": "string",
+        "default": "File.pdf",
+        "description": "Visible filename and default native download name."
+      },
+      "file-size": {
+        "type": "string",
+        "default": "",
+        "description": "Known human-readable size. Pass it when available to avoid discovery."
+      },
+      "icon": {
+        "type": "string",
+        "default": "download",
+        "description": "Decorative icon name."
+      },
+      "href": {
+        "type": "string",
+        "default": "",
+        "description": "Real resource destination; renders a native anchor when enabled."
+      },
+      "download": {
+        "type": "boolean",
+        "default": false,
+        "description": "Apply native download semantics to an anchor destination."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Render a disabled button with no live destination."
+      },
+      "target": {
+        "type": "string",
+        "default": "_blank"
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "owner_semantics": {
+      "resource": "href renders a native anchor",
+      "application_action": "no href renders a button and emits sf-download-file:click",
+      "disabled": "disabled button with no live destination"
+    },
+    "canonical_elements": {
+      "type": "string",
+      "enum": [
+        "sf-download-file__body",
+        "sf-download-file__main",
+        "sf-download-file__icon",
+        "sf-download-file__name",
+        "sf-download-file__size"
+      ]
+    },
+    "interaction_states": {
+      "type": "string",
+      "enum": [
+        "hover",
+        "active",
+        "focus-visible"
+      ]
+    },
+    "compatibility": {
+      "size_lookup": "an empty size preserves the existing Content-Length lookup"
+    }
+  },
+  "methods": {},
+  "events": {
+    "sf-download-file:click": {
+      "summary": "Emitted once for an enabled native destination or application-owned action, from the rendered .sf-download-file root; bubbles to the host, is not composed and not cancelable.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "description": "Empty for an application-owned action."
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "download": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "active",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/download-file/index.js",
+        "sha256": "6452e87d436eb46deadd5164c4a8475a82b8a91cd209f149b142dfc4ad356181"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/download-file/js/download-file.js",
+        "sha256": "5832578dd6cd97a6bc69f235343c032db297a60e5f92b8917e73bdcd79dc9f20"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-download-file for one downloadable resource or an application-owned file preparation action.",
+    "do_not": [
+      "Do not use a button when a stable resource href already exists",
+      "Do not leave href on an unavailable file",
+      "Do not use the decorative icon as the accessible name",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-download-file file-name=\"Report.pdf\" file-size=\"2.4 MB\" href=\"/files/report.pdf\" download></sf-download-file>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,274 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:max-h-a0 {
+      max-height: var(--sf-a0);
+    }
+    .xl\:max-h-a1 {
+      max-height: var(--sf-a1);
+    }
+    .xl\:max-h-a2 {
+      max-height: var(--sf-a2);
+    }
+    .xl\:max-h-a3 {
+      max-height: var(--sf-a3);
+    }
+    .xl\:max-h-a4 {
+      max-height: var(--sf-a4);
+    }
+    .xl\:max-h-a5 {
+      max-height: var(--sf-a5);
+    }
+    .xl\:max-h-a6 {
+      max-height: var(--sf-a6);
+    }
+    .xl\:max-h-a7 {
+      max-height: var(--sf-a7);
+    }
+    .xl\:max-h-a8 {
+      max-height: var(--sf-a8);
+    }
+    .xl\:max-h-a9 {
+      max-height: var(--sf-a9);
+    }
+    .xl\:max-h-b0 {
+      max-height: var(--sf-b0);
+    }
+    .xl\:max-h-b1 {
+      max-height: var(--sf-b1);
+    }
+    .xl\:max-h-b2 {
+      max-height: var(--sf-b2);
+    }
+    .xl\:max-h-b3 {
+      max-height: var(--sf-b3);
+    }
+    .xl\:max-h-b4 {
+      max-height: var(--sf-b4);
+    }
+    .xl\:max-h-b5 {
+      max-height: var(--sf-b5);
+    }
+    .xl\:max-h-b6 {
+      max-height: var(--sf-b6);
+    }
+    .xl\:max-h-b7 {
+      max-height: var(--sf-b7);
+    }
+    .xl\:max-h-b8 {
+      max-height: var(--sf-b8);
+    }
+    .xl\:max-h-b9 {
+      max-height: var(--sf-b9);
+    }
+    .xl\:max-h-c0 {
+      max-height: var(--sf-c0);
+    }
+    .xl\:max-h-c1 {
+      max-height: var(--sf-c1);
+    }
+    .xl\:max-h-c2 {
+      max-height: var(--sf-c2);
+    }
+    .xl\:max-h-c3 {
+      max-height: var(--sf-c3);
+    }
+    .xl\:max-h-c4 {
+      max-height: var(--sf-c4);
+    }
+    .xl\:max-h-c5 {
+      max-height: var(--sf-c5);
+    }
+    .xl\:max-h-c6 {
+      max-height: var(--sf-c6);
+    }
+    .xl\:max-h-c7 {
+      max-height: var(--sf-c7);
+    }
+    .xl\:max-h-c8 {
+      max-height: var(--sf-c8);
+    }
+    .xl\:max-h-c9 {
+      max-height: var(--sf-c9);
+    }
+    .xl\:max-h-d0 {
+      max-height: var(--sf-d0);
+    }
+    .xl\:max-h-d1 {
+      max-height: var(--sf-d1);
+    }
+    .xl\:max-h-d2 {
+      max-height: var(--sf-d2);
+    }
+    .xl\:max-h-d3 {
+      max-height: var(--sf-d3);
+    }
+    .xl\:max-h-d4 {
+      max-height: var(--sf-d4);
+    }
+    .xl\:max-h-d5 {
+      max-height: var(--sf-d5);
+    }
+    .xl\:max-h-d6 {
+      max-height: var(--sf-d6);
+    }
+    .xl\:max-h-d7 {
+      max-height: var(--sf-d7);
+    }
+    .xl\:max-h-d8 {
+      max-height: var(--sf-d8);
+    }
+    .xl\:max-h-d9 {
+      max-height: var(--sf-d9);
+    }
+    .xl\:max-h-e0 {
+      max-height: var(--sf-e0);
+    }
+    .xl\:max-h-e1 {
+      max-height: var(--sf-e1);
+    }
+    .xl\:max-h-e2 {
+      max-height: var(--sf-e2);
+    }
+    .xl\:max-h-e3 {
+      max-height: var(--sf-e3);
+    }
+    .xl\:max-h-e4 {
+      max-height: var(--sf-e4);
+    }
+    .xl\:max-h-e5 {
+      max-height: var(--sf-e5);
+    }
+    .xl\:max-h-e6 {
+      max-height: var(--sf-e6);
+    }
+    .xl\:max-h-e7 {
+      max-height: var(--sf-e7);
+    }
+    .xl\:max-h-e8 {
+      max-height: var(--sf-e8);
+    }
+    .xl\:max-h-e9 {
+      max-height: var(--sf-e9);
+    }
+    .xl\:max-h-f0 {
+      max-height: var(--sf-f0);
+    }
+    .xl\:max-h-f1 {
+      max-height: var(--sf-f1);
+    }
+    .xl\:max-h-f2 {
+      max-height: var(--sf-f2);
+    }
+    .xl\:max-h-f3 {
+      max-height: var(--sf-f3);
+    }
+    .xl\:max-h-f4 {
+      max-height: var(--sf-f4);
+    }
+    .xl\:max-h-f5 {
+      max-height: var(--sf-f5);
+    }
+    .xl\:max-h-f6 {
+      max-height: var(--sf-f6);
+    }
+    .xl\:max-h-f7 {
+      max-height: var(--sf-f7);
+    }
+    .xl\:max-h-f8 {
+      max-height: var(--sf-f8);
+    }
+    .xl\:max-h-f9 {
+      max-height: var(--sf-f9);
+    }
+    .xl\:max-h-g0 {
+      max-height: var(--sf-g0);
+    }
+    .xl\:max-h-g1 {
+      max-height: var(--sf-g1);
+    }
+    .xl\:max-h-g2 {
+      max-height: var(--sf-g2);
+    }
+    .xl\:max-h-g3 {
+      max-height: var(--sf-g3);
+    }
+    .xl\:max-h-g4 {
+      max-height: var(--sf-g4);
+    }
+    .xl\:max-h-g5 {
+      max-height: var(--sf-g5);
+    }
+    .xl\:max-h-g6 {
+      max-height: var(--sf-g6);
+    }
+    .xl\:max-h-g7 {
+      max-height: var(--sf-g7);
+    }
+    .xl\:max-h-g8 {
+      max-height: var(--sf-g8);
+    }
+    .xl\:max-h-g9 {
+      max-height: var(--sf-g9);
+    }
+    .xl\:max-h-h0 {
+      max-height: var(--sf-h0);
+    }
+    .xl\:max-h-h1 {
+      max-height: var(--sf-h1);
+    }
+    .xl\:max-h-h2 {
+      max-height: var(--sf-h2);
+    }
+    .xl\:max-h-h3 {
+      max-height: var(--sf-h3);
+    }
+    .xl\:max-h-h4 {
+      max-height: var(--sf-h4);
+    }
+    .xl\:max-h-h5 {
+      max-height: var(--sf-h5);
+    }
+    .xl\:max-h-h6 {
+      max-height: var(--sf-h6);
+    }
+    .xl\:max-h-h7 {
+      max-height: var(--sf-h7);
+    }
+    .xl\:max-h-h8 {
+      max-height: var(--sf-h8);
+    }
+    .xl\:max-h-h9 {
+      max-height: var(--sf-h9);
+    }
+    .xl\:max-h-i0 {
+      max-height: var(--sf-i0);
+    }
+    .xl\:max-h-i1 {
+      max-height: var(--sf-i1);
+    }
+    .xl\:max-h-i2 {
+      max-height: var(--sf-i2);
+    }
+    .xl\:max-h-i3 {
+      max-height: var(--sf-i3);
+    }
+    .xl\:max-h-i4 {
+      max-height: var(--sf-i4);
+    }
+    .xl\:max-h-i5 {
+      max-height: var(--sf-i5);
+    }
+    .xl\:max-h-i6 {
+      max-height: var(--sf-i6);
+    }
+    .xl\:max-h-i7 {
+      max-height: var(--sf-i7);
+    }
+    .xl\:max-h-i8 {
+      max-height: var(--sf-i8);
+    }
+    .xl\:max-h-i9 {
+      max-height: var(--sf-i9);
+    }
+  }
+}

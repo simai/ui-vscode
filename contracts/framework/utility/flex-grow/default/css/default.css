@@ -1,0 +1,8 @@
+@layer sf.utilities {
+  .grow {
+    flex-grow: 1;
+  }
+  .grow-none {
+    flex-grow: 0;
+  }
+}

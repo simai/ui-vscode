@@ -1,0 +1,39 @@
+@layer sf.utilities {
+  .scroll-subtle {
+    --sf-scroll-thumb-subtle: color-mix(
+      in srgb,
+      var(--sf-on-surface) 10%,
+      var(--sf-transparent)
+    );
+    --sf-scroll-thumb-subtle-interactive: color-mix(
+      in srgb,
+      var(--sf-on-surface) 20%,
+      var(--sf-transparent)
+    );
+    --sf-scroll-bg-track: var(--sf-transparent);
+    --sf-scroll-bg-thumb: var(--sf-scroll-thumb-subtle);
+    scrollbar-gutter: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--sf-scroll-thumb-subtle) var(--sf-transparent);
+  }
+  .scroll-subtle:hover, .scroll-subtle[focus-within] {
+    --sf-scroll-bg-thumb: var(--sf-scroll-thumb-subtle-interactive);
+    scrollbar-color: var(--sf-scroll-thumb-subtle-interactive) var(--sf-transparent);
+  }
+  .scroll-subtle:hover, .scroll-subtle:focus-within {
+    --sf-scroll-bg-thumb: var(--sf-scroll-thumb-subtle-interactive);
+    scrollbar-color: var(--sf-scroll-thumb-subtle-interactive) var(--sf-transparent);
+  }
+  @media (forced-colors: active) {
+    .scroll-subtle,
+    .scroll-subtle:hover,
+    .scroll-subtle[focus-within] {
+      scrollbar-color: auto;
+    }
+    .scroll-subtle,
+    .scroll-subtle:hover,
+    .scroll-subtle:focus-within {
+      scrollbar-color: auto;
+    }
+  }
+}
