@@ -1,0 +1,47 @@
+name: Bug report
+description: Something in SIMAI Framework IntelliSense does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for problems with the VS Code extension itself: completions,
+        hovers, colour swatches, diagnostics or packaging. If a SIMAI Framework
+        component, class or token is wrong in the Framework, report it to
+        [simai/ui-source](https://github.com/simai/ui-source/issues) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: Shown in the Extensions view, for example 0.2.0.
+    validations:
+      required: true
+  - type: input
+    id: vscode
+    attributes:
+      label: VS Code version and OS
+      description: From Help → About, for example 1.142.0 on macOS 26.
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: File language
+      description: For example HTML, TSX, Vue, CSS, Blade or PHP.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: A minimal snippet and where the cursor was.
+      placeholder: |
+        1. Open a .html file
+        2. Type <sf-button size="
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behaviour
+    validations:
+      required: true
