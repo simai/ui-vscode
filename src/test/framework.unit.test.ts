@@ -244,14 +244,17 @@ test('shipped framework registry is pinned and only holds safe entries', () => {
     const snapshot = readJson('contracts/framework/framework-contract-registry.json') as RawContractRegistry;
     const safe = new Set(snapshot.indexes.safe_to_suggest);
     const blocked = new Set(snapshot.indexes.blocked);
-    assert.equal(framework.release.id, 'ui-a9636b60d3e3');
-    assert.equal(framework.release.coreCommit, 'a9636b60d3e330edc2736b41f3791ebf8d1be391');
+    assert.equal(framework.release.id, 'ui-3521193e0c6b');
+    assert.equal(framework.release.coreCommit, '3521193e0c6b7417912f50aaaab72895f48e43d2');
+    assert.equal(framework.release.registryCommit, 'a990dd19ffe0a0471f49a24410718f39acbb8419');
     for (const id of [...framework.tags.map(tag => tag.id), ...framework.classes.map(item => item.id)]) {
         assert.ok(safe.has(id) && !blocked.has(id), `${id} is not safe to suggest`);
     }
-    assert.ok(framework.tags.length > 0);
-    assert.ok(framework.classes.length > 500);
-    assert.ok(framework.tokens.filter(token => token.color).length > 300);
+    // Counts of release ui-3521193e0c6b; update them when repinning.
+    assert.equal(framework.tags.length, 13);
+    assert.equal(framework.classes.length, 1058);
+    assert.equal(framework.tokens.length, 922);
+    assert.equal(framework.tokens.filter(token => token.color).length, 414);
 });
 
 test('index merges sizing contract data into core tokens', () => {
@@ -266,7 +269,7 @@ test('index merges sizing contract data into core tokens', () => {
     const text = describeToken(index, space);
     assert.match(text, /mobile \| 12px \(0\.75rem\)/);
     assert.match(text, /simai\.vertical-sizing@1\.3\.0/);
-    assert.match(text, /ui-a9636b60d3e3/);
+    assert.match(text, /ui-3521193e0c6b/);
 
     const nearest = nearestColorTokens(index, [0, 0.3569, 0.7451, 1], 5);
     assert.ok(nearest.some(token => token.name === '--sf-primary-40'));
