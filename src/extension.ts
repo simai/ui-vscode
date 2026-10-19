@@ -336,6 +336,37 @@ export function activate(context: vscode.ExtensionContext): void {
         },
     });
 
+    // Snippets are provided in code rather than contributed per language:
+    // a contribution for a language VS Code does not know (vue, blade
+    // without their extensions) is reported as an error at startup.
+    let cachedSnippets: [string, { prefix: string; description: string; body: string[] }][] | undefined;
+    const snippetProvider = vscode.languages.registerCompletionItemProvider(
+        [...markupLanguages],
+        {
+            provideCompletionItems(document, position) {
+                const before = document.lineAt(position).text.slice(0, position.character);
+                const word = before.match(/(?:^|[\s>])(sf-[a-z-]*)$/)?.[1];
+                if (word === undefined) return undefined;
+                if (detectMarkupRequest(textAbove(document, position.line) + before)?.kind === 'attribute') {
+                    return undefined;
+                }
+                cachedSnippets ??= Object.entries(JSON.parse(fs.readFileSync(
+                    path.join(context.extensionPath, 'snippets', 'sf-framework.json'),
+                    'utf8',
+                )));
+                const range = new vscode.Range(position.translate(0, -word.length), position);
+                return cachedSnippets.map(([name, snippet]) => {
+                    const item = new vscode.CompletionItem(snippet.prefix, vscode.CompletionItemKind.Snippet);
+                    item.insertText = new vscode.SnippetString(snippet.body.join('\n'));
+                    item.detail = name;
+                    item.documentation = markdown(`${snippet.description}\n\n\`\`\`html\n${snippet.body.join('\n')}\n\`\`\``);
+                    item.range = range;
+                    return item;
+                });
+            },
+        },
+    );
+
     const diagnostics = vscode.languages.createDiagnosticCollection('sf');
     const findingsByDocument = new Map<string, Finding[]>();
     const pending = new Map<string, ReturnType<typeof setTimeout>>();
@@ -418,6 +449,7 @@ export function activate(context: vscode.ExtensionContext): void {
         completion,
         hover,
         colors,
+        snippetProvider,
         diagnostics,
         codeActions,
         vscode.workspace.onDidOpenTextDocument(schedule),
