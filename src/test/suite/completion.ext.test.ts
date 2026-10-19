@@ -1,19 +1,41 @@
 import * as assert from 'assert';
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
 import * as vscode from 'vscode';
 
-/** `|` marks the cursor. */
+const extensions: Record<string, string> = {
+    css: 'css',
+    scss: 'scss',
+    html: 'html',
+    vue: 'vue',
+    typescript: 'ts',
+    typescriptreact: 'tsx',
+};
+const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'sf-docs-'));
+let fixtureCount = 0;
+
+/**
+ * Writes a real file and opens it, so the language comes from the file
+ * extension as in a user's workspace. `|` marks the cursor.
+ */
 async function open(language: string, marked: string): Promise<{
     document: vscode.TextDocument;
     position: vscode.Position;
 }> {
     const offset = marked.indexOf('|');
     assert.ok(offset >= 0, 'fixture needs a cursor mark');
-    const document = await vscode.workspace.openTextDocument({
-        language,
-        content: marked.slice(0, offset) + marked.slice(offset + 1),
-    });
+    fixtureCount += 1;
+    const file = path.join(fixtureRoot, `doc${fixtureCount}.${extensions[language]}`);
+    fs.writeFileSync(file, marked.slice(0, offset) + marked.slice(offset + 1));
+    const document = await vscode.workspace.openTextDocument(file);
+    if (document.languageId !== language) {
+        await vscode.languages.setTextDocumentLanguage(document, language);
+    }
     return { document, position: document.positionAt(offset) };
 }
+
+suiteTeardown(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
 
 async function completions(language: string, marked: string): Promise<vscode.CompletionItem[]> {
     const { document, position } = await open(language, marked);
