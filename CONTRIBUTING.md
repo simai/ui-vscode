@@ -18,6 +18,12 @@ into the runtime files in `data/` by generators:
 | Snapshot | Pointer | Runtime file |
 | --- | --- | --- |
 | `contracts/adaptive-sizing.v1.json` | `contracts/adaptive-sizing.pointer.json` | `data/sf-autocomplete.json` |
+| `contracts/framework/` | `contracts/framework.pointer.json` | `data/sf-framework.json` |
+
+The Framework snapshot holds the contract registry, `core.css`, the public
+component variables, the CSS of the utility families and the manifests of the
+smart components that the registry marks as safe to suggest. Only those
+entries reach `data/sf-framework.json`; blocked entries never do.
 
 Regenerate and verify parity:
 
@@ -33,8 +39,23 @@ when a runtime file is stale.
 
 Take the identity (commit and tree) from the release lock in `simai/ui`
 (`contracts/releases/<release>.lock.json`), never from a moving branch head.
-Copy the file from that commit, update the pointer, regenerate and run the
-checks above.
+
+For the adaptive sizing contract, copy the file from the `simai/ui-source`
+commit named under `build_inputs.source`, update the pointer, regenerate and
+run the checks above.
+
+For the Framework snapshot, run the vendor tool against a local `simai/ui`
+clone. It reads every file with `git show` at the commits named by the release
+lock and checks their trees:
+
+```sh
+npm run vendor:framework -- --ui ../ui --release <release> --registry-commit <commit>
+npm run generate
+npm run generate:check
+```
+
+`--registry-commit` is the `simai/ui` commit that binds the contract registry
+to that release.
 
 ## Tests
 
@@ -45,7 +66,9 @@ npm run test:extension # extension-host tests in a downloaded VS Code
 
 The extension-host runner downloads VS Code into `.vscode-test/`. Set
 `VSCODE_EXECUTABLE_PATH` to use an installed build instead, or
-`VSCODE_TEST_VERSION` to pin a version. The runner creates a short
+`VSCODE_TEST_VERSION` to pin a version. Set `SF_EXTENSION_PATH` to run the
+suite against another copy of the extension, for example the folder that
+`code --install-extension` created from the packaged `.vsix`. The runner creates a short
 `--user-data-dir` under `/tmp`, because VS Code rejects socket paths longer
 than 103 characters.
 
