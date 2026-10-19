@@ -55,8 +55,7 @@ const pointerPath = path.join(
 );
 const outputPath = path.join(
     repositoryRoot,
-    'src',
-    'registry',
+    'data',
     'sf-autocomplete.json',
 );
 
@@ -223,7 +222,7 @@ if (process.argv.includes('--check')) {
         ? fs.readFileSync(outputPath, 'utf8')
         : null;
     if (actual !== serialized) {
-        process.stderr.write('src/registry/sf-autocomplete.json is stale\n');
+        process.stderr.write('data/sf-autocomplete.json is stale\n');
         process.exitCode = 1;
     } else {
         process.stdout.write(

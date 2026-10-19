@@ -1,0 +1,13 @@
+# Ship only the runtime. Everything is excluded first, then the runtime
+# files are listed explicitly, so new tooling or local state (for example
+# .simai/, mirai/, work/) can never leak into the package.
+**
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!images/icon.png
+!data/*.json
+!out/*.js
+!out/providers/*.js
+!out/registry/*.js
