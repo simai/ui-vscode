@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag matches package.json version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "${GITHUB_REF_NAME}" != "v${VERSION}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match package.json version ${VERSION}"
+            exit 1
+          fi
+
+  gate:
+    needs: version
+    uses: ./.github/workflows/ci.yml
+
+  release:
+    needs: gate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_PAT: ${{ secrets.OVSX_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Package
+        id: package
+        run: |
+          VSIX="sf-vscode-${GITHUB_REF_NAME#v}.vsix"
+          npx vsce package -o "$VSIX"
+          sha256sum "$VSIX" > "$VSIX.sha256"
+          echo "vsix=$VSIX" >> "$GITHUB_OUTPUT"
+          echo "sha256=$(cut -d' ' -f1 "$VSIX.sha256")" >> "$GITHUB_OUTPUT"
+      - name: GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "${{ steps.package.outputs.vsix }}" "${{ steps.package.outputs.vsix }}.sha256" \
+            --title "$GITHUB_REF_NAME" \
+            --notes "SIMAI Framework IntelliSense ${GITHUB_REF_NAME}. See CHANGELOG.md.
+
+          sha256 of ${{ steps.package.outputs.vsix }}: \`${{ steps.package.outputs.sha256 }}\`"
+      - name: Publish to the VS Code Marketplace
+        if: env.VSCE_PAT != ''
+        run: npx vsce publish --packagePath "${{ steps.package.outputs.vsix }}" --pat "$VSCE_PAT"
+      - name: Skip the VS Code Marketplace
+        if: env.VSCE_PAT == ''
+        run: echo "::notice::VSCE_PAT is not set; skipped publishing to the VS Code Marketplace."
+      - name: Publish to Open VSX
+        if: env.OVSX_PAT != ''
+        run: npx --yes ovsx@1.3.0 publish "${{ steps.package.outputs.vsix }}" --pat "$OVSX_PAT"
+      - name: Skip Open VSX
+        if: env.OVSX_PAT == ''
+        run: echo "::notice::OVSX_PAT is not set; skipped publishing to Open VSX."

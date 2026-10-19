@@ -49,13 +49,22 @@ clone. It reads every file with `git show` at the commits named by the release
 lock and checks their trees:
 
 ```sh
-npm run vendor:framework -- --ui ../ui --release <release> --registry-commit <commit>
+npm run vendor:framework -- --ui ../ui --ui-source ../ui-source --release <release>
 npm run generate
 npm run generate:check
 ```
 
-`--registry-commit` is the `simai/ui` commit that binds the contract registry
-to that release.
+The tool finds the `simai/ui` commit that binds the contract registry to that
+release (pass `--registry-commit <sha>` to name it yourself). With
+`--ui-source` it also repins the adaptive sizing contract from the
+`simai/ui-source` commit named in the release lock. Then update the pinned
+counts in `src/test/framework.unit.test.ts` and the CHANGELOG.
+
+The **Framework freshness** workflow does this every Monday (and on demand):
+it compares the vendored release with `simai.release` of
+`@simai-studio/ui@latest` on npm and, when they differ, vendors the new
+release on a `freshness/<release>` branch, runs the gates and opens a pull
+request (a draft when a gate fails). It never pushes to `main`.
 
 ## Tests
 
@@ -85,8 +94,42 @@ npm run package     # build the .vsix
 
 `.vscodeignore` excludes everything and lists the runtime files explicitly:
 compiled `out/` JavaScript (without tests, generators and source maps), the
-`data/` registries, the README, CHANGELOG, LICENSE and the icon. Publishing to
-the Marketplace happens only after the owner accepts a release.
+`data/` registries, the snippets, the README, CHANGELOG, LICENSE and the icon.
+`npm run package:check` fails when `vsce ls` lists anything else.
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`:
+lint, unit tests, both parity gates, the extension-host tests under xvfb, the
+package check, and the packaged `.vsix` with its sha256 as an artifact.
+
+## Releasing
+
+Publishing happens only after the owner accepts a release.
+
+1. On a branch, set `version` in `package.json`, move the CHANGELOG entry from
+   "Unreleased" to that version with the date, and merge the pull request.
+2. Tag `main` with `v<version>` and push the tag:
+
+   ```sh
+   git tag v0.2.0
+   git push origin v0.2.0
+   ```
+
+3. `.github/workflows/release.yml` checks that the tag matches the
+   `package.json` version, runs the full CI gate, packages the extension and
+   attaches the `.vsix` and its sha256 to a GitHub release.
+4. It publishes to the VS Code Marketplace only when the `VSCE_PAT` secret is
+   set, and to Open VSX only when `OVSX_PAT` is set; otherwise it skips the
+   step with a notice. The Marketplace publisher is `SIMAI`.
+
+## Versioning
+
+The extension stays at `0.x` while it suggests only part of SIMAI Framework:
+the Framework registry marks a limited set of components and utilities as
+safe to suggest, and the extension offers only those. Version `1.0` follows
+when the main components are safe to suggest. Within `0.x`, a minor version
+adds features or repins to a new Framework release, and a patch fixes bugs.
 
 ## Naming
 
