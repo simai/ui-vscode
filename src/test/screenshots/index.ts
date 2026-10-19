@@ -77,7 +77,7 @@ export async function run(): Promise<void> {
     await scene(
         'screenshot-tags',
         'form.html',
-        '<form class="flex flex-col g-1">\n  <sf-input label="Email" name="email" input-type="email"></sf-input>\n  <sf-bu|\n</form>\n',
+        '<form class="flex flex-col g-1">\n  <sf-input label="Email" name="email" input-type="email"></sf-input>\n  <sf-|\n</form>\n',
         'editor.action.triggerSuggest',
     );
     await scene(
