@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SIMAI Framework problem
+    url: https://github.com/simai/ui-source/issues
+    about: A component, utility class or token is wrong or missing in SIMAI Framework itself. Report it to the Framework source repository.
+  - name: Security vulnerability
+    url: https://github.com/simai/ui-vscode/security/advisories/new
+    about: Report security issues privately, not as a public issue. See SECURITY.md.
