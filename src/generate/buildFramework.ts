@@ -374,12 +374,26 @@ export function buildFramework(inputs: FrameworkInputs): {
 
     const desktopRem = inputs.desktopMinWidthPx / 16;
     const desktopMedia = new RegExp(`^\\(min-width:\\s*${desktopRem}rem\\)$`);
+    const coreRules = parseCss(inputs.coreCss);
     const tokens = buildTokens(
-        parseCss(inputs.coreCss),
+        coreRules,
         desktopMedia,
         buildPublicVariables(inputs.publicVariables, registry, safe, report),
         report,
     );
+    const suggested = new Set(tokens.map(token => token.name));
+    const knownTokens = new Set<string>();
+    for (const rule of coreRules) {
+        for (const [property] of rule.declarations) {
+            if (property.startsWith('--sf-')) knownTokens.add(property);
+        }
+    }
+    for (const component of inputs.publicVariables.components) {
+        for (const variable of component.variables) knownTokens.add(variable.name);
+    }
+    const tags = buildTags(registry, safe, inputs.manifests);
+    const suggestedTags = new Set(tags.map(tag => tag.tag));
+    const knownTags = new Set(registry.entries.flatMap(entry => entry.runtime.tags ?? []));
 
     return {
         registry: {
@@ -394,9 +408,11 @@ export function buildFramework(inputs: FrameworkInputs): {
                 registrySha256: inputs.registrySha256,
             },
             desktopMinWidth: `${desktopRem}rem`,
-            tags: buildTags(registry, safe, inputs.manifests),
+            tags,
             classes: buildClasses(inputs.utilityCss, registry, safe),
             tokens,
+            knownTags: [...knownTags].filter(tag => !suggestedTags.has(tag)).sort(),
+            knownTokens: [...knownTokens].filter(name => !suggested.has(name)).sort(),
         },
         report,
     };

@@ -75,4 +75,10 @@ export interface FrameworkRegistry {
     tags: FrameworkTag[];
     classes: FrameworkClass[];
     tokens: FrameworkToken[];
+    /**
+     * Real Framework names that are not suggested (not safe to suggest, or not
+     * global tokens). Diagnostics never call them unknown.
+     */
+    knownTags: string[];
+    knownTokens: string[];
 }

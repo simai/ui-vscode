@@ -7,6 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { validateFrameworkRegistry } from '../registry/frameworkValidation';
 import { buildFramework } from './buildFramework';
+import { buildSnippets } from './snippets';
 import {
     FrameworkPointer,
     RawContractRegistry,
@@ -20,6 +21,7 @@ const snapshotRoot = path.join(repositoryRoot, 'contracts', 'framework');
 const pointerPath = path.join(repositoryRoot, 'contracts', 'framework.pointer.json');
 const sizingContractPath = path.join(repositoryRoot, 'contracts', 'adaptive-sizing.v1.json');
 const outputPath = path.join(repositoryRoot, 'data', 'sf-framework.json');
+const snippetsPath = path.join(repositoryRoot, 'snippets', 'sf-framework.json');
 
 const listFiles = (root: string, prefix = ''): string[] =>
     fs.readdirSync(path.join(root, prefix), { withFileTypes: true }).flatMap(item => {
@@ -80,12 +82,14 @@ function serialize(value: object): string {
 }
 
 const serialized = serialize(registry);
+const snippets = `${JSON.stringify(buildSnippets(registry), null, 2)}\n`;
 const summary = `${registry.tags.length} tags, ${registry.classes.length} classes, `
     + `${registry.tokens.length} tokens from ${pointer.releaseId}`;
 if (process.argv.includes('--check')) {
     const current = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : null;
-    if (current !== serialized) {
-        process.stderr.write('data/sf-framework.json is stale\n');
+    const currentSnippets = fs.existsSync(snippetsPath) ? fs.readFileSync(snippetsPath, 'utf8') : null;
+    if (current !== serialized || currentSnippets !== snippets) {
+        process.stderr.write('data/sf-framework.json or snippets/sf-framework.json is stale\n');
         process.exitCode = 1;
     } else {
         process.stdout.write(`sf-framework parity PASS ${summary}\n`);
@@ -93,6 +97,8 @@ if (process.argv.includes('--check')) {
 } else {
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, serialized);
+    fs.mkdirSync(path.dirname(snippetsPath), { recursive: true });
+    fs.writeFileSync(snippetsPath, snippets);
     process.stdout.write(`generated ${summary}\n`);
     if (report.skippedPublicComponents.length > 0) {
         process.stdout.write(

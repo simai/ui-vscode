@@ -31,6 +31,8 @@ export function validateFrameworkRegistry(value: unknown): FrameworkRegistry {
         !Array.isArray(registry.tags)
         || !Array.isArray(registry.classes)
         || !Array.isArray(registry.tokens)
+        || !Array.isArray(registry.knownTags)
+        || !Array.isArray(registry.knownTokens)
     ) {
         throw new Error('framework registry sections are missing');
     }
