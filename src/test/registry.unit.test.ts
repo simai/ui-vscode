@@ -12,7 +12,7 @@ import { validateRegistry } from '../registry/validation';
 
 const registry = JSON.parse(
     fs.readFileSync(
-        path.resolve(process.cwd(), 'src/registry/sf-autocomplete.json'),
+        path.resolve(process.cwd(), 'data/sf-autocomplete.json'),
         'utf8',
     ),
 );

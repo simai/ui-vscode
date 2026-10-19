@@ -23,6 +23,9 @@ out/
 # Compiled suggestions
 *.vsix
 
+# VS Code test downloads
+.vscode-test/
+
 styles.css
 
 # Compiled Java class files
