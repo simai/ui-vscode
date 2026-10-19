@@ -18,6 +18,7 @@ import {
     nearestColorTokens,
     tokenDetail,
 } from './framework';
+import { Finding, analyzeDocument } from './diagnostics';
 import { MarkupRequest, detectMarkupRequest } from './markup';
 import { formatColor } from './registry/color';
 import { validateFrameworkRegistry } from './registry/frameworkValidation';
@@ -37,14 +38,33 @@ const languages = [
     'typescriptreact',
     'vue',
     'react',
+    'blade',
+    'php',
 ];
 /** Languages where `<` starts a tag even without a following letter. */
-const markupLanguages = new Set(['html', 'vue', 'javascriptreact', 'typescriptreact', 'react']);
+const markupLanguages = new Set([
+    'html',
+    'vue',
+    'javascriptreact',
+    'typescriptreact',
+    'react',
+    'blade',
+    'php',
+]);
 const stylesheetLanguages = new Set(['css', 'scss', 'sass', 'less']);
 /** How far back to look for the start of a tag that spans lines. */
 const markupLookbehindLines = 20;
 
 const settings = (): vscode.WorkspaceConfiguration => vscode.workspace.getConfiguration('sf');
+const docsBaseUrl = (): string => settings().get<string>('docs.baseUrl', '');
+
+const diagnosticSource = 'SIMAI Framework';
+const severities: Record<string, vscode.DiagnosticSeverity> = {
+    error: vscode.DiagnosticSeverity.Error,
+    warning: vscode.DiagnosticSeverity.Warning,
+    information: vscode.DiagnosticSeverity.Information,
+    hint: vscode.DiagnosticSeverity.Hint,
+};
 
 function textAbove(document: vscode.TextDocument, line: number): string {
     const start = Math.max(0, line - markupLookbehindLines);
@@ -92,7 +112,7 @@ function classItems(
         const item = new vscode.CompletionItem(label, vscode.CompletionItemKind.Constant);
         item.range = range;
         item.detail = entry.declarations;
-        item.documentation = markdown(describeClass(index, entry));
+        item.documentation = markdown(describeClass(index, entry, docsBaseUrl()));
         items.push(item);
     }
     return items;
@@ -113,7 +133,7 @@ function markupItems(
                 const item = new vscode.CompletionItem(tag.tag, vscode.CompletionItemKind.Class);
                 item.range = range;
                 item.detail = `SIMAI Framework · ${tag.title} · ${tag.lifecycle}`;
-                item.documentation = markdown(describeTag(index, tag));
+                item.documentation = markdown(describeTag(index, tag, docsBaseUrl()));
                 if (tag.deprecated) item.tags = [vscode.CompletionItemTag.Deprecated];
                 return item;
             });
@@ -265,10 +285,10 @@ export function activate(context: vscode.ExtensionContext): void {
                 if (token) text = describeToken(index, token);
             } else if (target.kind === 'class') {
                 const item = index.classByName.get(target.name);
-                if (item) text = describeClass(index, item);
+                if (item) text = describeClass(index, item, docsBaseUrl());
             } else if (target.kind === 'tag') {
                 const tag = index.tagByName.get(target.name);
-                if (tag) text = describeTag(index, tag);
+                if (tag) text = describeTag(index, tag, docsBaseUrl());
             } else {
                 const tag = index.tagByName.get(target.tag);
                 const attribute = tag?.attributes.find(item => item.name === target.name);
@@ -316,7 +336,102 @@ export function activate(context: vscode.ExtensionContext): void {
         },
     });
 
-    context.subscriptions.push(completion, hover, colors);
+    const diagnostics = vscode.languages.createDiagnosticCollection('sf');
+    const findingsByDocument = new Map<string, Finding[]>();
+    const pending = new Map<string, ReturnType<typeof setTimeout>>();
+
+    const analyze = (document: vscode.TextDocument): void => {
+        const key = document.uri.toString();
+        const config = settings();
+        if (
+            !languages.includes(document.languageId)
+            || !config.get<boolean>('diagnostics.enabled', true)
+        ) {
+            diagnostics.delete(document.uri);
+            findingsByDocument.delete(key);
+            return;
+        }
+        const text = document.getText();
+        if (!text.includes('sf-')) {
+            diagnostics.delete(document.uri);
+            findingsByDocument.delete(key);
+            return;
+        }
+        const severityOf = (kind: Finding['kind']): vscode.DiagnosticSeverity | undefined =>
+            severities[config.get<string>(
+                kind === 'unknown' ? 'diagnostics.unknownSeverity' : 'diagnostics.deprecatedSeverity',
+                kind === 'unknown' ? 'information' : 'warning',
+            )];
+        const findings = analyzeDocument(text, document.languageId, loadIndex())
+            .filter(finding => severityOf(finding.kind) !== undefined);
+        findingsByDocument.set(key, findings);
+        diagnostics.set(document.uri, findings.map(finding => {
+            const diagnostic = new vscode.Diagnostic(
+                new vscode.Range(document.positionAt(finding.start), document.positionAt(finding.end)),
+                finding.message,
+                severityOf(finding.kind),
+            );
+            diagnostic.source = diagnosticSource;
+            diagnostic.code = finding.code;
+            if (finding.kind === 'deprecated') diagnostic.tags = [vscode.DiagnosticTag.Deprecated];
+            return diagnostic;
+        }));
+    };
+    const schedule = (document: vscode.TextDocument): void => {
+        const key = document.uri.toString();
+        clearTimeout(pending.get(key));
+        pending.set(key, setTimeout(() => {
+            pending.delete(key);
+            analyze(document);
+        }, 250));
+    };
+
+    const codeActions = vscode.languages.registerCodeActionsProvider(
+        languages,
+        {
+            provideCodeActions(document, _range, actionContext) {
+                const findings = findingsByDocument.get(document.uri.toString()) ?? [];
+                const actions: vscode.CodeAction[] = [];
+                for (const diagnostic of actionContext.diagnostics) {
+                    if (diagnostic.source !== diagnosticSource) continue;
+                    const start = document.offsetAt(diagnostic.range.start);
+                    const finding = findings.find(item =>
+                        item.start === start && item.code === diagnostic.code);
+                    if (!finding?.replacement) continue;
+                    const action = new vscode.CodeAction(
+                        `Replace with ${finding.replacement}`,
+                        vscode.CodeActionKind.QuickFix,
+                    );
+                    action.edit = new vscode.WorkspaceEdit();
+                    action.edit.replace(document.uri, diagnostic.range, finding.replacement);
+                    action.diagnostics = [diagnostic];
+                    action.isPreferred = true;
+                    actions.push(action);
+                }
+                return actions;
+            },
+        },
+        { providedCodeActionKinds: [vscode.CodeActionKind.QuickFix] },
+    );
+
+    context.subscriptions.push(
+        completion,
+        hover,
+        colors,
+        diagnostics,
+        codeActions,
+        vscode.workspace.onDidOpenTextDocument(schedule),
+        vscode.workspace.onDidChangeTextDocument(event => schedule(event.document)),
+        vscode.workspace.onDidCloseTextDocument(document => {
+            diagnostics.delete(document.uri);
+            findingsByDocument.delete(document.uri.toString());
+        }),
+        vscode.workspace.onDidChangeConfiguration(event => {
+            if (event.affectsConfiguration('sf')) vscode.workspace.textDocuments.forEach(analyze);
+        }),
+        { dispose: () => pending.forEach(timer => clearTimeout(timer)) },
+    );
+    vscode.workspace.textDocuments.forEach(schedule);
 }
 
 export function deactivate(): void {}

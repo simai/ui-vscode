@@ -11,6 +11,7 @@ const extensions: Record<string, string> = {
     vue: 'vue',
     typescript: 'ts',
     typescriptreact: 'tsx',
+    php: 'php',
 };
 const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'sf-docs-'));
 let fixtureCount = 0;
@@ -208,5 +209,94 @@ suite('colour provider', () => {
             { uri: document.uri, range: ours[0].range },
         );
         assert.ok(presentations.some(item => item.label === '--sf-primary'));
+    });
+});
+
+async function diagnosticsFor(language: string, content: string): Promise<{
+    document: vscode.TextDocument;
+    diagnostics: vscode.Diagnostic[];
+}> {
+    const { document } = await open(language, `|${content}`);
+    for (let attempt = 0; attempt < 50; attempt += 1) {
+        const diagnostics = vscode.languages.getDiagnostics(document.uri)
+            .filter(item => item.source === 'SIMAI Framework');
+        if (diagnostics.length > 0) return { document, diagnostics };
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    return { document, diagnostics: [] };
+}
+
+suite('diagnostics and quick fixes', () => {
+    test('a misspelt token is reported and fixed to the nearest name', async () => {
+        const { document, diagnostics } = await diagnosticsFor('css', '.a { color: var(--sf-primay); }');
+        assert.equal(diagnostics.length, 1);
+        assert.equal(diagnostics[0].severity, vscode.DiagnosticSeverity.Information);
+        assert.equal(diagnostics[0].code, 'unknown-token');
+        const actions = await vscode.commands.executeCommand<vscode.CodeAction[]>(
+            'vscode.executeCodeActionProvider',
+            document.uri,
+            diagnostics[0].range,
+            vscode.CodeActionKind.QuickFix.value,
+        );
+        const fix = actions.find(action => action.title === 'Replace with --sf-primary');
+        assert.ok(fix?.edit, 'quick fix missing');
+        assert.ok(await vscode.workspace.applyEdit(fix.edit));
+        assert.equal(document.getText(), '.a { color: var(--sf-primary); }');
+    });
+
+    test('deprecated attributes are warnings; misspelt attributes are fixed', async () => {
+        const { document, diagnostics } = await diagnosticsFor(
+            'html',
+            '<sf-context-menu position="top"></sf-context-menu>\n<sf-button apperance="tonal"></sf-button>',
+        );
+        const deprecated = diagnostics.find(item => item.code === 'deprecated-attribute')!;
+        assert.equal(deprecated.severity, vscode.DiagnosticSeverity.Warning);
+        assert.deepEqual(deprecated.tags, [vscode.DiagnosticTag.Deprecated]);
+        const typo = diagnostics.find(item => item.code === 'unknown-attribute')!;
+        const actions = await vscode.commands.executeCommand<vscode.CodeAction[]>(
+            'vscode.executeCodeActionProvider',
+            document.uri,
+            typo.range,
+            vscode.CodeActionKind.QuickFix.value,
+        );
+        assert.ok(actions.some(action => action.title === 'Replace with appearance'));
+    });
+
+    test('valid and project-owned names produce no diagnostics', async () => {
+        const { document } = await open('html', '|<sf-button appearance="tonal" class="flex" data-id="1"></sf-button><sf-alert></sf-alert><my-widget></my-widget>');
+        await new Promise(resolve => setTimeout(resolve, 800));
+        assert.deepEqual(
+            vscode.languages.getDiagnostics(document.uri).filter(item => item.source === 'SIMAI Framework'),
+            [],
+        );
+    });
+});
+
+suite('PHP templates, snippets and documentation links', () => {
+    test('PHP templates complete tags, attributes and classes', async () => {
+        assert.ok(find(await completions('php', '<?php $a = 1; ?>\n<div><sf-bu|'), 'sf-button'));
+        assert.ok(find(await completions('php', '<sf-button size="1" appe|'), 'appearance'));
+        assert.ok(find(await completions('php', '<div class="md:fl|'), 'md:flex'));
+        assert.ok(find(await completions('php', '<div style="gap: var(--sf-spa|'), '--sf-space-1'));
+    });
+
+    test('snippets are offered in HTML', async () => {
+        const items = await completions('html', 'sf-fie|');
+        const snippet = items.find(item => item.kind === vscode.CompletionItemKind.Snippet && labelOf(item) === 'sf-field');
+        assert.ok(snippet, 'sf-field snippet missing');
+    });
+
+    test('hovers link to the configured documentation site', async () => {
+        const config = vscode.workspace.getConfiguration('sf');
+        assert.doesNotMatch(await hoverText('html', '<sf-but|ton>'), /SIMAI Framework docs/);
+        await config.update('docs.baseUrl', 'https://docs.example', vscode.ConfigurationTarget.Global);
+        try {
+            assert.match(
+                await hoverText('html', '<sf-but|ton>'),
+                /\[SIMAI Framework docs\]\(https:\/\/docs\.example\/smart\.buttons\)/,
+            );
+        } finally {
+            await config.update('docs.baseUrl', undefined, vscode.ConfigurationTarget.Global);
+        }
     });
 });

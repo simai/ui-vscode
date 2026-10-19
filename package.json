@@ -42,9 +42,13 @@
     "onLanguage:less",
     "onLanguage:html",
     "onLanguage:javascript",
+    "onLanguage:javascriptreact",
     "onLanguage:typescript",
+    "onLanguage:typescriptreact",
     "onLanguage:vue",
-    "onLanguage:react"
+    "onLanguage:react",
+    "onLanguage:blade",
+    "onLanguage:php"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -60,9 +64,70 @@
           "type": "boolean",
           "default": true,
           "description": "Show colour swatches next to --sf- colour tokens. Picking a colour offers the nearest SIMAI Framework colour token."
+        },
+        "sf.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report unknown and deprecated SIMAI Framework tokens, sf- tags and attributes. An unknown name is reported only when it is a near miss of a real Framework name."
+        },
+        "sf.diagnostics.unknownSeverity": {
+          "type": "string",
+          "enum": [
+            "off",
+            "hint",
+            "information",
+            "warning",
+            "error"
+          ],
+          "default": "information",
+          "description": "Severity for a likely misspelt SIMAI Framework name."
+        },
+        "sf.diagnostics.deprecatedSeverity": {
+          "type": "string",
+          "enum": [
+            "off",
+            "hint",
+            "information",
+            "warning",
+            "error"
+          ],
+          "default": "warning",
+          "description": "Severity for a deprecated SIMAI Framework tag or attribute."
+        },
+        "sf.docs.baseUrl": {
+          "type": "string",
+          "default": "",
+          "pattern": "^(https://\\S+)?$",
+          "description": "Base URL of the SIMAI Framework documentation site. When set, hovers link to <baseUrl>/<registry ID>, for example <baseUrl>/smart.buttons. Leave empty for no link."
         }
       }
-    }
+    },
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/sf-framework.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/sf-framework.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/sf-framework.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/sf-framework.json"
+      },
+      {
+        "language": "blade",
+        "path": "./snippets/sf-framework.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/sf-framework.json"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",

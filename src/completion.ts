@@ -16,6 +16,8 @@ const htmlLanguages = new Set([
     'typescriptreact',
     'vue',
     'react',
+    'blade',
+    'php',
 ]);
 
 const stylesheetLanguages = new Set(['css', 'scss', 'sass', 'less']);
