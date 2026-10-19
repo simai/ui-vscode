@@ -17,6 +17,8 @@ All notable changes to SIMAI Framework IntelliSense are listed here.
   table snippets yet because the Framework does not mark those components as
   safe to suggest.
 - `sf.docs.baseUrl`: hovers link to `<baseUrl>/<registry ID>` when set.
+- Marketplace screenshots, taken from VS Code with the packaged extension
+  installed (`npm run screenshots`).
 - CI, release and weekly Framework freshness workflows; issue templates and a
   security policy.
 
