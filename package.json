@@ -2,7 +2,7 @@
   "name": "sf-vscode",
   "displayName": "SIMAI Framework IntelliSense",
   "description": "Autocomplete and hovers for SIMAI Framework: sf- component tags and attributes, utility classes and --sf- design tokens with colour swatches and adaptive values.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "SIMAI",
   "author": "Rim Zabarov and contributors",
   "license": "MIT",
@@ -101,33 +101,7 @@
           "description": "Base URL of the SIMAI Framework documentation site. When set, hovers link to <baseUrl>/<registry ID>, for example <baseUrl>/smart.buttons. Leave empty for no link."
         }
       }
-    },
-    "snippets": [
-      {
-        "language": "html",
-        "path": "./snippets/sf-framework.json"
-      },
-      {
-        "language": "vue",
-        "path": "./snippets/sf-framework.json"
-      },
-      {
-        "language": "javascriptreact",
-        "path": "./snippets/sf-framework.json"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./snippets/sf-framework.json"
-      },
-      {
-        "language": "blade",
-        "path": "./snippets/sf-framework.json"
-      },
-      {
-        "language": "php",
-        "path": "./snippets/sf-framework.json"
-      }
-    ]
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",
@@ -143,7 +117,8 @@
     "package": "vsce package",
     "package:ls": "vsce ls",
     "vendor:framework": "npm run compile && node ./out/generate/vendorFramework.js",
-    "package:check": "vsce ls | node ./out/generate/checkPackage.js"
+    "package:check": "vsce ls | node ./out/generate/checkPackage.js",
+    "screenshots": "npm run compile && node ./out/test/runScreenshots.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
