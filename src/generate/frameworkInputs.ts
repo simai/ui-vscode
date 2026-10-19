@@ -17,6 +17,9 @@ export interface ReleaseLock {
         core: RuntimeSource;
         smart: RuntimeSource;
     };
+    build_inputs: {
+        source: { owner: string; commit: string; tree: string };
+    };
 }
 
 export interface RawRegistryEntry {
