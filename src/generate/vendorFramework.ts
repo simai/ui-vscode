@@ -9,7 +9,12 @@
  *
  * Usage:
  *   node out/generate/vendorFramework.js \
- *     --ui ../ui --release ui-a9636b60d3e3 --registry-commit <sha>
+ *     --ui ../ui --release <release> [--registry-commit <sha>] [--ui-source ../ui-source]
+ *
+ * Without --registry-commit the tool looks up the commit in simai/ui history
+ * that binds the contract registry to <release>. With --ui-source it also
+ * repins the adaptive sizing contract from the simai/ui-source commit named
+ * by the release lock.
  */
 import { execFileSync } from 'child_process';
 import * as fs from 'fs';
@@ -24,25 +29,40 @@ import {
 const repositoryRoot = path.resolve(__dirname, '..', '..');
 const snapshotRoot = path.join(repositoryRoot, 'contracts', 'framework');
 const pointerPath = path.join(repositoryRoot, 'contracts', 'framework.pointer.json');
+const registryPath = 'contracts/generated/framework-contract-registry.json';
 
-function option(name: string, fallback?: string): string {
+function option(name: string, fallback?: string): string | undefined {
     const index = process.argv.indexOf(`--${name}`);
-    const value = index >= 0 ? process.argv[index + 1] : fallback;
+    return index >= 0 ? process.argv[index + 1] : fallback;
+}
+function required(name: string, fallback?: string): string {
+    const value = option(name, fallback);
     if (!value) throw new Error(`--${name} is required`);
     return value;
 }
 
-const uiPath = path.resolve(option('ui', path.join(repositoryRoot, '..', 'ui')));
-const releaseId = option('release');
-const registryCommitInput = option('registry-commit');
+const uiPath = path.resolve(required('ui', path.join(repositoryRoot, '..', 'ui')));
+const releaseId = required('release');
+const uiSourcePath = option('ui-source');
 
-const git = (...args: string[]): Buffer =>
-    execFileSync('git', ['-C', uiPath, ...args], { maxBuffer: 64 * 1024 * 1024 });
+const gitIn = (repository: string, ...args: string[]): Buffer =>
+    execFileSync('git', ['-C', repository, ...args], { maxBuffer: 64 * 1024 * 1024 });
+const git = (...args: string[]): Buffer => gitIn(uiPath, ...args);
 const gitText = (...args: string[]): string => git(...args).toString('utf8').trim();
 const show = (commit: string, file: string): Buffer => git('show', `${commit}:${file}`);
 const treeOf = (spec: string): string => gitText('rev-parse', spec);
 
-const registryCommit = treeOf(`${registryCommitInput}^{commit}`);
+/** The newest commit whose contract registry is bound to the release. */
+function findRegistryCommit(): string {
+    const commits = gitText('log', '--format=%H', 'HEAD', '--', registryPath).split('\n');
+    for (const commit of commits.filter(Boolean)) {
+        const registry = JSON.parse(show(commit, registryPath).toString('utf8')) as RawContractRegistry;
+        if (registry.compatibility?.id === releaseId) return commit;
+    }
+    throw new Error(`no simai/ui commit binds the contract registry to ${releaseId}`);
+}
+
+const registryCommit = treeOf(`${option('registry-commit') ?? findRegistryCommit()}^{commit}`);
 const lock = JSON.parse(
     show(registryCommit, `contracts/releases/${releaseId}.lock.json`).toString('utf8'),
 ) as ReleaseLock;
@@ -61,7 +81,6 @@ for (const [name, source] of Object.entries(lock.runtime_sources)) {
 const core = lock.runtime_sources.core;
 const smart = lock.runtime_sources.smart;
 
-const registryPath = 'contracts/generated/framework-contract-registry.json';
 const registryBuffer = show(registryCommit, registryPath);
 const registry = JSON.parse(registryBuffer.toString('utf8')) as RawContractRegistry;
 if (registry.compatibility.id !== releaseId) {
@@ -147,3 +166,36 @@ fs.writeFileSync(pointerPath, `${JSON.stringify(pointer, null, 2)}\n`);
 process.stdout.write(
     `vendored ${planned.length} files from simai/ui ${releaseId} (registry ${registryCommit})\n`,
 );
+
+if (uiSourcePath) {
+    const source = lock.build_inputs.source;
+    const sourceRepository = path.resolve(uiSourcePath);
+    const sourceText = (...args: string[]): string =>
+        gitIn(sourceRepository, ...args).toString('utf8').trim();
+    if (sourceText('rev-parse', `${source.commit}^{tree}`) !== source.tree) {
+        throw new Error(`ui-source commit ${source.commit} does not have tree ${source.tree}`);
+    }
+    const contractPath = 'src/core/contracts/adaptive-sizing.v1.json';
+    const contract = gitIn(sourceRepository, 'show', `${source.commit}:${contractPath}`);
+    const meta = (JSON.parse(contract.toString('utf8')) as {
+        meta: { contractId: string; version: string };
+    }).meta;
+    fs.writeFileSync(path.join(repositoryRoot, 'contracts', 'adaptive-sizing.v1.json'), contract);
+    const sizingPointer = {
+        releaseId,
+        sourceRepository: source.owner,
+        sourceCommit: source.commit,
+        sourceTree: source.tree,
+        sourcePath: contractPath,
+        contractId: meta.contractId,
+        contractVersion: meta.version,
+        sha256: sha256(contract),
+    };
+    fs.writeFileSync(
+        path.join(repositoryRoot, 'contracts', 'adaptive-sizing.pointer.json'),
+        `${JSON.stringify(sizingPointer, null, 2)}\n`,
+    );
+    process.stdout.write(
+        `vendored ${meta.contractId}@${meta.version} ${sizingPointer.sha256} from ${source.owner}@${source.commit}\n`,
+    );
+}
