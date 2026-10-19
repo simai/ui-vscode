@@ -18,11 +18,17 @@ values, the values themselves:
 
 Deprecated attributes are struck through and name their replacement.
 
+![sf- tag completion in HTML](https://raw.githubusercontent.com/simai/ui-vscode/main/images/screenshot-tags.png)
+
+![Attribute values from the component manifest](https://raw.githubusercontent.com/simai/ui-vscode/main/images/screenshot-attributes.png)
+
 ### Utility classes
 
 Utility classes complete in `class` and `className` attributes, including
 breakpoint variants such as `md:flex`. In stylesheets they complete as
 escaped selectors (`.md\:flex`).
+
+![Utility classes in a JSX className](https://raw.githubusercontent.com/simai/ui-vscode/main/images/screenshot-classes.png)
 
 ### Design tokens
 
@@ -37,11 +43,15 @@ suggestion shows its resolved value:
 Colour tokens in your files get inline swatches. Opening the colour picker
 on one offers the nearest SIMAI Framework colour tokens.
 
+![Colour tokens with swatches](https://raw.githubusercontent.com/simai/ui-vscode/main/images/screenshot-colors.png)
+
 ### Hovers
 
 Hover a token, utility class, `sf-` tag or attribute to see what it is, its
 values (light/dark, mobile/desktop), the Framework release it comes from and
 its lifecycle (released, experimental or deprecated).
+
+![Hover with mobile and desktop values](https://raw.githubusercontent.com/simai/ui-vscode/main/images/screenshot-hover.png)
 
 ### Diagnostics and Quick Fixes
 
@@ -53,6 +63,8 @@ as unknown only when it is a near miss of a real Framework name: your own
 custom properties and elements, component-internal `--sf-<block>--*` tokens and
 global or framework binding attributes (`id`, `data-*`, `aria-*`, `:prop`,
 `@event`, `wire:*` and the like) are never reported.
+
+![A misspelt attribute with a Quick Fix](https://raw.githubusercontent.com/simai/ui-vscode/main/images/screenshot-diagnostics.png)
 
 ### Snippets
 
