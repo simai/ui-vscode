@@ -77,7 +77,8 @@
     "vscode:prepublish": "npm run clean && npm run compile",
     "package": "vsce package",
     "package:ls": "vsce ls",
-    "vendor:framework": "npm run compile && node ./out/generate/vendorFramework.js"
+    "vendor:framework": "npm run compile && node ./out/generate/vendorFramework.js",
+    "package:check": "vsce ls | node ./out/generate/checkPackage.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
