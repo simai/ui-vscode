@@ -4,6 +4,8 @@ export interface CompletionRequest {
     context: CompletionContext;
     prefix: string;
     replaceLength: number;
+    /** The prefix is a CSS-escaped selector (md\:flex), not a literal class. */
+    escaped?: true;
 }
 
 const htmlLanguages = new Set([
@@ -15,6 +17,11 @@ const htmlLanguages = new Set([
     'vue',
     'react',
 ]);
+
+const stylesheetLanguages = new Set(['css', 'scss', 'sass', 'less']);
+
+export const isStylesheetLanguage = (languageId: string): boolean =>
+    stylesheetLanguages.has(languageId);
 
 export function detectCompletionRequest(
     line: string,
@@ -46,12 +53,17 @@ export function detectCompletionRequest(
         };
     }
 
-    const classSelector = before.match(/\.([A-Za-z0-9_\\/:.-]*)$/)?.[1];
+    // Class selectors only in stylesheets: in markup and scripts a dot is
+    // far more often prose or member access than a selector.
+    const classSelector = isStylesheetLanguage(languageId)
+        ? before.match(/\.([A-Za-z0-9_\\/:.-]*)$/)?.[1]
+        : undefined;
     if (classSelector !== undefined) {
         return {
             context: 'htmlClass',
             prefix: classSelector,
             replaceLength: classSelector.length,
+            escaped: true,
         };
     }
 

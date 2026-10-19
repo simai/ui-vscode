@@ -2,7 +2,7 @@
   "name": "sf-vscode",
   "displayName": "SIMAI Framework IntelliSense",
   "description": "Autocomplete and hovers for SIMAI Framework: sf- component tags and attributes, utility classes and --sf- design tokens with colour swatches and adaptive values.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "SIMAI",
   "author": "Rim Zabarov and contributors",
   "license": "MIT",
@@ -47,11 +47,27 @@
     "onLanguage:react"
   ],
   "main": "./out/extension.js",
-  "contributes": {},
+  "contributes": {
+    "configuration": {
+      "title": "SIMAI Framework IntelliSense",
+      "properties": {
+        "sf.hover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show SIMAI Framework hovers for --sf- tokens, utility classes, sf- tags and their attributes."
+        },
+        "sf.colorSwatches.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show colour swatches next to --sf- colour tokens. Picking a colour offers the nearest SIMAI Framework colour token."
+        }
+      }
+    }
+  },
   "scripts": {
     "compile": "tsc -p ./",
-    "generate": "npm run compile && node ./out/generate/generateJson.js",
-    "generate:check": "npm run compile && node ./out/generate/generateJson.js --check",
+    "generate": "npm run compile && node ./out/generate/generateJson.js && node ./out/generate/generateFramework.js",
+    "generate:check": "npm run compile && node ./out/generate/generateJson.js --check && node ./out/generate/generateFramework.js --check",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "clean": "rm -rf out",
@@ -60,7 +76,8 @@
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "vscode:prepublish": "npm run clean && npm run compile",
     "package": "vsce package",
-    "package:ls": "vsce ls"
+    "package:ls": "vsce ls",
+    "vendor:framework": "npm run compile && node ./out/generate/vendorFramework.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
