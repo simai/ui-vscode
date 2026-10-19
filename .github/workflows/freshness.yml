@@ -1,0 +1,121 @@
+name: Framework freshness
+
+# Weekly check that the vendored SIMAI Framework release is the latest
+# published one. When it is not, vendor the new release on a branch, run the
+# gates and open a pull request. This workflow never pushes to main.
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Compare releases
+        id: compare
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LATEST=$(npm view @simai-studio/ui@latest simai.release)
+          CURRENT=$(node -p "require('./contracts/framework.pointer.json').releaseId")
+          echo "Vendored: ${CURRENT}; latest published: ${LATEST}"
+          if [ -z "$LATEST" ]; then
+            echo "::error::@simai-studio/ui@latest has no simai.release field"
+            exit 1
+          fi
+          BRANCH="freshness/${LATEST}"
+          if [ "$LATEST" = "$CURRENT" ]; then
+            echo "::notice::The vendored release ${CURRENT} is current."
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          elif git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null; then
+            echo "::notice::Branch ${BRANCH} already exists; not opening another pull request."
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "latest=${LATEST}" >> "$GITHUB_OUTPUT"
+          echo "current=${CURRENT}" >> "$GITHUB_OUTPUT"
+          echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
+
+      - if: steps.compare.outputs.stale == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: simai/ui
+          path: .framework/ui
+          fetch-depth: 0
+      - if: steps.compare.outputs.stale == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: simai/ui-source
+          path: .framework/ui-source
+          fetch-depth: 0
+
+      - name: Vendor the new release
+        if: steps.compare.outputs.stale == 'true'
+        run: |
+          npm ci
+          npm run vendor:framework -- --ui .framework/ui --ui-source .framework/ui-source \
+            --release "${{ steps.compare.outputs.latest }}"
+          npm run generate
+
+      - name: Gates
+        id: gates
+        if: steps.compare.outputs.stale == 'true'
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          {
+            npm run pretest && npm test && npm run generate:check \
+              && xvfb-run -a npm run test:extension \
+              && npx vsce ls | node out/generate/checkPackage.js
+          } 2>&1 | tail -n 60 | tee gates.log
+
+      - name: Open a pull request
+        if: steps.compare.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LATEST: ${{ steps.compare.outputs.latest }}
+          CURRENT: ${{ steps.compare.outputs.current }}
+          BRANCH: ${{ steps.compare.outputs.branch }}
+          GATES: ${{ steps.gates.outcome }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add contracts data
+          git commit -m "Repin to SIMAI Framework release ${LATEST}"
+          git push origin "$BRANCH"
+          DRAFT=""
+          [ "$GATES" = "success" ] || DRAFT="--draft"
+          {
+            echo "Vendored ${LATEST} (was ${CURRENT}) with \`npm run vendor:framework\`."
+            echo
+            echo "Gates in the freshness run: **${GATES}**. Update the pinned counts in the"
+            echo "tests and the CHANGELOG, and check the diff of data/ before merging."
+            echo
+            echo "Pull requests opened with the workflow token do not start other workflows;"
+            echo "push a commit or re-run CI to get the CI checks."
+            echo
+            echo '```'
+            tail -n 40 gates.log
+            echo '```'
+          } > body.md
+          gh pr create --base main --head "$BRANCH" $DRAFT \
+            --title "Repin to SIMAI Framework release ${LATEST}" --body-file body.md
