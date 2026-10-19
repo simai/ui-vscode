@@ -1,0 +1,427 @@
+{
+  "schema_version": 2,
+  "id": "smart.checkbox",
+  "version": "1.0.0",
+  "title": "Checkbox",
+  "summary": "A native checkbox with a label, Framework presentation and checked, indeterminate and disabled states kept in step between the host attributes and the inner input.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "checkbox"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-checkbox",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1",
+        "description": "Checkbox size token.",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ]
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "description": {
+        "type": "string",
+        "default": ""
+      },
+      "help": {
+        "type": "string",
+        "default": ""
+      },
+      "position": {
+        "type": "string",
+        "default": "start",
+        "description": "Logical placement of the indicator relative to its text.",
+        "enum": [
+          "start",
+          "end"
+        ]
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "checked": {
+        "type": "boolean",
+        "default": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "indeterminate": {
+        "type": "boolean",
+        "default": false,
+        "description": "Mixed visual state for a checkbox that summarizes related options."
+      },
+      "name": {
+        "type": "string",
+        "default": ""
+      },
+      "value": {
+        "type": "string",
+        "default": ""
+      },
+      "error": {
+        "type": "boolean",
+        "default": false,
+        "description": "Invalid state; the native input publishes aria-invalid."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name for a checkbox rendered without a visible label."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "checkbox_states": {
+      "type": "string",
+      "enum": [
+        "unchecked",
+        "checked",
+        "mixed",
+        "disabled",
+        "invalid"
+      ]
+    }
+  },
+  "methods": {
+    "getInputElement": {
+      "summary": "Returns the inner native checkbox input, or null before render.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "description": "The HTMLInputElement."
+      }
+    },
+    "isChecked": {
+      "summary": "Return the current native checked state.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "boolean"
+        ]
+      }
+    },
+    "setChecked": {
+      "summary": "Sets the checked state on the host attribute and the inner input through setState(). Returns the element.",
+      "arguments": [
+        {
+          "name": "nextValue",
+          "type": [
+            "boolean",
+            "string"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setIndeterminate": {
+      "summary": "Sets the indeterminate state on the host attribute and the inner input through setState(). Returns the element.",
+      "arguments": [
+        {
+          "name": "nextValue",
+          "type": [
+            "boolean",
+            "string"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setDisabled": {
+      "summary": "Sets the disabled state on the host attribute and the inner input through setState(). Returns the element.",
+      "arguments": [
+        {
+          "name": "nextValue",
+          "type": [
+            "boolean",
+            "string"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setBooleanStateAttribute": {
+      "summary": "Adds the named host attribute as an empty attribute when value is truthy, removes it otherwise.",
+      "arguments": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null",
+        "description": "Returns nothing."
+      }
+    },
+    "setState": {
+      "summary": "Applies checked, indeterminate and disabled to both the host attribute and the inner input; any other keys go to the base setState as host attributes. Returns the element.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onChange": {
+      "summary": "Adds a listener for change on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFocus": {
+      "summary": "Adds a listener for focusin on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBlur": {
+      "summary": "Adds a listener for focusout on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The checked state changed; the native event bubbles from the inner checkbox, which is its target. It carries no detail.",
+      "payload": {
+        "type": "null",
+        "description": "A native Event: there is no detail."
+      },
+      "canonical": true
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "selected",
+      "conflict",
+      "disabled",
+      "error"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Space"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/checkbox/index.js",
+        "sha256": "ad100903e76b4820a13943151fb748b60d4f9670c6d4007064de00b6beeb1f4a"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/checkbox/js/checkbox.js",
+        "sha256": "3f73e02733e52eb94fc2c6c292748c276698a3329cd47ac1c0d3cd9978422d83"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-checkbox when the interface needs the checkbox behavior.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-checkbox></sf-checkbox>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

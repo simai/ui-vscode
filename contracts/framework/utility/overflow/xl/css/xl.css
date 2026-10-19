@@ -1,0 +1,40 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:overflow-auto {
+      overflow: auto;
+    }
+    .xl\:overflow-hidden {
+      overflow: hidden;
+    }
+    .xl\:overflow-visible {
+      overflow: visible;
+    }
+    .xl\:overflow-scroll {
+      overflow: scroll;
+    }
+    .xl\:overflow-x-auto {
+      overflow-x: auto;
+    }
+    .xl\:overflow-y-auto {
+      overflow-y: auto;
+    }
+    .xl\:overflow-x-hidden {
+      overflow-x: hidden;
+    }
+    .xl\:overflow-y-hidden {
+      overflow-y: hidden;
+    }
+    .xl\:overflow-x-visible {
+      overflow-x: visible;
+    }
+    .xl\:overflow-y-visible {
+      overflow-y: visible;
+    }
+    .xl\:overflow-x-scroll {
+      overflow-x: scroll;
+    }
+    .xl\:overflow-y-scroll {
+      overflow-y: scroll;
+    }
+  }
+}

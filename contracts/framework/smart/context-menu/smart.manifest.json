@@ -1,0 +1,594 @@
+{
+  "schema_version": 2,
+  "id": "smart.context-menu",
+  "version": "1.3.0",
+  "title": "Context Menu",
+  "summary": "The Framework's action menu: data entries with icon, caption, value, shortcut, check, submenu, separator and heading, opened by openFor() into the top layer, anchored, with keyboard, typeahead and focus return. A host may still render its own items and own the lifecycle.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "context-menu"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-context-menu",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.context-menu",
+      "smart.buttons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "required": [
+      "aria-label"
+    ],
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "position": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "inline-start",
+          "inline-start-top",
+          "inline-start-bottom",
+          "inline-end",
+          "inline-end-top",
+          "inline-end-bottom",
+          "top",
+          "top-inline-start",
+          "top-inline-end",
+          "bottom",
+          "bottom-inline-start",
+          "bottom-inline-end",
+          "start",
+          "end",
+          "top-start",
+          "top-end",
+          "bottom-start",
+          "bottom-end",
+          "left",
+          "left-top",
+          "left-bottom",
+          "right",
+          "right-top",
+          "right-bottom",
+          "top-left",
+          "top-center",
+          "top-right",
+          "bottom-left",
+          "bottom-center",
+          "bottom-right",
+          "left-start",
+          "left-end",
+          "right-start",
+          "right-end",
+          "inline-start-start",
+          "inline-start-end",
+          "inline-end-start",
+          "inline-end-end"
+        ],
+        "description": "Deprecated: a menu has no tail since 1.3.0 (owner, 2026-10-12); the value is kept for its class and draws nothing."
+      },
+      "tooltip": {
+        "type": "boolean",
+        "default": true,
+        "description": "Deprecated: a menu has no tail since 1.3.0 (owner, 2026-10-12); the value is kept for its class and draws nothing."
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "items": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "object"
+        }
+      },
+      "role": {
+        "type": "string",
+        "default": "menu"
+      },
+      "content-class": {
+        "type": "string",
+        "default": ""
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "entries": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "object"
+        },
+        "description": "The menu as data (set as a property, or JSON in the attribute). See item_contract. When present, it replaces items and the content slot."
+      },
+      "popup": {
+        "type": "boolean",
+        "default": false,
+        "description": "Not drawn until opened through openFor(). A menu without it is drawn in place, as before."
+      },
+      "search": {
+        "type": "object",
+        "default": null,
+        "description": "{placeholder, empty, remote}: a search field above the rows (set as a property). Local by default; with remote: true the menu raises sf-context-menu-search {query} and shows the entries the host sets. A submenu entry passes it with `search`."
+      },
+      "size": {
+        "type": "string",
+        "enum": [
+          "1/2",
+          "1"
+        ],
+        "default": "1/2",
+        "description": "The menu's size: rows as tall as a field of that size (32px at 1/2, 40px at 1), its text, insets, search and footer. A submenu takes its parent's size."
+      },
+      "width": {
+        "type": "string",
+        "default": "content",
+        "description": "How wide openFor() opens the menu: content (its longest line, between --sf-context-menu--min-inline-size and --sf-context-menu--max-inline-size), trigger (exactly the control that opened it; a long line ends in an ellipsis) or a CSS length. openFor(anchor, {width}) overrides it."
+      },
+      "tabs": {
+        "type": [
+          "string",
+          "array"
+        ],
+        "default": "",
+        "description": "A panel with tabs: labels separated by |, or [{id, label}] as a property. The head (tabs and the close button) and the footer never scroll, the body does, and the panel keeps a fixed width (a ladder step, or width) whatever a tab holds."
+      },
+      "active-tab": {
+        "type": "string",
+        "default": "",
+        "description": "The chosen tab's id or index; the host renders that tab's rows into the content slot."
+      },
+      "closable": {
+        "type": "boolean",
+        "default": false,
+        "description": "A close button at the end of the panel's head."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {
+    "summary": "One entry of `entries`.",
+    "kinds": {
+      "item": {
+        "fields": {
+          "id": "string, returned in sf-context-menu-select",
+          "text": "string, the label",
+          "icon": "string, a Material Symbols name",
+          "caption": "string, a second line under the label",
+          "value": "string, read-only value at the row's end",
+          "shortcut": "string, shown at the row's end",
+          "kind": "'check' | 'radio' for a checkable row",
+          "checked": "boolean",
+          "danger": "boolean, a destructive action",
+          "disabled": "boolean",
+          "current": "boolean, the place the person is",
+          "href": "string, a link row",
+          "submenu": "entries, opened beside the row",
+          "keepOpen": "boolean, a choice does not close the menu",
+          "lang": "string, the language the label is written in",
+          "search": "{placeholder, empty}, a field above the submenu that narrows its rows by label, caption and keywords",
+          "keywords": "string, extra words a search matches",
+          "avatar": "string, a picture URL drawn in the lead (a site's logo, a person)",
+          "initials": "string, drawn in the lead when there is no picture"
+        }
+      },
+      "separator": {
+        "fields": {
+          "type": "'separator'"
+        }
+      },
+      "heading": {
+        "fields": {
+          "type": "'heading'",
+          "text": "string, names the items under it"
+        }
+      },
+      "header": {
+        "fields": {
+          "type": "'header'",
+          "text": "string, the name",
+          "caption": "string or string[], the lines under it",
+          "avatar": "string, a picture URL",
+          "initials": "string, drawn without a picture (from the name by default)"
+        }
+      },
+      "choice": {
+        "fields": {
+          "type": "'choice'",
+          "id": "string, reported as group",
+          "text": "string, the group's name",
+          "options": "[{id, text, icon, checked, disabled}], side by side; a choice is marked at once and the menu stays open unless keepOpen is false"
+        }
+      },
+      "note": {
+        "fields": {
+          "type": "'note'",
+          "text": "string, a line of explanation"
+        }
+      }
+    }
+  },
+  "contracts": {},
+  "methods": {
+    "focus": {
+      "summary": "Focus the current available item. A host that renders the menu itself waits for rendering and owns opening and dismissal.",
+      "arguments": [
+        {
+          "name": "options",
+          "schema": {
+            "type": "object"
+          },
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      }
+    },
+    "openFor": {
+      "summary": "Open beside an element: top layer, anchored by SF.Position with flip and shift, focus on the first item (or 'last', or 'none'). The menu then owns its lifecycle: Escape, Tab, a press outside and a choice close it and return the focus -- to where it was, or to the anchor's own control when it was nowhere.",
+      "arguments": [
+        {
+          "name": "anchor",
+          "type": "Element",
+          "required": true
+        },
+        {
+          "name": "options",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "side": {
+                "type": "string",
+                "default": "block-end"
+              },
+              "align": {
+                "type": "string",
+                "default": "start"
+              },
+              "focus": {
+                "type": "string",
+                "enum": [
+                  "first",
+                  "last",
+                  "none"
+                ],
+                "default": "first"
+              }
+            }
+          },
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "Promise<boolean>",
+        "description": "Resolves once the menu is rendered and open: whether it opened."
+      }
+    },
+    "toggleFor": {
+      "summary": "Close when already open for this anchor, otherwise openFor().",
+      "arguments": [
+        {
+          "name": "anchor",
+          "type": "Element",
+          "required": true
+        },
+        {
+          "name": "options",
+          "schema": {
+            "type": "object"
+          },
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "Promise<boolean>",
+        "description": "Resolves to whether the menu is open afterwards."
+      }
+    },
+    "close": {
+      "summary": "Close this menu and any submenu.",
+      "arguments": [
+        {
+          "name": "options",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "restoreFocus": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          },
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether it was open."
+      }
+    },
+    "chooseTab": {
+      "summary": "Choose a tab by index and emit sf-context-menu-tab.",
+      "arguments": [
+        {
+          "name": "index",
+          "schema": {
+            "type": "number"
+          }
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "requestClose": {
+      "summary": "Close an owned menu; for a menu its host placed, emit sf-context-menu-close for the host to close it.",
+      "arguments": [],
+      "returns": {
+        "type": "boolean"
+      }
+    }
+  },
+  "events": {
+    "sf-context-menu-select": {
+      "summary": "An entry was chosen, at any depth. Cancel it to keep the menu open.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "entry": {
+            "type": "object"
+          },
+          "checked": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "The state a check or radio row asks for; null for a plain item."
+          },
+          "group": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The choice row's id when an option of it was chosen."
+          }
+        }
+      }
+    },
+    "sf-context-menu-open": {
+      "summary": "Opened through openFor(). Bubbles and is composed; carries no detail.",
+      "payload": {
+        "type": "null",
+        "description": "detail is null."
+      }
+    },
+    "sf-context-menu-close": {
+      "summary": "A menu opened through openFor() was closed. Bubbles and is composed; carries no detail.",
+      "payload": {
+        "type": "null",
+        "description": "detail is null."
+      }
+    },
+    "sf-context-menu-search": {
+      "summary": "The query of a search the host answers (search.remote).",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-context-menu-tab": {
+      "summary": "A tab of the panel was chosen; the host shows its rows.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "index": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "menu",
+    "accessible_name": "required",
+    "keyboard": [
+      "ArrowDown",
+      "ArrowUp",
+      "Home",
+      "End",
+      "ArrowRight",
+      "ArrowLeft",
+      "Enter",
+      "Space",
+      "Escape",
+      "Tab",
+      "typeahead"
+    ],
+    "focus": "Rows rendered from entries carry menuitem, menuitemcheckbox or menuitemradio with aria-checked, and aria-haspopup/aria-expanded for a submenu; one roving tab stop. Opened through openFor(): the anchor gets aria-haspopup=menu and aria-expanded; Escape closes one level and returns the focus to its row or the anchor; Tab closes the whole chain; a letter moves to the next item it starts. A host that renders the menu itself owns opening, Escape/Tab dismissal and focus return, as before. A header and a note are text. The options of a choice row are menuitemradio in a group, walked by the side arrows. A searchable menu opens on its field, which keeps the letters and the side arrows; ArrowDown goes on to the rows."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "semantic-surface-radius",
+      "unclipped-tail-with-scrollable-content",
+      "logical-position-aliases",
+      "forced-colors-boundary"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [
+      {
+        "path": "position",
+        "since": "1.3.0",
+        "replacement": "openFor(anchor, {side, align}) places the menu; no tail is drawn"
+      },
+      {
+        "path": "tooltip",
+        "since": "1.3.0",
+        "replacement": "none: a menu has no tail"
+      }
+    ],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/context-menu/index.js",
+        "sha256": "9bd28543965d1f8a3a5a738d02a1e4e8228a7194b3142352ef270e30978cc9d8"
+      },
+      {
+        "path": "src/smart/context-menu/js/templates/default.js",
+        "sha256": "8a828417d54fa993641434e9086f240bc8d24505ee54ef4e093019aa437c09fb"
+      },
+      {
+        "path": "src/component/context-menu/scss/_css__context_menu.scss",
+        "sha256": "ef0c1029e819428e9f79afeff408bdd3fd9600fe7d0946503ceac7d0c047b702"
+      },
+      {
+        "path": "src/component/context-menu/scss/_css__context_menu_custom.scss",
+        "sha256": "6863bb9ab9d56ce051ae8ea26b72ec58185fab1848d110c13ceadee83fc817ad"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/context-menu/js/context-menu.js",
+        "sha256": "35d99046348af776c3273085fb93a488e6097023d64b65245d34e6334579d3c8"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-context-menu for every action menu: give it entries and open it with openFor(anchor). It opens below and start-aligned by default, with no tail, in the top layer, on the profile menu's surface. A profile menu is one: a header for the person, a choice row for the theme, a submenu with search for the language.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not hand-make a menu of divs and buttons: the row geometry, roles, keyboard and focus return are this component's",
+      "Do not ask for a tail: position and tooltip are deprecated and draw nothing"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<button id=\"more\" type=\"button\">Ещё</button><sf-context-menu id=\"menu\" popup aria-label=\"Действия\"></sf-context-menu><script>menu.entries=[{id:\"rename\",text:\"Переименовать\",icon:\"edit\"},{type:\"separator\"},{id:\"delete\",text:\"Удалить\",icon:\"delete\",danger:true}];more.onclick=()=>menu.toggleFor(more);</script>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

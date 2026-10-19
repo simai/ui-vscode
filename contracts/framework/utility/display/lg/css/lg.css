@@ -1,0 +1,70 @@
+@layer sf.utilities {
+  @media (min-width: 60rem) {
+    .lg\:block {
+      display: block;
+    }
+    .lg\:inline-block {
+      display: inline-block;
+    }
+    .lg\:inline {
+      display: inline;
+    }
+    .lg\:flex {
+      display: flex;
+    }
+    .lg\:inline-flex {
+      display: inline-flex;
+    }
+    .lg\:table {
+      display: table;
+    }
+    .lg\:display-table {
+      display: table;
+    }
+    .lg\:inline-table {
+      display: inline-table;
+    }
+    .lg\:table-caption {
+      display: table-caption;
+    }
+    .lg\:table-cell {
+      display: table-cell;
+    }
+    .lg\:table-column {
+      display: table-column;
+    }
+    .lg\:table-column-group {
+      display: table-column-group;
+    }
+    .lg\:table-footer-group {
+      display: table-footer-group;
+    }
+    .lg\:table-header-group {
+      display: table-header-group;
+    }
+    .lg\:table-row-group {
+      display: table-row-group;
+    }
+    .lg\:table-row {
+      display: table-row;
+    }
+    .lg\:flow-root {
+      display: flow-root;
+    }
+    .lg\:grid {
+      display: grid;
+    }
+    .lg\:inline-grid {
+      display: inline-grid;
+    }
+    .lg\:content {
+      display: contents;
+    }
+    .lg\:list-item {
+      display: list-item;
+    }
+    .lg\:hidden {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,919 @@
+{
+  "schema_version": 2,
+  "id": "smart.pagination",
+  "version": "1.0.1",
+  "title": "Pagination",
+  "summary": "Source-driven navigation for a collection split into numbered pages.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "pagination"
+  ],
+  "capabilities": [
+    "render",
+    "interaction",
+    "keyboard",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-pagination",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.buttons",
+      "smart.checkbox",
+      "smart.dropdown",
+      "smart.icon-buttons",
+      "smart.inputs",
+      "smart.list-item",
+      "smart.spinner"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Template name."
+      },
+      "top": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show the compatible show-more section."
+      },
+      "middle": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show page navigation and collection summary."
+      },
+      "bottom": {
+        "type": "boolean",
+        "default": true,
+        "description": "Allow the compatible batch-action section."
+      },
+      "top-class": {
+        "type": "string",
+        "default": "",
+        "description": "Framework utility classes for the show-more section."
+      },
+      "main-class": {
+        "type": "string",
+        "default": "",
+        "description": "Framework utility classes for the navigation section."
+      },
+      "bottom-class": {
+        "type": "string",
+        "default": "",
+        "description": "Framework utility classes for the batch-action section."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the navigation landmark. Empty: the text of the page's language (\"Result pages\" in English)."
+      },
+      "pages-label": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label before page controls. Empty: the text of the page's language (\"Pages:\" in English)."
+      },
+      "page-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible prefix for a numbered page action. Empty: the text of the page's language (\"Page\" in English)."
+      },
+      "previous-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the previous-page action. Empty: the text of the page's language (\"Previous page\" in English)."
+      },
+      "next-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the next-page action. Empty: the text of the page's language (\"Next page\" in English)."
+      },
+      "last-label": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label of the compatible last-page action. Empty: the text of the page's language (\"Last\" in English)."
+      },
+      "total-label": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label for the total item count. Empty: the text of the page's language (\"Total:\" in English)."
+      },
+      "selected-label": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label for the selected item count. Empty: the text of the page's language (\"Selected:\" in English)."
+      },
+      "selected-count": {
+        "type": "integer",
+        "default": 0,
+        "minimum": 0,
+        "description": "Selected item count, clamped between zero and total."
+      },
+      "show-more-text": {
+        "type": "string",
+        "default": "",
+        "description": "Label of the compatible show-more action. Empty: the text of the page's language (\"Show more\" in English)."
+      },
+      "current": {
+        "type": "integer",
+        "minimum": 1,
+        "default": 1,
+        "description": "Current one-based page number."
+      },
+      "total": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 10,
+        "description": "Non-negative total item count."
+      },
+      "page-size": {
+        "type": "integer",
+        "minimum": 1,
+        "default": 10,
+        "description": "Positive number of items per page."
+      },
+      "page-sizes": {
+        "type": "string",
+        "default": "10,20,30,40",
+        "description": "Comma-separated positive page-size choices."
+      },
+      "show-page-size": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show the page-size selector for a non-empty collection."
+      },
+      "page-size-label": {
+        "type": "string",
+        "default": "",
+        "description": "Visible and accessible label of the page-size selector. Empty: the text of the page's language (\"Per page:\" in English)."
+      },
+      "show-actions": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show batch actions when actions are supplied."
+      },
+      "actions": {
+        "type": "string",
+        "default": "",
+        "description": "Pipe-separated compatible batch-action definitions."
+      },
+      "action": {
+        "type": "string",
+        "default": "",
+        "description": "Selected batch-action value."
+      },
+      "action-apply-text": {
+        "type": "string",
+        "default": "",
+        "description": "Label of the batch-action apply button. Empty: the text of the page's language (\"Apply\" in English)."
+      },
+      "show-action-for-all": {
+        "type": "boolean",
+        "default": false,
+        "description": "Show the compatible all-items toggle."
+      },
+      "action-for-all": {
+        "type": "boolean",
+        "default": false,
+        "description": "Current all-items toggle value."
+      },
+      "action-for-all-label": {
+        "type": "string",
+        "default": "",
+        "description": "Label of the all-items toggle. Empty: the text of the page's language (\"For all\" in English)."
+      },
+      "actions-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the batch-action selector. Empty: the text of the page's language (\"Action for the selected records\" in English)."
+      },
+      "action-choose-label": {
+        "type": "string",
+        "default": "",
+        "description": "Placeholder of the batch-action selector, shown until an action is chosen. Empty: the text of the page's language (\"Choose an action\" in English)."
+      },
+      "actions-region-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the panel that appears while rows are marked. Empty: the text of the page's language (\"Actions for the selected\" in English)."
+      },
+      "clear-selection-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name and tooltip of the control that drops the selection. Empty: the text of the page's language (\"Clear the selection\" in English)."
+      },
+      "count-known": {
+        "type": "boolean",
+        "default": true,
+        "description": "Whether the number of records is known. A host that does not count every answer sets it false, and the view offers the number instead of showing it."
+      },
+      "can-count": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether the host can count on request. Without it the view offers nothing and asks for nothing."
+      },
+      "counting": {
+        "type": "boolean",
+        "default": false,
+        "description": "A count is on its way; the view shows a short wait in place of the number."
+      },
+      "has-next": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether a further page exists. It is what moves forward and Show more when no total was sent."
+      },
+      "show-count-label": {
+        "type": "string",
+        "default": "",
+        "description": "Text of the control that asks the host for the number. Empty: the text of the page's language (\"Show the number\" in English)."
+      },
+      "counting-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the short wait shown while the count is on its way. Empty: the text of the page's language (\"Counting\" in English)."
+      },
+      "first-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name and tooltip of the control that goes to the first page. Empty: the text of the page's language (\"First\" in English)."
+      },
+      "page-field-label": {
+        "type": "string",
+        "default": "",
+        "description": "Label of the field that takes a page number. Empty: the text of the page's language (\"Page:\" in English)."
+      },
+      "show-more-busy": {
+        "type": "boolean",
+        "default": false,
+        "description": "Mark the Show more control as working while the host fetches the next portion; it is disabled and shows a loader."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1"
+        ],
+        "description": "The step of the size ladder its fields, buttons, labels and page numbers take: 1, or the dense 1/2 of an admin."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {
+    "page": "Positive one-based page number bounded by total and page-size.",
+    "ellipsis": "Non-interactive indicator for omitted pages."
+  },
+  "contracts": {
+    "navigation": {
+      "const": "The visible root is a named nav; page actions are native buttons because the component emits state events instead of owning URLs."
+    },
+    "current": {
+      "const": "Exactly one rendered page exposes aria-current=page when total is greater than zero."
+    },
+    "empty": {
+      "const": "A zero-sized collection renders no page controls and emits no page-change."
+    },
+    "responsive": {
+      "const": "A long desktop range keeps edge pages and static ellipses; a narrow range keeps the current page, adjacent pages and directional actions on one line."
+    },
+    "composition": {
+      "const": "Show-more, page-size and batch-action sections remain compatible optional compositions; data loading and host actions stay outside the component."
+    }
+  },
+  "methods": {
+    "getTopSection": {
+      "summary": "Returns the top section element (.sf-pagination-top), or null when it is not rendered.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "getMainSection": {
+      "summary": "Returns the main section element (.sf-pagination-main), or null when it is not rendered.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "getBottomSection": {
+      "summary": "Returns the bottom section element (.sf-pagination-bottom), or null when it is not rendered.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "goToPage": {
+      "summary": "Moves to a page: the number is parsed as an integer and clamped to 1..pageCount when the count is known (only to at least 1 when it is not). Emits sf-page-change when the page actually changes; does nothing when the total is a known zero.",
+      "arguments": [
+        {
+          "name": "page",
+          "type": "number|string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "showMore": {
+      "summary": "Emits sf-show-more with the current paging and the given item; performs no request and changes no state.",
+      "arguments": [
+        {
+          "name": "item",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setPageSize": {
+      "summary": "Sets a positive page size, keeps the current page within the new page count and emits sf-page-size-change. A non-positive, non-numeric or unchanged size is ignored.",
+      "arguments": [
+        {
+          "name": "size",
+          "type": "number|string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setAction": {
+      "summary": "Selects a batch action by value (an empty value clears the choice) and emits sf-action-change when it differs from the current one.",
+      "arguments": [
+        {
+          "name": "action",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setActionForAll": {
+      "summary": "Sets whether the batch action applies to every record under the filter and emits sf-action-for-all-change. Turning it on also requests the count (sf-count-request with reason action-for-all) when the count is not yet known.",
+      "arguments": [
+        {
+          "name": "value",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setState": {
+      "summary": "Writes each key as its kebab-case attribute: false, null, undefined or an empty string removes the attribute, true sets it empty, anything else is stringified.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onPageChange": {
+      "summary": "Adds a listener for sf-page-change; the handler is called with (current, detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onShowMore": {
+      "summary": "Adds a listener for sf-show-more; the handler is called with (detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-action-apply": {
+      "summary": "Runtime event sf-action-apply.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "actionForAll": {
+            "type": "boolean"
+          },
+          "current": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "pageCount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "action",
+          "actionForAll",
+          "current",
+          "total",
+          "pageSize",
+          "pageCount"
+        ]
+      }
+    },
+    "sf-action-change": {
+      "summary": "Runtime event sf-action-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "previous",
+          "action"
+        ]
+      }
+    },
+    "sf-action-for-all-change": {
+      "summary": "Runtime event sf-action-for-all-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "boolean"
+          },
+          "actionForAll": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "previous",
+          "actionForAll"
+        ]
+      }
+    },
+    "sf-count-request": {
+      "summary": "Runtime event sf-count-request.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "total",
+              "last-page",
+              "action-for-all"
+            ]
+          },
+          "current": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "reason",
+          "current",
+          "pageSize"
+        ]
+      }
+    },
+    "sf-page-change": {
+      "summary": "Runtime event sf-page-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "number"
+          },
+          "current": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "pageCount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "pageSize": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "previous",
+          "current",
+          "total",
+          "pageCount",
+          "pageSize"
+        ]
+      }
+    },
+    "sf-page-size-change": {
+      "summary": "Runtime event sf-page-size-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "current": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "pageCount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "previous",
+          "pageSize",
+          "current",
+          "total",
+          "pageCount"
+        ]
+      }
+    },
+    "sf-selection-clear": {
+      "summary": "Runtime event sf-selection-clear.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "selectedCount": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "selectedCount",
+          "total"
+        ]
+      }
+    },
+    "sf-show-more": {
+      "summary": "Runtime event sf-show-more.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "current": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "pageCount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "hasNext": {
+            "type": "boolean"
+          },
+          "item": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "What showMore was called with; the built-in button passes its click target."
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "current",
+          "total",
+          "pageSize",
+          "pageCount",
+          "hasNext",
+          "item"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "selected",
+      "disabled",
+      "empty"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "navigation",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Tab reaches only enabled native actions. Focus uses the shared keyboard-only focus-visible treatment and remains visible in forced colors; omitted pages are not focusable."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "accepted",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "owner-contract",
+      "browser-matrix",
+      "documentation-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": [
+      {
+        "from": "1.0.0",
+        "to": "1.0.1",
+        "changes": [
+          "Fix: the action-for-all checkbox follows the checkbox state (change) instead of toggling on click, so clicking its label no longer toggles twice and leaves it off."
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/pagination/index.js",
+        "sha256": "5bd5a0bb2a26c582d436f25d0cc428017bbc20370a614a0a8bafcf74c9f43a34"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/pagination/js/pagination.js",
+        "sha256": "f278711748fa4c0c84a0d91d425fe76aa2ab2a71af9f69c1090e611e39cc5766"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-pagination for a collection divided into numbered pages when the host owns data loading and reacts to pagination events.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not use Pagination for semantic steps or short content that can be shown at once",
+      "Do not make an ellipsis interactive or put the pagination row on multiple lines",
+      "Do not treat the optional batch-action section as the core pagination contract"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-pagination aria-label=\"Страницы результатов поиска\" current=\"2\" total=\"96\" page-size=\"10\" top=\"false\" bottom=\"false\" show-page-size=\"false\"></sf-pagination>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

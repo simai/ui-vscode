@@ -1,0 +1,374 @@
+{
+  "schema_version": 2,
+  "id": "smart.dropdown",
+  "version": "1.2.0",
+  "title": "Dropdown",
+  "summary": "Accessible single or multiple selection control with searchable options and optional portal projection.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "dropdown"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-dropdown",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.dropdown",
+      "smart.list-item",
+      "smart.inputs",
+      "smart.icon-buttons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "appearance": {
+        "type": "string",
+        "default": "outlined",
+        "enum": [
+          "filled",
+          "outlined"
+        ],
+        "description": "How the dropdown looks: a filled field or an outlined one."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "columns": {
+        "type": "string",
+        "default": "6",
+        "description": "How many options a row holds in the grid layout. Ignored in a list."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "layout": {
+        "type": "string",
+        "default": "list",
+        "enum": [
+          "list",
+          "grid"
+        ],
+        "description": "How the options are laid out. A list is one option a row; a grid puts several in a row, which is the only way a hundred glyphs can be looked at -- a column of them is a column nobody scrolls to the end of. In a grid an option shows its picture and keeps its text as the name a search reads and a pointer sees."
+      },
+      "mode": {
+        "type": "string",
+        "default": "select",
+        "enum": [
+          "tag",
+          "select"
+        ]
+      },
+      "multiple": {
+        "type": "boolean",
+        "default": false,
+        "description": "Allow several values while preserving their serialized selection order. Tag mode is multiple by default."
+      },
+      "name": {
+        "type": "string",
+        "default": "",
+        "description": "Native form field name for the selected machine value."
+      },
+      "options": {
+        "type": "array",
+        "description": "Options given as data instead of as sf-list-item children: [{text, value, type?, size?, icon?, selected?, disabled?, colorClass?, avatarImageUrl?, avatarTitle?, ariaLabel?, group?}]. A string or a number is taken as both the label and the value. A parent that renders this dropdown from a template passes its options this way, because capturing child elements means removing them, and the parent can then no longer put a changed list back. Options carrying the same `group`, one after another, are drawn under one heading, so a long list says where each stretch of it comes from instead of repeating that in every row.",
+        "default": []
+      },
+      "placeholder": {
+        "type": "string",
+        "default": ""
+      },
+      "portal": {
+        "type": "boolean",
+        "default": true,
+        "description": "Anchor the popup with the shared Framework positioning (SF.Position): native top layer, flip, shift and viewport-limited height. On by default; portal=\"false\" keeps the in-flow list."
+      },
+      "required": {
+        "type": "boolean",
+        "default": false
+      },
+      "search": {
+        "type": "boolean",
+        "default": true
+      },
+      "search-placeholder": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Search\" in English)."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ]
+      },
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "type": {
+        "type": "string",
+        "default": "outlined",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "filled",
+          "outlined"
+        ]
+      },
+      "value": {
+        "type": "string",
+        "default": "",
+        "description": "Selected machine value, or a comma-separated list of values for multiple selection."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "change_detail": {
+      "type": "object",
+      "required": [
+        "value",
+        "values",
+        "multiple"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The value of the item chosen or cleared; \"\" when none."
+        },
+        "label": {
+          "type": "string",
+          "description": "Its visible text."
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Every selected value after the change."
+        },
+        "item": {
+          "description": "The chosen sf-list-item, or null."
+        },
+        "root": {
+          "description": "The emitting sf-dropdown."
+        },
+        "multiple": {
+          "type": "boolean",
+          "description": "Whether several values can be selected."
+        }
+      }
+    }
+  },
+  "methods": {
+    "openDropdown": {
+      "summary": "Opens the option list unless the control is disabled or already open. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "closeDropdown": {
+      "summary": "Closes the option list and clears the search text. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "toggleDropdown": {
+      "summary": "Closes the list when open, opens it otherwise. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The selection changed; dispatched on the host. The name to bind.",
+      "payload": {
+        "$ref": "#/contracts/change_detail"
+      },
+      "canonical": true
+    },
+    "sf-dropdown:change": {
+      "summary": "Legacy name for change, still emitted with the same detail; bind change.",
+      "payload": {
+        "$ref": "#/contracts/change_detail"
+      },
+      "alias_of": "change"
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "open",
+      "selected",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "button with listbox popup",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "ArrowDown",
+      "ArrowUp",
+      "Home",
+      "End",
+      "Enter",
+      "Space",
+      "Escape"
+    ],
+    "focus": "The toggle is the primary Tab stop. Arrow keys open and move through available options; Home and End move within the list; Enter or Space selects; Escape closes and restores the toggle; Tab closes and continues native traversal. The searchbox keeps native text-editing Home and End behavior."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": [
+      {
+        "from": "1.0.0",
+        "to": "1.1.0",
+        "changes": [
+          "portal is on by default: the list is positioned by SF.Position (Floating UI) in the native top layer, flips above near the bottom and stays inside the viewport.",
+          "portal=\"false\" keeps the previous in-flow list."
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/dropdown/index.js",
+        "sha256": "c8a9e75654ce20b4a37f7301fc0fe435444b1340b9539f1e1544e3485f0b86e6"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/dropdown/js/dropdown.js",
+        "sha256": "3265735b5514c67f932f78cf67022bc9db1affc76703fc9034bc095c3b11c007"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-dropdown when a form needs one or several values from a concealed option set. Use direct sf-list-item children with stable machine values and visible labels. Use portal only when an ancestor clips the popup.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not use the visible label as the submitted value when a stable machine identifier exists",
+      "Do not make decorative checkbox, avatar or icon content independently focusable inside an option"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-dropdown label=\"Статус\" name=\"status\" placeholder=\"Выберите статус\"><sf-list-item value=\"open\" text=\"Открыт\"></sf-list-item><sf-list-item value=\"done\" text=\"Готов\"></sf-list-item></sf-dropdown>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,542 @@
+{
+  "schema_version": 2,
+  "id": "smart.buttons",
+  "version": "1.0.0",
+  "title": "Buttons",
+  "summary": "A native button with Framework presentation: size, appearance, colour role or status, optional start and end icons, spacing and radius. loading sets aria-busy and disables it against repeated activation.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "buttons"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-button",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.icons"
+    ],
+    "public_parts": [],
+    "declarative": {
+      "standard": "simai.composition.document.v1",
+      "type": "smart.buttons",
+      "mode": "leaf",
+      "profiles": [
+        "ui-layout"
+      ],
+      "props": [
+        "template",
+        "size",
+        "appearance",
+        "spacing",
+        "scheme",
+        "status",
+        "text",
+        "icon",
+        "icon-position",
+        "loading",
+        "disabled",
+        "native-type",
+        "aria-label"
+      ],
+      "presentation": {
+        "views": [
+          "default"
+        ],
+        "presets": [],
+        "modifiers": []
+      },
+      "slots": {},
+      "renderer": {
+        "kind": "custom-element",
+        "name": "sf-button"
+      },
+      "assets": [
+        "smart/buttons"
+      ]
+    }
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Template variant name for SfBaseElement external templates."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "description": "Button size token.",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "appearance": {
+        "type": "string",
+        "default": "default",
+        "description": "How the button looks. Surface reads the neutral alpha ramp: a faint fill and a border. ghost is the link appearance under its old name (compat until 2026-12-01).",
+        "enum": [
+          "default",
+          "tonal",
+          "outline",
+          "link",
+          "surface",
+          "ghost"
+        ]
+      },
+      "scheme": {
+        "type": "string",
+        "default": "primary",
+        "description": "Which colour family the control takes. What the control is about is the status axis; a status set there wins over this.",
+        "enum": [
+          "primary",
+          "secondary",
+          "on-surface"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "default": "",
+        "description": "What the control is about, in the shared status vocabulary. The only one a control paints today is `error`, the destructive one: a control that deletes, discards or cannot be undone.",
+        "enum": [
+          "",
+          "error"
+        ]
+      },
+      "text-position": {
+        "type": "string",
+        "default": "center"
+      },
+      "text": {
+        "type": "string",
+        "default": "",
+        "description": "Visible button text when no text slot is provided."
+      },
+      "segment": {
+        "type": "string",
+        "default": ""
+      },
+      "icon": {
+        "type": "string",
+        "default": "",
+        "description": "Single icon name shortcut.",
+        "examples": [
+          "home",
+          "settings",
+          "search",
+          "edit",
+          "check",
+          "close"
+        ]
+      },
+      "icon-start": {
+        "type": "string",
+        "default": "",
+        "description": "Logical start icon name.",
+        "examples": [
+          "home",
+          "settings",
+          "search",
+          "edit",
+          "check",
+          "close"
+        ]
+      },
+      "icon-end": {
+        "type": "string",
+        "default": "",
+        "description": "Logical end icon name.",
+        "examples": [
+          "home",
+          "settings",
+          "search",
+          "edit",
+          "check",
+          "close"
+        ]
+      },
+      "icon-left": {
+        "type": "string",
+        "default": "",
+        "description": "Compatibility alias for icon-start.",
+        "examples": [
+          "home",
+          "settings",
+          "search",
+          "edit",
+          "check",
+          "close"
+        ]
+      },
+      "icon-right": {
+        "type": "string",
+        "default": "",
+        "description": "Compatibility alias for icon-end.",
+        "examples": [
+          "home",
+          "settings",
+          "search",
+          "edit",
+          "check",
+          "close"
+        ]
+      },
+      "icon-position": {
+        "type": "string",
+        "default": "start",
+        "description": "Placement for the single icon shortcut.",
+        "enum": [
+          "start",
+          "end"
+        ]
+      },
+      "spacing": {
+        "type": "string",
+        "default": "normal",
+        "description": "Semantic internal spacing profile.",
+        "enum": [
+          "compact",
+          "normal",
+          "comfortable",
+          "spacious"
+        ]
+      },
+      "tightness": {
+        "type": "string",
+        "default": "",
+        "description": "Compatibility alias for spacing.",
+        "enum": [
+          "",
+          "low",
+          "high",
+          "highest"
+        ]
+      },
+      "radius": {
+        "type": "string",
+        "default": "",
+        "description": "Border radius modifier.",
+        "enum": [
+          "",
+          "default",
+          "square",
+          "rounded"
+        ]
+      },
+      "root-class": {
+        "type": "string",
+        "default": "",
+        "description": "Extra classes applied to the inner button element."
+      },
+      "loading": {
+        "type": "boolean",
+        "default": false,
+        "description": "Loading state flag."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disabled state flag."
+      },
+      "native-type": {
+        "type": "string",
+        "default": "button",
+        "description": "Native button type attribute.",
+        "enum": [
+          "button",
+          "submit",
+          "reset"
+        ]
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible label for icon-only or custom buttons."
+      },
+      "type": {
+        "type": "string",
+        "default": "default",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "default",
+          "tonal",
+          "outline",
+          "link",
+          "surface",
+          "ghost"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "onClick": {
+      "summary": "Adds a listener for click on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFocus": {
+      "summary": "Adds a listener for focusin on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBlur": {
+      "summary": "Adds a listener for focusout on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onMouseEnter": {
+      "summary": "Adds a listener for mouseenter on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onMouseLeave": {
+      "summary": "Adds a listener for mouseleave on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setDisabled": {
+      "summary": "Sets the disabled attribute when nextValue is truthy and removes it otherwise. Returns the element.",
+      "arguments": [
+        {
+          "name": "nextValue",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/buttons/index.js",
+        "sha256": "ad27494ae2b17bc277130f72835a2c60476fddcb3fe00f624cb46984b11a8851"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/buttons/js/buttons.js",
+        "sha256": "b36b0e1eb2098737665ec868915cd3756c5b37863f0d5b69995c3a1f37074873"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-button when the interface needs the buttons behavior.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-button></sf-button>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

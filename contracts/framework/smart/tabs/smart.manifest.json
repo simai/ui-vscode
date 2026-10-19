@@ -1,0 +1,449 @@
+{
+  "schema_version": 2,
+  "id": "smart.tabs",
+  "version": "1.0.0",
+  "title": "Tabs",
+  "summary": "A tab list that shows one local panel at a time, with text or icon tabs given as attributes, slots or data, roving keyboard focus and linked tab panels.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "tabs"
+  ],
+  "capabilities": [
+    "render",
+    "interaction",
+    "keyboard",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-tabs",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.tabs",
+      "smart.buttons",
+      "smart.icon-buttons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "type": {
+        "type": "string",
+        "default": null
+      },
+      "size": {
+        "type": "string",
+        "default": "1"
+      },
+      "variant": {
+        "type": "string",
+        "default": "buttons"
+      },
+      "scheme": {
+        "type": "string",
+        "default": "default",
+        "description": "Built-in button appearance: default, outline or link. Historical name retained; this is not a semantic color selector. Custom templates may interpret it separately."
+      },
+      "top-position": {
+        "type": "string",
+        "default": "start"
+      },
+      "active-index": {
+        "type": "number",
+        "default": 0
+      },
+      "items": {
+        "type": "string",
+        "default": [],
+        "description": "An item (set with setItems) may carry key (a stable id for the settings; the index otherwise), icon, count (a small counter after the label), href (the tab is a link: activating it goes to the address; aria-current=page on the active one) and pinned (never hidden, fixed in the settings)."
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "top-class": {
+        "type": "string",
+        "default": ""
+      },
+      "panel-class": {
+        "type": "string",
+        "default": ""
+      },
+      "overflow": {
+        "type": "string",
+        "enum": [
+          "scroll",
+          "wrap",
+          "more"
+        ],
+        "default": "scroll",
+        "description": "What the tabs do when they do not fit: scroll (the row scrolls), wrap (rows wrap), or more (the tabs that do not fit go into a trailing «Ещё (n)» menu; the active one always stays)."
+      },
+      "configurable": {
+        "type": "boolean",
+        "default": false,
+        "description": "A gear at the end of the tabs («Настроить вкладки») opens the standard menu with the tabs as a sortable list, a visibility checkbox per tab (pinned tabs fixed) and «Сбросить» in its footer. The choice is the host's: sf-tabs-settings-change {order, hidden}, sf-tabs-settings-reset, setSettings({order, hidden})."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getData": {
+      "summary": "Returns the data set with setData: {tabs, panels, ...}; {tabs: [], panels: []} when none was set.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "setData": {
+      "summary": "Merges data into the current data (a function receives the current data and returns the next) and re-renders. tabs or items become tab items; panels or content become panels. A non-object is ignored.",
+      "arguments": [
+        {
+          "name": "data",
+          "type": "object|function",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setItems": {
+      "summary": "Replaces the tabs in the data (a function receives the current tabs) and re-renders.",
+      "arguments": [
+        {
+          "name": "items",
+          "type": "array|function",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setPanels": {
+      "summary": "Replaces the panels in the data (a function receives the current panels) and re-renders.",
+      "arguments": [
+        {
+          "name": "panels",
+          "type": "array|function",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setState": {
+      "summary": "Writes each key as its kebab-case attribute; an array (items) is serialised as label::flags entries joined by |. false, null, undefined or empty removes the attribute, true sets it empty.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "goTo": {
+      "summary": "Activates the tab at index (an index out of range means 0); does nothing for a disabled or the active tab. Sets active-index and emits sf-tab-change.",
+      "arguments": [
+        {
+          "name": "index",
+          "type": "number|string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onTabChange": {
+      "summary": "Adds a listener for sf-tab-change; the handler is called with (current, detail, event). Ignores a non-function handler.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setSettings": {
+      "summary": "Applies the person's stored arrangement: {order: [keys], hidden: [keys]}. A key the items no longer have is ignored; an item the order does not name follows in its declared place, visible; a pinned tab is never hidden; the active tab is shown in place even when hidden.",
+      "arguments": [
+        {
+          "name": "settings",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-tab-change": {
+      "summary": "Runtime event sf-tab-change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "number"
+          },
+          "current": {
+            "type": "number"
+          },
+          "item": {
+            "type": "object",
+            "description": "A normalised tab item: label plus what was given (disabled, icon, component and so on)."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "A normalised tab item: label plus what was given (disabled, icon, component and so on)."
+            }
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "previous",
+          "current",
+          "item",
+          "items"
+        ]
+      }
+    },
+    "sf-tabs-settings-change": {
+      "summary": "The person ordered or showed/hid a tab in the settings; applied at once. The host keeps it and gives it back with setSettings.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "order",
+          "hidden"
+        ],
+        "properties": {
+          "order": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hidden": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "order",
+              "visibility"
+            ]
+          }
+        }
+      }
+    },
+    "sf-tabs-settings-reset": {
+      "summary": "The person asked for the declared order back; the component shows it until the host answers with setSettings.",
+      "payload": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "tablist",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+      "Enter",
+      "Space"
+    ],
+    "focus": "Built-in text/icon tabs use one enabled native tab stop and linked panels. Navigation arrows follow orientation and RTL, skip disabled tabs, wrap, focus and activate. Perpendicular arrows and nested widget keys remain local. A custom tab component descriptor is presentation-only: its named wrapper remains the single tab stop and the rendered Smart visual is inert."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/tabs/index.js",
+        "sha256": "1175346be415afaad1376b91a7ef116da89f3e0f4fbbb8b8595f61fd28f78352"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/tabs/js/tabs.js",
+        "sha256": "cc8c1f2b5bc452c8c567399255b11073ebfd38a9f500804100953d91b3df6d5d"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-tabs when the interface needs the tabs behavior.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-tabs></sf-tabs>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

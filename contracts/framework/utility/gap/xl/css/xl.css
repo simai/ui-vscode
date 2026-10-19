@@ -1,0 +1,196 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:gap-0,
+    .xl\:g-0 {
+      gap: var(--sf-space-0);
+    }
+    .xl\:gap-1\/4,
+    .xl\:g-1\/4 {
+      gap: var(--sf-space-1\/4);
+    }
+    .xl\:gap-1\/3,
+    .xl\:g-1\/3 {
+      gap: var(--sf-space-1\/3);
+    }
+    .xl\:gap-1\/2,
+    .xl\:g-1\/2 {
+      gap: var(--sf-space-1\/2);
+    }
+    .xl\:gap-1,
+    .xl\:g-1 {
+      gap: var(--sf-space-1);
+    }
+    .xl\:gap-2,
+    .xl\:g-2 {
+      gap: var(--sf-space-2);
+    }
+    .xl\:gap-3,
+    .xl\:g-3 {
+      gap: var(--sf-space-3);
+    }
+    .xl\:gap-4,
+    .xl\:g-4 {
+      gap: var(--sf-space-4);
+    }
+    .xl\:gap-5,
+    .xl\:g-5 {
+      gap: var(--sf-space-5);
+    }
+    .xl\:gap-6,
+    .xl\:g-6 {
+      gap: var(--sf-space-6);
+    }
+    .xl\:gap-7,
+    .xl\:g-7 {
+      gap: var(--sf-space-7);
+    }
+    .xl\:gap-8,
+    .xl\:g-8 {
+      gap: var(--sf-space-8);
+    }
+    .xl\:col-gap-0,
+    .xl\:gap-x-0,
+    .xl\:g-x-0 {
+      -webkit-column-gap: var(--sf-space-0);
+         -moz-column-gap: var(--sf-space-0);
+              column-gap: var(--sf-space-0);
+    }
+    .xl\:row-gap-0,
+    .xl\:gap-y-0,
+    .xl\:g-y-0 {
+      row-gap: var(--sf-space-0);
+    }
+    .xl\:col-gap-1\/4,
+    .xl\:gap-x-1\/4,
+    .xl\:g-x-1\/4 {
+      -webkit-column-gap: var(--sf-space-1\/4);
+         -moz-column-gap: var(--sf-space-1\/4);
+              column-gap: var(--sf-space-1\/4);
+    }
+    .xl\:row-gap-1\/4,
+    .xl\:gap-y-1\/4,
+    .xl\:g-y-1\/4 {
+      row-gap: var(--sf-space-1\/4);
+    }
+    .xl\:col-gap-1\/3,
+    .xl\:gap-x-1\/3,
+    .xl\:g-x-1\/3 {
+      -webkit-column-gap: var(--sf-space-1\/3);
+         -moz-column-gap: var(--sf-space-1\/3);
+              column-gap: var(--sf-space-1\/3);
+    }
+    .xl\:row-gap-1\/3,
+    .xl\:gap-y-1\/3,
+    .xl\:g-y-1\/3 {
+      row-gap: var(--sf-space-1\/3);
+    }
+    .xl\:col-gap-1\/2,
+    .xl\:gap-x-1\/2,
+    .xl\:g-x-1\/2 {
+      -webkit-column-gap: var(--sf-space-1\/2);
+         -moz-column-gap: var(--sf-space-1\/2);
+              column-gap: var(--sf-space-1\/2);
+    }
+    .xl\:row-gap-1\/2,
+    .xl\:gap-y-1\/2,
+    .xl\:g-y-1\/2 {
+      row-gap: var(--sf-space-1\/2);
+    }
+    .xl\:col-gap-1,
+    .xl\:gap-x-1,
+    .xl\:g-x-1 {
+      -webkit-column-gap: var(--sf-space-1);
+         -moz-column-gap: var(--sf-space-1);
+              column-gap: var(--sf-space-1);
+    }
+    .xl\:row-gap-1,
+    .xl\:gap-y-1,
+    .xl\:g-y-1 {
+      row-gap: var(--sf-space-1);
+    }
+    .xl\:col-gap-2,
+    .xl\:gap-x-2,
+    .xl\:g-x-2 {
+      -webkit-column-gap: var(--sf-space-2);
+         -moz-column-gap: var(--sf-space-2);
+              column-gap: var(--sf-space-2);
+    }
+    .xl\:row-gap-2,
+    .xl\:gap-y-2,
+    .xl\:g-y-2 {
+      row-gap: var(--sf-space-2);
+    }
+    .xl\:col-gap-3,
+    .xl\:gap-x-3,
+    .xl\:g-x-3 {
+      -webkit-column-gap: var(--sf-space-3);
+         -moz-column-gap: var(--sf-space-3);
+              column-gap: var(--sf-space-3);
+    }
+    .xl\:row-gap-3,
+    .xl\:gap-y-3,
+    .xl\:g-y-3 {
+      row-gap: var(--sf-space-3);
+    }
+    .xl\:col-gap-4,
+    .xl\:gap-x-4,
+    .xl\:g-x-4 {
+      -webkit-column-gap: var(--sf-space-4);
+         -moz-column-gap: var(--sf-space-4);
+              column-gap: var(--sf-space-4);
+    }
+    .xl\:row-gap-4,
+    .xl\:gap-y-4,
+    .xl\:g-y-4 {
+      row-gap: var(--sf-space-4);
+    }
+    .xl\:col-gap-5,
+    .xl\:gap-x-5,
+    .xl\:g-x-5 {
+      -webkit-column-gap: var(--sf-space-5);
+         -moz-column-gap: var(--sf-space-5);
+              column-gap: var(--sf-space-5);
+    }
+    .xl\:row-gap-5,
+    .xl\:gap-y-5,
+    .xl\:g-y-5 {
+      row-gap: var(--sf-space-5);
+    }
+    .xl\:col-gap-6,
+    .xl\:gap-x-6,
+    .xl\:g-x-6 {
+      -webkit-column-gap: var(--sf-space-6);
+         -moz-column-gap: var(--sf-space-6);
+              column-gap: var(--sf-space-6);
+    }
+    .xl\:row-gap-6,
+    .xl\:gap-y-6,
+    .xl\:g-y-6 {
+      row-gap: var(--sf-space-6);
+    }
+    .xl\:col-gap-7,
+    .xl\:gap-x-7,
+    .xl\:g-x-7 {
+      -webkit-column-gap: var(--sf-space-7);
+         -moz-column-gap: var(--sf-space-7);
+              column-gap: var(--sf-space-7);
+    }
+    .xl\:row-gap-7,
+    .xl\:gap-y-7,
+    .xl\:g-y-7 {
+      row-gap: var(--sf-space-7);
+    }
+    .xl\:col-gap-8,
+    .xl\:gap-x-8,
+    .xl\:g-x-8 {
+      -webkit-column-gap: var(--sf-space-8);
+         -moz-column-gap: var(--sf-space-8);
+              column-gap: var(--sf-space-8);
+    }
+    .xl\:row-gap-8,
+    .xl\:gap-y-8,
+    .xl\:g-y-8 {
+      row-gap: var(--sf-space-8);
+    }
+  }
+}

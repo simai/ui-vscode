@@ -1,0 +1,526 @@
+{
+  "schema_version": 2,
+  "id": "smart.icon-buttons",
+  "version": "1.0.0",
+  "title": "Icon Buttons",
+  "summary": "Native icon-only action with token geometry, accessible naming and shared loading semantics.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "icon-buttons"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-icon-button",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.icon-buttons",
+      "smart.icons",
+      "smart.close"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Template variant name for SfBaseElement external templates."
+      },
+      "kind": {
+        "type": "string",
+        "default": "icon",
+        "enum": [
+          "icon",
+          "close"
+        ],
+        "description": "What the icon button is: an ordinary icon action or a close control."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "description": "Icon button size token.",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "appearance": {
+        "type": "string",
+        "default": "default",
+        "description": "How the icon button looks. Surface and ghost read the neutral alpha ramp: surface keeps a faint fill and a border, ghost keeps nothing until it is hovered or focused.",
+        "enum": [
+          "default",
+          "tonal",
+          "outline",
+          "link",
+          "surface",
+          "ghost"
+        ]
+      },
+      "scheme": {
+        "type": "string",
+        "default": "primary",
+        "description": "Which colour family the control takes. What the control is about is the status axis; a status set there wins over this.",
+        "enum": [
+          "primary",
+          "secondary",
+          "on-surface"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "default": "",
+        "description": "What the control is about, in the shared status vocabulary. The only one a control paints today is `error`, the destructive one: a control that deletes, discards or cannot be undone.",
+        "enum": [
+          "",
+          "error"
+        ]
+      },
+      "segment": {
+        "type": "string",
+        "default": "",
+        "description": "Joined-control position owned by Button Group composition.",
+        "enum": [
+          "",
+          "start",
+          "middle",
+          "end"
+        ]
+      },
+      "icon": {
+        "type": "string",
+        "default": "add",
+        "description": "Material icon name."
+      },
+      "filled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Use the filled glyph axis for the standard icon variant."
+      },
+      "spacing": {
+        "type": "string",
+        "default": "normal",
+        "description": "Semantic internal spacing profile.",
+        "enum": [
+          "compact",
+          "normal",
+          "comfortable",
+          "spacious"
+        ]
+      },
+      "tightness": {
+        "type": "string",
+        "default": "",
+        "description": "Compatibility alias for spacing.",
+        "enum": [
+          "",
+          "low",
+          "high",
+          "highest"
+        ]
+      },
+      "radius": {
+        "type": "string",
+        "default": "",
+        "description": "Border radius modifier.",
+        "enum": [
+          "",
+          "default",
+          "square",
+          "rounded"
+        ]
+      },
+      "root-class": {
+        "type": "string",
+        "default": "",
+        "description": "Extra classes applied to the inner icon button element."
+      },
+      "loading": {
+        "type": "boolean",
+        "default": false,
+        "description": "Loading state flag."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disabled state flag."
+      },
+      "native-type": {
+        "type": "string",
+        "default": "button",
+        "description": "Native button type attribute.",
+        "enum": [
+          "button",
+          "submit",
+          "reset"
+        ]
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible label."
+      },
+      "variant": {
+        "type": "string",
+        "default": "icon",
+        "description": "Legacy name for kind, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "icon",
+          "close"
+        ]
+      },
+      "type": {
+        "type": "string",
+        "default": "default",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "default",
+          "tonal",
+          "outline",
+          "link",
+          "surface",
+          "ghost"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "visual_pairings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "examples": [
+        [
+          {
+            "type": "default",
+            "schemes": [
+              "primary",
+              "on-surface"
+            ]
+          },
+          {
+            "type": "tonal",
+            "schemes": [
+              "secondary",
+              "on-surface"
+            ]
+          },
+          {
+            "type": "outline",
+            "schemes": [
+              "primary",
+              "on-surface"
+            ]
+          },
+          {
+            "type": "link",
+            "schemes": [
+              "primary",
+              "on-surface"
+            ]
+          }
+        ]
+      ]
+    },
+    "interaction_states": {
+      "type": "string",
+      "enum": [
+        "hover",
+        "active"
+      ]
+    }
+  },
+  "methods": {
+    "setButtonAttributes": {
+      "summary": "Passes the object to setState() as buttonAttributes; the built-in template does not read it, so it only reaches an external project template. Returns the element.",
+      "arguments": [
+        {
+          "name": "attributes",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onClick": {
+      "summary": "Adds a listener for click on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFocus": {
+      "summary": "Adds a listener for focusin on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBlur": {
+      "summary": "Adds a listener for focusout on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onMouseEnter": {
+      "summary": "Adds a listener for mouseenter on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onMouseLeave": {
+      "summary": "Adds a listener for mouseleave on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setDisabled": {
+      "summary": "Sets the disabled attribute when nextValue is truthy and removes it otherwise. Returns the element.",
+      "arguments": [
+        {
+          "name": "nextValue",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "active",
+      "loading",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "button",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "The inner native button is the only focus owner. Pointer activation does not show the ring; keyboard focus uses focus-visible, with an inset ring inside joined controls."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/icon-buttons/index.js",
+        "sha256": "449ab27541c1105b2ab4380d71491851b3b698c10f4fd20df0308497e321bc66"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/icon-buttons/js/icon-buttons.js",
+        "sha256": "3b982e120ef4246f6bb412eb25640e3bff11435a5cd103bb255b6f81336a1fca"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-icon-button for a compact action that is unambiguous from one familiar icon and has a concise accessible name.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not omit aria-label when no visible text names the action",
+      "Do not use the large-surface radius as a normal control variation",
+      "Do not keep a loading action enabled"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-icon-button icon=\"add\" aria-label=\"Add item\"></sf-icon-button>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

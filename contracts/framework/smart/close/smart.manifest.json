@@ -1,0 +1,185 @@
+{
+  "schema_version": 2,
+  "id": "smart.close",
+  "version": "1.0.0",
+  "title": "Close",
+  "summary": "The decorative cross glyph of a close action, sized on the control ladder. It is aria-hidden and never focusable; the containing native button owns the action and its name.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "close"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-close",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1/3",
+        "description": "Decorative close-glyph size token.",
+        "enum": [
+          "1/4",
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {},
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "none; generated glyph is aria-hidden",
+    "accessible_name": "internal",
+    "keyboard": [],
+    "focus": "Close is decorative and never enters the tab order. The containing native button owns focus."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/close/index.js",
+        "sha256": "875cd8ef7b5fe9ccbfba204889206d0959ff390c415a9e1d1d7e4961761b4799"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/close/js/close.js",
+        "sha256": "2df0d31a6acd4ec1b432c2f29667cd4d57da14a5acf17bfc7567859e7b34cb18"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-close only as the decorative cross glyph inside a host-owned close action.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not make sf-close focusable or use it as the action owner"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<button type=\"button\" class=\"sf-icon-button sf-icon-button--close sf-icon-button--link sf-icon-button--on-surface sf-icon-button--size-1 flex items-cross-center\" aria-label=\"Close notification\"><sf-close size=\"1\"></sf-close></button>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}
