@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://simai.io/schema/sf-autocomplete.v1.json",
-  "title": "Simai Framework autocomplete registry",
+  "title": "SIMAI Framework autocomplete registry",
   "type": "object",
   "required": ["schemaVersion", "registryId", "registryVersion", "source", "modes", "scope", "entries"],
   "properties": {

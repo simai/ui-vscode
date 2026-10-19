@@ -1,19 +1,41 @@
 {
   "name": "sf-vscode",
-  "displayName": "SF Modifier Suggestions",
-  "description": "VS Code autocomplete and modifier tips for Simai Framework",
+  "displayName": "SIMAI Framework IntelliSense",
+  "description": "Autocomplete and hovers for SIMAI Framework: sf- component tags and attributes, utility classes and --sf- design tokens with colour swatches and adaptive values.",
   "version": "0.0.1",
   "publisher": "SIMAI",
   "author": "Rim Zabarov and contributors",
   "license": "MIT",
-  "repository": "https://github.com/simai/ui-vscode",
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/simai/ui-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/simai/ui-vscode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simai/ui-vscode.git"
+  },
+  "keywords": [
+    "SIMAI Framework",
+    "SIMAI",
+    "sf",
+    "css variables",
+    "design tokens",
+    "utility classes",
+    "web components",
+    "intellisense",
+    "autocomplete"
+  ],
   "engines": {
     "vscode": "^1.95.0"
   },
   "categories": [
+    "Programming Languages",
+    "Snippets",
     "Other"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onLanguage:css",
     "onLanguage:scss",
     "onLanguage:sass",
@@ -34,18 +56,23 @@
     "pretest": "npm run compile && npm run lint",
     "clean": "rm -rf out",
     "test": "node --test ./out/test/*.unit.test.js",
-    "test:extension": "node ./out/test/runTest.js",
+    "test:extension": "npm run compile && node ./out/test/runTest.js",
     "lint": "eslint \"src/**/*.{ts,js}\"",
-    "prepublish": "npm run compile"
+    "vscode:prepublish": "npm run clean && npm run compile",
+    "package": "vsce package",
+    "package:ls": "vsce ls"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
-    "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.10.1",
     "@types/vscode": "^1.95.0",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^4.0.0",
     "eslint": "^8.57.1",
+    "glob": "^13.0.6",
     "globals": "^15.13.0",
+    "mocha": "^12.0.3",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.17.0"
   }
