@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Compile and lint
+        run: npm run pretest
+      - name: Unit tests
+        run: npm test
+      - name: Registry parity
+        run: npm run generate:check
+      - uses: actions/cache@v4
+        with:
+          path: .vscode-test
+          key: vscode-test-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - name: Extension-host tests
+        run: xvfb-run -a npm run test:extension
+      - name: Package contents are runtime-only
+        run: npx vsce ls | node out/generate/checkPackage.js
+      - name: Package
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          npx vsce package -o "sf-vscode-${VERSION}.vsix"
+          sha256sum "sf-vscode-${VERSION}.vsix" | tee "sf-vscode-${VERSION}.vsix.sha256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: |
+            *.vsix
+            *.vsix.sha256
+          if-no-files-found: error
