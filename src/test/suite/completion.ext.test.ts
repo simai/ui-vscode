@@ -162,7 +162,7 @@ suite('hover provider', () => {
         assert.match(text, /--sf-primary/);
         assert.match(text, /\| light \| #005bbe \|/);
         assert.match(text, /\| dark \| #acc7ff \|/);
-        assert.match(text, /ui-a9636b60d3e3/);
+        assert.match(text, /ui-3521193e0c6b/);
     });
 
     test('sizing tokens show mobile and desktop values', async () => {

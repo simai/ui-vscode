@@ -1070,6 +1070,17 @@
           ]
         },
         {
+          "name": "--sf-button-group-radius",
+          "role": "radius",
+          "summary": "The corner radius of a segment and the plate under the selected one, a button-sized control; the track takes it plus the padding, so the corners stay concentric. The radius attribute, when set, wins.",
+          "default": "var(--sf-button-radius, var(--sf-radius--ui))",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance",
+            "size"
+          ]
+        },
+        {
           "name": "--sf-button-group-color",
           "role": "color",
           "summary": "The label and icon colour of a segment that is not selected, at rest; hover, pressed and disabled keep their own.",

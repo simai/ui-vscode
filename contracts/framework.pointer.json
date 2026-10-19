@@ -1,230 +1,230 @@
 {
-  "releaseId": "ui-a9636b60d3e3",
+  "releaseId": "ui-3521193e0c6b",
   "repository": "simai/ui",
-  "registryCommit": "442402e4b6185147d56d75b580721b8aca5050dc",
+  "registryCommit": "a990dd19ffe0a0471f49a24410718f39acbb8419",
   "runtime": {
     "core": {
-      "commit": "a9636b60d3e330edc2736b41f3791ebf8d1be391",
-      "tree": "5fc2e581f23d8d187bf432fc524404c884e6f43a",
-      "runtimeTree": "d337f03da440b304f81cc87fb93934a5b5dbb7f6"
+      "commit": "3521193e0c6b7417912f50aaaab72895f48e43d2",
+      "tree": "efb97ee402f529d24c3e323b213466e711ad4e1b",
+      "runtimeTree": "47347ce77270425f5947d25d6674d80f89e90902"
     },
     "smart": {
-      "commit": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4",
-      "tree": "9d693c353642546e8214fc951c466a8b5023cbdd",
-      "runtimeTree": "09caaaa2f2f868fc3cc4f9399fceddc263b34e17"
+      "commit": "3521193e0c6b7417912f50aaaab72895f48e43d2",
+      "tree": "efb97ee402f529d24c3e323b213466e711ad4e1b",
+      "runtimeTree": "c2d90f852451fd6a6193302cd99813a5d3cedc51"
     }
   },
   "files": {
     "core/core.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/core/css/core.css",
-      "sha256": "b8042a59f9d003d3bdcf2467ca181312712174712fe75810ad8e6d783d31598c"
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/core/css/core.css",
+      "sha256": "9fb4e27f80a8cff40a0c1100142e7c217b373160a973d47c30a274d414100901"
     },
     "core/public-variables.v1.json": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/core/contracts/public-variables.v1.json",
-      "sha256": "f0f646cdc9b1af2680a35b7fb0e5d4a692b8f9fdb94217ded12e8cc3ab4b209c"
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/core/contracts/public-variables.v1.json",
+      "sha256": "9bf844b5086d289757b2f57c71374c16cab27f78ac6be2ff63f00d8c74685488"
     },
     "framework-contract-registry.json": {
-      "source": "442402e4b6185147d56d75b580721b8aca5050dc:contracts/generated/framework-contract-registry.json",
-      "sha256": "63a23fd4d67a8d0314de8d8fc65f423bdebaae4260da61b82a77ecf8cfd90b13"
+      "source": "a990dd19ffe0a0471f49a24410718f39acbb8419:contracts/generated/framework-contract-registry.json",
+      "sha256": "cdaf27218f0ca3871ff75b474d6c5f469407f77bfa966c3183f84116f4f6f9d6"
     },
     "smart/buttons/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/buttons/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/buttons/smart.manifest.json",
       "sha256": "6f59e4c360166c4a97752393873ee97a574bf9ae938f19aa7c9f4b7648c0a31b"
     },
     "smart/checkbox/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/checkbox/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/checkbox/smart.manifest.json",
       "sha256": "5eeec6e339135024f80618bdfc2317b61f4fa7ef7cdf3e84d33fa607fb13b254"
     },
     "smart/close/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/close/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/close/smart.manifest.json",
       "sha256": "fe86dd60f05ae50cf20a021a406ddd89c90d2928524cba3495d737bcd2b9b645"
     },
     "smart/context-menu/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/context-menu/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/context-menu/smart.manifest.json",
       "sha256": "49e3b3ce44a3ee6e89c4ecfffb66a18e8eb055153f46098d37ce2385c026aef5"
     },
     "smart/datepicker/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/datepicker/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/datepicker/smart.manifest.json",
       "sha256": "09fb7828b9403de99cd5f2275a87dc0c21adef685ab48fff0318f7e957f441a7"
     },
     "smart/dropdown/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/dropdown/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/dropdown/smart.manifest.json",
       "sha256": "9a791ceb574efeae12feefe449952fa4f2f09afb7f6c5b98cf0d102c576b27e0"
     },
     "smart/icon-buttons/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/icon-buttons/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/icon-buttons/smart.manifest.json",
       "sha256": "231f5a224cbd1fbe205941f56430e3b19642184225720fe991ff7d9720e08582"
     },
     "smart/icons/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/icons/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/icons/smart.manifest.json",
       "sha256": "e085e15f211b4b4b25ef72f901418fd2097bf6fa618e502ec24d66ff08e7d8ae"
     },
     "smart/inputs/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/inputs/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/inputs/smart.manifest.json",
       "sha256": "0a8c0a6b82dd6fa08c4a8ba1dbdede1e21cfd8cf729f0d72a261ac0fae867054"
     },
     "smart/pagination/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/pagination/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/pagination/smart.manifest.json",
       "sha256": "8d9c696d3376044e793ca70835d1be28acccf69048b32fb5dca9a4e5639a07b9"
     },
     "smart/spinner/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/spinner/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/spinner/smart.manifest.json",
       "sha256": "10660f7e3ae14cc536c76a99147e92f76d4abdc4b53d7271dac3c0b0e03474f5"
     },
     "smart/tabs/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/tabs/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/tabs/smart.manifest.json",
       "sha256": "1e19516cca28d5bf72ddd1377712a03f681cb8236a5af399020405b0c9bfabda"
     },
     "smart/tags/smart.manifest.json": {
-      "source": "106d5901f8c3b4f23131ce0e7ede5dbd8abfe4f4:distr/smart/tags/smart.manifest.json",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/smart/tags/smart.manifest.json",
       "sha256": "43959e43b0ca8608208dfd2cf52444125b373a91b02e9e114cfd6155241178cd"
     },
     "utility/display/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/display/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/display/default/css/default.css",
       "sha256": "152a9e0ab6c9117de389cfff16d9a5692bbe0afcc7b84455103728caf1c1ad0c"
     },
     "utility/display/lg/css/lg.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/display/lg/css/lg.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/display/lg/css/lg.css",
       "sha256": "4dc5227e56e045f85f8df4553cb8136d17bc4d1a58b3ccf1bf8cdb1572a9bdf4"
     },
     "utility/display/md/css/md.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/display/md/css/md.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/display/md/css/md.css",
       "sha256": "9ec19bca9ef7b1f402d37ef7f0fe92f75efced3db80a99da007f9680943f0252"
     },
     "utility/display/sm/css/sm.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/display/sm/css/sm.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/display/sm/css/sm.css",
       "sha256": "37a33ee2540794dd56bd4cef2da55d3630c71ff80459fbef030aafea70da05c2"
     },
     "utility/display/xl/css/xl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/display/xl/css/xl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/display/xl/css/xl.css",
       "sha256": "40c7bc40c20dd6dec89853b09425f54106724997dd15de9c314f2f6e6cbef198"
     },
     "utility/display/xxl/css/xxl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/display/xxl/css/xxl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/display/xxl/css/xxl.css",
       "sha256": "003a41aa5e0b3779209d5081109af9fe26751510ecb0cfa2c0013e0c06974187"
     },
     "utility/flex-direction/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/flex-direction/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/flex-direction/default/css/default.css",
       "sha256": "5beee1857f1217c3b2be6b836b0ae9cfc81dfea685bdb2f7dcaa30724923a81b"
     },
     "utility/flex-direction/lg/css/lg.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/flex-direction/lg/css/lg.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/flex-direction/lg/css/lg.css",
       "sha256": "02e44690c5915ef8e0945f4b726d113dfa2276dc1051324bdb898ea92eb9f971"
     },
     "utility/flex-direction/md/css/md.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/flex-direction/md/css/md.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/flex-direction/md/css/md.css",
       "sha256": "dff3ac0c510c024580b3863ffbbd64c406ed620df6f10693631ef0529606492d"
     },
     "utility/flex-direction/sm/css/sm.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/flex-direction/sm/css/sm.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/flex-direction/sm/css/sm.css",
       "sha256": "456956de337125d3de490eb7154b3993100ea60f02e54003c85ff4de9c2ea118"
     },
     "utility/flex-direction/xl/css/xl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/flex-direction/xl/css/xl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/flex-direction/xl/css/xl.css",
       "sha256": "4581eb98d4846ce4db73c30aa53b7f28f6d5c3206bebae3a8cdda04676ede00c"
     },
     "utility/flex-direction/xxl/css/xxl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/flex-direction/xxl/css/xxl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/flex-direction/xxl/css/xxl.css",
       "sha256": "54f0e6797dbc54c907d61b232bc52caac06c66034633b2394e8263bf274d130b"
     },
     "utility/gap/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/gap/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/gap/default/css/default.css",
       "sha256": "cb5fdffe0601ae5aabf5d2b133ff362f10804355bd3f0b0a5e5467851f3ca531"
     },
     "utility/gap/lg/css/lg.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/gap/lg/css/lg.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/gap/lg/css/lg.css",
       "sha256": "62730b9b3630af8d8514e9c356ce9bad0ed734f74f44dfddc4a774d2ce3947ac"
     },
     "utility/gap/md/css/md.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/gap/md/css/md.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/gap/md/css/md.css",
       "sha256": "b9c135326a60f9bb73f9566371b66ab0ff9ebde2a7a7ff761a307720ad71e611"
     },
     "utility/gap/sm/css/sm.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/gap/sm/css/sm.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/gap/sm/css/sm.css",
       "sha256": "edc83b1f395077bff22464dbe062104aa21f7d3db889419beb2db9130b7fe3a6"
     },
     "utility/gap/xl/css/xl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/gap/xl/css/xl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/gap/xl/css/xl.css",
       "sha256": "348f5fd5ee3dff38f851536760b75b91e65c51dcbb7128032f1b64191a6d09f8"
     },
     "utility/gap/xxl/css/xxl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/gap/xxl/css/xxl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/gap/xxl/css/xxl.css",
       "sha256": "982a4fb27240754232d181ebdeb310d6cfa0e6e9a254e78bfa11b987b207aeb8"
     },
     "utility/overflow/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/overflow/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/overflow/default/css/default.css",
       "sha256": "5e0624991b2bdd39b0a4448e259d922270087cea8320af2f0fbf55cae206d603"
     },
     "utility/overflow/lg/css/lg.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/overflow/lg/css/lg.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/overflow/lg/css/lg.css",
       "sha256": "3c3232180c9b1edfed95b846551bce35b75e5ad4a8df4fe30dc9d22515fd8c5d"
     },
     "utility/overflow/md/css/md.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/overflow/md/css/md.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/overflow/md/css/md.css",
       "sha256": "82e43da4fb9b838ef5a8b7e9d5af364c5d3e5bfcfd990586409a0369188bc926"
     },
     "utility/overflow/sm/css/sm.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/overflow/sm/css/sm.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/overflow/sm/css/sm.css",
       "sha256": "2eb2e5cd3f3db9d28ce824ded3bb8024a785b40378ae08eeebace579f0ad7cd8"
     },
     "utility/overflow/xl/css/xl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/overflow/xl/css/xl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/overflow/xl/css/xl.css",
       "sha256": "0e12d88b3d9112f73ae5c37977b99822eeed62593e5f71a474a757f6a249a03c"
     },
     "utility/overflow/xxl/css/xxl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/overflow/xxl/css/xxl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/overflow/xxl/css/xxl.css",
       "sha256": "174031fa536ea08f36f384ff8c6bcc341a6ee720e4fb3e416181a392e185f85f"
     },
     "utility/pointer-events/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/pointer-events/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/pointer-events/default/css/default.css",
       "sha256": "3b3d14d44e95a83d3e06b8863c9c220ce5401aa63fb361647903c7f485014873"
     },
     "utility/text-align/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/text-align/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/text-align/default/css/default.css",
       "sha256": "ebd728b5856277d7b1b30320361c30f9c13ffdf8f63c58071bb43f31f846946c"
     },
     "utility/text-align/lg/css/lg.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/text-align/lg/css/lg.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/text-align/lg/css/lg.css",
       "sha256": "f0f33cd75cae3eb78f5ac7e2270d77a86e3e1a1faad9a2f09a1e0c7009b3c9df"
     },
     "utility/text-align/md/css/md.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/text-align/md/css/md.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/text-align/md/css/md.css",
       "sha256": "efa98fd1d7e0766ef4841f76d65fe1615e6e0628afdc1e171dc60ec1b3dc73a9"
     },
     "utility/text-align/sm/css/sm.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/text-align/sm/css/sm.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/text-align/sm/css/sm.css",
       "sha256": "09c6932748f6b68ba4a4d766b5455c9ea1f2310b139c16a1569d3f90c65efdac"
     },
     "utility/text-align/xl/css/xl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/text-align/xl/css/xl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/text-align/xl/css/xl.css",
       "sha256": "619680c6131c66051ef286cfb055e09f53229b1a8adcdb527492e5f8fab7386e"
     },
     "utility/text-align/xxl/css/xxl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/text-align/xxl/css/xxl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/text-align/xxl/css/xxl.css",
       "sha256": "a772ebe2ee3d905a738e75a38e297b71bf144e5c046d0e020f0145aef891c766"
     },
     "utility/width/default/css/default.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/width/default/css/default.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/width/default/css/default.css",
       "sha256": "a5eabd24c275cee2eba580279f354939df130e3ff3144011de80d0e805be1a97"
     },
     "utility/width/lg/css/lg.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/width/lg/css/lg.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/width/lg/css/lg.css",
       "sha256": "495082960f1889e7461121295dbe468b351aa0adcf8fd7c8d7308ec54d33e1b9"
     },
     "utility/width/md/css/md.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/width/md/css/md.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/width/md/css/md.css",
       "sha256": "d8086c4cbce37a6da2579162445e47bed4a4a8c277356b4c5bb1a487ee615065"
     },
     "utility/width/sm/css/sm.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/width/sm/css/sm.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/width/sm/css/sm.css",
       "sha256": "57f35ecb552e409c28307bab52dd6a4eebb6765a614ff76377c2a065e3d2a8f8"
     },
     "utility/width/xl/css/xl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/width/xl/css/xl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/width/xl/css/xl.css",
       "sha256": "29fe1060fe1b6ef28eef176e10cc58095db9d116102dcb76eeec209a48061d31"
     },
     "utility/width/xxl/css/xxl.css": {
-      "source": "a9636b60d3e330edc2736b41f3791ebf8d1be391:distr/utility/width/xxl/css/xxl.css",
+      "source": "3521193e0c6b7417912f50aaaab72895f48e43d2:distr/utility/width/xxl/css/xxl.css",
       "sha256": "76f520b70a59e9708cdaf32b2687d4a7421821b475986c20e6d555f3b8521be7"
     }
   }

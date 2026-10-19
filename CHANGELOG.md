@@ -2,7 +2,19 @@
 
 All notable changes to SIMAI Framework IntelliSense are listed here.
 
-## [0.1.0] - Unreleased
+## [0.2.0] - Unreleased
+
+### Changed
+
+- Repinned to the SIMAI Framework release `ui-3521193e0c6b` (registry
+  `simai/ui@a990dd19`, runtime `simai/ui@3521193e`, sizing contract from
+  `simai/ui-source@d0d01841`). The sizing contract is unchanged
+  (`simai.vertical-sizing@1.3.0`), and so are the suggested names: 13 tags,
+  1058 utility classes and 922 tokens. The new `--sf-button-group-radius`
+  public variable is not suggested yet because Button Group is not marked
+  safe to suggest.
+
+## [0.1.0] - 2026-10-19
 
 ### Added
 

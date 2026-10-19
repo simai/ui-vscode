@@ -58,7 +58,7 @@ Vue language extension installed).
 ## What is suggested
 
 Suggestions come from a pinned, hash-checked snapshot of the SIMAI Framework
-contract registry (release `ui-a9636b60d3e3`). Only entries the Framework marks
+contract registry (release `ui-3521193e0c6b`). Only entries the Framework marks
 as safe to suggest are offered; blocked and unreleased entries are not.
 Experimental components are labelled as such. The extension does not
 download anything and does not read your other projects.
