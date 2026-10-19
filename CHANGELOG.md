@@ -4,6 +4,22 @@ All notable changes to SIMAI Framework IntelliSense are listed here.
 
 ## [0.2.0] - Unreleased
 
+### Added
+
+- Diagnostics for deprecated `sf-` tags and attributes (Warning) and for likely
+  misspellings of Framework tokens, tags and attributes (Information), with
+  Quick Fixes to the nearest valid name. Severity is configurable with
+  `sf.diagnostics.*`.
+- Blade and PHP templates: class attributes, `sf-` tags and attributes, and
+  tokens in `style` attributes and `<style>` blocks.
+- Snippets for a form field, checkbox, submit button, button row, select and
+  pagination, generated from names in the snapshot. There are no modal or
+  table snippets yet because the Framework does not mark those components as
+  safe to suggest.
+- `sf.docs.baseUrl`: hovers link to `<baseUrl>/<registry ID>` when set.
+- CI, release and weekly Framework freshness workflows; issue templates and a
+  security policy.
+
 ### Changed
 
 - Repinned to the SIMAI Framework release `ui-3521193e0c6b` (registry
