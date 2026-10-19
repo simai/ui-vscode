@@ -1,0 +1,311 @@
+{
+  "schema_version": 2,
+  "id": "smart.color",
+  "version": "1.0.0",
+  "title": "Color",
+  "summary": "A colour control: a swatch that opens the platform picker, the colours a product already has as presets, and a way back to an inherited colour. Built as a general part because a colour is set in a theme, in a site look, on a label and on a chart series, not only on a record.",
+  "kind": "smart",
+  "reuse_mode": "both",
+  "lifecycle": "experimental",
+  "tags": [
+    "input",
+    "color",
+    "property"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-color",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.icon-buttons"
+    ],
+    "public_parts": [
+      "swatch",
+      "chip",
+      "text",
+      "swatches",
+      "preset"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Which template draws it."
+      },
+      "value": {
+        "type": "string",
+        "default": "",
+        "description": "The colour, as #rgb, #rrggbb or #rrggbbaa. Empty means nothing is chosen and the inherited colour applies."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "The size ladder step, so a colour beside a text field lines up with it."
+      },
+      "appearance": {
+        "type": "string",
+        "default": "bordered",
+        "enum": [
+          "bordered",
+          "outlined",
+          "plain"
+        ],
+        "description": "How the swatch is bounded."
+      },
+      "swatches": {
+        "type": "string",
+        "default": "",
+        "description": "The colours a product already has, comma separated, each #hex or #hex|Name; a name may hold spaces. A piece without a name may list several colours by spaces. A person picks the brand colour rather than matching a hex by eye."
+      },
+      "inherited-value": {
+        "type": "string",
+        "default": "",
+        "description": "The colour that applies while nothing is chosen. Shown as inherited rather than drawn as the value: a control that drew it as the value would make «not set» and «set to the same colour» look identical, and only one of them follows the theme when the theme changes."
+      },
+      "clearable": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether a chosen colour can be returned to the inherited one."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "name": {
+        "type": "string",
+        "default": "",
+        "description": "The form name. A hidden input carries the value under it, empty while the inherited colour applies."
+      },
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name of the control."
+      },
+      "choose-label": {
+        "type": "string",
+        "default": "",
+        "description": "The words on the swatch. Unset, the component answers in the page's language (\"Choose a colour\" in English)."
+      },
+      "clear-label": {
+        "type": "string",
+        "default": "",
+        "description": "The words on the control that returns to the inherited colour. Unset, it follows the page's language."
+      },
+      "inherited-text": {
+        "type": "string",
+        "default": "",
+        "description": "What is read in place of a value while nothing is chosen. Unset, it follows the page's language."
+      }
+    }
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "setValue": {
+      "summary": "Set and commit the colour as a person would: normalised, reflected to value, input and then change dispatched when it differs from the committed one. Returns whether the value changed.",
+      "arguments": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "boolean"
+      }
+    },
+    "clear": {
+      "summary": "Return to the inherited colour; the same as setValue(\"\"). Returns whether it changed.",
+      "arguments": [],
+      "returns": {
+        "type": "boolean"
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "A colour was committed: once when the platform picker closes or a swatch or clear is pressed, not on every step of a drag. Carries the value and the form name; an empty value means the inherited colour applies again. The picker's own change does not leave the host.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "input": {
+      "summary": "The colour moved, on every step of a drag across the platform picker and before each change. Carries the value and the form name.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "surface": [
+        "closed",
+        "open"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "open",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "group",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "The platform colour input, each swatch and the clear button take focus in order and keep a visible focus ring. Swatches say whether they are the chosen colour by aria-pressed."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [],
+    "scenarios": []
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/color/index.js",
+        "sha256": "1f5e0552690ca5b76605a50967ebeaaf8d63c537d44a661ce90cf326372523e1"
+      },
+      {
+        "path": "src/smart/color/rule.js",
+        "sha256": "4eb88c62173597d5ef68d53915fcaf8d59dbef7dbb2e8df9e9745c453d595476"
+      },
+      {
+        "path": "src/smart/color/js/templates/default.js",
+        "sha256": "5b17bab9b762b14d594b0f21151d3d287d3c9cf8e1c6704ccfece68cf414e071"
+      },
+      {
+        "path": "src/smart/color/js/templates/default.css",
+        "sha256": "e5755625a291f02dc4e75716b5cdecb454954e47219854cc63055f2a0ca3aaec"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-color wherever a colour is set -- a theme, a site look, a label, a chart series -- and especially when the colour may be left unset to inherit one.",
+    "do_not": [
+      "Do not draw the inherited colour as the value: pass it as inherited-value so «not set» stays distinguishable",
+      "Do not listen to input for saving; save on change, which fires once per committed colour",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-color label=\"Brand colour\" clearable inherited-value=\"#1f6feb\" swatches=\"#1f6feb|Brand blue, #e5534b|Alert\"></sf-color>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+@layer sf.utilities {
+  .fill-transparent {
+    fill: var(--sf-transparent);
+  }
+  .fill-current {
+    fill: var(--sf-current);
+  }
+  .fill-surface-0 {
+    fill: var(--sf-surface-0);
+  }
+  .fill-surface-1 {
+    fill: var(--sf-surface-1);
+  }
+  .fill-surface-2 {
+    fill: var(--sf-surface-2);
+  }
+  .fill-surface-3 {
+    fill: var(--sf-surface-3);
+  }
+  .fill-surface-4 {
+    fill: var(--sf-surface-4);
+  }
+  .fill-surface {
+    fill: var(--sf-surface-1);
+  }
+  .fill-surface-inverse {
+    fill: var(--sf-surface-inverse);
+  }
+  .fill-surface-inverse-fixed {
+    fill: var(--sf-surface-inverse-fixed);
+  }
+  .fill-surface-container {
+    fill: var(--sf-surface-container);
+  }
+  .fill-on-surface {
+    fill: var(--sf-on-surface);
+  }
+  .fill-on-surface-variant {
+    fill: var(--sf-on-surface-variant);
+  }
+  .fill-surface-transparent-select {
+    fill: var(--sf-surface-transparent-select);
+  }
+  .fill-surface-transparent-overlay {
+    fill: var(--sf-surface-transparent-overlay);
+  }
+  .fill-disable {
+    fill: var(--sf-disable);
+  }
+  .fill-primary {
+    fill: var(--sf-primary);
+  }
+  .fill-primary-container {
+    fill: var(--sf-primary-container);
+  }
+  .fill-primary-transparent-select {
+    fill: var(--sf-primary-transparent-select);
+  }
+  .fill-primary-transparent-overlay {
+    fill: var(--sf-primary-transparent-overlay);
+  }
+  .fill-secondary {
+    fill: var(--sf-secondary);
+  }
+  .fill-secondary-container {
+    fill: var(--sf-secondary-container);
+  }
+  .fill-secondary-transparent-select {
+    fill: var(--sf-secondary-transparent-select);
+  }
+  .fill-secondary-transparent-overlay {
+    fill: var(--sf-secondary-transparent-overlay);
+  }
+  .fill-tertiary {
+    fill: var(--sf-tertiary);
+  }
+  .fill-tertiary-container {
+    fill: var(--sf-tertiary-container);
+  }
+  .fill-tertiary-transparent-select {
+    fill: var(--sf-tertiary-transparent-select);
+  }
+  .fill-tertiary-transparent-overlay {
+    fill: var(--sf-tertiary-transparent-overlay);
+  }
+  .fill-error {
+    fill: var(--sf-error);
+  }
+  .fill-error-container {
+    fill: var(--sf-error-container);
+  }
+  .fill-error-transparent-select {
+    fill: var(--sf-error-transparent-select);
+  }
+  .fill-error-transparent-overlay {
+    fill: var(--sf-error-transparent-overlay);
+  }
+  .fill-warning {
+    fill: var(--sf-warning);
+  }
+  .fill-warning-container {
+    fill: var(--sf-warning-container);
+  }
+  .fill-warning-transparent-select {
+    fill: var(--sf-warning-transparent-select);
+  }
+  .fill-warning-transparent-overlay {
+    fill: var(--sf-warning-transparent-overlay);
+  }
+  .fill-success {
+    fill: var(--sf-success);
+  }
+  .fill-success-container {
+    fill: var(--sf-success-container);
+  }
+  .fill-success-transparent-select {
+    fill: var(--sf-success-transparent-select);
+  }
+  .fill-success-transparent-overlay {
+    fill: var(--sf-success-transparent-overlay);
+  }
+  .hover\:fill-surface-container:hover {
+    fill: var(--sf-surface-container-hover);
+  }
+  .hover\:fill-on-surface:hover {
+    fill: var(--sf-on-surface-hover);
+  }
+  .hover\:fill-surface-transparent:hover {
+    fill: var(--sf-surface-transparent-hover);
+  }
+  .hover\:fill-primary:hover {
+    fill: var(--sf-primary-hover);
+  }
+  .hover\:fill-primary-container:hover {
+    fill: var(--sf-primary-container-hover);
+  }
+  .hover\:fill-primary-transparent:hover {
+    fill: var(--sf-primary-transparent-hover);
+  }
+  .hover\:fill-secondary:hover {
+    fill: var(--sf-secondary-hover);
+  }
+  .hover\:fill-secondary-container:hover {
+    fill: var(--sf-secondary-container-hover);
+  }
+  .hover\:fill-secondary-transparent:hover {
+    fill: var(--sf-secondary-transparent-hover);
+  }
+  .hover\:fill-tertiary:hover {
+    fill: var(--sf-tertiary-hover);
+  }
+  .hover\:fill-tertiary-container:hover {
+    fill: var(--sf-tertiary-container-hover);
+  }
+  .hover\:fill-tertiary-transparent:hover {
+    fill: var(--sf-tertiary-transparent-hover);
+  }
+  .hover\:fill-error:hover {
+    fill: var(--sf-error-hover);
+  }
+  .hover\:fill-error-container:hover {
+    fill: var(--sf-error-container-hover);
+  }
+  .hover\:fill-error-transparent:hover {
+    fill: var(--sf-error-transparent-hover);
+  }
+  .hover\:fill-warning:hover {
+    fill: var(--sf-warning-hover);
+  }
+  .hover\:fill-warning-container:hover {
+    fill: var(--sf-warning-container-hover);
+  }
+  .hover\:fill-warning-transparent:hover {
+    fill: var(--sf-warning-transparent-hover);
+  }
+  .hover\:fill-success:hover {
+    fill: var(--sf-success-hover);
+  }
+  .hover\:fill-success-container:hover {
+    fill: var(--sf-success-container-hover);
+  }
+  .hover\:fill-success-transparent:hover {
+    fill: var(--sf-success-transparent-hover);
+  }
+}

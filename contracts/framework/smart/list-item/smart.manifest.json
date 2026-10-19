@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "id": "smart.list-item",
+  "version": "1.0.0",
+  "title": "List Item",
+  "summary": "Declarative option descriptor and visual row primitive owned by Dropdown.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "list-item"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive",
+    "option-descriptor"
+  ],
+  "custom_element": "sf-list-item",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "value": {
+        "type": "string",
+        "default": ""
+      },
+      "kind": {
+        "type": "string",
+        "default": "text",
+        "enum": [
+          "text",
+          "icon",
+          "checkbox",
+          "avatar",
+          "color"
+        ],
+        "description": "What the list item carries: plain text, an icon, a checkbox, an avatar or a colour."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "icon": {
+        "type": "string",
+        "default": "person"
+      },
+      "checked": {
+        "type": "boolean",
+        "default": false
+      },
+      "selected": {
+        "type": "boolean",
+        "default": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "color-class": {
+        "type": "string",
+        "default": "bg-tertiary"
+      },
+      "avatar-image-url": {
+        "type": "string",
+        "default": ""
+      },
+      "avatar-title": {
+        "type": "string",
+        "default": ""
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "text",
+        "description": "Legacy name for kind, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "text",
+          "icon",
+          "checkbox",
+          "avatar",
+          "color"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {
+    "parent": "smart.dropdown",
+    "placement": "direct-child",
+    "machine_value": "value",
+    "visible_label": "text or the type-specific visible title"
+  },
+  "contracts": {
+    "standalone": {
+      "const": "Non-interactive visual preview without a synthetic role or Tab stop."
+    },
+    "owned_option": {
+      "const": "Dropdown owns listbox semantics, focus, selection, form state and events."
+    },
+    "decorations": {
+      "const": "Icons, avatar images, color swatches and checkbox marks do not add focus targets."
+    }
+  },
+  "methods": {},
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "selected",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "option when rendered by Dropdown; none in standalone preview",
+    "accessible_name": "required",
+    "keyboard": [
+      "ArrowDown",
+      "ArrowUp",
+      "Home",
+      "End",
+      "Enter",
+      "Space",
+      "Escape"
+    ],
+    "focus": "Owned by the parent Dropdown composite; standalone preview is not focusable."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "line",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "accepted",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "owner-contract",
+      "browser-accessibility",
+      "documentation-example"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/list-item/index.js",
+        "sha256": "b3f5d110f37b8344f272ab111cf358dbd75bfe961e9dc41d57ca102a80fbb157"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/list-item/js/list-item.js",
+        "sha256": "ec53dc5fc87661df57b8aae6a2850352ea0ab1a3f22c58ae88d46556807f7df8"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-list-item as a direct child of sf-dropdown to declare an option value and presentation.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not use standalone sf-list-item as a button, link or independent checkbox",
+      "Do not place independently interactive controls inside a listbox option"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-dropdown label=\"Статус\"><sf-list-item value=\"open\" text=\"Открыт\"></sf-list-item><sf-list-item value=\"done\" text=\"Готов\"></sf-list-item></sf-dropdown>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:items-cross-start {
+      align-items: start;
+    }
+    .xl\:items-cross-end {
+      align-items: end;
+    }
+    .xl\:items-cross-center {
+      align-items: center;
+    }
+    .xl\:items-cross-baseline {
+      align-items: baseline;
+    }
+    .xl\:items-cross-stretch {
+      align-items: stretch;
+    }
+  }
+}

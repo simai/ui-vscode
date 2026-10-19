@@ -1,0 +1,1384 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    .sm\:p-0 {
+      padding: var(--sf-space-0);
+    }
+    .sm\:p-top-0 {
+      padding-top: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-0 {
+      padding-right: var(--sf-space-0);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-0 {
+      padding-right: var(--sf-space-0);
+      }
+    }
+    .sm\:p-inline-end-0:where(:dir(ltr)) {
+      padding-right: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-0 {
+      padding-left: var(--sf-space-0);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-0 {
+      padding-left: var(--sf-space-0);
+      }
+    }
+    .sm\:p-inline-end-0:where(:dir(rtl)) {
+      padding-left: var(--sf-space-0);
+    }
+    .sm\:p-inline-end-0 {
+      -webkit-padding-end: var(--sf-space-0);
+              padding-inline-end: var(--sf-space-0);
+    }
+    .sm\:p-bottom-0 {
+      padding-bottom: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-0 {
+      padding-left: var(--sf-space-0);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-0 {
+      padding-left: var(--sf-space-0);
+      }
+    }
+    .sm\:p-x-0:where(:dir(ltr)) {
+      padding-left: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-0 {
+      padding-right: var(--sf-space-0);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-0 {
+      padding-right: var(--sf-space-0);
+      }
+    }
+    .sm\:p-x-0:where(:dir(rtl)) {
+      padding-right: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-0 {
+      padding-right: var(--sf-space-0);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-0 {
+      padding-right: var(--sf-space-0);
+      }
+    }
+    .sm\:p-x-0:where(:dir(ltr)) {
+      padding-right: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-0 {
+      padding-left: var(--sf-space-0);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-0 {
+      padding-left: var(--sf-space-0);
+      }
+    }
+    .sm\:p-x-0:where(:dir(rtl)) {
+      padding-left: var(--sf-space-0);
+    }
+    .sm\:p-x-0 {
+      -webkit-padding-start: var(--sf-space-0);
+              padding-inline-start: var(--sf-space-0);
+      -webkit-padding-end: var(--sf-space-0);
+              padding-inline-end: var(--sf-space-0);
+    }
+    .sm\:p-y-0 {
+      padding-top: var(--sf-space-0);
+      padding-bottom: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-0 {
+      padding-left: var(--sf-space-0);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-0 {
+      padding-left: var(--sf-space-0);
+      }
+    }
+    .sm\:p-inline-start-0:where(:dir(ltr)) {
+      padding-left: var(--sf-space-0);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-0 {
+      padding-right: var(--sf-space-0);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-0 {
+      padding-right: var(--sf-space-0);
+      }
+    }
+    .sm\:p-inline-start-0:where(:dir(rtl)) {
+      padding-right: var(--sf-space-0);
+    }
+    .sm\:p-inline-start-0 {
+      -webkit-padding-start: var(--sf-space-0);
+              padding-inline-start: var(--sf-space-0);
+    }
+    .sm\:p-1\/4 {
+      padding: var(--sf-space-1\/4);
+    }
+    .sm\:p-top-1\/4 {
+      padding-top: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-inline-end-1\/4:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-inline-end-1\/4:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1\/4);
+    }
+    .sm\:p-inline-end-1\/4 {
+      -webkit-padding-end: var(--sf-space-1\/4);
+              padding-inline-end: var(--sf-space-1\/4);
+    }
+    .sm\:p-bottom-1\/4 {
+      padding-bottom: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-x-1\/4:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-x-1\/4:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-x-1\/4:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-x-1\/4:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1\/4);
+    }
+    .sm\:p-x-1\/4 {
+      -webkit-padding-start: var(--sf-space-1\/4);
+              padding-inline-start: var(--sf-space-1\/4);
+      -webkit-padding-end: var(--sf-space-1\/4);
+              padding-inline-end: var(--sf-space-1\/4);
+    }
+    .sm\:p-y-1\/4 {
+      padding-top: var(--sf-space-1\/4);
+      padding-bottom: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-1\/4 {
+      padding-left: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-inline-start-1\/4:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1\/4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-1\/4 {
+      padding-right: var(--sf-space-1\/4);
+      }
+    }
+    .sm\:p-inline-start-1\/4:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1\/4);
+    }
+    .sm\:p-inline-start-1\/4 {
+      -webkit-padding-start: var(--sf-space-1\/4);
+              padding-inline-start: var(--sf-space-1\/4);
+    }
+    .sm\:p-1\/3 {
+      padding: var(--sf-space-1\/3);
+    }
+    .sm\:p-top-1\/3 {
+      padding-top: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-inline-end-1\/3:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-inline-end-1\/3:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1\/3);
+    }
+    .sm\:p-inline-end-1\/3 {
+      -webkit-padding-end: var(--sf-space-1\/3);
+              padding-inline-end: var(--sf-space-1\/3);
+    }
+    .sm\:p-bottom-1\/3 {
+      padding-bottom: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-x-1\/3:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-x-1\/3:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-x-1\/3:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-x-1\/3:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1\/3);
+    }
+    .sm\:p-x-1\/3 {
+      -webkit-padding-start: var(--sf-space-1\/3);
+              padding-inline-start: var(--sf-space-1\/3);
+      -webkit-padding-end: var(--sf-space-1\/3);
+              padding-inline-end: var(--sf-space-1\/3);
+    }
+    .sm\:p-y-1\/3 {
+      padding-top: var(--sf-space-1\/3);
+      padding-bottom: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-1\/3 {
+      padding-left: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-inline-start-1\/3:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1\/3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-1\/3 {
+      padding-right: var(--sf-space-1\/3);
+      }
+    }
+    .sm\:p-inline-start-1\/3:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1\/3);
+    }
+    .sm\:p-inline-start-1\/3 {
+      -webkit-padding-start: var(--sf-space-1\/3);
+              padding-inline-start: var(--sf-space-1\/3);
+    }
+    .sm\:p-1\/2 {
+      padding: var(--sf-space-1\/2);
+    }
+    .sm\:p-top-1\/2 {
+      padding-top: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-inline-end-1\/2:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-inline-end-1\/2:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1\/2);
+    }
+    .sm\:p-inline-end-1\/2 {
+      -webkit-padding-end: var(--sf-space-1\/2);
+              padding-inline-end: var(--sf-space-1\/2);
+    }
+    .sm\:p-bottom-1\/2 {
+      padding-bottom: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-x-1\/2:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-x-1\/2:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-x-1\/2:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-x-1\/2:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1\/2);
+    }
+    .sm\:p-x-1\/2 {
+      -webkit-padding-start: var(--sf-space-1\/2);
+              padding-inline-start: var(--sf-space-1\/2);
+      -webkit-padding-end: var(--sf-space-1\/2);
+              padding-inline-end: var(--sf-space-1\/2);
+    }
+    .sm\:p-y-1\/2 {
+      padding-top: var(--sf-space-1\/2);
+      padding-bottom: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-1\/2 {
+      padding-left: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-inline-start-1\/2:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1\/2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-1\/2 {
+      padding-right: var(--sf-space-1\/2);
+      }
+    }
+    .sm\:p-inline-start-1\/2:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1\/2);
+    }
+    .sm\:p-inline-start-1\/2 {
+      -webkit-padding-start: var(--sf-space-1\/2);
+              padding-inline-start: var(--sf-space-1\/2);
+    }
+    .sm\:p-1 {
+      padding: var(--sf-space-1);
+    }
+    .sm\:p-top-1 {
+      padding-top: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-1 {
+      padding-right: var(--sf-space-1);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-1 {
+      padding-right: var(--sf-space-1);
+      }
+    }
+    .sm\:p-inline-end-1:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-1 {
+      padding-left: var(--sf-space-1);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-1 {
+      padding-left: var(--sf-space-1);
+      }
+    }
+    .sm\:p-inline-end-1:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1);
+    }
+    .sm\:p-inline-end-1 {
+      -webkit-padding-end: var(--sf-space-1);
+              padding-inline-end: var(--sf-space-1);
+    }
+    .sm\:p-bottom-1 {
+      padding-bottom: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1 {
+      padding-left: var(--sf-space-1);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1 {
+      padding-left: var(--sf-space-1);
+      }
+    }
+    .sm\:p-x-1:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1 {
+      padding-right: var(--sf-space-1);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-1 {
+      padding-right: var(--sf-space-1);
+      }
+    }
+    .sm\:p-x-1:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-1 {
+      padding-right: var(--sf-space-1);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-1 {
+      padding-right: var(--sf-space-1);
+      }
+    }
+    .sm\:p-x-1:where(:dir(ltr)) {
+      padding-right: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-1 {
+      padding-left: var(--sf-space-1);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-1 {
+      padding-left: var(--sf-space-1);
+      }
+    }
+    .sm\:p-x-1:where(:dir(rtl)) {
+      padding-left: var(--sf-space-1);
+    }
+    .sm\:p-x-1 {
+      -webkit-padding-start: var(--sf-space-1);
+              padding-inline-start: var(--sf-space-1);
+      -webkit-padding-end: var(--sf-space-1);
+              padding-inline-end: var(--sf-space-1);
+    }
+    .sm\:p-y-1 {
+      padding-top: var(--sf-space-1);
+      padding-bottom: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-1 {
+      padding-left: var(--sf-space-1);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-1 {
+      padding-left: var(--sf-space-1);
+      }
+    }
+    .sm\:p-inline-start-1:where(:dir(ltr)) {
+      padding-left: var(--sf-space-1);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-1 {
+      padding-right: var(--sf-space-1);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-1 {
+      padding-right: var(--sf-space-1);
+      }
+    }
+    .sm\:p-inline-start-1:where(:dir(rtl)) {
+      padding-right: var(--sf-space-1);
+    }
+    .sm\:p-inline-start-1 {
+      -webkit-padding-start: var(--sf-space-1);
+              padding-inline-start: var(--sf-space-1);
+    }
+    .sm\:p-2 {
+      padding: var(--sf-space-2);
+    }
+    .sm\:p-top-2 {
+      padding-top: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-2 {
+      padding-right: var(--sf-space-2);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-2 {
+      padding-right: var(--sf-space-2);
+      }
+    }
+    .sm\:p-inline-end-2:where(:dir(ltr)) {
+      padding-right: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-2 {
+      padding-left: var(--sf-space-2);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-2 {
+      padding-left: var(--sf-space-2);
+      }
+    }
+    .sm\:p-inline-end-2:where(:dir(rtl)) {
+      padding-left: var(--sf-space-2);
+    }
+    .sm\:p-inline-end-2 {
+      -webkit-padding-end: var(--sf-space-2);
+              padding-inline-end: var(--sf-space-2);
+    }
+    .sm\:p-bottom-2 {
+      padding-bottom: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-2 {
+      padding-left: var(--sf-space-2);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-2 {
+      padding-left: var(--sf-space-2);
+      }
+    }
+    .sm\:p-x-2:where(:dir(ltr)) {
+      padding-left: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-2 {
+      padding-right: var(--sf-space-2);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-2 {
+      padding-right: var(--sf-space-2);
+      }
+    }
+    .sm\:p-x-2:where(:dir(rtl)) {
+      padding-right: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-2 {
+      padding-right: var(--sf-space-2);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-2 {
+      padding-right: var(--sf-space-2);
+      }
+    }
+    .sm\:p-x-2:where(:dir(ltr)) {
+      padding-right: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-2 {
+      padding-left: var(--sf-space-2);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-2 {
+      padding-left: var(--sf-space-2);
+      }
+    }
+    .sm\:p-x-2:where(:dir(rtl)) {
+      padding-left: var(--sf-space-2);
+    }
+    .sm\:p-x-2 {
+      -webkit-padding-start: var(--sf-space-2);
+              padding-inline-start: var(--sf-space-2);
+      -webkit-padding-end: var(--sf-space-2);
+              padding-inline-end: var(--sf-space-2);
+    }
+    .sm\:p-y-2 {
+      padding-top: var(--sf-space-2);
+      padding-bottom: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-2 {
+      padding-left: var(--sf-space-2);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-2 {
+      padding-left: var(--sf-space-2);
+      }
+    }
+    .sm\:p-inline-start-2:where(:dir(ltr)) {
+      padding-left: var(--sf-space-2);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-2 {
+      padding-right: var(--sf-space-2);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-2 {
+      padding-right: var(--sf-space-2);
+      }
+    }
+    .sm\:p-inline-start-2:where(:dir(rtl)) {
+      padding-right: var(--sf-space-2);
+    }
+    .sm\:p-inline-start-2 {
+      -webkit-padding-start: var(--sf-space-2);
+              padding-inline-start: var(--sf-space-2);
+    }
+    .sm\:p-3 {
+      padding: var(--sf-space-3);
+    }
+    .sm\:p-top-3 {
+      padding-top: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-3 {
+      padding-right: var(--sf-space-3);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-3 {
+      padding-right: var(--sf-space-3);
+      }
+    }
+    .sm\:p-inline-end-3:where(:dir(ltr)) {
+      padding-right: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-3 {
+      padding-left: var(--sf-space-3);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-3 {
+      padding-left: var(--sf-space-3);
+      }
+    }
+    .sm\:p-inline-end-3:where(:dir(rtl)) {
+      padding-left: var(--sf-space-3);
+    }
+    .sm\:p-inline-end-3 {
+      -webkit-padding-end: var(--sf-space-3);
+              padding-inline-end: var(--sf-space-3);
+    }
+    .sm\:p-bottom-3 {
+      padding-bottom: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-3 {
+      padding-left: var(--sf-space-3);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-3 {
+      padding-left: var(--sf-space-3);
+      }
+    }
+    .sm\:p-x-3:where(:dir(ltr)) {
+      padding-left: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-3 {
+      padding-right: var(--sf-space-3);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-3 {
+      padding-right: var(--sf-space-3);
+      }
+    }
+    .sm\:p-x-3:where(:dir(rtl)) {
+      padding-right: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-3 {
+      padding-right: var(--sf-space-3);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-3 {
+      padding-right: var(--sf-space-3);
+      }
+    }
+    .sm\:p-x-3:where(:dir(ltr)) {
+      padding-right: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-3 {
+      padding-left: var(--sf-space-3);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-3 {
+      padding-left: var(--sf-space-3);
+      }
+    }
+    .sm\:p-x-3:where(:dir(rtl)) {
+      padding-left: var(--sf-space-3);
+    }
+    .sm\:p-x-3 {
+      -webkit-padding-start: var(--sf-space-3);
+              padding-inline-start: var(--sf-space-3);
+      -webkit-padding-end: var(--sf-space-3);
+              padding-inline-end: var(--sf-space-3);
+    }
+    .sm\:p-y-3 {
+      padding-top: var(--sf-space-3);
+      padding-bottom: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-3 {
+      padding-left: var(--sf-space-3);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-3 {
+      padding-left: var(--sf-space-3);
+      }
+    }
+    .sm\:p-inline-start-3:where(:dir(ltr)) {
+      padding-left: var(--sf-space-3);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-3 {
+      padding-right: var(--sf-space-3);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-3 {
+      padding-right: var(--sf-space-3);
+      }
+    }
+    .sm\:p-inline-start-3:where(:dir(rtl)) {
+      padding-right: var(--sf-space-3);
+    }
+    .sm\:p-inline-start-3 {
+      -webkit-padding-start: var(--sf-space-3);
+              padding-inline-start: var(--sf-space-3);
+    }
+    .sm\:p-4 {
+      padding: var(--sf-space-4);
+    }
+    .sm\:p-top-4 {
+      padding-top: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-4 {
+      padding-right: var(--sf-space-4);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-4 {
+      padding-right: var(--sf-space-4);
+      }
+    }
+    .sm\:p-inline-end-4:where(:dir(ltr)) {
+      padding-right: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-4 {
+      padding-left: var(--sf-space-4);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-4 {
+      padding-left: var(--sf-space-4);
+      }
+    }
+    .sm\:p-inline-end-4:where(:dir(rtl)) {
+      padding-left: var(--sf-space-4);
+    }
+    .sm\:p-inline-end-4 {
+      -webkit-padding-end: var(--sf-space-4);
+              padding-inline-end: var(--sf-space-4);
+    }
+    .sm\:p-bottom-4 {
+      padding-bottom: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-4 {
+      padding-left: var(--sf-space-4);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-4 {
+      padding-left: var(--sf-space-4);
+      }
+    }
+    .sm\:p-x-4:where(:dir(ltr)) {
+      padding-left: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-4 {
+      padding-right: var(--sf-space-4);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-4 {
+      padding-right: var(--sf-space-4);
+      }
+    }
+    .sm\:p-x-4:where(:dir(rtl)) {
+      padding-right: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-4 {
+      padding-right: var(--sf-space-4);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-4 {
+      padding-right: var(--sf-space-4);
+      }
+    }
+    .sm\:p-x-4:where(:dir(ltr)) {
+      padding-right: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-4 {
+      padding-left: var(--sf-space-4);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-4 {
+      padding-left: var(--sf-space-4);
+      }
+    }
+    .sm\:p-x-4:where(:dir(rtl)) {
+      padding-left: var(--sf-space-4);
+    }
+    .sm\:p-x-4 {
+      -webkit-padding-start: var(--sf-space-4);
+              padding-inline-start: var(--sf-space-4);
+      -webkit-padding-end: var(--sf-space-4);
+              padding-inline-end: var(--sf-space-4);
+    }
+    .sm\:p-y-4 {
+      padding-top: var(--sf-space-4);
+      padding-bottom: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-4 {
+      padding-left: var(--sf-space-4);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-4 {
+      padding-left: var(--sf-space-4);
+      }
+    }
+    .sm\:p-inline-start-4:where(:dir(ltr)) {
+      padding-left: var(--sf-space-4);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-4 {
+      padding-right: var(--sf-space-4);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-4 {
+      padding-right: var(--sf-space-4);
+      }
+    }
+    .sm\:p-inline-start-4:where(:dir(rtl)) {
+      padding-right: var(--sf-space-4);
+    }
+    .sm\:p-inline-start-4 {
+      -webkit-padding-start: var(--sf-space-4);
+              padding-inline-start: var(--sf-space-4);
+    }
+    .sm\:p-5 {
+      padding: var(--sf-space-5);
+    }
+    .sm\:p-top-5 {
+      padding-top: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-5 {
+      padding-right: var(--sf-space-5);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-5 {
+      padding-right: var(--sf-space-5);
+      }
+    }
+    .sm\:p-inline-end-5:where(:dir(ltr)) {
+      padding-right: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-5 {
+      padding-left: var(--sf-space-5);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-5 {
+      padding-left: var(--sf-space-5);
+      }
+    }
+    .sm\:p-inline-end-5:where(:dir(rtl)) {
+      padding-left: var(--sf-space-5);
+    }
+    .sm\:p-inline-end-5 {
+      -webkit-padding-end: var(--sf-space-5);
+              padding-inline-end: var(--sf-space-5);
+    }
+    .sm\:p-bottom-5 {
+      padding-bottom: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-5 {
+      padding-left: var(--sf-space-5);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-5 {
+      padding-left: var(--sf-space-5);
+      }
+    }
+    .sm\:p-x-5:where(:dir(ltr)) {
+      padding-left: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-5 {
+      padding-right: var(--sf-space-5);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-5 {
+      padding-right: var(--sf-space-5);
+      }
+    }
+    .sm\:p-x-5:where(:dir(rtl)) {
+      padding-right: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-5 {
+      padding-right: var(--sf-space-5);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-5 {
+      padding-right: var(--sf-space-5);
+      }
+    }
+    .sm\:p-x-5:where(:dir(ltr)) {
+      padding-right: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-5 {
+      padding-left: var(--sf-space-5);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-5 {
+      padding-left: var(--sf-space-5);
+      }
+    }
+    .sm\:p-x-5:where(:dir(rtl)) {
+      padding-left: var(--sf-space-5);
+    }
+    .sm\:p-x-5 {
+      -webkit-padding-start: var(--sf-space-5);
+              padding-inline-start: var(--sf-space-5);
+      -webkit-padding-end: var(--sf-space-5);
+              padding-inline-end: var(--sf-space-5);
+    }
+    .sm\:p-y-5 {
+      padding-top: var(--sf-space-5);
+      padding-bottom: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-5 {
+      padding-left: var(--sf-space-5);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-5 {
+      padding-left: var(--sf-space-5);
+      }
+    }
+    .sm\:p-inline-start-5:where(:dir(ltr)) {
+      padding-left: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-5 {
+      padding-right: var(--sf-space-5);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-5 {
+      padding-right: var(--sf-space-5);
+      }
+    }
+    .sm\:p-inline-start-5:where(:dir(rtl)) {
+      padding-right: var(--sf-space-5);
+    }
+    .sm\:p-inline-start-5 {
+      -webkit-padding-start: var(--sf-space-5);
+              padding-inline-start: var(--sf-space-5);
+    }
+    .sm\:p-6 {
+      padding: var(--sf-space-6);
+    }
+    .sm\:p-top-6 {
+      padding-top: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-6 {
+      padding-right: var(--sf-space-6);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-6 {
+      padding-right: var(--sf-space-6);
+      }
+    }
+    .sm\:p-inline-end-6:where(:dir(ltr)) {
+      padding-right: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-6 {
+      padding-left: var(--sf-space-6);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-6 {
+      padding-left: var(--sf-space-6);
+      }
+    }
+    .sm\:p-inline-end-6:where(:dir(rtl)) {
+      padding-left: var(--sf-space-6);
+    }
+    .sm\:p-inline-end-6 {
+      -webkit-padding-end: var(--sf-space-6);
+              padding-inline-end: var(--sf-space-6);
+    }
+    .sm\:p-bottom-6 {
+      padding-bottom: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-6 {
+      padding-left: var(--sf-space-6);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-6 {
+      padding-left: var(--sf-space-6);
+      }
+    }
+    .sm\:p-x-6:where(:dir(ltr)) {
+      padding-left: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-6 {
+      padding-right: var(--sf-space-6);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-6 {
+      padding-right: var(--sf-space-6);
+      }
+    }
+    .sm\:p-x-6:where(:dir(rtl)) {
+      padding-right: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-6 {
+      padding-right: var(--sf-space-6);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-6 {
+      padding-right: var(--sf-space-6);
+      }
+    }
+    .sm\:p-x-6:where(:dir(ltr)) {
+      padding-right: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-6 {
+      padding-left: var(--sf-space-6);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-6 {
+      padding-left: var(--sf-space-6);
+      }
+    }
+    .sm\:p-x-6:where(:dir(rtl)) {
+      padding-left: var(--sf-space-6);
+    }
+    .sm\:p-x-6 {
+      -webkit-padding-start: var(--sf-space-6);
+              padding-inline-start: var(--sf-space-6);
+      -webkit-padding-end: var(--sf-space-6);
+              padding-inline-end: var(--sf-space-6);
+    }
+    .sm\:p-y-6 {
+      padding-top: var(--sf-space-6);
+      padding-bottom: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-6 {
+      padding-left: var(--sf-space-6);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-6 {
+      padding-left: var(--sf-space-6);
+      }
+    }
+    .sm\:p-inline-start-6:where(:dir(ltr)) {
+      padding-left: var(--sf-space-6);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-6 {
+      padding-right: var(--sf-space-6);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-6 {
+      padding-right: var(--sf-space-6);
+      }
+    }
+    .sm\:p-inline-start-6:where(:dir(rtl)) {
+      padding-right: var(--sf-space-6);
+    }
+    .sm\:p-inline-start-6 {
+      -webkit-padding-start: var(--sf-space-6);
+              padding-inline-start: var(--sf-space-6);
+    }
+    .sm\:p-7 {
+      padding: var(--sf-space-7);
+    }
+    .sm\:p-top-7 {
+      padding-top: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-7 {
+      padding-right: var(--sf-space-7);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-7 {
+      padding-right: var(--sf-space-7);
+      }
+    }
+    .sm\:p-inline-end-7:where(:dir(ltr)) {
+      padding-right: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-7 {
+      padding-left: var(--sf-space-7);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-7 {
+      padding-left: var(--sf-space-7);
+      }
+    }
+    .sm\:p-inline-end-7:where(:dir(rtl)) {
+      padding-left: var(--sf-space-7);
+    }
+    .sm\:p-inline-end-7 {
+      -webkit-padding-end: var(--sf-space-7);
+              padding-inline-end: var(--sf-space-7);
+    }
+    .sm\:p-bottom-7 {
+      padding-bottom: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-7 {
+      padding-left: var(--sf-space-7);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-7 {
+      padding-left: var(--sf-space-7);
+      }
+    }
+    .sm\:p-x-7:where(:dir(ltr)) {
+      padding-left: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-7 {
+      padding-right: var(--sf-space-7);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-7 {
+      padding-right: var(--sf-space-7);
+      }
+    }
+    .sm\:p-x-7:where(:dir(rtl)) {
+      padding-right: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-7 {
+      padding-right: var(--sf-space-7);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-7 {
+      padding-right: var(--sf-space-7);
+      }
+    }
+    .sm\:p-x-7:where(:dir(ltr)) {
+      padding-right: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-7 {
+      padding-left: var(--sf-space-7);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-7 {
+      padding-left: var(--sf-space-7);
+      }
+    }
+    .sm\:p-x-7:where(:dir(rtl)) {
+      padding-left: var(--sf-space-7);
+    }
+    .sm\:p-x-7 {
+      -webkit-padding-start: var(--sf-space-7);
+              padding-inline-start: var(--sf-space-7);
+      -webkit-padding-end: var(--sf-space-7);
+              padding-inline-end: var(--sf-space-7);
+    }
+    .sm\:p-y-7 {
+      padding-top: var(--sf-space-7);
+      padding-bottom: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-7 {
+      padding-left: var(--sf-space-7);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-7 {
+      padding-left: var(--sf-space-7);
+      }
+    }
+    .sm\:p-inline-start-7:where(:dir(ltr)) {
+      padding-left: var(--sf-space-7);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-7 {
+      padding-right: var(--sf-space-7);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-7 {
+      padding-right: var(--sf-space-7);
+      }
+    }
+    .sm\:p-inline-start-7:where(:dir(rtl)) {
+      padding-right: var(--sf-space-7);
+    }
+    .sm\:p-inline-start-7 {
+      -webkit-padding-start: var(--sf-space-7);
+              padding-inline-start: var(--sf-space-7);
+    }
+    .sm\:p-8 {
+      padding: var(--sf-space-8);
+    }
+    .sm\:p-top-8 {
+      padding-top: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-end-8 {
+      padding-right: var(--sf-space-8);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-end-8 {
+      padding-right: var(--sf-space-8);
+      }
+    }
+    .sm\:p-inline-end-8:where(:dir(ltr)) {
+      padding-right: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-end-8 {
+      padding-left: var(--sf-space-8);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-inline-end-8 {
+      padding-left: var(--sf-space-8);
+      }
+    }
+    .sm\:p-inline-end-8:where(:dir(rtl)) {
+      padding-left: var(--sf-space-8);
+    }
+    .sm\:p-inline-end-8 {
+      -webkit-padding-end: var(--sf-space-8);
+              padding-inline-end: var(--sf-space-8);
+    }
+    .sm\:p-bottom-8 {
+      padding-bottom: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-8 {
+      padding-left: var(--sf-space-8);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-8 {
+      padding-left: var(--sf-space-8);
+      }
+    }
+    .sm\:p-x-8:where(:dir(ltr)) {
+      padding-left: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-8 {
+      padding-right: var(--sf-space-8);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-x-8 {
+      padding-right: var(--sf-space-8);
+      }
+    }
+    .sm\:p-x-8:where(:dir(rtl)) {
+      padding-right: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-x-8 {
+      padding-right: var(--sf-space-8);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .sm\:p-x-8 {
+      padding-right: var(--sf-space-8);
+      }
+    }
+    .sm\:p-x-8:where(:dir(ltr)) {
+      padding-right: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-x-8 {
+      padding-left: var(--sf-space-8);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .sm\:p-x-8 {
+      padding-left: var(--sf-space-8);
+      }
+    }
+    .sm\:p-x-8:where(:dir(rtl)) {
+      padding-left: var(--sf-space-8);
+    }
+    .sm\:p-x-8 {
+      -webkit-padding-start: var(--sf-space-8);
+              padding-inline-start: var(--sf-space-8);
+      -webkit-padding-end: var(--sf-space-8);
+              padding-inline-end: var(--sf-space-8);
+    }
+    .sm\:p-y-8 {
+      padding-top: var(--sf-space-8);
+      padding-bottom: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:p-inline-start-8 {
+      padding-left: var(--sf-space-8);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .sm\:p-inline-start-8 {
+      padding-left: var(--sf-space-8);
+      }
+    }
+    .sm\:p-inline-start-8:where(:dir(ltr)) {
+      padding-left: var(--sf-space-8);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:p-inline-start-8 {
+      padding-right: var(--sf-space-8);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .sm\:p-inline-start-8 {
+      padding-right: var(--sf-space-8);
+      }
+    }
+    .sm\:p-inline-start-8:where(:dir(rtl)) {
+      padding-right: var(--sf-space-8);
+    }
+    .sm\:p-inline-start-8 {
+      -webkit-padding-start: var(--sf-space-8);
+              padding-inline-start: var(--sf-space-8);
+    }
+  }
+}

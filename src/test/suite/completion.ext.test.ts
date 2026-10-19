@@ -38,6 +38,15 @@ async function open(language: string, marked: string): Promise<{
 
 suiteTeardown(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
 
+// VS Code registers the providers while it activates the extension. Waiting
+// here keeps the first test about the first *completion* request, not about
+// whether activation happened to win the race against it.
+suiteSetup(async () => {
+    const extension = vscode.extensions.getExtension('SIMAI.sf-vscode');
+    assert.ok(extension, 'the extension under test is not installed');
+    await extension.activate();
+});
+
 async function completions(language: string, marked: string): Promise<vscode.CompletionItem[]> {
     const { document, position } = await open(language, marked);
     const list = await vscode.commands.executeCommand<vscode.CompletionList>(
@@ -148,6 +157,17 @@ suite('completion provider', () => {
         );
     });
 
+    test('the promotion rule decides which tags complete', async () => {
+        // Promoted in ui-32c7a64e4575; it used to be known but unsuggested.
+        assert.ok(find(await completions('html', '<div><sf-list-i|'), 'sf-list-item'));
+        // Held by the promotion rule, so they stay out of the suggestions.
+        const items = await completions('html', '<div><sf-|');
+        for (const tag of ['sf-button-group', 'sf-inline-editor', 'sf-toggle']) {
+            assert.equal(find(items, tag), undefined, `${tag} must not be suggested`);
+        }
+        assert.ok(find(items, 'sf-switch'), 'sf-switch replaces the deprecated toggle');
+    });
+
     test('a dot in prose or code does not suggest classes', async () => {
         // VS Code adds word-based suggestions (kind Text); look at ours only.
         const classes = (items: vscode.CompletionItem[]): vscode.CompletionItem[] =>
@@ -163,7 +183,7 @@ suite('hover provider', () => {
         assert.match(text, /--sf-primary/);
         assert.match(text, /\| light \| #005bbe \|/);
         assert.match(text, /\| dark \| #acc7ff \|/);
-        assert.match(text, /ui-3521193e0c6b/);
+        assert.match(text, /ui-32c7a64e4575/);
     });
 
     test('sizing tokens show mobile and desktop values', async () => {

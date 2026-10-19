@@ -1,0 +1,35 @@
+@layer sf.utilities {
+  .hover\:stroke-transparent:hover {
+    stroke: var(--sf-transparent);
+  }
+  .hover\:stroke-current:hover {
+    stroke: var(--sf-current);
+  }
+  .hover\:stroke:hover {
+    stroke: var(--sf-outline-variant);
+  }
+  .hover\:stroke-outline:hover {
+    stroke: var(--sf-outline);
+  }
+  .hover\:stroke-outline-variant:hover {
+    stroke: var(--sf-outline-variant);
+  }
+  .hover\:stroke-primary:hover {
+    stroke: var(--sf-outline-primary);
+  }
+  .hover\:stroke-secondary:hover {
+    stroke: var(--sf-outline-secondary);
+  }
+  .hover\:stroke-tertiary:hover {
+    stroke: var(--sf-outline-tertiary);
+  }
+  .hover\:stroke-error:hover {
+    stroke: var(--sf-outline-error);
+  }
+  .hover\:stroke-warning:hover {
+    stroke: var(--sf-outline-warning);
+  }
+  .hover\:stroke-success:hover {
+    stroke: var(--sf-outline-success);
+  }
+}

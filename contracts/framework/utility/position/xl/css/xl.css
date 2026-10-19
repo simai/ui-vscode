@@ -1,0 +1,19 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:static {
+      position: static;
+    }
+    .xl\:fixed {
+      position: fixed;
+    }
+    .xl\:absolute {
+      position: absolute;
+    }
+    .xl\:relative {
+      position: relative;
+    }
+    .xl\:sticky {
+      position: sticky;
+    }
+  }
+}

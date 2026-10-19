@@ -1,0 +1,110 @@
+@layer sf.utilities {
+  .focus\:color-transparent:focus {
+    color: var(--sf-transparent);
+  }
+  .focus\:color-current:focus {
+    color: var(--sf-current);
+  }
+  .focus\:color-inherit:focus {
+    color: var(--sf-inherit);
+  }
+  .focus\:color-on-surface:focus {
+    color: var(--sf-on-surface);
+  }
+  .focus\:color-on-surface-fixed:focus {
+    color: var(--sf-on-surface-fixed);
+  }
+  .focus\:color-on-surface-variant:focus {
+    color: var(--sf-on-surface-variant);
+  }
+  .focus\:color-on-surface-inverse:focus {
+    color: var(--sf-on-surface-inverse);
+  }
+  .focus\:color-on-surface-inverse-fixed:focus {
+    color: var(--sf-on-surface-inverse-fixed);
+  }
+  .focus\:color-disable:focus {
+    color: var(--sf-disable);
+  }
+  .focus\:color-on-disable:focus {
+    color: var(--sf-on-disable);
+  }
+  .focus\:color-primary:focus {
+    color: var(--sf-primary);
+  }
+  .focus\:color-on-primary:focus {
+    color: var(--sf-on-primary);
+  }
+  .focus\:color-on-primary-container:focus {
+    color: var(--sf-on-primary-container);
+  }
+  .focus\:color-on-primary-container-graphic:focus {
+    color: var(--sf-on-primary-container-graphic);
+  }
+  .focus\:color-secondary:focus {
+    color: var(--sf-secondary);
+  }
+  .focus\:color-on-secondary:focus {
+    color: var(--sf-on-secondary);
+  }
+  .focus\:color-on-secondary-container:focus {
+    color: var(--sf-on-secondary-container);
+  }
+  .focus\:color-on-secondary-container-graphic:focus {
+    color: var(--sf-on-secondary-container-graphic);
+  }
+  .focus\:color-tertiary:focus {
+    color: var(--sf-tertiary);
+  }
+  .focus\:color-on-tertiary:focus {
+    color: var(--sf-on-tertiary);
+  }
+  .focus\:color-on-tertiary-container:focus {
+    color: var(--sf-on-tertiary-container);
+  }
+  .focus\:color-on-tertiary-container-graphic:focus {
+    color: var(--sf-on-tertiary-container-graphic);
+  }
+  .focus\:color-error:focus {
+    color: var(--sf-error);
+  }
+  .focus\:color-on-error:focus {
+    color: var(--sf-on-error);
+  }
+  .focus\:color-on-error-container:focus {
+    color: var(--sf-on-error-container);
+  }
+  .focus\:color-on-error-container-graphic:focus {
+    color: var(--sf-on-error-container-graphic);
+  }
+  .focus\:color-warning:focus {
+    color: var(--sf-warning);
+  }
+  .focus\:color-on-warning:focus {
+    color: var(--sf-on-warning);
+  }
+  .focus\:color-on-warning-container:focus {
+    color: var(--sf-on-warning-container);
+  }
+  .focus\:color-on-warning-container-graphic:focus {
+    color: var(--sf-on-warning-container-graphic);
+  }
+  .focus\:color-success:focus {
+    color: var(--sf-success);
+  }
+  .focus\:color-on-success:focus {
+    color: var(--sf-on-success);
+  }
+  .focus\:color-on-success-container:focus {
+    color: var(--sf-on-success-container);
+  }
+  .focus\:color-on-success-container-graphic:focus {
+    color: var(--sf-on-success-container-graphic);
+  }
+  .focus\:color-transparent:focus {
+    color: var(--sf-transparent);
+  }
+  .focus\:color-inherit:focus {
+    color: var(--sf-inherit);
+  }
+}

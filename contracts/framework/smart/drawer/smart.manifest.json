@@ -1,0 +1,647 @@
+{
+  "schema_version": 2,
+  "id": "smart.drawer",
+  "version": "1.3.0",
+  "title": "Drawer",
+  "summary": "Workspace side panel that keeps the page usable: docked column or modeless panel. Modal side panels belong to sf-modal; the modal Drawer mode is deprecated.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "drawer"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-drawer",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.icon-buttons",
+      "component.close"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "open": {
+        "type": "boolean",
+        "default": false
+      },
+      "placement": {
+        "type": "string",
+        "default": "right",
+        "enum": [
+          "left",
+          "right",
+          "inline-start",
+          "inline-end"
+        ]
+      },
+      "overlay": {
+        "type": "boolean",
+        "default": true
+      },
+      "modal": {
+        "type": "boolean",
+        "default": true
+      },
+      "docked": {
+        "type": "boolean",
+        "default": false
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2",
+          "full"
+        ]
+      },
+      "close-on-esc": {
+        "type": "boolean",
+        "default": true
+      },
+      "close-on-overlay": {
+        "type": "boolean",
+        "default": true
+      },
+      "preserve-scroll-gap": {
+        "type": "boolean",
+        "default": true
+      },
+      "show-close": {
+        "type": "boolean",
+        "default": true
+      },
+      "close-placement": {
+        "type": "string",
+        "default": "inside",
+        "enum": [
+          "inside",
+          "outside"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "default": ""
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "close-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Close drawer\" in English)."
+      },
+      "width": {
+        "type": "string",
+        "default": ""
+      },
+      "stack-offset": {
+        "type": "string",
+        "default": "",
+        "description": "How much of each drawer below shows past the one above it at the same edge, as a length (for example var(--sf-space-4)). A drawer stands depth × offset in from its edge, where depth counts the open, undocked drawers below it at that edge. Empty: drawers lie flush."
+      },
+      "gutter": {
+        "type": "string",
+        "default": "",
+        "description": "The inline gutter the head and the body share, as a length (for example var(--sf-space-3)), so the title and the content start on one axis. Empty: the drawer's own, space-1. A theme may set --sf-drawer-gutter instead."
+      },
+      "z-index": {
+        "type": "string",
+        "default": ""
+      },
+      "overlay-class": {
+        "type": "string",
+        "default": ""
+      },
+      "panel-class": {
+        "type": "string",
+        "default": ""
+      },
+      "panel-style": {
+        "type": "string",
+        "default": "",
+        "description": "Declarations set on the panel itself, for the custom properties it reads -- its background, radius, shadow. A consumer painting its content a different colour than the panel leaves the head and the gutters in the other one."
+      },
+      "header-class": {
+        "type": "string",
+        "default": ""
+      },
+      "body-class": {
+        "type": "string",
+        "default": ""
+      },
+      "close-class": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "dock_host": {
+      "type": "object",
+      "description": "A host element marked data-sf-drawer-dock-host receives padding-inline-start/end equal to the summed widths of open docked drawers per logical side, published as --sf-drawer-dock-inline-start/end on the document root. Narrow viewports (<48rem) keep zero padding.",
+      "properties": {
+        "attribute": {
+          "const": "data-sf-drawer-dock-host"
+        },
+        "variables": {
+          "const": [
+            "--sf-drawer-dock-inline-start",
+            "--sf-drawer-dock-inline-end",
+            "--sf-drawer-dock-block-start"
+          ]
+        }
+      }
+    },
+    "slots": {
+      "type": "object",
+      "description": "The named slots the consumer fills.",
+      "properties": {
+        "default": {
+          "description": "The drawer's content, moved into the scrolling body."
+        },
+        "edge": {
+          "description": "Stands beside the panel, on its outer edge, where the panel's own clipping cannot reach it."
+        }
+      }
+    }
+  },
+  "methods": {
+    "open": {
+      "summary": "Opens the Drawer, or brings it to the front when already open. Dispatches drawer:before-open (cancelable) and later drawer:after-open unless options.emit is false. Returns the element.",
+      "arguments": [
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "close": {
+      "summary": "Closes the Drawer and restores focus to the opener. Dispatches drawer:before-close (cancelable) and drawer:after-close unless options.emit is false. Returns the element.",
+      "arguments": [
+        {
+          "name": "options",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "toggle": {
+      "summary": "Calls close() when open, open() otherwise. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "setState": {
+      "summary": "An open key calls open() or close(); the remaining keys go to the base setState as host attributes. Returns the element.",
+      "arguments": [
+        {
+          "name": "state",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "getState": {
+      "summary": "Returns the current template context plus the open state.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "onBeforeOpen": {
+      "summary": "Adds a listener for drawer:before-open on the host that runs only for this Drawer's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAfterOpen": {
+      "summary": "Adds a listener for drawer:after-open on the host that runs only for this Drawer's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBeforeClose": {
+      "summary": "Adds a listener for drawer:before-close on the host that runs only for this Drawer's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAfterClose": {
+      "summary": "Adds a listener for drawer:after-close on the host that runs only for this Drawer's own events. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "drawer:ready": {
+      "summary": "The portal surface is ready. Bubbles and is composed; detail.drawer is the emitting drawer.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawer": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawerId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    },
+    "drawer:update": {
+      "summary": "The portal surface was updated. Bubbles and is composed; detail.drawer is the emitting drawer.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawer": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawerId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    },
+    "drawer:before-open": {
+      "summary": "Cancelable intent before opening. Bubbles and is composed; detail.drawer is the emitting drawer.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawer": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawerId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    },
+    "drawer:after-open": {
+      "summary": "The Drawer was opened. Bubbles and is composed; detail.drawer is the emitting drawer.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawer": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawerId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    },
+    "drawer:before-close": {
+      "summary": "Cancelable intent before closing. Bubbles and is composed; detail.drawer is the emitting drawer.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawer": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawerId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    },
+    "drawer:after-close": {
+      "summary": "The Drawer was closed. Bubbles and is composed; detail.drawer is the emitting drawer.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawer": {
+            "description": "The emitting sf-drawer."
+          },
+          "drawerId": {
+            "type": "string"
+          },
+          "root": {
+            "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "open",
+      "closed"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "dialog",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Shift+Tab",
+      "Escape"
+    ],
+    "focus": "Modal Drawer moves focus inside, traps Tab on the top instance and restores an available opener. Modeless Drawer does not trap focus or lock the page. Docked Drawer is a named role=region column: no focus trap, no scroll lock; Escape closes the top instance."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion",
+      "semantic-surface-radius",
+      "logical-placement"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "accepted",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [
+      {
+        "path": "trigger.data-sf-drawer-*",
+        "since": "1.0.0",
+        "replacement": "data-drawer with aria-controls"
+      },
+      {
+        "path": "modal (default mode without docked or modal=false)",
+        "since": "1.2.0",
+        "replacement": "sf-modal position=\"inline-start|inline-end\""
+      }
+    ],
+    "replacement": null,
+    "migrations": [
+      {
+        "from": "1.0.0",
+        "to": "1.1.0",
+        "changes": [
+          "Add docked: a modeless role=region column that reserves page space through data-sf-drawer-dock-host.",
+          "Existing modal and modeless behavior is unchanged when docked is absent.",
+          "Escape already handled by an editor or drag (defaultPrevented) does not close the drawer."
+        ]
+      },
+      {
+        "from": "1.1.0",
+        "to": "1.2.0",
+        "changes": [
+          "Drawer is scoped to docked and modeless workspace panels.",
+          "The modal mode stays the default for compatibility but is deprecated; use sf-modal with position=\"inline-start|inline-end\" for modal side panels.",
+          "No runtime behavior changes."
+        ]
+      },
+      {
+        "from": "1.2.0",
+        "to": "1.3.0",
+        "changes": [
+          "drawer:* events bubble and are composed, so hosts can listen on the document; detail.drawer names the emitting drawer.",
+          "onBeforeOpen, onAfterOpen, onBeforeClose and onAfterClose still receive only that drawer's own events.",
+          "Ancestor listeners added with addEventListener now also see events of nested drawers; check event.detail.drawer."
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/drawer/index.js",
+        "sha256": "44a49488adfd4e6a1ea72e1ebb5b51ec5e266945f160a2bdf9034f73ca872af3"
+      },
+      {
+        "path": "src/smart/drawer/scss/_smart__drawer.scss",
+        "sha256": "a4beca1986d50810f5054a06d516ea8c06429d62c26b1ce7ce7dd0210783750a"
+      },
+      {
+        "path": "src/smart/drawer/rule.js",
+        "sha256": "c64fe407994c86ce8d718fd4543ebbd89f0b5c8550985ffe15df3fe334fbfadc"
+      },
+      {
+        "path": "src/smart/drawer/docs.md",
+        "sha256": "7a8e2129484db8ce541364d6e98806560e556f572b71f781bbcf06e75b39d90a"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/drawer/js/drawer.js",
+        "sha256": "f8e60248b4a2ffe1307a1fe7a56f82e0693b780d14c8c89c4a66b2a7085ad22a"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-drawer for a workspace side panel next to a page that stays usable: docked (page content shifts, both sides at once) or modal=false (overlapping, no scrim, no focus trap). For a modal side panel use sf-modal with position=\"inline-start|inline-end\".",
+    "do_not": [
+      "Do not use a modal sf-drawer for new interfaces; use sf-modal with a side position",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not use overlay as a substitute for modal semantics",
+      "Do not pass literal design dimensions when a standard size or Framework token exists"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<div data-sf-drawer-dock-host>…</div><sf-drawer id=\"blocks\" docked open placement=\"inline-start\" size=\"1/2\" title=\"Blocks\"><p>Content</p></sf-drawer>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

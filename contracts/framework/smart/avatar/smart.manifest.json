@@ -1,0 +1,263 @@
+{
+  "schema_version": 2,
+  "id": "smart.avatar",
+  "version": "1.0.0",
+  "title": "Avatar",
+  "summary": "Shows a person or organisation as a photo or initials, with an optional availability or verification mark. The default and label templates render a native button whose aria-label names its action; the card template is static and adds a title, description and meta line.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "avatar"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-avatar",
+  "templates": [
+    "default",
+    "label",
+    "card"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/4",
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "line": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Takes the text line of this form size instead of a control height, for an avatar beside a label in a row or a table cell."
+      },
+      "shape": {
+        "type": "string",
+        "default": "circle",
+        "enum": [
+          "circle",
+          "square"
+        ]
+      },
+      "image-url": {
+        "type": "string",
+        "default": ""
+      },
+      "image-alt": {
+        "type": "string",
+        "default": ""
+      },
+      "no-wrap": {
+        "type": "boolean",
+        "default": false
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "status": {
+        "type": "string",
+        "default": "none",
+        "enum": [
+          "none",
+          "online",
+          "offline",
+          "company",
+          "verified"
+        ]
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Avatar\" in English)."
+      },
+      "title": {
+        "type": "string",
+        "default": ""
+      },
+      "description": {
+        "type": "string",
+        "default": ""
+      },
+      "meta": {
+        "type": "string",
+        "default": ""
+      },
+      "meta-icon": {
+        "type": "string",
+        "default": ""
+      },
+      "card-variant": {
+        "type": "string",
+        "default": "square",
+        "enum": [
+          "square",
+          "portrait"
+        ]
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {},
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/avatar/index.js",
+        "sha256": "a1260edefb36506fc80bc1de0872f30b634c3385e9b7f1522323f29fa95212a3"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/avatar/js/avatar.js",
+        "sha256": "86b814508e7f41ffd8b4c501651d04dcfc19cb8b964609a15d66ae78e78fffcb"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-avatar when the interface needs the avatar behavior.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-avatar></sf-avatar>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

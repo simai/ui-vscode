@@ -1,0 +1,79 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    .sm\:svg-1\/4 {
+      width: var(--sf-text-size-1\/4);
+      height: var(--sf-text-size-1\/4);
+      line-height: var(--sf-text-height-1\/4);
+    }
+    .sm\:svg-1\/3 {
+      width: var(--sf-text-size-1\/3);
+      height: var(--sf-text-size-1\/3);
+      line-height: var(--sf-text-height-1\/3);
+    }
+    .sm\:svg-1\/2 {
+      width: var(--sf-text-size-1\/2);
+      height: var(--sf-text-size-1\/2);
+      line-height: var(--sf-text-height-1\/2);
+    }
+    .sm\:svg-1 {
+      width: var(--sf-text-size-1);
+      height: var(--sf-text-size-1);
+      line-height: var(--sf-text-height-1);
+    }
+    .sm\:svg-2 {
+      width: var(--sf-text-size-2);
+      height: var(--sf-text-size-2);
+      line-height: var(--sf-text-height-2);
+    }
+    .sm\:svg-3 {
+      width: var(--sf-text-size-3);
+      height: var(--sf-text-size-3);
+      line-height: var(--sf-text-height-3);
+    }
+    .sm\:svg-4 {
+      width: var(--sf-text-size-4);
+      height: var(--sf-text-size-4);
+      line-height: var(--sf-text-height-4);
+    }
+    .sm\:svg-5 {
+      width: var(--sf-text-size-5);
+      height: var(--sf-text-size-5);
+      line-height: var(--sf-text-height-5);
+    }
+    .sm\:svg-6 {
+      width: var(--sf-text-size-6);
+      height: var(--sf-text-size-6);
+      line-height: var(--sf-text-height-6);
+    }
+    .sm\:svg-7 {
+      width: var(--sf-text-size-7);
+      height: var(--sf-text-size-7);
+      line-height: var(--sf-text-height-7);
+    }
+    .sm\:svg-8 {
+      width: var(--sf-text-size-8);
+      height: var(--sf-text-size-8);
+      line-height: var(--sf-text-height-8);
+    }
+    .sm\:svg-9 {
+      width: var(--sf-text-size-9);
+      height: var(--sf-text-size-9);
+      line-height: var(--sf-text-height-9);
+    }
+    .sm\:svg-10 {
+      width: var(--sf-text-size-10);
+      height: var(--sf-text-size-10);
+      line-height: var(--sf-text-height-10);
+    }
+    .sm\:svg-11 {
+      width: var(--sf-text-size-11);
+      height: var(--sf-text-size-11);
+      line-height: var(--sf-text-height-11);
+    }
+    .sm\:svg-12 {
+      width: var(--sf-text-size-12);
+      height: var(--sf-text-size-12);
+      line-height: var(--sf-text-height-12);
+    }
+  }
+}

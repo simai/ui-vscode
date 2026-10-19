@@ -1,0 +1,335 @@
+{
+  "schema_version": 2,
+  "id": "smart.breadcrumbs",
+  "version": "1.0.0",
+  "title": "Breadcrumbs",
+  "summary": "Shows the current page's place in a hierarchy as a trail of native links built from items, the items attribute or sf-breadcrumbs-item children. A long trail collapses its middle into an ellipsis button (max-items, default 4) that expands in place.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "breadcrumbs"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-breadcrumbs",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.breadcrumbs",
+      "component.icons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "items": {
+        "type": "string",
+        "default": []
+      },
+      "separator-icon": {
+        "type": "string",
+        "default": "chevron_right"
+      },
+      "home-icon": {
+        "type": "string",
+        "default": "home"
+      },
+      "home-label": {
+        "type": "string",
+        "default": ""
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "item-class": {
+        "type": "string",
+        "default": ""
+      },
+      "link-class": {
+        "type": "string",
+        "default": ""
+      },
+      "current-class": {
+        "type": "string",
+        "default": ""
+      },
+      "separator-class": {
+        "type": "string",
+        "default": ""
+      },
+      "container-class": {
+        "type": "string",
+        "default": ""
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Breadcrumb\" in English)."
+      },
+      "expand-label": {
+        "type": "string",
+        "default": "",
+        "description": "Empty: the text of the page's language (\"Show hidden breadcrumbs\" in English)."
+      },
+      "expand-on-ellipsis": {
+        "type": "boolean",
+        "default": true
+      },
+      "max-items": {
+        "type": "number",
+        "default": 4
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "getCapturedItems": {
+      "summary": "Reads the captured sf-breadcrumbs-item children into plain item objects (label, href, icon, current, active, disabled, ellipsis, target, rel, itemClass, containerClass, ariaLabel, value, hiddenItems).",
+      "arguments": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      }
+    },
+    "getDisplayItems": {
+      "summary": "Returns the items as they are shown: when there are more than max-items (at least 3) and the ellipsis is not expanded, the middle is replaced by one ellipsis item holding the hidden ones; every item is reindexed and only the last may be current.",
+      "arguments": [
+        {
+          "name": "items",
+          "type": "array",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      }
+    },
+    "setState": {
+      "summary": "Writes each key as a host attribute (camelCase to kebab-case): arrays as JSON, true as an empty attribute, false/null/undefined remove it. Returns the element.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onItemClick": {
+      "summary": "Adds a listener for sf-breadcrumb-click; the handler receives (item, detail, event). Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-breadcrumb-click": {
+      "summary": "An item was clicked. Bubbles, is composed and is cancelable: preventDefault() on an ellipsis item keeps it collapsed. Disabled and current items have the native navigation prevented before dispatch.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "The active template name."
+          },
+          "item": {
+            "type": "object",
+            "description": "The clicked display item."
+          },
+          "index": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "The display items at the time of the click."
+          },
+          "originalEvent": {
+            "description": "The native click event."
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "navigation",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Enter on links",
+      "Enter or Space on the ellipsis button"
+    ],
+    "focus": "Native links and the ellipsis button use keyboard-only focus-visible; the current page does not enter the tab order."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "line",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/breadcrumbs/index.js",
+        "sha256": "8605cd9160f6279f7f4cf292d67298d0ca114e5c62ebb9c0980aecae84f4d78a"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/breadcrumbs/js/breadcrumbs.js",
+        "sha256": "0c661b6eb7baf64f7fdc8023c915616c1d7e18c677df53ca2df8f4b91ee7c2d9"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-breadcrumbs to show the current page location in a hierarchy and provide native links to ancestor pages.",
+    "do_not": [
+      "Do not use Breadcrumbs as browsing history, tabs, a menu or a stepper",
+      "Do not omit href when an ancestor has a real URL",
+      "Do not expose separator icons to assistive technology",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-breadcrumbs></sf-breadcrumbs>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

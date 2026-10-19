@@ -370,6 +370,19 @@ export function buildFramework(inputs: FrameworkInputs): {
     }
     const blocked = new Set(registry.indexes.blocked);
     const safe = new Set(registry.indexes.safe_to_suggest.filter(id => !blocked.has(id)));
+    // The index and the per-entry promotion state must agree. They are written
+    // by the same Framework build, so a disagreement is a registry defect and
+    // not something to resolve quietly in favour of the wider set.
+    for (const entry of registry.entries) {
+        const readiness = entry.readiness;
+        if (!readiness || !safe.has(entry.id)) continue;
+        if (readiness.safe_to_suggest === false || readiness.status !== 'ready') {
+            throw new Error(
+                `${entry.id} is in safe_to_suggest but readiness says `
+                + `${readiness.status ?? 'no status'}/${readiness.safe_to_suggest}`,
+            );
+        }
+    }
     const report: FrameworkReport = { skippedPublicComponents: [], ignoredTokenMedia: [] };
 
     const desktopRem = inputs.desktopMinWidthPx / 16;

@@ -1,0 +1,41 @@
+@layer sf.utilities {
+  .hover\:regular:hover {
+    font-weight: normal;
+  }
+  .hover\:bold:hover {
+    font-weight: bold;
+  }
+  .hover\:lighter:hover {
+    font-weight: lighter;
+  }
+  .hover\:bolder:hover {
+    font-weight: bolder;
+  }
+  .hover\:weight-1:hover {
+    font-weight: 100;
+  }
+  .hover\:weight-2:hover {
+    font-weight: 200;
+  }
+  .hover\:weight-3:hover {
+    font-weight: 300;
+  }
+  .hover\:weight-4:hover {
+    font-weight: 400;
+  }
+  .hover\:weight-5:hover {
+    font-weight: 500;
+  }
+  .hover\:weight-6:hover {
+    font-weight: 600;
+  }
+  .hover\:weight-7:hover {
+    font-weight: 700;
+  }
+  .hover\:weight-8:hover {
+    font-weight: 800;
+  }
+  .hover\:weight-9:hover {
+    font-weight: 900;
+  }
+}

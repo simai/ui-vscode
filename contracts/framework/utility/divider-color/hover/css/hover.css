@@ -1,0 +1,32 @@
+@layer sf.utilities {
+  .hover\:divider-transparent:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-transparent);
+  }
+  .hover\:divider-current:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-current);
+  }
+  .hover\:divider-outline:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline);
+  }
+  .hover\:divider-outline-variant:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-variant);
+  }
+  .hover\:divider-primary:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-primary);
+  }
+  .hover\:divider-secondary:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-secondary);
+  }
+  .hover\:divider-tertiary:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-tertiary);
+  }
+  .hover\:divider-error:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-error);
+  }
+  .hover\:divider-warning:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-warning);
+  }
+  .hover\:divider-success:hover > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--sf-outline-success);
+  }
+}

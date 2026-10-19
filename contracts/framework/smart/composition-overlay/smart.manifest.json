@@ -1,0 +1,478 @@
+{
+  "schema_version": 2,
+  "id": "smart.composition-overlay",
+  "version": "1.0.0",
+  "title": "Composition overlay",
+  "summary": "Editor chrome over a rendered Composition Document: frames, labels, badges, action toolbar, insertion places, drag and keyboard moves and a keyboard tree, without changing the canvas HTML.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "composition",
+    "editor",
+    "overlay"
+  ],
+  "capabilities": [
+    "interaction",
+    "keyboard",
+    "responsive",
+    "theme"
+  ],
+  "custom_element": "sf-composition-overlay",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.sortable"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "for": {
+        "type": "string",
+        "default": "",
+        "description": "id of the canvas element that holds SF.Composition.render output"
+      },
+      "accepts": {
+        "type": "string",
+        "default": "",
+        "description": "sf-sortable groups whose items may be dropped on insertion places"
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "canvas": {
+      "type": "object",
+      "description": "The canvas holds host-rendered Composition HTML with data-sf-composition-id; the overlay never writes into it, so published HTML and digests are identical with the editor open or closed. Place the overlay before the canvas so its tree comes first in Tab order."
+    },
+    "actions": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "browser_api": {
+      "type": "object",
+      "description": "Once loaded, SF.CompositionOverlay exposes OVERLAY_EVENTS, overlayNodes(document) and checkOverlayActions(actions)."
+    }
+  },
+  "methods": {
+    "attach": {
+      "summary": "Binds the overlay to a canvas element.",
+      "arguments": [
+        {
+          "name": "canvas",
+          "type": "Element"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "setDocument": {
+      "summary": "Sets the Document and describe(node) → {label, badges}.",
+      "arguments": [
+        {
+          "name": "document",
+          "type": "object"
+        },
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "setActions": {
+      "summary": "Sets toolbar actions {id, label}.",
+      "arguments": [
+        {
+          "name": "actions",
+          "type": "array"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "setMessages": {
+      "summary": "Overrides interface texts.",
+      "arguments": [
+        {
+          "name": "messages",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "setDropFilter": {
+      "summary": "Hides drop places the host would refuse: (place, item) => boolean.",
+      "arguments": [
+        {
+          "name": "filter",
+          "type": "function"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "setInsertionTarget": {
+      "summary": "Marks an insertion place or clears it with null.",
+      "arguments": [
+        {
+          "name": "target",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "select": {
+      "summary": "Selects a node by id.",
+      "arguments": [
+        {
+          "name": "id",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    }
+  },
+  "events": {
+    "sf-composition-overlay-select": {
+      "summary": "A node was selected.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "sf-composition-overlay-action": {
+      "summary": "A toolbar action was chosen.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "action_id",
+          "node_id"
+        ],
+        "properties": {
+          "action_id": {
+            "type": "string"
+          },
+          "node_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-composition-overlay-insert": {
+      "summary": "Insertion was requested at a place, optionally with a library item.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "parent_id",
+          "slot",
+          "index"
+        ],
+        "properties": {
+          "parent_id": {
+            "type": "string"
+          },
+          "slot": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
+          },
+          "item": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "move",
+              "copy"
+            ]
+          }
+        }
+      }
+    },
+    "sf-composition-overlay-move": {
+      "summary": "A canvas node was moved to a place.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "parent_id",
+          "slot",
+          "index"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "string"
+          },
+          "slot": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "move": [
+        "idle",
+        "picking",
+        "dropped",
+        "cancelled"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "selected",
+      "active"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention",
+      "saving or reordering host data"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "tree",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Home",
+      "End",
+      "Enter",
+      "Space",
+      "Escape"
+    ],
+    "focus": "The tree has one treeitem per node; arrows move in document order and between parent and child, Enter opens the toolbar, Escape returns or clears. Space starts a keyboard move, arrows choose a place, Enter drops, Escape cancels. Selection and moves are announced."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/composition-overlay/index.js",
+        "sha256": "10d9d65a7d0d3e09837e035ec3a88ed881f7bd502463de7b8e9ca62543aaa7bf"
+      },
+      {
+        "path": "src/smart/composition-overlay/scss/_smart__composition-overlay.scss",
+        "sha256": "cd1f2c00674a77cd820417a4f7577640eb572ac6ad3bd61e529abff3c792c6d0"
+      },
+      {
+        "path": "src/smart/composition-overlay/rule.js",
+        "sha256": "387d0a7feb0da3e17bb446da1f41c603a6ff609eed44186c1739132e9f57d54a"
+      },
+      {
+        "path": "src/smart/composition-overlay/docs.md",
+        "sha256": "345f8faeeae468ca3eb22b3a1e11ba06f5c6c34ea5cb7c6bc4038c4b038b6565"
+      },
+      {
+        "path": "src/core/js/composition/overlay.mjs",
+        "sha256": "3a735e7de5e7009a3eebd2e793f24c5b15482807d3363e64de96ece6c1e301a4"
+      },
+      {
+        "path": "src/core/js/composition/sortable.mjs",
+        "sha256": "3d3e18a88181a12712eb8d812de87894d272fa656c26c70e52e0db8db3cc114a"
+      },
+      {
+        "path": "src/core/js/composition/canonical.mjs",
+        "sha256": "aa6b44b2b81fc71040a32c6d8521201b7b8f23881ba2844c5a749b2e6ba3587c"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-composition-overlay on an editor page over SF.Composition.render output. Treat every event as intent: the host changes the Document, saves it with an expected revision, validates and re-renders.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not write editor markup into the canvas HTML",
+      "Do not treat setDropFilter as validation; Document validation stays authoritative",
+      "Do not put the overlay after the canvas in Tab order"
+    ],
+    "required_reads": [
+      "inputs",
+      "contracts",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-composition-overlay id=\"overlay\" for=\"canvas\" accepts=\"blocks\"></sf-composition-overlay><div id=\"canvas\"></div>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

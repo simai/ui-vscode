@@ -1,0 +1,25 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    .sm\:min-w-min {
+      min-width: -webkit-min-content;
+      min-width: -moz-min-content;
+      min-width: min-content;
+    }
+    .sm\:min-w-max {
+      min-width: -webkit-max-content;
+      min-width: -moz-max-content;
+      min-width: max-content;
+    }
+    .sm\:min-w-fit {
+      min-width: -webkit-fit-content;
+      min-width: -moz-fit-content;
+      min-width: fit-content;
+    }
+    .sm\:min-w-full {
+      min-width: 100%;
+    }
+    .sm\:min-w-0 {
+      min-width: 0;
+    }
+  }
+}

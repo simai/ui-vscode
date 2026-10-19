@@ -1,0 +1,116 @@
+@layer sf.utilities {
+  @media (min-width: 60rem) {
+    .lg\:h-auto {
+      height: auto;
+    }
+    .lg\:h-1\/2 {
+      height: 50%;
+    }
+    .lg\:h-1\/3 {
+      height: 33.333333%;
+    }
+    .lg\:h-2\/3 {
+      height: 66.666667%;
+    }
+    .lg\:h-1\/4 {
+      height: 25%;
+    }
+    .lg\:h-2\/4 {
+      height: 50%;
+    }
+    .lg\:h-3\/4 {
+      height: 75%;
+    }
+    .lg\:h-1\/5 {
+      height: 20%;
+    }
+    .lg\:h-2\/5 {
+      height: 40%;
+    }
+    .lg\:h-3\/5 {
+      height: 60%;
+    }
+    .lg\:h-4\/5 {
+      height: 80%;
+    }
+    .lg\:h-1\/6 {
+      height: 16.666667%;
+    }
+    .lg\:h-2\/6 {
+      height: 33.333333%;
+    }
+    .lg\:h-3\/6 {
+      height: 50%;
+    }
+    .lg\:h-4\/6 {
+      height: 66.666667%;
+    }
+    .lg\:h-5\/6 {
+      height: 83.333333%;
+    }
+    .lg\:h-full {
+      height: 100%;
+    }
+    .lg\:h-screen {
+      height: 100vh;
+    }
+    .lg\:h-screen-small {
+      height: var(--sf-viewport-height-small);
+    }
+    .lg\:h-screen-large {
+      height: var(--sf-viewport-height-large);
+    }
+    .lg\:h-screen-dynamic {
+      height: var(--sf-viewport-height-dynamic);
+    }
+    .lg\:h-screen-1\/2 {
+      height: 50vh;
+    }
+    .lg\:h-screen-1\/3 {
+      height: 33.333333vh;
+    }
+    .lg\:h-screen-2\/3 {
+      height: 66.666667vh;
+    }
+    .lg\:h-screen-1\/4 {
+      height: 25vh;
+    }
+    .lg\:h-screen-2\/4 {
+      height: 50vh;
+    }
+    .lg\:h-screen-3\/4 {
+      height: 75vh;
+    }
+    .lg\:h-min {
+      height: -webkit-min-content;
+      height: -moz-min-content;
+      height: min-content;
+    }
+    .lg\:h-max {
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: max-content;
+    }
+    .lg\:h-content-min {
+      height: -webkit-min-content;
+      height: -moz-min-content;
+      height: min-content;
+    }
+    .lg\:h-content-max {
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: max-content;
+    }
+    .lg\:h-fit {
+      height: -webkit-fit-content;
+      height: -moz-fit-content;
+      height: fit-content;
+    }
+    .lg\:h-px {
+      height: 1px;
+    }
+    .lg\:h-0 {
+      height: 0;
+    }
+  }
+}

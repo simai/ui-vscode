@@ -75,6 +75,7 @@ global or framework binding attributes (`id`, `data-*`, `aria-*`, `:prop`,
 | `sf-button-submit` | An `sf-button` that submits its form |
 | `sf-buttons` | A row of `sf-button` elements with the `flex` and `g-1/2` utilities |
 | `sf-select` | An `sf-dropdown` in select mode |
+| `sf-modal-dialog` | An `sf-modal` with an id, a title and a position |
 | `sf-pagination-bar` | An `sf-pagination` with the current page and page size |
 
 Snippets are built from the tags, attributes and classes in the bundled
@@ -101,8 +102,11 @@ Bitrix templates. In markup, class attributes, `sf-` tags and `--sf-` tokens in
 ## What is suggested
 
 Suggestions come from a pinned, hash-checked snapshot of the SIMAI Framework
-contract registry (release `ui-3521193e0c6b`). Only entries the Framework marks
-as safe to suggest are offered; blocked and unreleased entries are not.
+contract registry (release `ui-32c7a64e4575`). Only entries the Framework
+promotes by its written rule — ready, unblocked and safe to suggest — are
+offered: 51 `sf-` components, 58 utility families and 973 design tokens in this
+release. Held, blocked and unreleased entries are not suggested, but they are
+still recognised, so a real Framework name is never reported as a misspelling.
 Experimental components are labelled as such. The extension does not
 download anything and does not read your other projects.
 

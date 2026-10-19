@@ -1,0 +1,326 @@
+{
+  "schema_version": 2,
+  "id": "smart.tree",
+  "version": "1.0.0",
+  "title": "Tree",
+  "summary": "Accessible hierarchical composite with roving focus, branch expansion and host-owned selection.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "tree"
+  ],
+  "capabilities": [
+    "render",
+    "keyboard-navigation",
+    "selection",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-tree",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.tree",
+      "smart.tree-item"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "role": {
+        "type": "string",
+        "default": "tree",
+        "enum": [
+          "tree"
+        ]
+      },
+      "selection": {
+        "type": "string",
+        "default": "none",
+        "enum": [
+          "none",
+          "single",
+          "multiple"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "object"
+        },
+        "description": "Items given as data instead of as sf-tree-item children (set as a property, not an attribute): [{label, href?, target?, rel?, kind?, value?, open?, selected?, active?, disabled?, icon?, openIcon?, closedIcon?, chevronOpenIcon?, chevronClosedIcon?, openLabel?, closeLabel?, children?}]. text or title stand in for label. Setting it replaces the items and re-renders; sf-tree-item children are read once and removed, so a parent that re-renders changed items passes them this way."
+      },
+      "accept-records": {
+        "type": "boolean",
+        "default": false,
+        "description": "A node takes the records dragged from a list (application/x-sf-records+json) and says so with sf-tree-records-drop."
+      },
+      "accept-files": {
+        "type": "boolean",
+        "default": false,
+        "description": "A node takes files dropped from the computer and says so with sf-tree-files-drop."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {
+    "onToggle": {
+      "summary": "Adds a listener for sf-tree-item-toggle from any item in the tree; the handler is called with (item, detail, event).",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": "object|boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-tree-selection-change": {
+      "summary": "Selection requested or changed for a tree item.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "item": {
+            "type": "object",
+            "description": "The sf-tree-item."
+          },
+          "selected": {
+            "type": "boolean"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "item",
+          "selected",
+          "value"
+        ]
+      }
+    },
+    "sf-tree-records-drop": {
+      "summary": "Records dragged from a list were dropped on a node: {value, ids, source}. The tree moves nothing.",
+      "payload": {
+        "type": "object"
+      }
+    },
+    "sf-tree-files-drop": {
+      "summary": "Files from the computer were dropped on a node: {value, files}. The tree uploads nothing.",
+      "payload": {
+        "type": "object"
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "disclosure": [
+        "closed",
+        "open"
+      ],
+      "focus": [
+        "active"
+      ],
+      "selection": [
+        "selected"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "active",
+      "selected",
+      "open",
+      "closed"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "tree",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Home",
+      "End",
+      "Enter",
+      "Space",
+      "typeahead"
+    ],
+    "focus": "One visible tree item is in the page tab order; arrows move roving focus independently of selection."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "menu",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/tree/index.js",
+        "sha256": "2bb3e156f8e1c0fa7d41630b73dab3af1d4727043d7d5bed4c23dac8414ca858"
+      },
+      {
+        "path": "src/smart/tree/js/templates/default.js",
+        "sha256": "687fb21260bf46f4c54374a09697d164f25177a1990b8a17542e74cf4c09cd31"
+      },
+      {
+        "path": "src/smart/tree/js/templates/default.css",
+        "sha256": "c1d70828d6f1cd5066a14e449827ba5398b1b7c95b436aef07006ddef9befcb9"
+      },
+      {
+        "path": "src/smart/tree/rule.js",
+        "sha256": "361bd8b45dfe53b9ed05488289b3f4924aeca5b2f10a7f39eeb9b28bdd47c945"
+      },
+      {
+        "path": "src/smart/tree/docs/docs.md",
+        "sha256": "170b7cfae832436de8e9c8aa54eb5714d7ffe8730129f68f5aef9ccfa0b4d36b"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/tree/js/tree.js",
+        "sha256": "afbf60270279d78ff86b46a7dac90b6c0a853e23109a453ac63fc0918007c7e4"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-tree for file-like, taxonomy or navigation hierarchies that need composite keyboard navigation.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not use Tree for a short independent disclosure list",
+      "Do not move host data, persistence or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-tree></sf-tree>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

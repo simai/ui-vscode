@@ -1,0 +1,362 @@
+{
+  "schema_version": 2,
+  "id": "smart.textarea",
+  "version": "1.1.0",
+  "title": "Textarea",
+  "summary": "A native multiline form control with Framework presentation, validation messaging and safe vertical resizing.",
+  "kind": "smart",
+  "reuse_mode": "both",
+  "lifecycle": "experimental",
+  "tags": [
+    "textarea"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-textarea",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.textarea"
+    ],
+    "public_parts": [
+      "native-textarea",
+      "label",
+      "hint"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ]
+      },
+      "appearance": {
+        "type": "string",
+        "default": "bordered",
+        "enum": [
+          "bordered",
+          "filled"
+        ],
+        "description": "How the field looks: a bordered box or a filled one."
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "required": {
+        "type": "boolean",
+        "default": false
+      },
+      "placeholder": {
+        "type": "string",
+        "default": ""
+      },
+      "autocomplete": {
+        "type": "string",
+        "default": ""
+      },
+      "inputmode": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "none",
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ]
+      },
+      "minlength": {
+        "type": "number",
+        "default": null
+      },
+      "maxlength": {
+        "type": "number",
+        "default": null
+      },
+      "spellcheck": {
+        "type": "boolean",
+        "default": true
+      },
+      "wrap": {
+        "type": "string",
+        "default": "soft",
+        "enum": [
+          "soft",
+          "hard"
+        ]
+      },
+      "hint": {
+        "type": "string",
+        "default": ""
+      },
+      "value": {
+        "type": "string",
+        "default": ""
+      },
+      "name": {
+        "type": "string",
+        "default": ""
+      },
+      "rows": {
+        "type": "number",
+        "default": 3
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "readonly": {
+        "type": "boolean",
+        "default": false
+      },
+      "error": {
+        "type": "boolean",
+        "default": false
+      },
+      "invalid": {
+        "type": "boolean",
+        "default": false
+      },
+      "error-message": {
+        "type": "string",
+        "default": ""
+      },
+      "mask": {
+        "type": "boolean",
+        "default": false
+      },
+      "mask-pattern": {
+        "type": "string",
+        "default": ""
+      },
+      "mask-options": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "bordered",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "bordered",
+          "filled"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "state_owner": {
+      "const": "native_textarea"
+    },
+    "value_owner": {
+      "const": "native_textarea"
+    },
+    "form_owner": {
+      "const": "native_form"
+    },
+    "reset": {
+      "const": "native_form_reset"
+    },
+    "resize_default": {
+      "const": "vertical"
+    },
+    "mask_owner": {
+      "const": "optional_sf_mask_adapter"
+    },
+    "field_states": {
+      "type": "string",
+      "enum": [
+        "empty",
+        "filled",
+        "hover",
+        "focus-visible",
+        "readonly",
+        "disabled",
+        "invalid"
+      ]
+    }
+  },
+  "methods": {
+    "setState": {
+      "summary": "Applies disabled, error or invalid, errorMessage and value to the inner textarea and resyncs its field semantics; setting value dispatches input. Returns false when the textarea is not rendered.",
+      "arguments": [
+        {
+          "name": "nextState",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "boolean"
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The value was committed; the native event bubbles from the inner textarea, which is its target.",
+      "payload": {
+        "type": "object"
+      },
+      "canonical": true
+    },
+    "input": {
+      "summary": "The value changed while typing; the native event bubbles from the inner textarea, which is its target.",
+      "payload": {
+        "type": "object"
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "active",
+      "disabled",
+      "error"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "textbox",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "native multiline text editing"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/textarea/index.js",
+        "sha256": "1b2b79513765c98dc496c2e24e715dfe74117c444a5511a6f695bec981412bbb"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/textarea/js/textarea.js",
+        "sha256": "35dd882e7250d617d3b4880d148f26a351b4880ae6f076e5d1245d0281e378fd"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-textarea for comments, descriptions and other free text that may contain multiple lines and must participate in a native form.",
+    "do_not": [
+      "Do not use Textarea for short single-line values, rich text or code editing",
+      "Do not enable horizontal resizing inside responsive layouts without an explicit layout decision",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-textarea label=\"Comment\" name=\"comment\" rows=\"4\" maxlength=\"500\"></sf-textarea>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

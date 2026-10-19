@@ -2,7 +2,32 @@
 
 All notable changes to SIMAI Framework IntelliSense are listed here.
 
-## [0.2.0] - Unreleased
+## [0.3.0] - 2026-10-20
+
+### Changed
+
+- Repinned to the SIMAI Framework release `ui-32c7a64e4575` (registry
+  `simai/ui@efccc737`, runtime `simai/ui@32c7a64e` core and `7c23c8d7` smart,
+  sizing contract from `simai/ui-source@c06496ba`). The Framework promoted
+  entries by a written rule, so the suggestion set grew from 36 to 170 of 345
+  registry entries: 51 tags (was 13), 9270 utility classes (was 1058) and 973
+  tokens (was 922), 434 of them colours. `sf-list-item` and the other promoted
+  components now complete on their own. The sizing contract is unchanged
+  (`simai.vertical-sizing@1.3.0`).
+- `sf-button-group`, `sf-inline-editor` and `sf-toggle` stay out of the
+  suggestions: the Framework holds them for an open source issue, for having
+  no declared inputs, and as deprecated in favour of `sf-switch`. They are
+  still recognised, so they are never reported as misspellings.
+
+### Added
+
+- An `sf-modal-dialog` snippet, now that the Framework marks a modal component
+  as safe to suggest. A table snippet still has nothing to build on.
+- The generator rejects a registry that promotes an entry its own readiness
+  does not call ready, so the index and the per-entry state cannot drift apart
+  unnoticed.
+
+## [0.2.0] - 2026-10-19
 
 ### Added
 

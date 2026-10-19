@@ -1,0 +1,40 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    .xxl\:z-auto {
+      z-index: auto;
+    }
+    .xxl\:z--1 {
+      z-index: var(--sf-z-index--1);
+    }
+    .xxl\:z-1 {
+      z-index: var(--sf-z-index-1);
+    }
+    .xxl\:z-2 {
+      z-index: var(--sf-z-index-2);
+    }
+    .xxl\:z-3 {
+      z-index: var(--sf-z-index-3);
+    }
+    .xxl\:z-4 {
+      z-index: var(--sf-z-index-4);
+    }
+    .xxl\:z-5 {
+      z-index: var(--sf-z-index-5);
+    }
+    .xxl\:z-6 {
+      z-index: var(--sf-z-index-6);
+    }
+    .xxl\:z-7 {
+      z-index: var(--sf-z-index-7);
+    }
+    .xxl\:z-8 {
+      z-index: var(--sf-z-index-8);
+    }
+    .xxl\:z-9 {
+      z-index: var(--sf-z-index-9);
+    }
+    .xxl\:z-0 {
+      z-index: var(--sf-z-index-0);
+    }
+  }
+}

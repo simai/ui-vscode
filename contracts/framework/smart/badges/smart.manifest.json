@@ -1,0 +1,271 @@
+{
+  "schema_version": 2,
+  "id": "smart.badges",
+  "version": "1.0.0",
+  "title": "Badges",
+  "summary": "A short non-interactive label for a status, category, version or count beside an object, drawn in a size, appearance and colour role or status. It adds no keyboard or pointer behaviour.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "badges"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-badge",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.badges"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "size": {
+        "type": "string",
+        "default": "1/3",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1"
+        ]
+      },
+      "line": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Takes the text line of this form size, for a table cell or a row of fields, so the row keeps its control height."
+      },
+      "appearance": {
+        "type": "string",
+        "default": "main",
+        "description": "How the badge looks: the most visible fill, a calmer tonal one, or an outline.",
+        "enum": [
+          "main",
+          "tonal",
+          "outline"
+        ]
+      },
+      "scheme": {
+        "type": "string",
+        "default": "neutral",
+        "enum": [
+          "neutral",
+          "primary",
+          "secondary",
+          "tertiary",
+          "on-surface"
+        ],
+        "description": "Which semantic colour the badge takes. A status word given here still works and reaches the status axis."
+      },
+      "status": {
+        "type": "string",
+        "default": "",
+        "description": "What the badge reports, in the shared status vocabulary. The word this component used before, danger, is still accepted and means error.",
+        "enum": [
+          "",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      },
+      "text": {
+        "type": "string",
+        "default": ""
+      },
+      "icon": {
+        "type": "string",
+        "default": ""
+      },
+      "icon-start": {
+        "type": "string",
+        "default": null
+      },
+      "icon-end": {
+        "type": "string",
+        "default": null
+      },
+      "icon-left": {
+        "type": "string",
+        "default": ""
+      },
+      "icon-right": {
+        "type": "string",
+        "default": ""
+      },
+      "icon-position": {
+        "type": "string",
+        "default": "start",
+        "enum": [
+          "start",
+          "end"
+        ]
+      },
+      "aria-label": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "main",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "main",
+          "tonal",
+          "outline"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {},
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "recommended",
+    "keyboard": [],
+    "focus": "Badge is static metadata and does not enter the tab order."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/badges/index.js",
+        "sha256": "af3efc5747c4e2ce6232b9426da54ffb69c98288f7c055525e3c6a4fafc2bcfe"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/badges/js/badges.js",
+        "sha256": "ba7dadd750a909dfc4097cda63078d97d9263af897baa736ece6241b6c688932"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-badge for a short non-interactive status, category, version or count beside an object.",
+    "do_not": [
+      "Do not use Badge as a button, filter chip or notification",
+      "Do not communicate status by colour alone",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-badge></sf-badge>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

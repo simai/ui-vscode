@@ -40,6 +40,16 @@ export interface RawRegistryEntry {
         rule_names?: string[];
         tags?: string[];
     };
+    /**
+     * Per-entry promotion state. The Framework promotes an entry by a written
+     * rule (contracts/owners/PROMOTION.md) and only a promoted, ready entry
+     * belongs in the suggestion set. `blockers` is not machine-readable: a
+     * held entry carries an empty list, so never read a hold off it.
+     */
+    readiness?: {
+        safe_to_suggest?: boolean;
+        status?: string;
+    };
 }
 
 export interface RawContractRegistry {

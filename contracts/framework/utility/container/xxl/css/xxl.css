@@ -1,0 +1,60 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:container {
+      padding-left: var(--sf-space-5);
+    }
+    @supports not (padding-inline-start: initial) {
+    html:not([dir="rtl"]) .xxl\:container {
+      padding-left: var(--sf-space-5);
+      }
+    }
+    .xxl\:container:where(:dir(ltr)) {
+      padding-left: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:container {
+      padding-right: var(--sf-space-5);
+    }
+    @supports not (padding-inline-start: initial) {
+    [dir="rtl"] .xxl\:container {
+      padding-right: var(--sf-space-5);
+      }
+    }
+    .xxl\:container:where(:dir(rtl)) {
+      padding-right: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xxl\:container {
+      padding-right: var(--sf-space-5);
+    }
+    @supports not (padding-inline-end: initial) {
+    html:not([dir="rtl"]) .xxl\:container {
+      padding-right: var(--sf-space-5);
+      }
+    }
+    .xxl\:container:where(:dir(ltr)) {
+      padding-right: var(--sf-space-5);
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xxl\:container {
+      padding-left: var(--sf-space-5);
+    }
+    @supports not (padding-inline-end: initial) {
+    [dir="rtl"] .xxl\:container {
+      padding-left: var(--sf-space-5);
+      }
+    }
+    .xxl\:container:where(:dir(rtl)) {
+      padding-left: var(--sf-space-5);
+    }
+    .xxl\:container {
+      /* Fill, and stop at the step. The step and the query that opens it
+         were once apart (sm opened at 520px, its step was 704px) and a
+         fixed width overflowed between them; they are one step now, and
+         filling stays right whatever the gutter takes. */
+      width: 100%;
+      max-width: var(--sf-breakpoint-xxl);
+      -webkit-padding-start: var(--sf-space-5);
+              padding-inline-start: var(--sf-space-5);
+      -webkit-padding-end: var(--sf-space-5);
+              padding-inline-end: var(--sf-space-5);
+    }
+  }
+}

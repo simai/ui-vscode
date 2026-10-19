@@ -1,0 +1,37 @@
+@layer sf.utilities {
+  .scroll-hover {
+    /* Firefox: hide by default */
+    scrollbar-width: none;
+  }
+  .scroll-hover::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .scroll-hover:hover {
+    /* Firefox: show thin scrollbar on hover */
+    scrollbar-width: thin;
+    scrollbar-color: var(--sf-scroll-bg-thumb) var(--sf-transparent);
+  }
+  .scroll-hover:hover::-webkit-scrollbar {
+    width: var(--sf-scroll-bg-width);
+    height: var(--sf-scroll-bg-width);
+  }
+  .scroll-hover:hover::-webkit-scrollbar-thumb {
+    height: var(--sf-scroll-thumb-width);
+    height: var(--sf-scroll-thumb-size, var(--sf-scroll-thumb-width));
+    border: var(--sf-scroll-thumb-inset) solid var(--sf-transparent);
+    background-clip: padding-box;
+    border-radius: var(--sf-scroll-radius);
+    background-color: var(--sf-scroll-bg-thumb);
+  }
+  .scroll-hover:hover::-webkit-scrollbar-track {
+    background-color: var(--sf-scroll-bg-track);
+    border: var(--sf-scroll-thumb-inset) solid var(--sf-transparent);
+    background-clip: padding-box;
+    border-radius: var(--sf-scroll-radius);
+  }
+  .scroll-hover, .scroll-hover::-webkit-scrollbar, .scroll-hover::-webkit-scrollbar-thumb, .scroll-hover::-webkit-scrollbar-track {
+    -webkit-transition: var(--sf-duration-normal) var(--sf-animation);
+    transition: var(--sf-duration-normal) var(--sf-animation);
+  }
+}

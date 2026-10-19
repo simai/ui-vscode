@@ -1,0 +1,13 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    .xxl\:flex-wrap {
+      flex-wrap: wrap;
+    }
+    .xxl\:flex-wrap-reverse {
+      flex-wrap: wrap-reverse;
+    }
+    .xxl\:flex-nowrap {
+      flex-wrap: nowrap;
+    }
+  }
+}

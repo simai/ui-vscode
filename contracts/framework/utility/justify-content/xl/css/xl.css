@@ -1,0 +1,28 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:justify-start,
+    .xl\:content-main-start {
+      justify-content: flex-start;
+    }
+    .xl\:justify-end,
+    .xl\:content-main-end {
+      justify-content: flex-end;
+    }
+    .xl\:justify-center,
+    .xl\:content-main-center {
+      justify-content: center;
+    }
+    .xl\:justify-between,
+    .xl\:content-main-between {
+      justify-content: space-between;
+    }
+    .xl\:justify-around,
+    .xl\:content-main-around {
+      justify-content: space-around;
+    }
+    .xl\:justify-evenly,
+    .xl\:content-main-evenly {
+      justify-content: space-evenly;
+    }
+  }
+}

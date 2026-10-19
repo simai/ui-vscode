@@ -1,0 +1,19 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    .xxl\:static {
+      position: static;
+    }
+    .xxl\:fixed {
+      position: fixed;
+    }
+    .xxl\:absolute {
+      position: absolute;
+    }
+    .xxl\:relative {
+      position: relative;
+    }
+    .xxl\:sticky {
+      position: sticky;
+    }
+  }
+}

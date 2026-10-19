@@ -1,0 +1,31 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:max-h-full {
+      max-height: 100%;
+    }
+    .xl\:max-h-screen {
+      max-height: 100vh;
+    }
+    .xl\:max-h-min {
+      max-height: -webkit-min-content;
+      max-height: -moz-min-content;
+      max-height: min-content;
+    }
+    .xl\:max-h-max {
+      max-height: -webkit-max-content;
+      max-height: -moz-max-content;
+      max-height: max-content;
+    }
+    .xl\:max-h-fit {
+      max-height: -webkit-fit-content;
+      max-height: -moz-fit-content;
+      max-height: fit-content;
+    }
+    .xl\:max-h-px {
+      max-height: 1px;
+    }
+    .xl\:max-h-0 {
+      max-height: 0;
+    }
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "schema_version": 2,
+  "id": "smart.profile-picker",
+  "version": "1.0.0",
+  "title": "Profile picker",
+  "summary": "One way to choose, make, rename, remove and reset a profile: a field-like button naming the profile in use, and a panel where every act happens inline. The profiles and the rights are the host's; the component says what was asked.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "profiles",
+    "views",
+    "picker"
+  ],
+  "capabilities": [
+    "interaction",
+    "keyboard",
+    "responsive"
+  ],
+  "custom_element": "sf-profile-picker",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "smart.buttons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "What a profile is called here («Профиль», «Вид»); the page language's «Profile» when empty."
+      },
+      "size": {
+        "type": "string",
+        "enum": [
+          "1/2",
+          "1"
+        ],
+        "default": "1/2"
+      },
+      "current": {
+        "type": "string",
+        "default": "",
+        "description": "The id of the profile in use."
+      },
+      "resettable": {
+        "type": "boolean",
+        "default": false,
+        "description": "Offers «Сбросить к стандартному» at the foot."
+      },
+      "message": {
+        "type": "string",
+        "default": "",
+        "description": "Why the host refused the last act, shown in the panel."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "template": {
+        "type": "string",
+        "default": "default"
+      }
+    },
+    "additionalProperties": false
+  },
+  "contracts": {
+    "profiles": {
+      "type": "array",
+      "description": "Set as a property: [{id, label, shared, builtin, editable}]. editable false is chosen but not changed; builtin is never renamed or removed."
+    },
+    "rights": {
+      "type": "object",
+      "description": "Set as a property: {create: {personal, shared}} -- what this person may make."
+    }
+  },
+  "methods": {},
+  "events": {
+    "sf-profile-select": {
+      "summary": "The person chose a profile.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-profile-create": {
+      "summary": "The person asked for a new profile, a copy of the current one.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "label",
+          "shared"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "shared": {
+            "type": "boolean"
+          },
+          "from": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-profile-rename": {
+      "summary": "The person renamed a profile.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-profile-delete": {
+      "summary": "The person confirmed removing a profile.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sf-profile-reset": {
+      "summary": "The person asked for the current profile back as the standard one.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "panel": [
+        "closed",
+        "open",
+        "creating",
+        "renaming",
+        "confirming"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "open",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "host",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "host",
+    "effects": "host",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "saving the width on a server"
+    ]
+  },
+  "security": {
+    "permissions_owner": "host",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "menu",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+      "Enter",
+      "Space",
+      "F2",
+      "Delete",
+      "Escape"
+    ],
+    "focus": "The trigger is a button with aria-haspopup=menu; the panel's rows are menuitemradio, the current one checked. Arrows, Home and End move between rows, Enter chooses, F2 renames, Delete asks to remove, Escape closes the form and then the panel, returning focus to the trigger."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "ltr",
+      "rtl",
+      "reduced-motion"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/profile-picker/index.js",
+        "sha256": "8927305abad15b8cd07e836c22cf70842ebe729ded11d48412eabe6c54b03d5d"
+      },
+      {
+        "path": "src/smart/profile-picker/js/templates/default.js",
+        "sha256": "84fa873e071748348ef683c3bbd27805d6fde888d52a0141aaa0627d4333b706"
+      },
+      {
+        "path": "src/smart/profile-picker/scss/_smart__profile_picker.scss",
+        "sha256": "82e2464c471c4e3b8918aac525ac8dd63b45be38dff2955b0d6480d3e7e64417"
+      },
+      {
+        "path": "src/smart/profile-picker/rule.js",
+        "sha256": "48660ab5f695ae4f4e883de78e9c7cec83575c6582d75900630abb54e0bce3a1"
+      },
+      {
+        "path": "src/smart/profile-picker/docs.md",
+        "sha256": "285ba6803bc29623c03f1533784fb807a45d506e0c6ca066deb73e281ee6f67d"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-profile-picker wherever a person chooses between profiles or views of something and may make, rename or remove them: the admin menu's profiles, a record's views.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not let the component change its own list; answer its events by setting profiles and current",
+      "Do not build a second profile switcher"
+    ],
+    "required_reads": [
+      "inputs",
+      "contracts",
+      "events",
+      "accessibility",
+      "provenance"
+    ],
+    "minimal_example": "<sf-profile-picker label=\"Профиль\" current=\"regular\" resettable></sf-profile-picker>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

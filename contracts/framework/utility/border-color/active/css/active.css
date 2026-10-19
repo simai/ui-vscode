@@ -1,0 +1,101 @@
+@layer sf.utilities {
+  .active\:border-transparent:active {
+    border-color: var(--sf-transparent);
+  }
+  .active\:border-current:active {
+    border-color: var(--sf-current);
+  }
+  .active\:border-outline:active {
+    border-color: var(--sf-outline);
+  }
+  .active\:border-outline-variant:active {
+    border-color: var(--sf-outline-variant);
+  }
+  .active\:border-surface:active {
+    border-color: var(--sf-surface-1);
+  }
+  .active\:border-surface-0:active {
+    border-color: var(--sf-surface-0);
+  }
+  .active\:border-surface-1:active {
+    border-color: var(--sf-surface-1);
+  }
+  .active\:border-surface-container:active {
+    border-color: var(--sf-surface-container);
+  }
+  .active\:border-surface-overlay:active {
+    border-color: var(--sf-surface-overlay);
+  }
+  .active\:border-surface-transparent-overlay:active {
+    border-color: var(--sf-surface-transparent-overlay);
+  }
+  .active\:border-surface-inverse:active {
+    border-color: var(--sf-surface-inverse);
+  }
+  .active\:border-on-surface:active {
+    border-color: var(--sf-on-surface);
+  }
+  .active\:border-on-surface-variant:active {
+    border-color: var(--sf-on-surface-variant);
+  }
+  .active\:border-primary:active {
+    border-color: var(--sf-outline-primary);
+  }
+  .active\:border-primary-container:active {
+    border-color: var(--sf-primary-container);
+  }
+  .active\:border-primary-transparent-overlay:active {
+    border-color: var(--sf-primary-transparent-overlay);
+  }
+  .active\:border-secondary:active {
+    border-color: var(--sf-outline-secondary);
+  }
+  .active\:border-secondary-container:active {
+    border-color: var(--sf-secondary-container);
+  }
+  .active\:border-secondary-transparent-overlay:active {
+    border-color: var(--sf-secondary-transparent-overlay);
+  }
+  .active\:border-tertiary:active {
+    border-color: var(--sf-outline-tertiary);
+  }
+  .active\:border-tertiary-container:active {
+    border-color: var(--sf-tertiary-container);
+  }
+  .active\:border-tertiary-transparent-overlay:active {
+    border-color: var(--sf-tertiary-transparent-overlay);
+  }
+  .active\:border-error:active {
+    border-color: var(--sf-outline-error);
+  }
+  .active\:border-error-container:active {
+    border-color: var(--sf-error-container);
+  }
+  .active\:border-error-transparent-overlay:active {
+    border-color: var(--sf-error-transparent-overlay);
+  }
+  .active\:border-warning:active {
+    border-color: var(--sf-outline-warning);
+  }
+  .active\:border-warning-container:active {
+    border-color: var(--sf-warning-container);
+  }
+  .active\:border-warning-transparent-overlay:active {
+    border-color: var(--sf-warning-transparent-overlay);
+  }
+  .active\:border-success:active {
+    border-color: var(--sf-outline-success);
+  }
+  .active\:border-success-container:active {
+    border-color: var(--sf-success-container);
+  }
+  .active\:border-success-transparent-overlay:active {
+    border-color: var(--sf-success-transparent-overlay);
+  }
+  .active\:border-info:active {
+    border-color: var(--sf-outline-info);
+  }
+  .active\:border-info-container:active {
+    border-color: var(--sf-info-container);
+  }
+}

@@ -1,0 +1,20 @@
+@layer sf.utilities {
+  .tracking-tighter {
+    letter-spacing: var(--sf-text--tracking-tighter);
+  }
+  .tracking-tight {
+    letter-spacing: var(--sf-text--tracking-tight);
+  }
+  .tracking-wide {
+    letter-spacing: var(--sf-text--tracking-wide);
+  }
+  .tracking-wider {
+    letter-spacing: var(--sf-text--tracking-wider);
+  }
+  .tracking-widest {
+    letter-spacing: var(--sf-text--tracking-widest);
+  }
+  .tracking-no-tracking {
+    letter-spacing: var(--sf-text--tracking-no-tracking);
+  }
+}

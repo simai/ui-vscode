@@ -1,0 +1,95 @@
+@layer sf.utilities {
+  .active\:color-transparent:active {
+    color: var(--sf-transparent);
+  }
+  .active\:color-on-surface:active {
+    color: var(--sf-on-surface);
+  }
+  .active\:color-on-surface-fixed:active {
+    color: var(--sf-on-surface-fixed);
+  }
+  .active\:color-on-surface-variant:active {
+    color: var(--sf-on-surface-variant);
+  }
+  .active\:color-on-surface-inverse:active {
+    color: var(--sf-on-surface-inverse);
+  }
+  .active\:color-on-surface-inverse-fixed:active {
+    color: var(--sf-on-surface-inverse-fixed);
+  }
+  .active\:color-on-disable:active {
+    color: var(--sf-on-disable);
+  }
+  .active\:color-primary:active {
+    color: var(--sf-primary);
+  }
+  .active\:color-on-primary:active {
+    color: var(--sf-on-primary);
+  }
+  .active\:color-on-primary-container:active {
+    color: var(--sf-on-primary-container);
+  }
+  .active\:color-on-primary-container-graphic:active {
+    color: var(--sf-on-primary-container-graphic);
+  }
+  .active\:color-secondary:active {
+    color: var(--sf-secondary);
+  }
+  .active\:color-on-secondary:active {
+    color: var(--sf-on-secondary);
+  }
+  .active\:color-on-secondary-container:active {
+    color: var(--sf-on-secondary-container);
+  }
+  .active\:color-on-secondary-container-graphic:active {
+    color: var(--sf-on-secondary-container-graphic);
+  }
+  .active\:color-tertiary:active {
+    color: var(--sf-tertiary);
+  }
+  .active\:color-on-tertiary:active {
+    color: var(--sf-on-tertiary);
+  }
+  .active\:color-on-tertiary-container:active {
+    color: var(--sf-on-tertiary-container);
+  }
+  .active\:color-on-tertiary-container-graphic:active {
+    color: var(--sf-on-tertiary-container-graphic);
+  }
+  .active\:color-error:active {
+    color: var(--sf-error);
+  }
+  .active\:color-on-error:active {
+    color: var(--sf-on-error);
+  }
+  .active\:color-on-error-container:active {
+    color: var(--sf-on-error-container);
+  }
+  .active\:color-on-error-container-graphic:active {
+    color: var(--sf-on-error-container-graphic);
+  }
+  .active\:color-warning:active {
+    color: var(--sf-warning);
+  }
+  .active\:color-on-warning:active {
+    color: var(--sf-on-warning);
+  }
+  .active\:color-on-warning-container:active {
+    color: var(--sf-on-warning-container);
+  }
+  .active\:color-on-warning-container-graphic:active {
+    color: var(--sf-on-warning-container-graphic);
+  }
+  .active\:color-success:active {
+    color: var(--sf-success);
+  }
+  .active\:color-on-success:active {
+    color: var(--sf-on-success);
+  }
+  .active\:color-on-success-container:active {
+    color: var(--sf-on-success-container);
+  }
+  .active\:color-on-success-container-graphic:active {
+    color: var(--sf-on-success-container-graphic);
+  }
+}

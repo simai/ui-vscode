@@ -1,0 +1,88 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    .xl\:transition-none {
+      transition-property: none;
+    }
+    .xl\:transition-all {
+      transition-property: all;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition {
+      transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-colors {
+      transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-opacity {
+      transition-property: opacity;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-shadow {
+      transition-property: box-shadow;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-transform {
+      transition-property: -webkit-transform;
+      transition-property: transform;
+      transition-property: transform, -webkit-transform;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-width {
+      transition-property: width;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-height {
+      transition-property: height;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-size {
+      transition-property: width, height;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-max-width {
+      transition-property: max-width;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-max-height {
+      transition-property: max-height;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-max-size {
+      transition-property: max-width, max-height;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-flex {
+      transition-property: flex, flex-basis;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-flex-basis {
+      transition-property: flex-basis;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+    .xl\:transition-layout {
+      transition-property: flex-grow, flex-shrink, flex-basis, width, min-width, max-width;
+      transition-timing-function: var(--sf-ease-move);
+      transition-duration: var(--sf-duration-normal);
+    }
+  }
+}

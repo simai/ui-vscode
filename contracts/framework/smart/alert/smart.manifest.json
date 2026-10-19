@@ -1,0 +1,392 @@
+{
+  "schema_version": 2,
+  "id": "smart.alert",
+  "version": "1.0.0",
+  "title": "Alert",
+  "summary": "Persistent inline notice with semantic roles, optional actions and dismiss behavior.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "alert"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-alert",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.alerts",
+      "component.buttons",
+      "smart.icons",
+      "smart.icon-buttons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default"
+      },
+      "status": {
+        "type": "string",
+        "default": "neutral",
+        "enum": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ],
+        "description": "What the alert reports, in the shared status vocabulary. The words this component used before — clear and danger — are still accepted and mean neutral and error."
+      },
+      "appearance": {
+        "type": "string",
+        "default": "default",
+        "enum": [
+          "default",
+          "outlined",
+          "flat"
+        ],
+        "description": "How the alert looks: a filled surface, an outline, or flat."
+      },
+      "icon": {
+        "type": "string",
+        "default": "",
+        "description": "Optional icon override. Use none to hide the semantic icon."
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "description": "Short message heading."
+      },
+      "supporting-text": {
+        "type": "string",
+        "default": "",
+        "description": "Supporting body text at the normal text size."
+      },
+      "action-text": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label of the primary optional action."
+      },
+      "action": {
+        "type": "string",
+        "default": "action",
+        "description": "Stable action value emitted in sf-alert-action."
+      },
+      "secondary-action-text": {
+        "type": "string",
+        "default": "",
+        "description": "Visible label of the secondary optional action."
+      },
+      "secondary-action": {
+        "type": "string",
+        "default": "secondary",
+        "description": "Stable secondary action value emitted in sf-alert-action."
+      },
+      "closable": {
+        "type": "boolean",
+        "default": false,
+        "description": "Render an explicitly named close action."
+      },
+      "close-label": {
+        "type": "string",
+        "default": "",
+        "description": "Localized accessible name of the close action. Empty: the text of the page's language (\"Close alert\" in English)."
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "neutral",
+        "description": "Legacy name for status, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      },
+      "variant": {
+        "type": "string",
+        "default": "default",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "default",
+          "outlined",
+          "flat"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "semantic_types": {
+      "type": "string",
+      "enum": [
+        "clear",
+        "info",
+        "danger",
+        "warning",
+        "success"
+      ]
+    },
+    "surface_variants": {
+      "type": "string",
+      "enum": [
+        "default",
+        "outlined",
+        "flat"
+      ]
+    },
+    "canonical_behavior_attributes": {
+      "type": "string",
+      "enum": [
+        "data-action",
+        "data-close"
+      ]
+    },
+    "dismissal_state": {
+      "const": "closing"
+    },
+    "live_region_guidance": {
+      "assertive": "role=alert only for a newly inserted urgent message",
+      "polite": "role=status for a newly inserted non-urgent update",
+      "static": "omit a live-region role when the notice is present on initial page load"
+    }
+  },
+  "methods": {
+    "close": {
+      "summary": "Alias of dismiss(): dispatches sf-alert-close and removes the alert after its exit transition. Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onAction": {
+      "summary": "Adds a listener for sf-alert-action; the handler receives (action, detail, event). Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onClose": {
+      "summary": "Adds a listener for sf-alert-close; the handler receives (detail, event). Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "dismiss": {
+      "summary": "Dispatches sf-alert-close, then removes the alert from the DOM after its exit transition (at once under reduced motion). Returns the element.",
+      "arguments": [],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "sf-alert-action": {
+      "summary": "An action button ([data-action] or [data-alert-action]) inside the alert was activated. Bubbles and is composed; not cancelable. The alert stays.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "The trigger's data-action or data-alert-action value; empty when neither is set."
+          },
+          "alert": {
+            "description": "The emitting sf-alert."
+          }
+        }
+      }
+    },
+    "sf-alert-close": {
+      "summary": "The alert is being dismissed by its close button or dismiss()/close(). Bubbles and is composed; not cancelable; the element is removed after it.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "alert": {
+            "description": "The emitting sf-alert."
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "internal",
+    "keyboard": [
+      "Tab"
+    ],
+    "focus": "Actions use native focus-visible behavior; after dismissal the application restores focus only when it was inside the removed notice."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/alert/index.js",
+        "sha256": "ffb15b3e0aa6afd20d8b5d447e903020a65dcb7df2d3800c1ffc4ed1698edd93"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/alert/js/alert.js",
+        "sha256": "761799d6ec975a3a14a07d0d34fdb6cd81c9917653c2e52d8b188249fc4db2b2"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-alert for persistent inline guidance, warning, error or success feedback inside the page flow.",
+    "do_not": [
+      "Do not use Alert for transient overlay feedback; use Toast",
+      "Do not choose a semantic type only for its color",
+      "Do not add role=alert to a static message that is already present on page load",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-alert status=\"info\" title=\"Update available\" supporting-text=\"Save your changes before refreshing.\"></sf-alert>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "schema_version": 2,
+  "id": "smart.popover",
+  "version": "1.0.0",
+  "title": "Popover",
+  "summary": "A surface anchored to a control the consumer supplies, with its own open state, dismissal and returned focus. Built as a general part because the Framework had the surface and not the behaviour: two composites wrote it by hand within a week, the second copying the first.",
+  "kind": "smart",
+  "reuse_mode": "both",
+  "lifecycle": "experimental",
+  "tags": [
+    "popover",
+    "anchored",
+    "surface",
+    "overlay"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-popover",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Template variant name."
+      },
+      "open": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether the surface is shown. Reflected, so a consumer can read it and set it."
+      },
+      "placement": {
+        "type": "string",
+        "default": "bottom-end",
+        "description": "Which corner of the trigger the surface hangs from.",
+        "enum": [
+          "bottom-start",
+          "bottom-end",
+          "top-start",
+          "top-end",
+          "inline-start",
+          "inline-end"
+        ]
+      },
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name of the surface. A surface with a role and no name is announced as an unnamed one."
+      },
+      "role": {
+        "type": "string",
+        "default": "dialog",
+        "description": "Legacy name for surface-role. Read once and removed from the host, which is not itself a menu or dialog.",
+        "enum": [
+          "dialog",
+          "menu",
+          "listbox",
+          "group"
+        ]
+      },
+      "width": {
+        "type": "string",
+        "default": "",
+        "description": "A width of its own. Left to its content a surface takes the width of its longest line, which a list of names makes wide and ragged."
+      },
+      "dismissible": {
+        "type": "boolean",
+        "default": true,
+        "description": "Esc and a press outside close it. A consumer that owns those keys turns this off and calls close() when it decides."
+      },
+      "surface-role": {
+        "type": "string",
+        "default": "dialog",
+        "enum": [
+          "dialog",
+          "menu",
+          "listbox",
+          "group"
+        ],
+        "description": "What the surface is to a reader: dialog, menu, listbox or group. Written on sf-popover; the surface gets the role and the trigger aria-haspopup."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "slots": {
+      "type": "object",
+      "description": "The named slots the consumer fills.",
+      "properties": {
+        "trigger": {
+          "description": "The control that opens it, left where the consumer put it."
+        },
+        "content": {
+          "description": "What the surface holds. This component claims nothing about its shape."
+        }
+      }
+    }
+  },
+  "methods": {
+    "toggle": {
+      "summary": "Open or close it; a boolean forces one or the other.",
+      "arguments": [
+        {
+          "name": "force",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether it is open afterwards."
+      }
+    },
+    "show": {
+      "summary": "Open it.",
+      "arguments": [],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether it is open afterwards."
+      }
+    },
+    "close": {
+      "summary": "Close it.",
+      "arguments": [],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether it is open afterwards."
+      }
+    },
+    "returnFocus": {
+      "summary": "Put the focus back on the trigger.",
+      "arguments": [],
+      "returns": {
+        "type": "null"
+      }
+    }
+  },
+  "events": {
+    "sf-popover-open": {
+      "summary": "The surface opened.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "open": {
+            "type": "boolean",
+            "const": true
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "open"
+        ]
+      }
+    },
+    "sf-popover-close": {
+      "summary": "The surface closed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The emitting element."
+          },
+          "tagName": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "open": {
+            "type": "boolean",
+            "const": false
+          }
+        },
+        "required": [
+          "component",
+          "tagName",
+          "template",
+          "open"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {
+      "surface": [
+        "closed",
+        "open"
+      ]
+    },
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "dialog",
+    "accessible_name": "recommended",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space",
+      "Escape"
+    ],
+    "focus": "label names the surface. surface-role sets the surface's role (dialog by default; menu, listbox, group); the trigger gets aria-haspopup to match and aria-expanded. Opening moves focus into the surface; Escape or a press outside closes it and returns focus to the trigger. While it is open a modal or drawer behind it leaves Escape alone."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [],
+    "scenarios": []
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/popover/index.js",
+        "sha256": "2b553508c0e601bd54084b95218aa9afbb8599cb6f28b2316b352fd629f13acf"
+      },
+      {
+        "path": "src/smart/popover/rule.js",
+        "sha256": "88d63d31d61879d048bc901a4a8173d3af9a96d5f3a4fd532eac2ab02ebf351c"
+      },
+      {
+        "path": "src/smart/popover/js/templates/default.js",
+        "sha256": "6f6be19ccafaacaa72e047dbbd0084c4a45738bed8ab1f5756e4833e9abec169"
+      },
+      {
+        "path": "src/smart/popover/js/templates/default.css",
+        "sha256": "5b694b022101f2ea5e552b8282ee692347275f0454d14d727315dd3f15789157"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-popover for a surface anchored to a control the consumer supplies -- a field's settings, a filter, a list of things to add -- that opens on its trigger and closes on Escape or outside.",
+    "do_not": [
+      "Do not use it for a blocking task; that is sf-modal",
+      "Do not write role on the host; use surface-role",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-popover label=\"Settings\"><button slot=\"trigger\" type=\"button\">Settings</button><div slot=\"content\">…</div></sf-popover>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}
