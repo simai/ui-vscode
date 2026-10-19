@@ -1,0 +1,58 @@
+@layer sf.utilities {
+  _:-ms-input-placeholder, html:not([dir="rtl"]) .text-start {
+    text-align: left;
+  }
+  @supports not (text-align: start) {
+  html:not([dir="rtl"]) .text-start {
+    text-align: left;
+    }
+  }
+  .text-start:where(:dir(ltr)) {
+    text-align: left;
+  }
+  _:-ms-input-placeholder, [dir="rtl"] .text-start {
+    text-align: right;
+  }
+  @supports not (text-align: start) {
+  [dir="rtl"] .text-start {
+    text-align: right;
+    }
+  }
+  .text-start:where(:dir(rtl)) {
+    text-align: right;
+  }
+  .text-start {
+    text-align: start;
+  }
+  .text-center {
+    text-align: center;
+  }
+  _:-ms-input-placeholder, html:not([dir="rtl"]) .text-end {
+    text-align: right;
+  }
+  @supports not (text-align: end) {
+  html:not([dir="rtl"]) .text-end {
+    text-align: right;
+    }
+  }
+  .text-end:where(:dir(ltr)) {
+    text-align: right;
+  }
+  _:-ms-input-placeholder, [dir="rtl"] .text-end {
+    text-align: left;
+  }
+  @supports not (text-align: end) {
+  [dir="rtl"] .text-end {
+    text-align: left;
+    }
+  }
+  .text-end:where(:dir(rtl)) {
+    text-align: left;
+  }
+  .text-end {
+    text-align: end;
+  }
+  .text-justify {
+    text-align: justify;
+  }
+}

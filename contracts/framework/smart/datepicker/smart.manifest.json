@@ -1,0 +1,616 @@
+{
+  "schema_version": 2,
+  "id": "smart.datepicker",
+  "version": "1.0.0",
+  "title": "Datepicker",
+  "summary": "Accessible date and date-range picker with popup and inline presentation, calendar navigation and host-owned values.",
+  "kind": "composite",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "calendar",
+    "date",
+    "datepicker",
+    "form",
+    "range"
+  ],
+  "capabilities": [
+    "date-selection",
+    "date-range",
+    "keyboard-navigation",
+    "popup",
+    "inline",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-datepicker",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.datepicker",
+      "smart.inputs",
+      "smart.buttons",
+      "smart.icon-buttons",
+      "smart.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Which template draws it."
+      },
+      "value": {
+        "type": "string",
+        "default": "",
+        "description": "The ISO date (yyyy-mm-dd). As a property, [start, end] for a range; the attribute is the same as date."
+      },
+      "date": {
+        "type": "string",
+        "default": "",
+        "description": "The ISO date (yyyy-mm-dd) chosen; value is read when date is absent."
+      },
+      "start-value": {
+        "type": "string",
+        "default": "",
+        "description": "Range only: the ISO start date."
+      },
+      "end-value": {
+        "type": "string",
+        "default": "",
+        "description": "Range only: the ISO end date."
+      },
+      "max-date": {
+        "type": "string",
+        "default": "",
+        "description": "The latest ISO date that can be chosen; later days are disabled."
+      },
+      "min-date": {
+        "type": "string",
+        "default": "",
+        "description": "The earliest ISO date that can be chosen; earlier days are disabled."
+      },
+      "range": {
+        "type": "boolean",
+        "default": false,
+        "description": "Pick a start and an end instead of one date."
+      },
+      "month": {
+        "type": "number",
+        "default": null,
+        "description": "The month shown when the panel opens, 0-11; defaults to the chosen date's month, else the current one."
+      },
+      "year": {
+        "type": "number",
+        "default": null,
+        "description": "The year shown when the panel opens; defaults to the chosen date's year, else the current one."
+      },
+      "context": {
+        "type": "string",
+        "default": "",
+        "description": "Which grid the panel opens on: days (empty), month or year.",
+        "enum": [
+          "",
+          "month",
+          "year"
+        ]
+      },
+      "week-start": {
+        "type": "number",
+        "description": "The first day of the week, 0 Sunday to 6 Saturday (1 Monday). Without the attribute it follows the page's language (ru: Monday, en-US: Sunday, ar-EG: Saturday).",
+        "default": null
+      },
+      "locale": {
+        "type": "string",
+        "default": "",
+        "description": "The language of month and day names; defaults to the page language."
+      },
+      "format": {
+        "type": "string",
+        "default": "DD.MM.YYYY",
+        "description": "How the date is shown in the field, e.g. DD.MM.YYYY. The value stays ISO."
+      },
+      "root-class": {
+        "type": "string",
+        "default": "",
+        "description": "Classes added to the component's root."
+      },
+      "close-on-select": {
+        "type": "boolean",
+        "default": true,
+        "description": "Close the panel once a date (or a range end) is chosen."
+      },
+      "input": {
+        "type": "boolean",
+        "default": true,
+        "description": "Draw the text field; without it only the panel is drawn."
+      },
+      "open": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether the panel is open."
+      },
+      "portal": {
+        "type": "boolean",
+        "default": true,
+        "description": "Draw the panel at the end of the document so no clipping ancestor cuts it."
+      },
+      "input-type": {
+        "type": "string",
+        "default": "bordered",
+        "description": "The field's appearance (bordered by default), as on sf-inputs."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Form size of the field."
+      },
+      "input-size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Legacy name for size, still honoured; size wins when both are set. See contracts/public-api-axes.json."
+      },
+      "input-name": {
+        "type": "string",
+        "default": "",
+        "description": "The form field name of the value; wins over name."
+      },
+      "placeholder": {
+        "type": "string",
+        "default": "",
+        "description": "The field's placeholder text."
+      },
+      "label": {
+        "type": "string",
+        "default": "",
+        "description": "The field's visible label."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disable the field and the panel."
+      },
+      "required": {
+        "type": "boolean",
+        "default": false,
+        "description": "Mark the field required in its form."
+      },
+      "icon-start": {
+        "type": "string",
+        "default": "calendar_today",
+        "description": "The icon at the start of the field; the canonical name for left-icon."
+      },
+      "left-icon": {
+        "type": "string",
+        "default": "calendar_today",
+        "description": "Legacy name for icon-start, still honoured; icon-start wins when both are set."
+      },
+      "input-root-class": {
+        "type": "string",
+        "default": "",
+        "description": "Classes added to the field's root."
+      },
+      "mask": {
+        "type": "boolean",
+        "default": false,
+        "description": "Mask what can be typed in the field to the format."
+      },
+      "mask-pattern": {
+        "type": "string",
+        "default": "00.00.0000",
+        "description": "Input mask; when not set it is derived from format, so the default format DD.MM.YYYY gives 00.00.0000."
+      },
+      "mask-lazy": {
+        "type": "boolean",
+        "default": false,
+        "description": "Show the mask's placeholder characters only as they are typed."
+      },
+      "mask-placeholder-char": {
+        "type": "string",
+        "default": "_",
+        "description": "The character that stands for a position not yet typed."
+      },
+      "mask-options": {
+        "type": "string",
+        "default": "",
+        "description": "Further mask options as JSON, passed to the field's mask."
+      },
+      "name": {
+        "type": "string",
+        "default": "",
+        "description": "The form field name of the value. input-name is the same and wins when both are set."
+      },
+      "presets": {
+        "type": [
+          "string",
+          "array"
+        ],
+        "default": "",
+        "description": "Range only: quick ranges beside the grid. Built-in ids, comma separated (today, yesterday, last-7-days, last-30-days, this-week, this-month, last-month), or as a property [{id, label, relative} | {id, label, range: [from, to]}]. Clamped to min-date and max-date; a range with nothing left is disabled."
+      },
+      "preset": {
+        "type": "string",
+        "default": "",
+        "description": "The chosen quick range's id. Set by a host it wins over start-value and end-value, and a relative one is resolved against today in the person's time zone when drawn; nothing is emitted for it."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {
+    "value_format": "ISO date strings are stored in YYYY-MM-DD form; format controls only the visible field value.",
+    "range_value": "Range mode exposes start-value and end-value and restarts the range after a completed selection.",
+    "host_owned": [
+      "validation beyond min-date and max-date",
+      "persistence",
+      "timezone and domain-date interpretation"
+    ]
+  },
+  "contracts": {
+    "change_detail": {
+      "type": "object",
+      "required": [
+        "value",
+        "range",
+        "format"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "description": "The ISO date (yyyy-mm-dd), or [start, end] for a range; \"\" when cleared."
+        },
+        "range": {
+          "type": "boolean",
+          "description": "Whether the field picks a range."
+        },
+        "format": {
+          "type": "string",
+          "description": "The display format."
+        },
+        "formattedValue": {
+          "type": "string",
+          "description": "The value as shown, in format."
+        },
+        "date": {
+          "type": "string",
+          "description": "The ISO date; for a range, the ISO 8601 interval start/end (the start alone until the end is chosen)."
+        },
+        "isoValue": {
+          "type": "string",
+          "description": "The same as date: the ISO date, or for a range the interval start/end."
+        },
+        "startValue": {
+          "type": "string",
+          "description": "Range only: the ISO start."
+        },
+        "endValue": {
+          "type": "string",
+          "description": "Range only: the ISO end."
+        },
+        "startIsoValue": {
+          "type": "string",
+          "description": "Range only: the ISO start."
+        },
+        "endIsoValue": {
+          "type": "string",
+          "description": "Range only: the ISO end."
+        },
+        "formattedStartValue": {
+          "type": "string",
+          "description": "Range only: the start as shown."
+        },
+        "formattedEndValue": {
+          "type": "string",
+          "description": "Range only: the end as shown."
+        },
+        "preset": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Range only: the quick range chosen, {id, relative} or {id}; null for a range picked on the grid."
+        }
+      }
+    }
+  },
+  "methods": {
+    "setContext": {
+      "summary": "Open the day, month or year calendar context.",
+      "arguments": [
+        {
+          "name": "context",
+          "schema": {
+            "type": "string",
+            "enum": [
+              "",
+              "month",
+              "year"
+            ]
+          }
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "openPanel": {
+      "summary": "Open the popup; optionally move focus into the calendar.",
+      "arguments": [
+        {
+          "name": "options",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "closePanel": {
+      "summary": "Close the popup; optionally restore focus to the field.",
+      "arguments": [
+        {
+          "name": "options",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "togglePanel": {
+      "summary": "Toggle the popup without changing the selected value.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "choosePreset": {
+      "summary": "Choose a quick range: set its dates, show the month it ends in and emit change once.",
+      "arguments": [
+        {
+          "name": "item",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "chooseCustomRange": {
+      "summary": "Let go of the quick range and move focus to the grid.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "A date or range endpoint was selected; dispatched on the host. The name to bind.",
+      "payload": {
+        "$ref": "#/contracts/change_detail"
+      },
+      "canonical": true
+    },
+    "sf-datepicker-change": {
+      "summary": "Legacy name for change, still emitted with the same detail; bind change.",
+      "payload": {
+        "$ref": "#/contracts/change_detail"
+      },
+      "alias_of": "change"
+    },
+    "sf-change": {
+      "summary": "Legacy name for change, still emitted with the same detail; bind change.",
+      "payload": {
+        "$ref": "#/contracts/change_detail"
+      },
+      "alias_of": "change"
+    }
+  },
+  "state": {
+    "machines": {
+      "panel": [
+        "closed",
+        "open-below",
+        "open-above"
+      ],
+      "context": [
+        "day",
+        "month",
+        "year"
+      ],
+      "selection": [
+        "empty",
+        "single",
+        "range-start",
+        "range-complete"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "open",
+      "selected",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source source and machine manifest",
+    "data": "host",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "timezone policy",
+      "business-day validation",
+      "persistence",
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "dialog in popup mode; group in inline mode",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Shift+Tab",
+      "Enter",
+      "Space",
+      "Escape",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+      "PageUp",
+      "PageDown"
+    ],
+    "focus": "ArrowDown opens the popup and moves focus to the active day. Only one day is in the tab order. Escape closes the popup and restores focus to the field. RTL reverses physical horizontal arrows while preserving chronological movement."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop-popup",
+      "mobile-popup",
+      "inline",
+      "visual-viewport-bounded-overlay"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "accepted",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard-navigation",
+      "browser-matrix",
+      "visual-viewport"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/datepicker/index.js",
+        "sha256": "f071d812c2310ea8823d59b022f638fde21605e1a9b16f7145f6cb8f7ef13fe3"
+      },
+      {
+        "path": "src/smart/datepicker/js/templates/default.js",
+        "sha256": "8da2241fcdeb43d58665da972b99d1531ae806fca1f66a18dee2fa4f47f5cfbe"
+      },
+      {
+        "path": "src/smart/datepicker/rule.js",
+        "sha256": "6f6faf9f2d3838d2001f257cefc870cce8213c1a5258df029f5a0df5b218a469"
+      },
+      {
+        "path": "src/smart/datepicker/docs/smart-datepicker-guide.md",
+        "sha256": "2a4d3b83d364e9d147250f8e58fa3926577245e74266ca26957e55801beabeb6"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/datepicker/js/datepicker.js",
+        "sha256": "80bc56876462d4f6dcf357fe4b0f7fe777c7d6d164576af8565c07570132be91"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-datepicker for a single date or date range that benefits from calendar navigation. Use a plain input when free-form entry is the primary task.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not use color as the only selected or disabled signal",
+      "Do not encode timezone or business-date rules in the visual component",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-datepicker label=\"Дата\" value=\"2026-09-03\"></sf-datepicker>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

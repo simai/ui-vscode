@@ -1,0 +1,60 @@
+@layer sf.utilities {
+  @media (min-width: 72rem) {
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xl\:text-start {
+      text-align: left;
+    }
+    @supports not (text-align: start) {
+    html:not([dir="rtl"]) .xl\:text-start {
+      text-align: left;
+      }
+    }
+    .xl\:text-start:where(:dir(ltr)) {
+      text-align: left;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xl\:text-start {
+      text-align: right;
+    }
+    @supports not (text-align: start) {
+    [dir="rtl"] .xl\:text-start {
+      text-align: right;
+      }
+    }
+    .xl\:text-start:where(:dir(rtl)) {
+      text-align: right;
+    }
+    .xl\:text-start {
+      text-align: start;
+    }
+    .xl\:text-center {
+      text-align: center;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .xl\:text-end {
+      text-align: right;
+    }
+    @supports not (text-align: end) {
+    html:not([dir="rtl"]) .xl\:text-end {
+      text-align: right;
+      }
+    }
+    .xl\:text-end:where(:dir(ltr)) {
+      text-align: right;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .xl\:text-end {
+      text-align: left;
+    }
+    @supports not (text-align: end) {
+    [dir="rtl"] .xl\:text-end {
+      text-align: left;
+      }
+    }
+    .xl\:text-end:where(:dir(rtl)) {
+      text-align: left;
+    }
+    .xl\:text-end {
+      text-align: end;
+    }
+    .xl\:text-justify {
+      text-align: justify;
+    }
+  }
+}

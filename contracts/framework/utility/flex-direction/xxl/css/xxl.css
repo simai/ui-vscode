@@ -1,0 +1,16 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    .xxl\:flex-row {
+      flex-direction: row;
+    }
+    .xxl\:flex-col {
+      flex-direction: column;
+    }
+    .xxl\:flex-row-reverse {
+      flex-direction: row-reverse;
+    }
+    .xxl\:flex-col-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+}

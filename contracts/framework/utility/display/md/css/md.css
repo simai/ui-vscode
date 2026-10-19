@@ -1,0 +1,70 @@
+@layer sf.utilities {
+  @media (min-width: 44rem) {
+    .md\:block {
+      display: block;
+    }
+    .md\:inline-block {
+      display: inline-block;
+    }
+    .md\:inline {
+      display: inline;
+    }
+    .md\:flex {
+      display: flex;
+    }
+    .md\:inline-flex {
+      display: inline-flex;
+    }
+    .md\:table {
+      display: table;
+    }
+    .md\:display-table {
+      display: table;
+    }
+    .md\:inline-table {
+      display: inline-table;
+    }
+    .md\:table-caption {
+      display: table-caption;
+    }
+    .md\:table-cell {
+      display: table-cell;
+    }
+    .md\:table-column {
+      display: table-column;
+    }
+    .md\:table-column-group {
+      display: table-column-group;
+    }
+    .md\:table-footer-group {
+      display: table-footer-group;
+    }
+    .md\:table-header-group {
+      display: table-header-group;
+    }
+    .md\:table-row-group {
+      display: table-row-group;
+    }
+    .md\:table-row {
+      display: table-row;
+    }
+    .md\:flow-root {
+      display: flow-root;
+    }
+    .md\:grid {
+      display: grid;
+    }
+    .md\:inline-grid {
+      display: inline-grid;
+    }
+    .md\:content {
+      display: contents;
+    }
+    .md\:list-item {
+      display: list-item;
+    }
+    .md\:hidden {
+      display: none;
+    }
+  }
+}

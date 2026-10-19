@@ -1,0 +1,40 @@
+@layer sf.utilities {
+  @media (min-width: 44rem) {
+    .md\:overflow-auto {
+      overflow: auto;
+    }
+    .md\:overflow-hidden {
+      overflow: hidden;
+    }
+    .md\:overflow-visible {
+      overflow: visible;
+    }
+    .md\:overflow-scroll {
+      overflow: scroll;
+    }
+    .md\:overflow-x-auto {
+      overflow-x: auto;
+    }
+    .md\:overflow-y-auto {
+      overflow-y: auto;
+    }
+    .md\:overflow-x-hidden {
+      overflow-x: hidden;
+    }
+    .md\:overflow-y-hidden {
+      overflow-y: hidden;
+    }
+    .md\:overflow-x-visible {
+      overflow-x: visible;
+    }
+    .md\:overflow-y-visible {
+      overflow-y: visible;
+    }
+    .md\:overflow-x-scroll {
+      overflow-x: scroll;
+    }
+    .md\:overflow-y-scroll {
+      overflow-y: scroll;
+    }
+  }
+}

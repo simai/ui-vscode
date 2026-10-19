@@ -1,0 +1,70 @@
+@layer sf.utilities {
+  @media (min-width: 80rem) {
+    .xxl\:block {
+      display: block;
+    }
+    .xxl\:inline-block {
+      display: inline-block;
+    }
+    .xxl\:inline {
+      display: inline;
+    }
+    .xxl\:flex {
+      display: flex;
+    }
+    .xxl\:inline-flex {
+      display: inline-flex;
+    }
+    .xxl\:table {
+      display: table;
+    }
+    .xxl\:display-table {
+      display: table;
+    }
+    .xxl\:inline-table {
+      display: inline-table;
+    }
+    .xxl\:table-caption {
+      display: table-caption;
+    }
+    .xxl\:table-cell {
+      display: table-cell;
+    }
+    .xxl\:table-column {
+      display: table-column;
+    }
+    .xxl\:table-column-group {
+      display: table-column-group;
+    }
+    .xxl\:table-footer-group {
+      display: table-footer-group;
+    }
+    .xxl\:table-header-group {
+      display: table-header-group;
+    }
+    .xxl\:table-row-group {
+      display: table-row-group;
+    }
+    .xxl\:table-row {
+      display: table-row;
+    }
+    .xxl\:flow-root {
+      display: flow-root;
+    }
+    .xxl\:grid {
+      display: grid;
+    }
+    .xxl\:inline-grid {
+      display: inline-grid;
+    }
+    .xxl\:content {
+      display: contents;
+    }
+    .xxl\:list-item {
+      display: list-item;
+    }
+    .xxl\:hidden {
+      display: none;
+    }
+  }
+}

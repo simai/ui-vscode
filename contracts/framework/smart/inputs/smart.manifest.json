@@ -1,0 +1,533 @@
+{
+  "schema_version": 2,
+  "id": "smart.inputs",
+  "version": "1.1.0",
+  "title": "Inputs",
+  "summary": "A native single-line form control with Framework presentation, validation messaging and optional mask integration.",
+  "kind": "smart",
+  "reuse_mode": "both",
+  "lifecycle": "experimental",
+  "tags": [
+    "inputs"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-input",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.inputs",
+      "smart.icons"
+    ],
+    "public_parts": [
+      "native-input",
+      "label",
+      "field",
+      "hint",
+      "leading",
+      "trailing"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/2",
+          "1",
+          "2"
+        ]
+      },
+      "appearance": {
+        "type": "string",
+        "default": "bordered",
+        "enum": [
+          "bordered",
+          "filled",
+          "hidden"
+        ],
+        "description": "How the field looks: a bordered box, a filled one, or hidden."
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      },
+      "required": {
+        "type": "boolean",
+        "default": false
+      },
+      "placeholder": {
+        "type": "string",
+        "default": ""
+      },
+      "input-type": {
+        "type": "string",
+        "default": "text",
+        "enum": [
+          "text",
+          "email",
+          "password",
+          "search",
+          "tel",
+          "url"
+        ]
+      },
+      "autocomplete": {
+        "type": "string",
+        "default": ""
+      },
+      "inputmode": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "none",
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ]
+      },
+      "minlength": {
+        "type": "string",
+        "default": ""
+      },
+      "maxlength": {
+        "type": "string",
+        "default": ""
+      },
+      "pattern": {
+        "type": "string",
+        "default": ""
+      },
+      "hint": {
+        "type": "string",
+        "default": ""
+      },
+      "value": {
+        "type": "string",
+        "default": ""
+      },
+      "default-value": {
+        "type": "string",
+        "default": ""
+      },
+      "name": {
+        "type": "string",
+        "default": ""
+      },
+      "icon-start": {
+        "type": "string",
+        "default": null
+      },
+      "text-end": {
+        "type": "string",
+        "default": null
+      },
+      "left-icon": {
+        "type": "string",
+        "default": ""
+      },
+      "right-text": {
+        "type": "string",
+        "default": ""
+      },
+      "hint-icon": {
+        "type": "string",
+        "default": ""
+      },
+      "root-class": {
+        "type": "string",
+        "default": ""
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false
+      },
+      "readonly": {
+        "type": "boolean",
+        "default": false
+      },
+      "error": {
+        "type": "boolean",
+        "default": false
+      },
+      "invalid": {
+        "type": "boolean",
+        "default": false
+      },
+      "error-message": {
+        "type": "string",
+        "default": ""
+      },
+      "mask": {
+        "type": "boolean",
+        "default": false
+      },
+      "mask-pattern": {
+        "type": "string",
+        "default": ""
+      },
+      "mask-lazy": {
+        "type": "string",
+        "default": ""
+      },
+      "mask-placeholder-char": {
+        "type": "string",
+        "default": ""
+      },
+      "mask-options": {
+        "type": "string",
+        "default": ""
+      },
+      "type": {
+        "type": "string",
+        "default": "bordered",
+        "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
+        "enum": [
+          "bordered",
+          "filled",
+          "hidden"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "state_owner": {
+      "const": "native_input"
+    },
+    "value_owner": {
+      "const": "native_input"
+    },
+    "form_owner": {
+      "const": "native_form"
+    },
+    "reset": {
+      "const": "native_form_reset"
+    },
+    "mask_owner": {
+      "const": "optional_sf_mask_adapter"
+    },
+    "field_states": {
+      "type": "string",
+      "enum": [
+        "empty",
+        "filled",
+        "hover",
+        "focus-visible",
+        "readonly",
+        "disabled",
+        "invalid"
+      ]
+    }
+  },
+  "methods": {
+    "getInputElement": {
+      "summary": "Returns the inner native input, or null before render.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "description": "The HTMLInputElement."
+      }
+    },
+    "onInput": {
+      "summary": "Adds a listener for input on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onChange": {
+      "summary": "Adds a listener for change on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onKeyUp": {
+      "summary": "Adds a listener for keyup on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onKeyDown": {
+      "summary": "Adds a listener for keydown on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onFocus": {
+      "summary": "Adds a listener for focusin on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    },
+    "onBlur": {
+      "summary": "Adds a listener for focusout on the host. Returns the element.",
+      "arguments": [
+        {
+          "name": "handler",
+          "type": "function",
+          "required": true
+        },
+        {
+          "name": "options",
+          "type": [
+            "object",
+            "boolean"
+          ],
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The value was committed; the native event bubbles from the inner input, which is its target. It carries no detail.",
+      "payload": {
+        "type": "null",
+        "description": "A native Event: there is no detail."
+      },
+      "canonical": true
+    },
+    "input": {
+      "summary": "The value changed while typing; the native event bubbles from the inner input, which is its target. It carries no detail.",
+      "payload": {
+        "type": "null",
+        "description": "A native Event: there is no detail."
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "active",
+      "disabled",
+      "error"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "textbox",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "native text editing"
+    ],
+    "focus": "Keep visible focus on the active control."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "block",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/inputs/index.js",
+        "sha256": "12feabb54f97fd3dec9095a120c1d3dd71cf9fa5b4f2d50df018ece64b9daf07"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/inputs/js/inputs.js",
+        "sha256": "f4e15c290d31743d4d8b745ebd9ffb08c40ea713c2ae1961f1667e80b5a2571c"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-input for a single-line text, email, password, search, telephone or URL value that must participate in a native form.",
+    "do_not": [
+      "Do not use Input for multiline text, numeric steppers, selects or date selection",
+      "Do not use the hidden presentation for visible interactive controls",
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-input label=\"Email\" input-type=\"email\" name=\"email\" autocomplete=\"email\"></sf-input>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

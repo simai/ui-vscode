@@ -1,0 +1,14 @@
+@layer sf.utilities {
+  .flex-row {
+    flex-direction: row;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+  .flex-col-reverse {
+    flex-direction: column-reverse;
+  }
+}

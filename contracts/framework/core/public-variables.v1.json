@@ -1,0 +1,1117 @@
+{
+  "schema": "simai.framework.public-variables",
+  "schema_version": 1,
+  "summary": "The CSS variables each component offers for customisation. A public variable has a single dash after the block (--sf-badge-color); the Framework never sets one, and reads it wherever a resting look is defined -- the base rule, sizes, appearances, schemes, statuses -- but not where a state is drawn (hover, focus, pressed, disabled, loading, an error), so states still show over a customised look. Set one on the component or on any ancestor. Every other --sf-<block>--* variable is internal: it may be renamed or removed in any release. A public variable is renamed or removed only through the change journal, as an attribute is.",
+  "components": [
+    {
+      "component": "badge",
+      "selector": ".sf-badge",
+      "variables": [
+        {
+          "name": "--sf-badge-background-color",
+          "role": "background",
+          "summary": "The badge's fill.",
+          "default": "var(--sf-on-surface-variant)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "scheme",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-badge-color",
+          "role": "color",
+          "summary": "The text and icon colour.",
+          "default": "var(--sf-on-surface-inverse)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "scheme",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-badge-border-color",
+          "role": "border-color",
+          "summary": "The border colour; seen with a border width.",
+          "default": "transparent",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "scheme",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-badge-border-width",
+          "role": "border-width",
+          "summary": "The border width on every side.",
+          "default": "0",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-badge-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius-circle)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-badge-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the text.",
+          "default": "var(--sf-ui-1/3--text-space-x)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-badge-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the text.",
+          "default": "var(--sf-ui-1/3--space-y-tightness-low)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-badge-gap",
+          "role": "gap",
+          "summary": "Space between the icon and the text.",
+          "default": "var(--sf-space-1/4)",
+          "since": "2026-10-13"
+        }
+      ]
+    },
+    {
+      "component": "button",
+      "selector": ".sf-button",
+      "variables": [
+        {
+          "name": "--sf-button-background-color",
+          "role": "background",
+          "summary": "The resting fill; hover, pressed and disabled keep their own.",
+          "default": "var(--sf-primary)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-button-color",
+          "role": "color",
+          "summary": "The label colour at rest.",
+          "default": "var(--sf-on-primary)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-button-border-color",
+          "role": "border-color",
+          "summary": "The border colour at rest; seen with a border width.",
+          "default": "transparent",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-button-border-width",
+          "role": "border-width",
+          "summary": "The border width on every side (outline appearance: var(--sf-px)).",
+          "default": "0",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-button-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-button-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the content.",
+          "default": "var(--sf-ui-1--space-x)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-button-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the content.",
+          "default": "var(--sf-ui-1--space-y-tightness-default)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "size",
+            "spacing"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "input",
+      "selector": ".sf-input",
+      "variables": [
+        {
+          "name": "--sf-input-background-color",
+          "role": "background",
+          "summary": "The field's fill at rest; focus, error and disabled keep their own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-input-border-color",
+          "role": "border-color",
+          "summary": "The field's border at rest.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-input-color",
+          "role": "color",
+          "summary": "The typed text.",
+          "default": "inherit",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-input-radius",
+          "role": "radius",
+          "summary": "The field's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-input-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space inside the field before and after its content.",
+          "default": "var(--sf-ui-1--space-x)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-input-padding-block",
+          "role": "padding-block",
+          "summary": "Space inside the field above and below its content.",
+          "default": "calc(var(--sf-ui-1--space-y-tightness-default) - var(--sf-px))",
+          "since": "2026-10-13",
+          "varies_with": [
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "alert",
+      "selector": ".sf-alert",
+      "variables": [
+        {
+          "name": "--sf-alert-background-color",
+          "role": "background",
+          "summary": "The alert's fill.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-alert-border-color",
+          "role": "border-color",
+          "summary": "The border colour.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-alert-color",
+          "role": "color",
+          "summary": "The text colour.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-13",
+          "varies_with": [
+            "appearance",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-alert-border-width",
+          "role": "border-width",
+          "summary": "The border width on every side.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-alert-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius--surface)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-alert-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the content.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-alert-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the content.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-alert-gap",
+          "role": "gap",
+          "summary": "Space between the icon, the text and the buttons.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-13"
+        }
+      ]
+    },
+    {
+      "component": "tag",
+      "selector": ".sf-tag",
+      "variables": [
+        {
+          "name": "--sf-tag-background-color",
+          "role": "background",
+          "summary": "The tag's fill at rest; hover, pressed, selected and disabled keep their own.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance",
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-tag-color",
+          "role": "color",
+          "summary": "The label and count colour at rest; disabled keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-tag-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-tag-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the content; an inline tag keeps its host's insets.",
+          "default": "var(--sf-ui-1--space-x)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-tag-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the content; an inline tag keeps its host's insets.",
+          "default": "var(--sf-ui-1--space-y-tightness-default)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size",
+            "spacing"
+          ]
+        },
+        {
+          "name": "--sf-tag-gap",
+          "role": "gap",
+          "summary": "Space between the parts of the tag (every size sets 0: the label's own step spaces it).",
+          "default": "var(--sf-a1)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "icon-button",
+      "selector": ".sf-icon-button",
+      "variables": [
+        {
+          "name": "--sf-icon-button-background-color",
+          "role": "background",
+          "summary": "The resting fill; hover, pressed, focus and disabled keep their own.",
+          "default": "var(--sf-primary)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-icon-button-color",
+          "role": "color",
+          "summary": "The icon and close-mark colour at rest; disabled keeps its own.",
+          "default": "var(--sf-on-surface-variant)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-icon-button-border-color",
+          "role": "border-color",
+          "summary": "The border colour at rest; seen with a border width.",
+          "default": "transparent",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-icon-button-border-width",
+          "role": "border-width",
+          "summary": "The border width on every side (outline and surface appearances: var(--sf-px)).",
+          "default": "0",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-icon-button-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-icon-button-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the icon.",
+          "default": "var(--sf-ui-1--space-y-tightness-default)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size",
+            "spacing"
+          ]
+        },
+        {
+          "name": "--sf-icon-button-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the icon.",
+          "default": "var(--sf-ui-1--space-y-tightness-default)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size",
+            "spacing"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "checkbox",
+      "selector": ".sf-checkbox",
+      "variables": [
+        {
+          "name": "--sf-checkbox-background-color",
+          "role": "background",
+          "summary": "The box's fill when unchecked; checked, error and disabled keep their own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-checkbox-border-color",
+          "role": "border-color",
+          "summary": "The box's border when unchecked; checked, hover, error and disabled keep their own.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-checkbox-border-width",
+          "role": "border-width",
+          "summary": "The box's border width on every side.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-checkbox-radius",
+          "role": "radius",
+          "summary": "The box's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-checkbox-size",
+          "role": "size",
+          "summary": "The box's width and height.",
+          "default": "var(--sf-text-height-1)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-checkbox-gap",
+          "role": "gap",
+          "summary": "Space between the box and the label.",
+          "default": "var(--sf-ui-1--text-space-x)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "radio-button",
+      "selector": ".sf-radio-button",
+      "variables": [
+        {
+          "name": "--sf-radio-button-background-color",
+          "role": "background",
+          "summary": "The ring's fill; focus keeps its own.",
+          "default": "transparent",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-radio-button-border-color",
+          "role": "border-color",
+          "summary": "The ring's colour when unchecked; checked, hover, error and disabled keep their own.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-radio-button-border-width",
+          "role": "border-width",
+          "summary": "The ring's width.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-radio-button-color",
+          "role": "color",
+          "summary": "The label colour at rest; disabled keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-radio-button-size",
+          "role": "size",
+          "summary": "The ring's width and height.",
+          "default": "var(--sf-text-height-1)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-radio-button-gap",
+          "role": "gap",
+          "summary": "Space between the ring and the label.",
+          "default": "var(--sf-ui-1--text-space-x)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "switch",
+      "selector": ".sf-switch",
+      "variables": [
+        {
+          "name": "--sf-switch-background-color",
+          "role": "background",
+          "summary": "The track's fill when off; the on, pressed and disabled looks keep their own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-switch-border-color",
+          "role": "border-color",
+          "summary": "The track's border at rest; hover and disabled keep their own.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-switch-border-width",
+          "role": "border-width",
+          "summary": "The track's border width; the thumb's seat is measured from the outer edge, so it keeps its place.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-switch-radius",
+          "role": "radius",
+          "summary": "The track's corner radius.",
+          "default": "var(--sf-radius-circle)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-switch-color",
+          "role": "color",
+          "summary": "The label colour; disabled keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-switch-gap",
+          "role": "gap",
+          "summary": "Space between the track and the label.",
+          "default": "var(--sf-ui-1--text-space-x)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "textarea",
+      "selector": ".sf-textarea",
+      "variables": [
+        {
+          "name": "--sf-textarea-background-color",
+          "role": "background",
+          "summary": "The field's fill at rest; hover, focus, read-only, error and disabled keep their own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-textarea-border-color",
+          "role": "border-color",
+          "summary": "The field's border at rest.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-textarea-color",
+          "role": "color",
+          "summary": "The typed text; disabled keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-textarea-radius",
+          "role": "radius",
+          "summary": "The field's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-textarea-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space inside the field before and after the text.",
+          "default": "calc(var(--sf-ui-1--space-x) + var(--sf-ui-1--text-space-x))",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-textarea-padding-block",
+          "role": "padding-block",
+          "summary": "Space inside the field above and below the text.",
+          "default": "calc(var(--sf-ui-1--space-y-tightness-default) - var(--sf-px))",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "toast",
+      "selector": ".sf-toast",
+      "variables": [
+        {
+          "name": "--sf-toast-background-color",
+          "role": "background",
+          "summary": "The tint over the toast's raised surface.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-toast-color",
+          "role": "color",
+          "summary": "The text colour of the title and the supporting text.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "status"
+          ]
+        },
+        {
+          "name": "--sf-toast-border-color",
+          "role": "border-color",
+          "summary": "The border colour.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-toast-border-width",
+          "role": "border-width",
+          "summary": "The border width on every side.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-toast-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius--surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-toast-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the content.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-toast-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the content.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-toast-gap",
+          "role": "gap",
+          "summary": "Space between the icon, the text and the close button.",
+          "default": "var(--sf-space-1/2)",
+          "since": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "component": "modal",
+      "selector": ".sf-modal-surface",
+      "variables": [
+        {
+          "name": "--sf-modal-background-color",
+          "role": "background",
+          "summary": "The panel's fill; the backdrop keeps its own.",
+          "default": "var(--sf-surface-1, #fff)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-modal-border-color",
+          "role": "border-color",
+          "summary": "The panel's border colour.",
+          "default": "var(--sf-outline-variant, transparent)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-modal-border-width",
+          "role": "border-width",
+          "summary": "The panel's border width on every side.",
+          "default": "var(--sf-border-width, var(--sf-px))",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-modal-radius",
+          "role": "radius",
+          "summary": "The panel's corner radius; a fullscreen panel stays square.",
+          "default": "var(--sf-radius--surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-modal-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space inside the panel before and after its content; the surface-padding attribute still wins.",
+          "default": "var(--sf-space-2)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-modal-padding-block",
+          "role": "padding-block",
+          "summary": "Space inside the panel above and below its content; the surface-padding attribute still wins.",
+          "default": "var(--sf-space-2)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-modal-gap",
+          "role": "gap",
+          "summary": "Space between the header, the body and the footer.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "component": "tooltip",
+      "selector": ".sf-tooltip",
+      "variables": [
+        {
+          "name": "--sf-tooltip-background-color",
+          "role": "background",
+          "summary": "The tooltip's fill, its tail included.",
+          "default": "var(--sf-elevation-2--surface)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tooltip-color",
+          "role": "color",
+          "summary": "The colour of the text and the supporting text.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tooltip-border-color",
+          "role": "border-color",
+          "summary": "The border colour of the light appearance; the dark one has no border.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tooltip-border-width",
+          "role": "border-width",
+          "summary": "The border width of the light appearance on every side; the dark one has no border.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tooltip-radius",
+          "role": "radius",
+          "summary": "The corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-tooltip-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space before and after the text.",
+          "default": "var(--sf-ui-1--space-x)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-tooltip-padding-block",
+          "role": "padding-block",
+          "summary": "Space above and below the text.",
+          "default": "var(--sf-ui-1--space-y-tightness-default)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-tooltip-gap",
+          "role": "gap",
+          "summary": "Space between the text and the supporting text.",
+          "default": "var(--sf-space-1/4)",
+          "since": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "component": "tabs",
+      "selector": ".sf-tabs",
+      "variables": [
+        {
+          "name": "--sf-tabs-color",
+          "role": "color",
+          "summary": "The label and icon colour of a tab at rest, in the underline and full appearances; the selected tab keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tabs-indicator-color",
+          "role": "indicator-color",
+          "summary": "The colour of the line under the selected tab, in the underline appearance.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tabs-indicator-width",
+          "role": "indicator-width",
+          "summary": "The thickness of the line under a tab, in the underline appearance; the tab keeps its height.",
+          "default": "calc(var(--sf-px) * 2)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance",
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-tabs-border-color",
+          "role": "border-color",
+          "summary": "The colour of the divider under the row of tabs; pills, full and vertical tabs have none.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tabs-border-width",
+          "role": "border-width",
+          "summary": "The thickness of the divider under the row of tabs; an underline row stays on it.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-tabs-gap",
+          "role": "gap",
+          "summary": "Space between tabs; full tabs stay joined.",
+          "default": "var(--sf-space-1)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance",
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "avatar",
+      "selector": ".sf-avatar",
+      "variables": [
+        {
+          "name": "--sf-avatar-background-color",
+          "role": "background",
+          "summary": "The fill behind the initials or the placeholder; an image covers it.",
+          "default": "transparent",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-avatar-color",
+          "role": "color",
+          "summary": "The colour of the initials and the placeholder icon.",
+          "default": "var(--sf-on-surface-variant)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-avatar-border-color",
+          "role": "border-color",
+          "summary": "The border colour at rest; hover keeps its own.",
+          "default": "transparent",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-avatar-border-width",
+          "role": "border-width",
+          "summary": "The border width on every side.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-avatar-radius",
+          "role": "radius",
+          "summary": "The corner radius, for the circle and the square shape alike.",
+          "default": "var(--sf-radius-circle)",
+          "since": "2026-10-18",
+          "varies_with": [
+            "appearance"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "context-menu",
+      "selector": ".sf-context-menu",
+      "variables": [
+        {
+          "name": "--sf-context-menu-background-color",
+          "role": "background",
+          "summary": "The menu's fill, its sticky footer included.",
+          "default": "var(--sf-elevation-3--surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-color",
+          "role": "color",
+          "summary": "The label colour of a row at rest; the current, danger and disabled rows keep their own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-border-color",
+          "role": "border-color",
+          "summary": "The colour of the hairline around the menu.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-border-width",
+          "role": "border-width",
+          "summary": "The width of the line around the menu.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-radius",
+          "role": "radius",
+          "summary": "The corner radius of the menu and its shadow.",
+          "default": "var(--sf-radius--surface)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space between the menu's edge and its rows, before and after; row content stays on its axis.",
+          "default": "var(--sf-space-1/4)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-padding-block",
+          "role": "padding-block",
+          "summary": "Space above the first row and below the last.",
+          "default": "var(--sf-space-1/4)",
+          "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-context-menu-gap",
+          "role": "gap",
+          "summary": "Space between rows.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "component": "button-group",
+      "selector": ".sf-button-group",
+      "variables": [
+        {
+          "name": "--sf-button-group-background-color",
+          "role": "background",
+          "summary": "The segmented track's fill at rest.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-button-group-padding",
+          "role": "padding-inline",
+          "summary": "The segmented track's padding on every side, which is also the gap between segments; the plate's radius stays concentric.",
+          "default": "var(--sf-a4)",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance",
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-button-group-color",
+          "role": "color",
+          "summary": "The label and icon colour of a segment that is not selected, at rest; hover, pressed and disabled keep their own.",
+          "default": "var(--sf-on-surface-container--variant)",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-button-group-plate-background-color",
+          "role": "background",
+          "summary": "The fill of the plate under the selected segment; disabled keeps its own.",
+          "default": "var(--sf-primary)",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-button-group-plate-color",
+          "role": "color",
+          "summary": "The label, icon and count colour on the selected plate.",
+          "default": "var(--sf-on-primary)",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance",
+            "scheme"
+          ]
+        },
+        {
+          "name": "--sf-button-group-count-color",
+          "role": "color",
+          "summary": "The count's colour in a segment that is not selected; the selected one takes the plate's ink.",
+          "default": "currentColor",
+          "since": "2026-10-19",
+          "varies_with": [
+            "appearance"
+          ]
+        }
+      ]
+    }
+  ]
+}

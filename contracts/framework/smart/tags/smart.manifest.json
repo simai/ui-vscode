@@ -1,0 +1,429 @@
+{
+  "schema_version": 2,
+  "id": "smart.tags",
+  "version": "1.1.0",
+  "title": "Tags",
+  "summary": "Compact static, selectable and removable labels with one explicit interaction owner.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "tags"
+  ],
+  "capabilities": [
+    "render",
+    "theme",
+    "responsive",
+    "interaction",
+    "accessibility"
+  ],
+  "custom_element": "sf-tag",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.avatars",
+      "component.dot",
+      "smart.icon-buttons",
+      "component.tags"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Template name."
+      },
+      "kind": {
+        "type": "string",
+        "default": "checkbox",
+        "description": "What the tag carries: a checkbox, an icon, a colour, an avatar, or nothing but its label. The compatibility input quantity is still accepted and means default.",
+        "enum": [
+          "checkbox",
+          "icon",
+          "default",
+          "color",
+          "avatar"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "default": "",
+        "description": "What the tag reports, in the shared status vocabulary. Leave it empty for a tag that reports nothing.",
+        "enum": [
+          "",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      },
+      "appearance": {
+        "type": "string",
+        "default": "default",
+        "enum": [
+          "default",
+          "surface",
+          "ghost"
+        ],
+        "description": "Visual appearance, read from the neutral alpha ramp and separate from type: surface keeps a faint fill and a boundary, ghost keeps nothing until it is hovered. Only the neutral types take it, because a status tag carries its meaning in its colour."
+      },
+      "size": {
+        "type": "string",
+        "default": "1/2",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ],
+        "description": "Framework size token: sets the label text and the default spacing."
+      },
+      "line": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/2",
+          "1",
+          "2"
+        ],
+        "description": "Takes the text line of this form size as an inline tag one size down, for a table cell, so the row keeps its control height. Overrides size and inline."
+      },
+      "spacing": {
+        "type": "string",
+        "default": "normal",
+        "enum": [
+          "compact",
+          "normal",
+          "comfortable",
+          "spacious"
+        ],
+        "description": "Block padding of a free-standing tag, with the names the buttons use."
+      },
+      "inline": {
+        "type": "boolean",
+        "default": false,
+        "description": "Sit on the text line of another control: no block padding, a flush label, and a remove button the height of the line. The host may publish --sf-tag--line."
+      },
+      "text": {
+        "type": "string",
+        "default": "",
+        "description": "Visible tag label."
+      },
+      "count": {
+        "type": "string",
+        "default": "",
+        "description": "Optional count shown with the default tag."
+      },
+      "icon": {
+        "type": "string",
+        "default": "",
+        "description": "Decorative Framework icon name."
+      },
+      "color-class": {
+        "type": "string",
+        "default": "",
+        "description": "Framework semantic background utility for the color marker."
+      },
+      "avatar-image-url": {
+        "type": "string",
+        "default": "",
+        "description": "Avatar image URL; the visible text remains the accessible label."
+      },
+      "avatar-text": {
+        "type": "string",
+        "default": "",
+        "description": "Avatar initials fallback."
+      },
+      "root-class": {
+        "type": "string",
+        "default": "",
+        "description": "Framework utility classes for the visible root."
+      },
+      "avatar-status": {
+        "type": "string",
+        "default": "",
+        "description": "Reserved avatar status value for compatible templates."
+      },
+      "active": {
+        "type": "boolean",
+        "default": false,
+        "description": "Selected state of a checkbox tag."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disable interactive toggle and close actions."
+      },
+      "closable": {
+        "type": "boolean",
+        "default": false,
+        "description": "Show a separate remove action; icon, color and avatar tags enable it by default, a checkbox tag only when it is set."
+      },
+      "interactive": {
+        "type": "boolean",
+        "default": false,
+        "description": "Render the label as a button next to the remove action, for tags that open something (for example a filter chip menu); ignored for checkbox tags."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Optional accessible name override for a selectable tag."
+      },
+      "close-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name of the remove action. Defaults to Remove, or Удалить on a Russian page."
+      },
+      "type": {
+        "type": "string",
+        "default": "checkbox",
+        "description": "Legacy name that answered both questions from one list: a content word reaches kind, a status word reaches status. See contracts/public-api-axes.json.",
+        "enum": [
+          "checkbox",
+          "icon",
+          "default",
+          "color",
+          "avatar",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {
+    "static": {
+      "const": "Default, icon, color, avatar and status tags are labels without an action role or Tab stop."
+    },
+    "selection": {
+      "const": "Checkbox tags render one native toggle button and expose active through aria-pressed."
+    },
+    "removal": {
+      "const": "A removable value keeps its surface static and exposes one separately named close action."
+    },
+    "events": {
+      "const": "A successful toggle emits one change event; a successful removal emits one close event. Disabled controls emit neither."
+    },
+    "presentation": {
+      "const": "Tag geometry uses semantic UI, typography, role-color and motion tokens; static tags do not gain action hover affordance."
+    }
+  },
+  "methods": {
+    "onToggle": {
+      "summary": "Toggle an enabled checkbox tag and emit its new active state.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "onClose": {
+      "summary": "Emit removal intent for an enabled closable tag.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The active state of a checkbox tag changed.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "component": {
+            "type": "object",
+            "description": "The sf-tag element."
+          }
+        },
+        "required": [
+          "active",
+          "component"
+        ]
+      },
+      "canonical": true
+    },
+    "close": {
+      "summary": "Removal was requested from the separately named close action.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object",
+            "description": "The sf-tag element; the host removes it."
+          }
+        },
+        "required": [
+          "component"
+        ]
+      }
+    }
+  },
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default",
+      "active",
+      "disabled"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": null,
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "focus": "Only native toggle and close actions enter Tab order. Focus is keyboard-visible, geometry-stable and forced-colors-safe."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "accepted",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "owner-contract",
+      "browser-matrix",
+      "documentation-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": [
+      {
+        "from": "1.0.0",
+        "to": "1.1.0",
+        "changes": [
+          "Add interactive: the label becomes a native button beside the separate remove action, so the tag is reachable by Tab and opens with Enter or Space.",
+          "Without interactive the markup is unchanged."
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/tags/index.js",
+        "sha256": "284858a1f409efe1fab3c9e4ca19a707baaa155774d797aa02864314f92a7ead"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/tags/js/tags.js",
+        "sha256": "6686beccecc39ddeac5be946313bf542665d6b8cc58dca1457ca5048ad1d3ba2"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-tag for a compact category, filter, selected value or status with an explicit static, toggle or remove owner.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not make a static tag focusable",
+      "Do not nest a toggle and remove action in one tag surface"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-tag text=\"Documentation\"></sf-tag>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

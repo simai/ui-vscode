@@ -1,0 +1,60 @@
+@layer sf.utilities {
+  @media (min-width: 32rem) {
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:text-start {
+      text-align: left;
+    }
+    @supports not (text-align: start) {
+    html:not([dir="rtl"]) .sm\:text-start {
+      text-align: left;
+      }
+    }
+    .sm\:text-start:where(:dir(ltr)) {
+      text-align: left;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:text-start {
+      text-align: right;
+    }
+    @supports not (text-align: start) {
+    [dir="rtl"] .sm\:text-start {
+      text-align: right;
+      }
+    }
+    .sm\:text-start:where(:dir(rtl)) {
+      text-align: right;
+    }
+    .sm\:text-start {
+      text-align: start;
+    }
+    .sm\:text-center {
+      text-align: center;
+    }
+    _:-ms-input-placeholder, html:not([dir="rtl"]) .sm\:text-end {
+      text-align: right;
+    }
+    @supports not (text-align: end) {
+    html:not([dir="rtl"]) .sm\:text-end {
+      text-align: right;
+      }
+    }
+    .sm\:text-end:where(:dir(ltr)) {
+      text-align: right;
+    }
+    _:-ms-input-placeholder, [dir="rtl"] .sm\:text-end {
+      text-align: left;
+    }
+    @supports not (text-align: end) {
+    [dir="rtl"] .sm\:text-end {
+      text-align: left;
+      }
+    }
+    .sm\:text-end:where(:dir(rtl)) {
+      text-align: left;
+    }
+    .sm\:text-end {
+      text-align: end;
+    }
+    .sm\:text-justify {
+      text-align: justify;
+    }
+  }
+}

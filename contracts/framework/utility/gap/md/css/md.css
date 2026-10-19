@@ -1,0 +1,196 @@
+@layer sf.utilities {
+  @media (min-width: 44rem) {
+    .md\:gap-0,
+    .md\:g-0 {
+      gap: var(--sf-space-0);
+    }
+    .md\:gap-1\/4,
+    .md\:g-1\/4 {
+      gap: var(--sf-space-1\/4);
+    }
+    .md\:gap-1\/3,
+    .md\:g-1\/3 {
+      gap: var(--sf-space-1\/3);
+    }
+    .md\:gap-1\/2,
+    .md\:g-1\/2 {
+      gap: var(--sf-space-1\/2);
+    }
+    .md\:gap-1,
+    .md\:g-1 {
+      gap: var(--sf-space-1);
+    }
+    .md\:gap-2,
+    .md\:g-2 {
+      gap: var(--sf-space-2);
+    }
+    .md\:gap-3,
+    .md\:g-3 {
+      gap: var(--sf-space-3);
+    }
+    .md\:gap-4,
+    .md\:g-4 {
+      gap: var(--sf-space-4);
+    }
+    .md\:gap-5,
+    .md\:g-5 {
+      gap: var(--sf-space-5);
+    }
+    .md\:gap-6,
+    .md\:g-6 {
+      gap: var(--sf-space-6);
+    }
+    .md\:gap-7,
+    .md\:g-7 {
+      gap: var(--sf-space-7);
+    }
+    .md\:gap-8,
+    .md\:g-8 {
+      gap: var(--sf-space-8);
+    }
+    .md\:col-gap-0,
+    .md\:gap-x-0,
+    .md\:g-x-0 {
+      -webkit-column-gap: var(--sf-space-0);
+         -moz-column-gap: var(--sf-space-0);
+              column-gap: var(--sf-space-0);
+    }
+    .md\:row-gap-0,
+    .md\:gap-y-0,
+    .md\:g-y-0 {
+      row-gap: var(--sf-space-0);
+    }
+    .md\:col-gap-1\/4,
+    .md\:gap-x-1\/4,
+    .md\:g-x-1\/4 {
+      -webkit-column-gap: var(--sf-space-1\/4);
+         -moz-column-gap: var(--sf-space-1\/4);
+              column-gap: var(--sf-space-1\/4);
+    }
+    .md\:row-gap-1\/4,
+    .md\:gap-y-1\/4,
+    .md\:g-y-1\/4 {
+      row-gap: var(--sf-space-1\/4);
+    }
+    .md\:col-gap-1\/3,
+    .md\:gap-x-1\/3,
+    .md\:g-x-1\/3 {
+      -webkit-column-gap: var(--sf-space-1\/3);
+         -moz-column-gap: var(--sf-space-1\/3);
+              column-gap: var(--sf-space-1\/3);
+    }
+    .md\:row-gap-1\/3,
+    .md\:gap-y-1\/3,
+    .md\:g-y-1\/3 {
+      row-gap: var(--sf-space-1\/3);
+    }
+    .md\:col-gap-1\/2,
+    .md\:gap-x-1\/2,
+    .md\:g-x-1\/2 {
+      -webkit-column-gap: var(--sf-space-1\/2);
+         -moz-column-gap: var(--sf-space-1\/2);
+              column-gap: var(--sf-space-1\/2);
+    }
+    .md\:row-gap-1\/2,
+    .md\:gap-y-1\/2,
+    .md\:g-y-1\/2 {
+      row-gap: var(--sf-space-1\/2);
+    }
+    .md\:col-gap-1,
+    .md\:gap-x-1,
+    .md\:g-x-1 {
+      -webkit-column-gap: var(--sf-space-1);
+         -moz-column-gap: var(--sf-space-1);
+              column-gap: var(--sf-space-1);
+    }
+    .md\:row-gap-1,
+    .md\:gap-y-1,
+    .md\:g-y-1 {
+      row-gap: var(--sf-space-1);
+    }
+    .md\:col-gap-2,
+    .md\:gap-x-2,
+    .md\:g-x-2 {
+      -webkit-column-gap: var(--sf-space-2);
+         -moz-column-gap: var(--sf-space-2);
+              column-gap: var(--sf-space-2);
+    }
+    .md\:row-gap-2,
+    .md\:gap-y-2,
+    .md\:g-y-2 {
+      row-gap: var(--sf-space-2);
+    }
+    .md\:col-gap-3,
+    .md\:gap-x-3,
+    .md\:g-x-3 {
+      -webkit-column-gap: var(--sf-space-3);
+         -moz-column-gap: var(--sf-space-3);
+              column-gap: var(--sf-space-3);
+    }
+    .md\:row-gap-3,
+    .md\:gap-y-3,
+    .md\:g-y-3 {
+      row-gap: var(--sf-space-3);
+    }
+    .md\:col-gap-4,
+    .md\:gap-x-4,
+    .md\:g-x-4 {
+      -webkit-column-gap: var(--sf-space-4);
+         -moz-column-gap: var(--sf-space-4);
+              column-gap: var(--sf-space-4);
+    }
+    .md\:row-gap-4,
+    .md\:gap-y-4,
+    .md\:g-y-4 {
+      row-gap: var(--sf-space-4);
+    }
+    .md\:col-gap-5,
+    .md\:gap-x-5,
+    .md\:g-x-5 {
+      -webkit-column-gap: var(--sf-space-5);
+         -moz-column-gap: var(--sf-space-5);
+              column-gap: var(--sf-space-5);
+    }
+    .md\:row-gap-5,
+    .md\:gap-y-5,
+    .md\:g-y-5 {
+      row-gap: var(--sf-space-5);
+    }
+    .md\:col-gap-6,
+    .md\:gap-x-6,
+    .md\:g-x-6 {
+      -webkit-column-gap: var(--sf-space-6);
+         -moz-column-gap: var(--sf-space-6);
+              column-gap: var(--sf-space-6);
+    }
+    .md\:row-gap-6,
+    .md\:gap-y-6,
+    .md\:g-y-6 {
+      row-gap: var(--sf-space-6);
+    }
+    .md\:col-gap-7,
+    .md\:gap-x-7,
+    .md\:g-x-7 {
+      -webkit-column-gap: var(--sf-space-7);
+         -moz-column-gap: var(--sf-space-7);
+              column-gap: var(--sf-space-7);
+    }
+    .md\:row-gap-7,
+    .md\:gap-y-7,
+    .md\:g-y-7 {
+      row-gap: var(--sf-space-7);
+    }
+    .md\:col-gap-8,
+    .md\:gap-x-8,
+    .md\:g-x-8 {
+      -webkit-column-gap: var(--sf-space-8);
+         -moz-column-gap: var(--sf-space-8);
+              column-gap: var(--sf-space-8);
+    }
+    .md\:row-gap-8,
+    .md\:gap-y-8,
+    .md\:g-y-8 {
+      row-gap: var(--sf-space-8);
+    }
+  }
+}

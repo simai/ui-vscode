@@ -1,0 +1,246 @@
+{
+  "schema_version": 2,
+  "id": "smart.icons",
+  "version": "1.0.0",
+  "title": "Icons",
+  "summary": "Semantic Material Symbol wrapper with exact Loader tracking, accessible decorative or informative modes and token-owned geometry.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "icons"
+  ],
+  "capabilities": [
+    "render",
+    "accessible-name",
+    "icon-families",
+    "variable-axes",
+    "dynamic-subset",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-icon",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.icons"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "icon": {
+        "type": "string",
+        "default": ""
+      },
+      "loaded": {
+        "type": "boolean",
+        "default": false
+      },
+      "filled": {
+        "type": "boolean",
+        "default": false
+      },
+      "weight": {
+        "type": "number",
+        "default": 400
+      },
+      "size": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "1/4",
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "type": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "outlined",
+          "rounded",
+          "sharp",
+          "shape"
+        ]
+      },
+      "grade": {
+        "type": "number",
+        "default": 0,
+        "minimum": -50,
+        "maximum": 200
+      },
+      "optical-size": {
+        "type": "number",
+        "default": 24,
+        "minimum": 20,
+        "maximum": 48
+      },
+      "label": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {},
+  "contracts": {},
+  "methods": {},
+  "events": {},
+  "state": {
+    "machines": {},
+    "visual_states": [
+      "default"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "props",
+      "children"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "img when label is present; hidden when decorative",
+    "accessible_name": "recommended",
+    "keyboard": [],
+    "focus": "The icon is not interactive and never enters the tab order. Name the containing control instead."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile",
+      "inherited current color",
+      "pre-upgrade reserved size"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "described",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/icons/index.js",
+        "sha256": "2175a88c28458443ad2747277bd90f4711c3a6faa3a27a91db8b1bffbdb60237"
+      },
+      {
+        "path": "src/smart/icons/js/templates/default.js",
+        "sha256": "68041e468e8ff38811bba22bf7f7bc7af60a4377df00693ea3293d2bb4a3d67e"
+      },
+      {
+        "path": "src/smart/icons/rule.js",
+        "sha256": "4e2b11a90c6908dcea0fe1dc54e944521e8505512f988b6b1cf9cfc5f7844564"
+      },
+      {
+        "path": "src/smart/icons/docs.md",
+        "sha256": "3c0dd58b7aee111b6e89130b491b01b53a809d95c784e3f2f19986e557fc07fe"
+      }
+    ],
+    "generated_runtime": [
+      {
+        "repository": "simai/ui-smart",
+        "revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c",
+        "path": "smart/icons/js/icons.js",
+        "sha256": "5b4ec21457f8a7cad79b8854ee99facb917fadca00b08a01efd3f87b8627e782"
+      }
+    ]
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-icon for a Material Symbol that must participate in the Framework Loader and token scale. Omit label when adjacent text or a named control already conveys the meaning; provide a concise label only for an informative standalone symbol.",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not move host data or access decisions into the component",
+      "Do not make the icon focusable or use it as a control",
+      "Do not label a decorative icon inside an already named control",
+      "Do not use loaded as an authoring switch"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-icon icon=\"home\"></sf-icon>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}
