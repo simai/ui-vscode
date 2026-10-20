@@ -245,30 +245,31 @@ test('shipped framework registry is pinned and only holds safe entries', () => {
     const safe = new Set(snapshot.indexes.safe_to_suggest);
     const blocked = new Set(snapshot.indexes.blocked);
     const byId = new Map(snapshot.entries.map(entry => [entry.id, entry]));
-    assert.equal(framework.release.id, 'ui-32c7a64e4575');
-    assert.equal(framework.release.coreCommit, '32c7a64e457583eaf5a1860590001217a86b5af9');
-    assert.equal(framework.release.smartCommit, '7c23c8d721eb078c1b013d237cef6904b9e59dbc');
-    assert.equal(framework.release.registryCommit, 'efccc737657634122270ce7281a43878baa78410');
+    assert.equal(framework.release.id, 'ui-132b0863e12b');
+    assert.equal(framework.release.coreCommit, '132b0863e12b9d5d9c9180d32b20c71f0584e7eb');
+    assert.equal(framework.release.smartCommit, '132b0863e12b9d5d9c9180d32b20c71f0584e7eb');
+    assert.equal(framework.release.registryCommit, 'ef3846772d453ca6df280e64d9d63f6969ee078c');
     for (const id of [...framework.tags.map(tag => tag.id), ...framework.classes.map(item => item.id)]) {
         assert.ok(safe.has(id) && !blocked.has(id), `${id} is not safe to suggest`);
         assert.equal(byId.get(id)?.readiness?.status, 'ready', `${id} is not ready`);
     }
-    // Counts of release ui-32c7a64e4575; update them when repinning.
-    assert.equal(framework.tags.length, 51);
+    // Counts of release ui-132b0863e12b; update them when repinning.
+    assert.equal(framework.tags.length, 52);
     assert.equal(framework.classes.length, 9270);
-    assert.equal(framework.tokens.length, 973);
-    assert.equal(framework.tokens.filter(token => token.color).length, 434);
+    assert.equal(framework.tokens.length, 980);
+    assert.equal(framework.tokens.filter(token => token.color).length, 438);
 });
 
 test('the promotion rule decides which shipped tags are suggested', () => {
     const framework = validateFrameworkRegistry(readJson('data/sf-framework.json'));
     const tags = new Set(framework.tags.map(tag => tag.tag));
     const known = new Set(framework.knownTags);
-    // Promoted in ui-32c7a64e4575, so it completes on its own.
+    // Promoted in ui-132b0863e12b, so they complete on their own.
     assert.ok(tags.has('sf-list-item'));
-    // Held by the promotion rule: an open source issue, no declared inputs,
-    // or deprecated. Known to diagnostics, never offered as a completion.
-    for (const tag of ['sf-button-group', 'sf-inline-editor', 'sf-toggle']) {
+    assert.ok(tags.has('sf-button-group'));
+    // Held by the promotion rule, each with its reason in readiness.blockers:
+    // no declared inputs, or deprecated. Known to diagnostics, never offered.
+    for (const tag of ['sf-inline-editor', 'sf-toggle']) {
         assert.ok(!tags.has(tag), `${tag} must not be suggested`);
         assert.ok(known.has(tag), `${tag} must stay known`);
     }
@@ -293,7 +294,7 @@ test('index merges sizing contract data into core tokens', () => {
     const text = describeToken(index, space);
     assert.match(text, /mobile \| 12px \(0\.75rem\)/);
     assert.match(text, /simai\.vertical-sizing@1\.3\.0/);
-    assert.match(text, /ui-32c7a64e4575/);
+    assert.match(text, /ui-132b0863e12b/);
 
     const nearest = nearestColorTokens(index, [0, 0.3569, 0.7451, 1], 5);
     assert.ok(nearest.some(token => token.name === '--sf-primary-40'));

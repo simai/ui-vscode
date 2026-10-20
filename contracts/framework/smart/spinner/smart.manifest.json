@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.spinner",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Spinner",
   "summary": "Indeterminate waiting indicator with arc or dots presentation, optional polite status announcement and Framework-owned motion.",
   "kind": "smart",
@@ -35,19 +35,23 @@
         "type": "string",
         "default": "1",
         "enum": [
+          "1/3",
           "1/2",
           "1",
           "2",
           "3"
-        ]
+        ],
+        "description": "The size ladder: at each step the spinner is the icon of an sf-button of the same size (diameter and stroke), so it can stand in for that icon."
       },
       "width": {
         "type": "string",
-        "default": ""
+        "default": "",
+        "description": "Deprecated since 2026-10-20, read until 2026-12-01 (journal attribute-spinner-pixel-geometry): the size ladder decides the spinner's geometry; write size."
       },
       "height": {
         "type": "string",
-        "default": ""
+        "default": "",
+        "description": "Deprecated since 2026-10-20, read until 2026-12-01 (journal attribute-spinner-pixel-geometry): the size ladder decides the spinner's geometry; write size."
       },
       "label": {
         "type": "string",
@@ -75,11 +79,13 @@
       },
       "stroke-width": {
         "type": "string",
-        "default": ""
+        "default": "",
+        "description": "Deprecated since 2026-10-20, read until 2026-12-01 (journal attribute-spinner-pixel-geometry): the size ladder decides the spinner's geometry; write size."
       },
       "dot-radius": {
         "type": "string",
-        "default": ""
+        "default": "",
+        "description": "Deprecated since 2026-10-20, read until 2026-12-01 (journal attribute-spinner-pixel-geometry): the size ladder decides the spinner's geometry; write size."
       },
       "infinite": {
         "type": "boolean",
@@ -229,7 +235,28 @@
       "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
     },
     "aliases": [],
-    "deprecations": [],
+    "deprecations": [
+      {
+        "path": "width",
+        "since": "1.1.0",
+        "replacement": "size"
+      },
+      {
+        "path": "height",
+        "since": "1.1.0",
+        "replacement": "size"
+      },
+      {
+        "path": "stroke-width",
+        "since": "1.1.0",
+        "replacement": "size"
+      },
+      {
+        "path": "dot-radius",
+        "since": "1.1.0",
+        "replacement": "size"
+      }
+    ],
     "replacement": null,
     "migrations": []
   },
@@ -243,7 +270,7 @@
       },
       {
         "path": "src/smart/spinner/js/templates/default.js",
-        "sha256": "80a5edb0cd519ba7429c7c47a368d48b705a375cbe333467a12f6e4bb537c335"
+        "sha256": "257fc75a929e584325e4605da76430a012d34712e732267754e6b5de8e03385e"
       },
       {
         "path": "src/smart/spinner/rule.js",
@@ -251,7 +278,7 @@
       },
       {
         "path": "src/smart/spinner/docs/docs.md",
-        "sha256": "7619ab4a661769084f4f072290ab17bf730dfa6a4690847c33c60e96d674101a"
+        "sha256": "aeaba9e2a5cd9f27287816b5bc63cbf9cd9633a317c55f941c20f2b709aa264c"
       }
     ],
     "generated_runtime": [
