@@ -1,8 +1,8 @@
 {
-  "releaseId": "ui-32c7a64e4575",
+  "releaseId": "ui-132b0863e12b",
   "sourceRepository": "simai/ui-source",
-  "sourceCommit": "c06496ba71395d9556a6698229a084de76c61324",
-  "sourceTree": "bd12a35ccd8411d92e7db0e85538866a5bd0fed1",
+  "sourceCommit": "6b16b41db95a441d80925edf895e798fe1ac8e69",
+  "sourceTree": "43227f03b9065bbe563f9f0492bbd55efef69d53",
   "sourcePath": "src/core/contracts/adaptive-sizing.v1.json",
   "contractId": "simai.vertical-sizing",
   "contractVersion": "1.3.0",

@@ -102,9 +102,9 @@ Bitrix templates. In markup, class attributes, `sf-` tags and `--sf-` tokens in
 ## What is suggested
 
 Suggestions come from a pinned, hash-checked snapshot of the SIMAI Framework
-contract registry (release `ui-32c7a64e4575`). Only entries the Framework
+contract registry (release `ui-132b0863e12b`). Only entries the Framework
 promotes by its written rule — ready, unblocked and safe to suggest — are
-offered: 51 `sf-` components, 58 utility families and 973 design tokens in this
+offered: 52 `sf-` components, 58 utility families and 980 design tokens in this
 release. Held, blocked and unreleased entries are not suggested, but they are
 still recognised, so a real Framework name is never reported as a misspelling.
 Experimental components are labelled as such. The extension does not

@@ -6,18 +6,21 @@ All notable changes to SIMAI Framework IntelliSense are listed here.
 
 ### Changed
 
-- Repinned to the SIMAI Framework release `ui-32c7a64e4575` (registry
-  `simai/ui@efccc737`, runtime `simai/ui@32c7a64e` core and `7c23c8d7` smart,
-  sizing contract from `simai/ui-source@c06496ba`). The Framework promoted
-  entries by a written rule, so the suggestion set grew from 36 to 170 of 345
-  registry entries: 51 tags (was 13), 9270 utility classes (was 1058) and 973
-  tokens (was 922), 434 of them colours. `sf-list-item` and the other promoted
-  components now complete on their own. The sizing contract is unchanged
-  (`simai.vertical-sizing@1.3.0`).
-- `sf-button-group`, `sf-inline-editor` and `sf-toggle` stay out of the
-  suggestions: the Framework holds them for an open source issue, for having
-  no declared inputs, and as deprecated in favour of `sf-switch`. They are
-  still recognised, so they are never reported as misspellings.
+- Repinned to the SIMAI Framework release `ui-132b0863e12b` (registry
+  `simai/ui@ef384677`, runtime `simai/ui@132b0863` for both core and smart,
+  sizing contract from `simai/ui-source@6b16b41d`). The Framework promoted
+  entries by a written rule, so the suggestion set grew from 36 to 172 of 345
+  registry entries: 52 tags (was 13), 9270 utility classes (was 1058) and 980
+  tokens (was 922), 438 of them colours. `sf-list-item`, `sf-button-group` and
+  the other promoted components now complete on their own. The sizing contract
+  is unchanged (`simai.vertical-sizing@1.3.0`).
+- `sf-inline-editor` and `sf-toggle` stay out of the suggestions: the Framework
+  holds them for having no declared inputs and as deprecated in favour of
+  `sf-switch`. Each held entry now carries its reason in `readiness.blockers`.
+  They are still recognised, so they are never reported as misspellings.
+- `sf-button`, `sf-icon-button` and `sf-button-group` load with the spinner in
+  this release, so their manifests changed upstream. The seven new tokens are
+  the button group's public variables, which ship now that it is suggested.
 
 ### Added
 

@@ -1,0 +1,478 @@
+{
+  "schema_version": 2,
+  "id": "smart.button-group",
+  "version": "1.0.0",
+  "title": "Button group",
+  "summary": "A controlled single-selection group built from SF5 buttons.",
+  "kind": "smart",
+  "reuse_mode": "whole",
+  "lifecycle": "experimental",
+  "tags": [
+    "button",
+    "segmented-control",
+    "selection"
+  ],
+  "capabilities": [
+    "render",
+    "interaction",
+    "keyboard",
+    "theme",
+    "responsive"
+  ],
+  "custom_element": "sf-button-group",
+  "templates": [
+    "default"
+  ],
+  "exported_parts": [],
+  "composition": {
+    "uses": [
+      "component.button-group",
+      "smart.buttons",
+      "component.spinner"
+    ],
+    "public_parts": []
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "template": {
+        "type": "string",
+        "default": "default",
+        "description": "Template variant name."
+      },
+      "items": {
+        "type": "array",
+        "default": "[]",
+        "description": "Selectable items with stable value, label, icon, count, icon-only, disabled and loading fields.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "icon-only": {
+              "type": "boolean",
+              "description": "Segmented appearance: show only the icon; the label stays as the visually hidden accessible name. Needs an icon."
+            },
+            "aria-label": {
+              "type": "string"
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "loading": {
+              "type": "boolean",
+              "description": "The item works: it shows the spinner at its icon's size, in place of its icon or over its label (which keeps its place and its name), says aria-busy and is disabled until the flag is cleared."
+            },
+            "count": {
+              "type": [
+                "string",
+                "number"
+              ],
+              "description": "Segmented appearance: a number after the label, in tabular numerals; it is part of the segment's accessible name."
+            }
+          },
+          "required": [
+            "value",
+            "label"
+          ],
+          "additionalProperties": false
+        },
+        "examples": [
+          [
+            {
+              "value": "list",
+              "label": "List",
+              "icon": "list"
+            },
+            {
+              "value": "grid",
+              "label": "Grid",
+              "icon": "grid_view"
+            }
+          ],
+          [
+            {
+              "value": "all",
+              "label": "Все",
+              "count": 24
+            },
+            {
+              "value": "light",
+              "label": "Светлые",
+              "count": 17
+            },
+            {
+              "value": "dark",
+              "label": "Тёмные",
+              "count": 7
+            }
+          ]
+        ]
+      },
+      "value": {
+        "type": "string",
+        "default": "",
+        "description": "Currently selected item value."
+      },
+      "name": {
+        "type": "string",
+        "default": "",
+        "description": "Native form field name: the group submits its value with its form, a form reset restores the initial value, and a disabled group is left out."
+      },
+      "theme-switch": {
+        "type": "boolean",
+        "default": false,
+        "description": "A ready theme switch: the group draws its own three icon-only items (system, light, dark) named in the page language, selects SF.Loader's theme preference and follows sf-theme-change, and a choice calls SF.Loader.setTheme. items is ignored."
+      },
+      "size": {
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1/3",
+          "1/2",
+          "1",
+          "2",
+          "3"
+        ],
+        "description": "Shared button size token."
+      },
+      "spacing": {
+        "type": "string",
+        "default": "normal",
+        "description": "Shared semantic internal spacing profile.",
+        "enum": [
+          "compact",
+          "normal",
+          "comfortable",
+          "spacious"
+        ]
+      },
+      "tightness": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "low",
+          "high",
+          "highest"
+        ],
+        "description": "Compatibility alias for spacing."
+      },
+      "scheme": {
+        "type": "string",
+        "default": "primary",
+        "enum": [
+          "primary",
+          "secondary",
+          "on-surface"
+        ],
+        "description": "Color scheme for the selected button, and for the selected plate in the segmented appearance."
+      },
+      "appearance": {
+        "type": "string",
+        "default": "default",
+        "enum": [
+          "default",
+          "segmented"
+        ],
+        "description": "How the group looks. default joins outlined buttons into one perimeter; segmented draws a sunken track with borderless segments and a plate under the selected one. The selection model, keyboard and events are the same."
+      },
+      "plate": {
+        "type": "string",
+        "default": "scheme",
+        "enum": [
+          "scheme",
+          "raised"
+        ],
+        "description": "The selected segment's plate in the segmented appearance: the scheme's fill, or a raised neutral surface with its shadow."
+      },
+      "full-width": {
+        "type": "boolean",
+        "default": false,
+        "description": "In the segmented appearance, the track fills its container and the segments share the width equally."
+      },
+      "radius": {
+        "type": "string",
+        "default": "",
+        "enum": [
+          "",
+          "default",
+          "square",
+          "rounded"
+        ],
+        "description": "Corner radius, as on sf-button: empty is the UI radius. In the segmented appearance the plate, a button-sized segment, takes the radius a button of that value has, and the track is it plus the padding (rounded: both pills)."
+      },
+      "orientation": {
+        "type": "string",
+        "default": "horizontal",
+        "enum": [
+          "horizontal",
+          "vertical"
+        ],
+        "description": "Layout and keyboard navigation orientation."
+      },
+      "disabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Disables the whole group."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name for the group."
+      },
+      "root-class": {
+        "type": "string",
+        "default": "",
+        "description": "Extra classes applied to the group root."
+      }
+    },
+    "additionalProperties": false
+  },
+  "item_contract": {
+    "type": "object"
+  },
+  "contracts": {},
+  "methods": {
+    "select": {
+      "summary": "Selects an enabled item by value.",
+      "arguments": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "clear": {
+      "summary": "Clears the current selection.",
+      "arguments": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    "focus": {
+      "summary": "Moves focus to the selected or first enabled item.",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    }
+  },
+  "events": {
+    "change": {
+      "summary": "The selected value changed through select() or clear(); dispatched on the host, bubbles and is composed. The name to bind.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "description": "The emitting sf-button-group."
+          },
+          "previous": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string",
+            "description": "Empty after clear()."
+          },
+          "item": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "The selected item; null after clear()."
+          }
+        },
+        "required": [
+          "component",
+          "previous",
+          "value",
+          "item"
+        ]
+      },
+      "canonical": true
+    },
+    "sf-button-group-change": {
+      "summary": "Legacy name for change, still emitted with the same detail; bind change.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "previous": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "item": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "previous",
+          "value",
+          "item"
+        ]
+      },
+      "alias_of": "change"
+    }
+  },
+  "state": {
+    "machines": {
+      "selection": [
+        "empty",
+        "selected",
+        "disabled"
+      ]
+    },
+    "visual_states": [
+      "default",
+      "disabled",
+      "selected"
+    ]
+  },
+  "persistence": {
+    "mode": "none",
+    "source_of_truth": "component",
+    "network_owner": "none",
+    "revision_field": null
+  },
+  "ownership": {
+    "source": "simai/ui-source",
+    "data": "fixture",
+    "effects": "component",
+    "forbidden_client_responsibilities": [
+      "backend access decisions",
+      "preference persistence",
+      "host route invention"
+    ]
+  },
+  "security": {
+    "permissions_owner": "none",
+    "untrusted_inputs": [
+      "items",
+      "value"
+    ],
+    "network_policy": "deny"
+  },
+  "accessibility": {
+    "role": "radiogroup",
+    "accessible_name": "required",
+    "keyboard": [
+      "Tab",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End"
+    ],
+    "focus": "Use roving tabindex and an inset focus-visible indicator that does not cover adjacent segments."
+  },
+  "presentation": {
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "responsive": [
+      "desktop",
+      "mobile"
+    ],
+    "skeleton": {
+      "shape": "none",
+      "while_loading": "none"
+    }
+  },
+  "adapter": {
+    "kind": "generic",
+    "protocol": "simai.smart-studio-adapter.v1",
+    "module": null
+  },
+  "artifacts": {
+    "fixtures": [
+      "studio.fixture.json"
+    ],
+    "scenarios": [
+      "studio.scenario.json"
+    ]
+  },
+  "readiness": {
+    "level": "runnable",
+    "required_checks": [
+      "manifest",
+      "fixture",
+      "runtime-upgrade",
+      "scenario-smoke",
+      "keyboard",
+      "responsive",
+      "a11y"
+    ]
+  },
+  "compatibility": {
+    "contract_schema": {
+      "id": "https://simai.io/contracts/smart-component-manifest.v2.schema.json",
+      "version": 2
+    },
+    "runtime_pair": {
+      "ui_revision": "094f3d549aa7921d2d7f8773972c73711dd6a72e",
+      "ui_smart_revision": "856fb5d751fad1c76104c32515f4c1869dd75b6c"
+    },
+    "aliases": [],
+    "deprecations": [],
+    "replacement": null,
+    "migrations": []
+  },
+  "provenance": {
+    "source_repository": "simai/ui-source",
+    "source_revision": "d73527c92056a684b5f34a46ec7315e1ded9be19",
+    "source_artifacts": [
+      {
+        "path": "src/smart/button-group/index.js",
+        "sha256": "2d9fcd8743768b019510b440f716345b46ca65ea069718845e6497b7de9e73bd"
+      }
+    ],
+    "generated_runtime": []
+  },
+  "ai_guidance": {
+    "use_when": "Use sf-button-group for one compact mutually exclusive choice; appearance=\"segmented\" for a filter, period, view or theme switch drawn as a segmented control (not tabs: no panels).",
+    "do_not": [
+      "Do not copy generated ui-smart code",
+      "Do not persist selection inside the component",
+      "Do not use it for independent multi-select actions"
+    ],
+    "required_reads": [
+      "inputs",
+      "methods",
+      "events",
+      "ownership",
+      "provenance"
+    ],
+    "minimal_example": "<sf-button-group aria-label=\"View\" items='[{\"value\":\"list\",\"label\":\"List\"},{\"value\":\"grid\",\"label\":\"Grid\"}]' value=\"list\"></sf-button-group>",
+    "owner_commands": [
+      "npm run contract:verify",
+      "npm test"
+    ]
+  }
+}

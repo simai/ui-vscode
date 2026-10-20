@@ -24,7 +24,8 @@
     "uses": [
       "component.icon-buttons",
       "smart.icons",
-      "smart.close"
+      "smart.close",
+      "component.spinner"
     ],
     "public_parts": []
   },
@@ -151,7 +152,7 @@
       "loading": {
         "type": "boolean",
         "default": false,
-        "description": "Loading state flag."
+        "description": "Loading state: the spinner in place of the icon, at the icon's size. Sets aria-busy and disables the native button."
       },
       "disabled": {
         "type": "boolean",
@@ -489,7 +490,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/icon-buttons/index.js",
-        "sha256": "449ab27541c1105b2ab4380d71491851b3b698c10f4fd20df0308497e321bc66"
+        "sha256": "5c1408fd5125c2584f169c6803565bb053da420e5cc2d64daa1673cad72a36ce"
       }
     ],
     "generated_runtime": [

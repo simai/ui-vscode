@@ -158,11 +158,12 @@ suite('completion provider', () => {
     });
 
     test('the promotion rule decides which tags complete', async () => {
-        // Promoted in ui-32c7a64e4575; it used to be known but unsuggested.
+        // Promoted in ui-132b0863e12b; they used to be known but unsuggested.
         assert.ok(find(await completions('html', '<div><sf-list-i|'), 'sf-list-item'));
+        assert.ok(find(await completions('html', '<div><sf-button-g|'), 'sf-button-group'));
         // Held by the promotion rule, so they stay out of the suggestions.
         const items = await completions('html', '<div><sf-|');
-        for (const tag of ['sf-button-group', 'sf-inline-editor', 'sf-toggle']) {
+        for (const tag of ['sf-inline-editor', 'sf-toggle']) {
             assert.equal(find(items, tag), undefined, `${tag} must not be suggested`);
         }
         assert.ok(find(items, 'sf-switch'), 'sf-switch replaces the deprecated toggle');
@@ -183,7 +184,7 @@ suite('hover provider', () => {
         assert.match(text, /--sf-primary/);
         assert.match(text, /\| light \| #005bbe \|/);
         assert.match(text, /\| dark \| #acc7ff \|/);
-        assert.match(text, /ui-32c7a64e4575/);
+        assert.match(text, /ui-132b0863e12b/);
     });
 
     test('sizing tokens show mobile and desktop values', async () => {
