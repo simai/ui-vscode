@@ -122,6 +122,16 @@ Publishing happens only after the owner accepts a release.
 4. It publishes to the VS Code Marketplace only when the `VSCE_PAT` secret is
    set, and to Open VSX only when `OVSX_PAT` is set; otherwise it skips the
    step with a notice. The Marketplace publisher is `SIMAI`.
+5. To publish a release that already exists on GitHub (for example after the
+   store tokens were added), run `.github/workflows/publish.yml` by hand:
+
+   ```sh
+   gh workflow run publish.yml -R simai/ui-vscode -f tag=v0.3.0
+   ```
+
+   It downloads the release `.vsix`, checks it against the attached sha256,
+   creates the Open VSX namespace if it is missing, and publishes that exact
+   file. Nothing is rebuilt.
 
 ## Versioning
 
