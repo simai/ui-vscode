@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in SIMAI Framework IntelliSense does not work as expected.
+description: Something in SIMAI Framework for VS Code does not work as expected.
 labels: [bug]
 body:
   - type: markdown

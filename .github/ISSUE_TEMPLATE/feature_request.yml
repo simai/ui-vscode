@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an improvement to SIMAI Framework IntelliSense.
+description: Suggest an improvement to SIMAI Framework for VS Code.
 labels: [enhancement]
 body:
   - type: markdown

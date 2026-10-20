@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Only the latest released version of SIMAI Framework IntelliSense receives
+Only the latest released version of SIMAI Framework for VS Code receives
 security fixes.
 
 ## Reporting a vulnerability
