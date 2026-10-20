@@ -1,4 +1,4 @@
-# Contributing to SIMAI Framework IntelliSense
+# Contributing to SIMAI Framework for VS Code
 
 This guide is for people who build, test or package the extension. The
 end-user documentation is in [README.md](README.md).

@@ -1,8 +1,8 @@
 {
   "name": "sf-vscode",
-  "displayName": "SIMAI Framework IntelliSense",
+  "displayName": "SIMAI Framework for VS Code",
   "description": "Autocomplete and hovers for SIMAI Framework: sf- component tags and attributes, utility classes and --sf- design tokens with colour swatches and adaptive values.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "SIMAI",
   "author": "Rim Zabarov and contributors",
   "license": "MIT",
@@ -53,7 +53,7 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "SIMAI Framework IntelliSense",
+      "title": "SIMAI Framework for VS Code",
       "properties": {
         "sf.hover.enabled": {
           "type": "boolean",

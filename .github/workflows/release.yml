@@ -54,7 +54,7 @@ jobs:
           gh release create "$GITHUB_REF_NAME" \
             "${{ steps.package.outputs.vsix }}" "${{ steps.package.outputs.vsix }}.sha256" \
             --title "$GITHUB_REF_NAME" \
-            --notes "SIMAI Framework IntelliSense ${GITHUB_REF_NAME}. See CHANGELOG.md.
+            --notes "SIMAI Framework for VS Code ${GITHUB_REF_NAME}. See CHANGELOG.md.
 
           sha256 of ${{ steps.package.outputs.vsix }}: \`${{ steps.package.outputs.sha256 }}\`"
       - name: Publish to the VS Code Marketplace

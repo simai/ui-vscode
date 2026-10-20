@@ -1,4 +1,4 @@
-# SIMAI Framework IntelliSense
+# SIMAI Framework for VS Code
 
 Autocomplete, hovers and colour swatches for
 [SIMAI Framework](https://github.com/simai/ui) in VS Code.

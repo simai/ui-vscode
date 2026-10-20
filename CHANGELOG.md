@@ -1,6 +1,14 @@
 # Changelog
 
-All notable changes to SIMAI Framework IntelliSense are listed here.
+All notable changes to SIMAI Framework for VS Code (formerly SIMAI Framework IntelliSense) are listed here.
+
+## [0.3.1] - 2026-10-20
+
+### Changed
+
+- Renamed the extension to **SIMAI Framework for VS Code**. The VS Code Marketplace refused the
+  previous display name as too close to an existing extension. The extension
+  id (`SIMAI.sf-vscode`), settings and behaviour are unchanged.
 
 ## [0.3.0] - 2026-10-20
 
