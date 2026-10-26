@@ -23,7 +23,9 @@
   ],
   "exported_parts": [],
   "composition": {
-    "uses": [],
+    "uses": [
+      "component.badges"
+    ],
     "public_parts": []
   },
   "inputs": {
@@ -123,6 +125,26 @@
       "disabled": {
         "type": "boolean",
         "default": false
+      },
+      "badge-count": {
+        "type": "string",
+        "default": "",
+        "description": "A count on the avatar (simai/ui-source#12): a whole number above 0 shows, 0 or empty hides the badge. Above badge-cap it reads «<cap>+»; the exact number joins the avatar's accessible name («Анна Белова, 3 непрочитанных») and the badge's tooltip. On an anchor of size 1/3 or 1/2 a count is drawn as a dot."
+      },
+      "badge-dot": {
+        "type": "boolean",
+        "default": false,
+        "description": "A dot on the avatar, a count with no number: something new. Shown when badge-count is not set; with a count, the count is drawn as a dot. Its text equivalent («есть новое» / «new» by default, badge-label to change it) joins the accessible name."
+      },
+      "badge-cap": {
+        "type": "integer",
+        "default": 99,
+        "description": "The largest count drawn as a number; a larger one reads «<cap>+»."
+      },
+      "badge-label": {
+        "type": "string",
+        "default": "",
+        "description": "The words the badge adds to the accessible name and its tooltip, in place of the page language's default: for a dot the whole text equivalent; for a count the phrase in plural forms separated by «|» (one|few|many in Russian, one|other in English) with {count} where the number goes."
       }
     },
     "additionalProperties": false
@@ -229,7 +251,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/avatar/index.js",
-        "sha256": "a1260edefb36506fc80bc1de0872f30b634c3385e9b7f1522323f29fa95212a3"
+        "sha256": "150b3582139dbff2ff24788b5e988b3cd4ed6892cb5c0a41cfa937bb1f070b76"
       }
     ],
     "generated_runtime": [

@@ -3,14 +3,15 @@
   "id": "smart.sortable",
   "version": "1.0.0",
   "title": "Sortable",
-  "summary": "Drag-and-drop list primitive for reordering, moving between lists and copying from a library by mouse, pen, touch and keyboard; reports intent only.",
+  "summary": "Drag-and-drop list primitive for reordering, moving between lists and copying from a library by mouse, pen, touch and keyboard, with an optional insertion point that opens a searchable inserter; reports intent only.",
   "kind": "smart",
   "reuse_mode": "whole",
   "lifecycle": "experimental",
   "tags": [
     "sortable",
     "drag-and-drop",
-    "editor"
+    "editor",
+    "inserter"
   ],
   "capabilities": [
     "interaction",
@@ -23,7 +24,11 @@
   ],
   "exported_parts": [],
   "composition": {
-    "uses": [],
+    "uses": [
+      "smart.context-menu",
+      "component.icon-buttons",
+      "component.icons"
+    ],
     "public_parts": []
   },
   "inputs": {
@@ -65,6 +70,11 @@
           "line"
         ],
         "description": "How a pointer drag shows where the item lands: silhouette lifts the item out of the list and opens an outline of its size at the place it would take, the list making room; line draws a thin line there and leaves the list as it is. Keyboard moves and external targets always use the line; a list that wraps into a grid opens the outline as one of its cells, in reading order."
+      },
+      "inserter-items": {
+        "type": "string",
+        "default": "",
+        "description": "Opt-in insertion point. JSON array (or the inserterItems property) of [{value, label, icon?, caption?, keywords?, disabled?}], with {type: \"heading\", label} and {type: \"separator\"} to group them. When it holds at least one item, a \"+\" on the gap between items (and before the first, after the last) opens a searchable inserter of these kinds; empty or absent, the list draws and does nothing more than before."
       }
     },
     "additionalProperties": false
@@ -85,6 +95,45 @@
     "drop_targets": {
       "type": "object",
       "description": "SF.Sortable.registerSortableDropTarget({resolve, keyboardTargets, drop, leave}) joins non-list targets such as sf-composition-overlay to the same drag session; the session is shared across Smart bundles. Once loaded, SF.Sortable exposes SORTABLE_INTENT_EVENT, SORTABLE_STATE_EVENT, activeSortableSession, registerSortableDropTarget and sortableIndexAt."
+    },
+    "inserter": {
+      "type": "object",
+      "description": "The insertion point is one native icon button (size 1/3), the list's last tab stop, placed on the gap a pointer is near, after a focused row, or where its arrow keys put it. It opens sf-context-menu (openFor, local search over label, caption and keywords) anchored to the point. The component never creates the inserted item: it raises sf-sortable-insert and the host adds the item. Escape closes only the inserter, the innermost open surface (core open-surface-mark). Once loaded, SF.Sortable exposes SORTABLE_INSERT_EVENT.",
+      "properties": {
+        "property": {
+          "const": "inserterItems"
+        },
+        "attribute": {
+          "const": "inserter-items"
+        },
+        "item": {
+          "type": "object",
+          "required": [
+            "value",
+            "label"
+          ],
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "caption": {
+              "type": "string"
+            },
+            "keywords": {
+              "type": "string"
+            },
+            "disabled": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
     }
   },
   "methods": {},
@@ -140,6 +189,29 @@
           }
         }
       }
+    },
+    "sf-sortable-insert": {
+      "summary": "The person chose a kind in the inserter for a place in the list; the host creates the item at index. Bubbles, is composed and is cancelable: preventDefault() refuses and keeps the inserter open.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "index",
+          "item",
+          "to"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "item": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "state": {
@@ -149,11 +221,16 @@
         "picked",
         "dropped",
         "cancelled"
+      ],
+      "inserter": [
+        "closed",
+        "open"
       ]
     },
     "visual_states": [
       "default",
-      "active"
+      "active",
+      "open"
     ]
   },
   "persistence": {
@@ -169,7 +246,8 @@
     "forbidden_client_responsibilities": [
       "backend access decisions",
       "host route invention",
-      "saving or reordering host data"
+      "saving or reordering host data",
+      "creating the inserted item"
     ]
   },
   "security": {
@@ -191,9 +269,12 @@
       "ArrowLeft",
       "ArrowRight",
       "Escape",
-      "Tab"
+      "Tab",
+      "+",
+      "Home",
+      "End"
     ],
-    "focus": "Items become focusable and describe the instructions. Space or Enter picks up, arrows move within a list and to other accepting lists or external targets, Space or Enter drops, Escape or Tab cancels. Every step is announced in a polite live region in the page language."
+    "focus": "Items become focusable and describe the instructions. Space or Enter picks up, arrows move within a list and to other accepting lists or external targets, Space or Enter drops, Escape or Tab cancels. Every step is announced in a polite live region in the page language. With inserter items, + on a focused row opens the inserter for the place after it, and the insertion point is the list's last tab stop: arrows move it between places, Home and End go to the first and the last, Enter or Space opens the inserter; in the inserter typing filters, arrows and Enter choose, Escape closes it and returns focus."
   },
   "presentation": {
     "themes": [
@@ -261,41 +342,47 @@
     "source_artifacts": [
       {
         "path": "src/smart/sortable/index.js",
-        "sha256": "0f0f9384eb636383470aa59962c1f4e6665bb933bb7c189c273d612a048cb82d"
+        "sha256": "298c463e0d0c1634783614a4bbab59757767e984027041319f14dadb1cff2c61"
       },
       {
         "path": "src/smart/sortable/scss/_smart__sortable.scss",
-        "sha256": "3f79884ef70991c250b802ada478b8fc9e97f7f1d50cd031e3ec6ab5cad55c12"
+        "sha256": "4f85a0e023d17b1f7a6fd191fd12f4c87e5609e70476c69559c2e04dc7b1f0a2"
       },
       {
         "path": "src/smart/sortable/rule.js",
-        "sha256": "24743a50d28b4dfaad57cbd24911a9a42f94e998ed9fd9941201f98640869469"
+        "sha256": "b57af898729e1a942d2097d75cffab5aaf17c28f479cddecb876c23e266a7781"
       },
       {
         "path": "src/smart/sortable/docs.md",
-        "sha256": "5c4a69bed4f633e9ba5b0c2adbe31fe4b0b24db527bdd86901d9c1863a2d359a"
+        "sha256": "42b58f27a3bb1a34faf147ea1bf6eba31c9c944c6777a583b18fc0f0195371e9"
       },
       {
         "path": "src/core/js/composition/sortable.mjs",
-        "sha256": "3d3e18a88181a12712eb8d812de87894d272fa656c26c70e52e0db8db3cc114a"
+        "sha256": "871e5e7c95e47ce43dbe7616a984cfdc0e7a048900f6d438121bd84f7a6bf056"
+      },
+      {
+        "path": "src/core/js/composition/sortable-inserter.mjs",
+        "sha256": "3fc947dc1dd8cbfd57a8f7c6204bf853053c8765421dc6fdec7bf234eff4d965"
       }
     ],
     "generated_runtime": []
   },
   "ai_guidance": {
-    "use_when": "Use sf-sortable when people reorder or move host items, or drag library entries onto an editor canvas. Apply sf-sortable-intent to the host model with an expected revision; a refusal leaves the page unchanged.",
+    "use_when": "Use sf-sortable when people reorder or move host items, or drag library entries onto an editor canvas. Apply sf-sortable-intent to the host model with an expected revision; a refusal leaves the page unchanged. Give inserter-items when people insert new items at a place in the list; create the item on sf-sortable-insert.",
     "do_not": [
       "Do not copy generated ui-smart code",
       "Do not let the component move host DOM or save data",
       "Do not rely on pointer dragging alone; keep the keyboard path",
-      "Do not bundle a private drag session; use SF.Sortable.registerSortableDropTarget"
+      "Do not bundle a private drag session; use SF.Sortable.registerSortableDropTarget",
+      "Do not let the component create the inserted item; add it on sf-sortable-insert"
     ],
     "required_reads": [
       "inputs",
       "item_contract",
       "events",
       "ownership",
-      "provenance"
+      "provenance",
+      "contracts"
     ],
     "minimal_example": "<sf-sortable id=\"sections\" group=\"sections\" label=\"Sections\"><div data-sf-sortable-item=\"s1\">Section 1</div><div data-sf-sortable-item=\"s2\">Section 2</div></sf-sortable>",
     "owner_commands": [

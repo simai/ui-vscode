@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.modal",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "title": "Modal",
   "summary": "A dialog window over the page in the shared modal stack: centered or at a side, top or bottom edge, with header, content and footer slots, focus trap, scroll lock and focus return. It can also be minimized, load its content by Ajax or into an iframe, or render inline in the page flow.",
   "kind": "smart",
@@ -21,7 +21,9 @@
   ],
   "exported_parts": [],
   "composition": {
-    "uses": [],
+    "uses": [
+      "component.spinner"
+    ],
     "public_parts": []
   },
   "inputs": {
@@ -210,7 +212,8 @@
       },
       "footer-class": {
         "type": "string",
-        "default": ""
+        "default": "",
+        "description": "Classes on the footer. Its actions stand at the end with --sf-modal-footer-gap (space-1/2) between them; those defaults sit under the utilities, so a utility here still wins."
       }
     },
     "additionalProperties": false
@@ -1028,7 +1031,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/modal/index.js",
-        "sha256": "c03ae74338e728490601f8c67923ef8f21f0846d92e51c59cff0c9f5732fbaa1"
+        "sha256": "1c5ccb019f5a18101b1ada5399e6c014a2dcdd75277cf0aa819b17b22138ecd5"
       }
     ],
     "generated_runtime": [

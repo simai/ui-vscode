@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.inputs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "title": "Inputs",
   "summary": "A native single-line form control with Framework presentation, validation messaging and optional mask integration.",
   "kind": "smart",
@@ -200,6 +200,26 @@
           "filled",
           "hidden"
         ]
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name for a field rendered without a visible label; it lands on the native input."
+      },
+      "inherited-value": {
+        "type": "string",
+        "default": "",
+        "description": "What the field falls back to while it holds no value of its own -- a default from a parent setting, a brand, a theme. Shown as inherited, in the placeholder's ink with an «inherited» marker, never as the value: the form value stays empty. Once the field holds a value of its own, a reset button returns it here. A number field is sf-input with inputmode numeric or decimal and takes it the same way."
+      },
+      "inherited-text": {
+        "type": "string",
+        "default": "",
+        "description": "The words of the marker shown while the inherited value applies. Unset, it follows the page's language («inherited», «наследуется»)."
+      },
+      "reset-label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name of the button that returns the field to the inherited value. Unset, it follows the page's language («Reset to inherited», «Сбросить к наследуемому»)."
       }
     },
     "additionalProperties": false
@@ -377,6 +397,14 @@
         "type": "object",
         "description": "The element, for chaining."
       }
+    },
+    "resetToInherited": {
+      "summary": "Returns the field to its inherited value, as the reset button does: fires the cancellable sf-field:reset, then empties the own value and focuses the control. Returns whether it was reset (false without an inherited value, without an own value, while disabled or readonly, or when the event was prevented).",
+      "arguments": [],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether the field was reset."
+      }
     }
   },
   "events": {
@@ -393,6 +421,26 @@
       "payload": {
         "type": "null",
         "description": "A native Event: there is no detail."
+      }
+    },
+    "sf-field:reset": {
+      "summary": "The person pressed the reset back to the inherited value. Fired before the field is emptied and cancellable: preventDefault keeps the value. When it is not prevented the field empties, says so with its ordinary change, shows the inherited value again and takes focus back.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The field's own value before the reset."
+          },
+          "inheritedValue": {
+            "type": "string",
+            "description": "The inherited value it returns to."
+          },
+          "name": {
+            "type": "string",
+            "description": "The form name, empty when the field has none."
+          }
+        }
       }
     }
   },
@@ -435,7 +483,7 @@
       "Tab",
       "native text editing"
     ],
-    "focus": "Keep visible focus on the active control."
+    "focus": "Keep visible focus on the active control. After a reset back to the inherited value, focus returns to the control; while the value is inherited, the control carries it as aria-description and the visible marker is aria-hidden."
   },
   "presentation": {
     "themes": [
@@ -497,7 +545,23 @@
     "source_artifacts": [
       {
         "path": "src/smart/inputs/index.js",
-        "sha256": "12feabb54f97fd3dec9095a120c1d3dd71cf9fa5b4f2d50df018ece64b9daf07"
+        "sha256": "faf537081abaeb4783d19f98462d7b98e644e806003fb72cacd8dadb15ff469a"
+      },
+      {
+        "path": "src/smart/inputs/rule.js",
+        "sha256": "6cb3199df8e04d261cdb5324b5b94fa60ebe5e94fd11a04d11bba32e15e1d3db"
+      },
+      {
+        "path": "src/smart/inputs/js/templates/default.js",
+        "sha256": "0ff4836618d8620cc1dc7f0a50fa0c86b2d7074c8dcaabfc8e7a2f664fb76b99"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.js",
+        "sha256": "0c8658ab61678cd5f89badea902be244b92ba96240fb802c60438227f8f9faa9"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.css",
+        "sha256": "2a10b6d5c8e26c7d1541511c99257e9474b16d30c6e8352e96ed9b47f70b6a2a"
       }
     ],
     "generated_runtime": [

@@ -26,7 +26,8 @@
   "exported_parts": [],
   "composition": {
     "uses": [
-      "component.icons"
+      "component.icons",
+      "component.badges"
     ],
     "public_parts": []
   },
@@ -92,6 +93,26 @@
       "label": {
         "type": "string",
         "default": ""
+      },
+      "badge-count": {
+        "type": "string",
+        "default": "",
+        "description": "A count on the icon (simai/ui-source#12): a whole number above 0 shows, 0 or empty hides the badge. Above badge-cap it reads «<cap>+»; the exact number joins the icon's accessible name («Почта, 3 непрочитанных») and the badge's tooltip. On an anchor of size 1/3 or 1/2 a count is drawn as a dot."
+      },
+      "badge-dot": {
+        "type": "boolean",
+        "default": false,
+        "description": "A dot on the icon, a count with no number: something new. Shown when badge-count is not set; with a count, the count is drawn as a dot. Its text equivalent («есть новое» / «new» by default, badge-label to change it) joins the accessible name."
+      },
+      "badge-cap": {
+        "type": "integer",
+        "default": 99,
+        "description": "The largest count drawn as a number; a larger one reads «<cap>+»."
+      },
+      "badge-label": {
+        "type": "string",
+        "default": "",
+        "description": "The words the badge adds to the accessible name and its tooltip, in place of the page language's default: for a dot the whole text equivalent; for a count the phrase in plural forms separated by «|» (one|few|many in Russian, one|other in English) with {count} where the number goes."
       }
     },
     "additionalProperties": false
@@ -197,19 +218,19 @@
     "source_artifacts": [
       {
         "path": "src/smart/icons/index.js",
-        "sha256": "2175a88c28458443ad2747277bd90f4711c3a6faa3a27a91db8b1bffbdb60237"
+        "sha256": "9c1a00450be17564c5898e1b352a4f41fc724501d84d899f99e281ff1ccb5e26"
       },
       {
         "path": "src/smart/icons/js/templates/default.js",
-        "sha256": "68041e468e8ff38811bba22bf7f7bc7af60a4377df00693ea3293d2bb4a3d67e"
+        "sha256": "54a6e3f82fdf3ad9c971570de2e01bd7546620f11a7793d46ece422f2c7ee342"
       },
       {
         "path": "src/smart/icons/rule.js",
-        "sha256": "4e2b11a90c6908dcea0fe1dc54e944521e8505512f988b6b1cf9cfc5f7844564"
+        "sha256": "a15cd7b9af2ac3c9e41cb5b0fcab05c244ff7a954172334531667f4fd5edabbc"
       },
       {
         "path": "src/smart/icons/docs.md",
-        "sha256": "3c0dd58b7aee111b6e89130b491b01b53a809d95c784e3f2f19986e557fc07fe"
+        "sha256": "b957f87913d6d05c38500c16b422329ef1cba337e8afd2aeeb342a84b5066220"
       }
     ],
     "generated_runtime": [

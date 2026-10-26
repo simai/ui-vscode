@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "id": "smart.composition-overlay",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Composition overlay",
-  "summary": "Editor chrome over a rendered Composition Document: frames, labels, badges, action toolbar, insertion places, drag and keyboard moves and a keyboard tree, without changing the canvas HTML.",
+  "summary": "Editor chrome over a rendered Composition Document: frames, labels, badges, action toolbar, insertion places, drag and keyboard moves and a keyboard tree, without changing the canvas HTML. A framed mode draws the same chrome over a same-origin iframe fed a flat node list, with plain-string inline editing.",
   "kind": "smart",
   "reuse_mode": "whole",
   "lifecycle": "experimental",
@@ -45,6 +45,11 @@
       "label": {
         "type": "string",
         "default": ""
+      },
+      "frame": {
+        "type": "string",
+        "default": "",
+        "description": "id of a same-origin iframe canvas (framed mode, fed by setNodes); used instead of for"
       }
     },
     "additionalProperties": false
@@ -78,7 +83,76 @@
     },
     "browser_api": {
       "type": "object",
-      "description": "Once loaded, SF.CompositionOverlay exposes OVERLAY_EVENTS, overlayNodes(document) and checkOverlayActions(actions)."
+      "description": "Once loaded, SF.CompositionOverlay exposes OVERLAY_EVENTS, overlayNodes(document), checkOverlayActions(actions) and checkOverlayNodes(nodes)."
+    },
+    "frame_canvas": {
+      "type": "object",
+      "description": "Framed mode: the canvas is a same-origin iframe (sandbox allow-same-origin is enough; the frame needs no script). The overlay reads the frame's document, listens to its pointer, key, scroll and resize events and maps frame coordinates to the host through the iframe's position, border, padding, transform or zoom and the frame's scroll. It writes nothing into the frame except a temporary contenteditable on the element being edited. A frame that reloads (srcdoc) is listened to again on load; the host then calls setNodes with the new document's elements."
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Framed mode's flat node list, in selection order. element is a node inside the frame document; rect is in frame-document coordinates (viewport box plus the frame's scroll). parent names another node of the list (siblings share a parent; the top level has none). editable allows plain-string inline editing of the element.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rect": {
+            "type": "object",
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number",
+                "minimum": 0
+              },
+              "height": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "element": {
+            "type": "object",
+            "description": "Element of the frame document"
+          },
+          "label": {
+            "type": "string"
+          },
+          "parent": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "editable": {
+            "type": "boolean",
+            "description": "Requires element"
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "methods": {
@@ -98,12 +172,48 @@
         ]
       }
     },
+    "attachFrame": {
+      "summary": "Binds the overlay to a same-origin iframe canvas (framed mode).",
+      "arguments": [
+        {
+          "name": "iframe",
+          "type": "Element"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
     "setDocument": {
       "summary": "Sets the Document and describe(node) → {label, badges}.",
       "arguments": [
         {
           "name": "document",
           "type": "object"
+        },
+        {
+          "name": "options",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "setNodes": {
+      "summary": "Sets the framed canvas's flat node list and an optional describe(node) → {label, badges}.",
+      "arguments": [
+        {
+          "name": "nodes",
+          "type": "array"
         },
         {
           "name": "options",
@@ -207,6 +317,29 @@
           "null"
         ]
       }
+    },
+    "edit": {
+      "summary": "Starts plain-string inline editing of an editable node in the frame; returns whether it started.",
+      "arguments": [
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "returns": {
+        "type": "boolean"
+      }
+    },
+    "refresh": {
+      "summary": "Measures again on the next frame, after a change no observer reports (a transform on an ancestor).",
+      "arguments": [],
+      "returns": {
+        "type": [
+          "object",
+          "boolean",
+          "null"
+        ]
+      }
     }
   },
   "events": {
@@ -243,7 +376,7 @@
       }
     },
     "sf-composition-overlay-insert": {
-      "summary": "Insertion was requested at a place, optionally with a library item.",
+      "summary": "Insertion was requested at a place, optionally with a library item. In framed mode the top-level list is parent_id \"\" and slot is \"default\".",
       "payload": {
         "type": "object",
         "required": [
@@ -301,6 +434,28 @@
           }
         }
       }
+    },
+    "sf-composition-overlay-edit": {
+      "summary": "A plain-string inline edit was committed with a changed value (framed mode). Cancelable: preventDefault puts the previous text back.",
+      "payload": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "value",
+          "previous"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "state": {
@@ -309,6 +464,12 @@
         "idle",
         "picking",
         "dropped",
+        "cancelled"
+      ],
+      "edit": [
+        "idle",
+        "editing",
+        "committed",
         "cancelled"
       ]
     },
@@ -356,7 +517,7 @@
       "Space",
       "Escape"
     ],
-    "focus": "The tree has one treeitem per node; arrows move in document order and between parent and child, Enter opens the toolbar, Escape returns or clears. Space starts a keyboard move, arrows choose a place, Enter drops, Escape cancels. Selection and moves are announced."
+    "focus": "The tree has one treeitem per node; arrows move in document order and between parent and child, Enter opens the toolbar, Escape returns or clears. Space starts a keyboard move, arrows choose a place, Enter drops, Escape cancels. Selection and moves are announced. In framed mode the tree follows the node list order, pointer and keys inside the frame select too, Enter on an editable node starts plain-text editing in the frame (Enter commits, Escape cancels, focus returns to the tree), and Escape gives way to an inner open surface."
   },
   "presentation": {
     "themes": [
@@ -424,11 +585,11 @@
     "source_artifacts": [
       {
         "path": "src/smart/composition-overlay/index.js",
-        "sha256": "10d9d65a7d0d3e09837e035ec3a88ed881f7bd502463de7b8e9ca62543aaa7bf"
+        "sha256": "52b96a10f46ff4405631e61cdf7315b8a4fe9fcb9de25dfc3e86ca405ef3b52c"
       },
       {
         "path": "src/smart/composition-overlay/scss/_smart__composition-overlay.scss",
-        "sha256": "cd1f2c00674a77cd820417a4f7577640eb572ac6ad3bd61e529abff3c792c6d0"
+        "sha256": "d2de68fc3a34d6359fb8e766f5465b269168885c88b7c4a7d7b5000918731e01"
       },
       {
         "path": "src/smart/composition-overlay/rule.js",
@@ -436,30 +597,36 @@
       },
       {
         "path": "src/smart/composition-overlay/docs.md",
-        "sha256": "345f8faeeae468ca3eb22b3a1e11ba06f5c6c34ea5cb7c6bc4038c4b038b6565"
+        "sha256": "482c92b3ffd470a1ea9c915ba45499f91e1d509b531bd51f62691eb9b89d2356"
       },
       {
         "path": "src/core/js/composition/overlay.mjs",
-        "sha256": "3a735e7de5e7009a3eebd2e793f24c5b15482807d3363e64de96ece6c1e301a4"
+        "sha256": "5b64ed24bf02a528979f215dd54126fdb613e9a42143035c212a0095271649ae"
       },
       {
         "path": "src/core/js/composition/sortable.mjs",
-        "sha256": "3d3e18a88181a12712eb8d812de87894d272fa656c26c70e52e0db8db3cc114a"
+        "sha256": "871e5e7c95e47ce43dbe7616a984cfdc0e7a048900f6d438121bd84f7a6bf056"
       },
       {
         "path": "src/core/js/composition/canonical.mjs",
         "sha256": "aa6b44b2b81fc71040a32c6d8521201b7b8f23881ba2844c5a749b2e6ba3587c"
+      },
+      {
+        "path": "src/core/js/open-surface-mark.js",
+        "sha256": "4a739204c926a88145b6ca111dc3ec6056a7446dfe37b39c621af45a1d090724"
       }
     ],
     "generated_runtime": []
   },
   "ai_guidance": {
-    "use_when": "Use sf-composition-overlay on an editor page over SF.Composition.render output. Treat every event as intent: the host changes the Document, saves it with an expected revision, validates and re-renders.",
+    "use_when": "Use sf-composition-overlay on an editor page over SF.Composition.render output. Treat every event as intent: the host changes the Document, saves it with an expected revision, validates and re-renders. For a canvas isolated in a same-origin iframe (a mail letter), use attachFrame (or frame=\"id\") and setNodes with a flat node list; edits arrive as sf-composition-overlay-edit.",
     "do_not": [
       "Do not copy generated ui-smart code",
       "Do not write editor markup into the canvas HTML",
       "Do not treat setDropFilter as validation; Document validation stays authoritative",
-      "Do not put the overlay after the canvas in Tab order"
+      "Do not put the overlay after the canvas in Tab order",
+      "Do not expect the overlay to keep an edited text: it raises the intent, the host updates its model and re-renders the frame",
+      "Do not point the framed mode at a cross-origin frame"
     ],
     "required_reads": [
       "inputs",

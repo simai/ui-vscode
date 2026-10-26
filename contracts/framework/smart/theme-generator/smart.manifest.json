@@ -373,11 +373,11 @@
       },
       {
         "path": "src/smart/theme-generator/docs.md",
-        "sha256": "c4eb2570ecace352f12f417dcb5268e399daa54097098c50ff9e12eff872d2bc"
+        "sha256": "f81fad2013c6d6848dee4d103da8b2127236470bc87076f38fb29f9379407ad8"
       },
       {
         "path": "src/core/js/theme-palette.js",
-        "sha256": "1a1eadb297a50cd0c0a89e644d366cd2ed83b9401639cd10d4bda684f4c5ffa0"
+        "sha256": "e4082a61d2c58cd2a28c979b95779cf51a7b7f1fc6e7079dcde9a851ff77cd31"
       }
     ],
     "generated_runtime": []

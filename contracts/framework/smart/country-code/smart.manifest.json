@@ -131,6 +131,11 @@
       "max-items": {
         "type": "number",
         "default": 0
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name for a telephone field rendered without a visible label."
       }
     },
     "additionalProperties": false
@@ -267,7 +272,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/country-code/index.js",
-        "sha256": "be531da05549bed63027e3cb619ac38582a01a3bb89e73db775b894a11d073b7"
+        "sha256": "114df966ab51fd15fbee2e47b4eccb8ff1628e467b8621e675895210b3ba0612"
       }
     ],
     "generated_runtime": [

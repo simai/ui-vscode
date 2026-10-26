@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.textarea",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "title": "Textarea",
   "summary": "A native multiline form control with Framework presentation, validation messaging and safe vertical resizing.",
   "kind": "smart",
@@ -47,9 +47,10 @@
         "default": "bordered",
         "enum": [
           "bordered",
-          "filled"
+          "filled",
+          "flush"
         ],
-        "description": "How the field looks: a bordered box or a filled one."
+        "description": "How the field looks: a bordered box, a filled one, or flush -- no box of its own, inside a composite control that draws the box and the focus."
       },
       "label": {
         "type": "string",
@@ -118,6 +119,21 @@
         "type": "number",
         "default": 3
       },
+      "auto-grow": {
+        "type": "boolean",
+        "default": false,
+        "description": "The field follows its text between min-rows and max-rows and scrolls inside past max-rows. CSS field-sizing where supported, a script fallback elsewhere; rows is then ignored."
+      },
+      "min-rows": {
+        "type": "number",
+        "default": 1,
+        "description": "With auto-grow: the fewest rows the field shows. One row is the height of an input of the same size."
+      },
+      "max-rows": {
+        "type": "number",
+        "default": null,
+        "description": "With auto-grow: the most rows before the field scrolls inside. Unset means no cap; a value below min-rows is min-rows."
+      },
       "disabled": {
         "type": "boolean",
         "default": false
@@ -156,8 +172,24 @@
         "description": "Legacy name for appearance, still honoured. See contracts/public-api-axes.json.",
         "enum": [
           "bordered",
-          "filled"
+          "filled",
+          "flush"
         ]
+      },
+      "inherited-value": {
+        "type": "string",
+        "default": "",
+        "description": "What the field falls back to while it holds no value of its own. Shown as inherited, in the placeholder's ink with an «inherited» marker under the field, never as the value: the form value stays empty. Once the field holds a value of its own, a reset button returns it here."
+      },
+      "inherited-text": {
+        "type": "string",
+        "default": "",
+        "description": "The words of the marker shown while the inherited value applies. Unset, it follows the page's language («inherited», «наследуется»)."
+      },
+      "reset-label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name of the button that returns the field to the inherited value. Unset, it follows the page's language («Reset to inherited», «Сбросить к наследуемому»)."
       }
     },
     "additionalProperties": false
@@ -178,6 +210,9 @@
     },
     "resize_default": {
       "const": "vertical"
+    },
+    "auto_grow": {
+      "const": "field_sizing_content_with_script_fallback"
     },
     "mask_owner": {
       "const": "optional_sf_mask_adapter"
@@ -208,6 +243,14 @@
       "returns": {
         "type": "boolean"
       }
+    },
+    "resetToInherited": {
+      "summary": "Returns the field to its inherited value, as the reset button does: fires the cancellable sf-field:reset, then empties the own value and focuses the control. Returns whether it was reset (false without an inherited value, without an own value, while disabled or readonly, or when the event was prevented).",
+      "arguments": [],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether the field was reset."
+      }
     }
   },
   "events": {
@@ -222,6 +265,26 @@
       "summary": "The value changed while typing; the native event bubbles from the inner textarea, which is its target.",
       "payload": {
         "type": "object"
+      }
+    },
+    "sf-field:reset": {
+      "summary": "The person pressed the reset back to the inherited value. Fired before the field is emptied and cancellable: preventDefault keeps the value. When it is not prevented the field empties, says so with its ordinary change, shows the inherited value again and takes focus back.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The field's own value before the reset."
+          },
+          "inheritedValue": {
+            "type": "string",
+            "description": "The inherited value it returns to."
+          },
+          "name": {
+            "type": "string",
+            "description": "The form name, empty when the field has none."
+          }
+        }
       }
     }
   },
@@ -264,7 +327,7 @@
       "Tab",
       "native multiline text editing"
     ],
-    "focus": "Keep visible focus on the active control."
+    "focus": "Keep visible focus on the active control. After a reset back to the inherited value, focus returns to the control; while the value is inherited, the control carries it as aria-description and the visible marker is aria-hidden."
   },
   "presentation": {
     "themes": [
@@ -326,7 +389,23 @@
     "source_artifacts": [
       {
         "path": "src/smart/textarea/index.js",
-        "sha256": "1b2b79513765c98dc496c2e24e715dfe74117c444a5511a6f695bec981412bbb"
+        "sha256": "c0e7b46498b182b12d3fceaf5205aecf7a2291b9836455fefa4610df809e39de"
+      },
+      {
+        "path": "src/smart/textarea/rule.js",
+        "sha256": "493eef5df1b45606866ef7339b874a2045ee05d6dfaf56521e33859e96048911"
+      },
+      {
+        "path": "src/smart/textarea/js/templates/default.js",
+        "sha256": "8f5dd660e67cfa97caa2fdf2ac06d369d2217a151de53f9c1674e1632f5115d1"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.js",
+        "sha256": "0c8658ab61678cd5f89badea902be244b92ba96240fb802c60438227f8f9faa9"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.css",
+        "sha256": "2a10b6d5c8e26c7d1541511c99257e9474b16d30c6e8352e96ed9b47f70b6a2a"
       }
     ],
     "generated_runtime": [
@@ -343,6 +422,7 @@
     "do_not": [
       "Do not use Textarea for short single-line values, rich text or code editing",
       "Do not enable horizontal resizing inside responsive layouts without an explicit layout decision",
+      "Do not put Enter-to-send into the textarea: in a form Enter is a newline; a chat composer handles it itself",
       "Do not copy generated ui-smart code",
       "Do not move host data or access decisions into the component"
     ],

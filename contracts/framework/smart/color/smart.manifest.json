@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.color",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Color",
   "summary": "A colour control: a swatch that opens the platform picker, the colours a product already has as presets, and a way back to an inherited colour. Built as a general part because a colour is set in a theme, in a site look, on a label and on a chart series, not only on a record.",
   "kind": "smart",
@@ -111,6 +111,11 @@
         "type": "string",
         "default": "",
         "description": "What is read in place of a value while nothing is chosen. Unset, it follows the page's language."
+      },
+      "reset-label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name of the button that returns to the inherited colour; `clear-label` still names it. Unset, it follows the page's language («Reset to inherited», «Сбросить к наследуемому»)."
       }
     }
   },
@@ -135,6 +140,14 @@
       "arguments": [],
       "returns": {
         "type": "boolean"
+      }
+    },
+    "resetToInherited": {
+      "summary": "Returns the field to its inherited value, as the reset button does: fires the cancellable sf-field:reset, then empties the own value and focuses the control. Returns whether it was reset (false without an inherited value, without an own value, while disabled or readonly, or when the event was prevented).",
+      "arguments": [],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether the field was reset."
       }
     }
   },
@@ -163,6 +176,26 @@
           },
           "name": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "sf-field:reset": {
+      "summary": "The person pressed the reset back to the inherited value. Fired before the field is emptied and cancellable: preventDefault keeps the value. When it is not prevented the field empties, says so with its ordinary change, shows the inherited value again and takes focus back.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The field's own value before the reset."
+          },
+          "inheritedValue": {
+            "type": "string",
+            "description": "The inherited value it returns to."
+          },
+          "name": {
+            "type": "string",
+            "description": "The form name, empty when the field has none."
           }
         }
       }
@@ -212,7 +245,7 @@
       "Enter",
       "Space"
     ],
-    "focus": "The platform colour input, each swatch and the clear button take focus in order and keep a visible focus ring. Swatches say whether they are the chosen colour by aria-pressed."
+    "focus": "The platform colour input, each swatch and the clear button take focus in order and keep a visible focus ring. Swatches say whether they are the chosen colour by aria-pressed. After a reset back to the inherited value, focus returns to the control; while the value is inherited, the control carries it as aria-description and the visible marker is aria-hidden."
   },
   "presentation": {
     "themes": [
@@ -270,7 +303,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/color/index.js",
-        "sha256": "1f5e0552690ca5b76605a50967ebeaaf8d63c537d44a661ce90cf326372523e1"
+        "sha256": "da7e4dcdb97b8f4cd05fd354ec62105ae2349f80d303e86be4948a8ad5026d35"
       },
       {
         "path": "src/smart/color/rule.js",
@@ -278,11 +311,19 @@
       },
       {
         "path": "src/smart/color/js/templates/default.js",
-        "sha256": "5b17bab9b762b14d594b0f21151d3d287d3c9cf8e1c6704ccfece68cf414e071"
+        "sha256": "f764df01fc867d7d939f4bcd4f22ff3771670b3bfce282c4c4af82a59359be78"
       },
       {
         "path": "src/smart/color/js/templates/default.css",
         "sha256": "e5755625a291f02dc4e75716b5cdecb454954e47219854cc63055f2a0ca3aaec"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.js",
+        "sha256": "0c8658ab61678cd5f89badea902be244b92ba96240fb802c60438227f8f9faa9"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.css",
+        "sha256": "2a10b6d5c8e26c7d1541511c99257e9474b16d30c6e8352e96ed9b47f70b6a2a"
       }
     ],
     "generated_runtime": []

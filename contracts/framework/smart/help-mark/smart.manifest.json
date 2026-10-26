@@ -224,7 +224,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/help-mark/index.js",
-        "sha256": "2c04f87c019c917209529db7065fc7fe68f3e6b0ed33d55a8a97c33338259ba3"
+        "sha256": "3ad3d817dc173556dd2493b01df2f4169140b8de00e1d101a25aadd1d6cad2ee"
       },
       {
         "path": "src/smart/help-mark/js/templates/default.js",
