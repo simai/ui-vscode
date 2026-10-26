@@ -3,7 +3,7 @@
   "id": "smart.spinner",
   "version": "1.1.0",
   "title": "Spinner",
-  "summary": "Indeterminate waiting indicator with arc or dots presentation, optional polite status announcement and Framework-owned motion.",
+  "summary": "Indeterminate waiting indicator in one of four looks on the size ladder (arc, breathing, comet, dots), following the page's data-sf-spinner, with optional polite status announcement and Framework-owned motion.",
   "kind": "smart",
   "reuse_mode": "whole",
   "lifecycle": "experimental",
@@ -56,25 +56,28 @@
       "label": {
         "type": "string",
         "default": "",
-        "description": "Empty: the text of the page's language (\"Loading...\" in English)."
+        "description": "Empty: the text of the page's language (\"Loading…\" in English)."
       },
       "kind": {
         "type": "string",
-        "default": "arc",
+        "default": "",
         "enum": [
+          "",
           "arc",
+          "breathing",
+          "comet",
           "dots"
         ],
-        "description": "What the spinner is: an arc or a row of dots."
+        "description": "The spinner's look: arc, breathing (the arc grows and shrinks as it turns), comet (an arc with a fading tail) or dots. Empty: the page's look, data-sf-spinner on the nearest ancestor (html, body or a block), else arc."
       },
       "dots": {
         "type": "string",
-        "default": "16",
+        "default": "8",
         "pattern": "^(?:[3-9]|[12][0-9]|3[0-2])$"
       },
       "filled": {
         "type": "string",
-        "default": "6",
+        "default": "3",
         "pattern": "^(?:[1-9]|[12][0-9]|3[0-2])$"
       },
       "stroke-width": {
@@ -109,10 +112,13 @@
       },
       "variant": {
         "type": "string",
-        "default": "arc",
+        "default": "",
         "description": "Legacy name for kind, still honoured. See contracts/public-api-axes.json.",
         "enum": [
+          "",
           "arc",
+          "breathing",
+          "comet",
           "dots"
         ]
       }
@@ -266,7 +272,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/spinner/index.js",
-        "sha256": "ea495501984dbf3f7fcc054cc9004384d0185a621f897c53f4a75401ea49c401"
+        "sha256": "39528a07fd66a5afd26eeab0e80f6e558dd9c6c205f60272c6093f04a3900f7b"
       },
       {
         "path": "src/smart/spinner/js/templates/default.js",
@@ -278,7 +284,7 @@
       },
       {
         "path": "src/smart/spinner/docs/docs.md",
-        "sha256": "aeaba9e2a5cd9f27287816b5bc63cbf9cd9633a317c55f941c20f2b709aa264c"
+        "sha256": "74ae4fe0d02ea97e7b0632d0e0071d2a09dfceb969c050dd3b6b97cc40a5234f"
       }
     ],
     "generated_runtime": [
@@ -298,7 +304,8 @@
       "Do not use Spinner when determinate Progress or content-matched Skeleton is more accurate",
       "Do not make Spinner focusable",
       "Do not omit the containing region's aria-busy state",
-      "Do not announce an empty or non-localized label"
+      "Do not announce an empty or non-localized label",
+      "Do not give every spinner its own kind to restyle a page: set data-sf-spinner on html (or a block) and every spinner the Framework draws follows it"
     ],
     "required_reads": [
       "inputs",

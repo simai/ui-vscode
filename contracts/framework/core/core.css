@@ -3,8 +3,9 @@
  *	SIMAI Framework
  *	https://simai.io
  *
- *	Copyright (c) 2008-2026 Rim Zabarov and contributors
- *	Released under the MIT License.
+ *	Author: Rim Zabarov
+ *	Copyright (c) 2008-2026 Rim Zabarov
+ *	Released under the Apache License, Version 2.0.
  */
 @layer sf.reset, sf.tokens, sf.base, sf.utilities, sf.components, sf.overrides, sf.states;
 @layer sf.base {
@@ -324,6 +325,33 @@
        being no role (documentation trial 6, 2026-10-18). */
     --sf-surface-inverse-hover: light-dark(var(--sf-neutral-25), var(--sf-neutral-85));
     --sf-surface-inverse-fixed: var(--sf-neutral-20);
+    /* Paper: the sheet a document is previewed on -- an email, a page, a print
+       layout. Its own colours are the document's, written for white, so the
+       paper stays white and its ink stays dark in both themes; it never flips
+       (simai/ui-source#24, the ui-mail preview). 17.2:1. Not a surface of the
+       interface: controls do not sit on it, and the interface's own text does
+       not take --sf-on-paper. */
+    --sf-paper: var(--sf-white);
+    --sf-on-paper: var(--sf-neutral-10);
+    /* What an editor draws on the paper -- the selection frame, a hover
+       outline, the tints of a hovered and a selected block -- reads these, the
+       light theme's values in both themes, because the paper does not flip:
+       the dark theme's primary-80 frame on white paper measured 1.75:1
+       (simai/ui-source#29, ui-mail P-04). primary-40 on the paper holds 6.3:1
+       and the outline 3:1 or more, as a part of the interface must; the tints
+       are the light theme's state layers. */
+    --sf-paper-primary: var(--sf-primary-40);
+    --sf-paper-outline: var(--sf-neutral-50);
+    --sf-paper-hover: var(--sf-primary-50--alfa-4);
+    --sf-paper-select: var(--sf-primary-50--alfa-8);
+    /* The well: the recessed area a canvas or a paper sits in, below the
+       panels around it. In the light theme a step under surface-1 (the
+       paper's white stands on it by its shadow, 1.13:1, as the elevation guide
+       has it); in the dark theme, where height lightens a surface, it is the
+       darkest step, and the white paper stands off it by itself (18.9:1). Its
+       text takes the ordinary roles: --sf-on-surface 15.2:1 and 14.7:1,
+       --sf-on-surface-variant 5.71:1 and 5.95:1. */
+    --sf-surface-well: light-dark(var(--sf-neutral-95), var(--sf-neutral-5));
     /* A tinted plate on the surface, on the same neutral tone as the state
        layer above: neutral-50 in the light theme, neutral-90 in the dark. It
        used to be neutral-50 in both, which meant the dark theme lightened its
@@ -702,6 +730,9 @@
   --sf-i7: 136rem;
   --sf-i8: 144rem;
   --sf-i9: 152rem;
+  --sf-layout-reading-width: var(--sf-h2);
+  --sf-layout-floating-panel-width: calc(var(--sf-g2) + var(--sf-b6));
+  --sf-layout-floating-panel-height: calc(var(--sf-h0) + var(--sf-d0));
   --sf-z-index--1: -1;
   --sf-z-index-1: 10;
   --sf-z-index-2: 20;
@@ -885,23 +916,28 @@
     --sf-primary-90--alfa-24: rgba(215,226,255,0.23922);
     --sf-primary-85: #c2d5ff;
     --sf-primary-80: #acc7ff;
+    /* Information is a status with its own palette of #005bbe, not the brand
+       colour (owner, 2026-10-21, simai/ui-source#14). These primitives used to
+       equal primary's, so the theme generator told information in red under a
+       red brand colour. The owner approved this HCT tonal palette (hue 265.1,
+       chroma 58.6) whole, and theme-palette.js writes the same one. */
     --sf-info-98: #f9f9ff;
     --sf-info-95: #edf0ff;
     --sf-info-90: #d7e2ff;
-    --sf-info-85: #c2d5ff;
+    --sf-info-85: #c2d4ff;
     --sf-info-80: #acc7ff;
     --sf-info-70: #7eabff;
-    --sf-info-60: #488fff;
-    --sf-info-50: #0073ed;
-    --sf-info-50--alfa-12: rgba(0,115,237,0.12157);
-    --sf-info-50--alfa-16: rgba(0,115,237,0.16078);
-    --sf-info-50--alfa-20: rgba(0,115,237,0.2);
-    --sf-info-50--alfa-24: rgba(0,115,237,0.23922);
-    --sf-info-50--alfa-28: rgba(0,115,237,0.27843);
-    --sf-info-50--alfa-32: rgba(0,115,237,0.32157);
+    --sf-info-60: #538ff5;
+    --sf-info-50: #3375d9;
+    --sf-info-50--alfa-12: rgba(51,117,217,0.12157);
+    --sf-info-50--alfa-16: rgba(51,117,217,0.16078);
+    --sf-info-50--alfa-20: rgba(51,117,217,0.2);
+    --sf-info-50--alfa-24: rgba(51,117,217,0.23922);
+    --sf-info-50--alfa-28: rgba(51,117,217,0.27843);
+    --sf-info-50--alfa-32: rgba(51,117,217,0.32157);
     --sf-info-40: #005bbe;
-    --sf-info-35: #0050a7;
-    --sf-info-30: #004491;
+    --sf-info-35: #0050a8;
+    --sf-info-30: #004492;
     --sf-info-25: #00397c;
     --sf-info-20: #002f67;
     --sf-info-15: #002453;
@@ -2942,6 +2978,15 @@ body {
     [data-sf-region-loading] {
       -webkit-animation: none;
               animation: none;
+    }
+  }
+}
+@media (hover: none) and (pointer: coarse) and (max-width: 59.98rem) {
+  @layer sf.states {
+    input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]):not([type=button]):not([type=submit]):not([type=reset]):not([type=image]):not([type=hidden]):not([class*="--size-3"]):not([class*="--size-3"] *),
+    textarea:not([class*="--size-3"]):not([class*="--size-3"] *),
+    select:not([class*="--size-3"]):not([class*="--size-3"] *) {
+      font-size: 16px;
     }
   }
 }

@@ -245,7 +245,7 @@
       "loading": {
         "type": "boolean",
         "default": false,
-        "description": "Loading state: the spinner at the icon's size in place of the start icon (else the end icon); without an icon it lies over the label, which keeps its place, so the width does not change. Sets aria-busy and disables the native button."
+        "description": "Loading state: the spinner at the icon's size in place of the start icon (else the end icon); without an icon it lies over the label, which keeps its place, so the width does not change. The spinner takes the page's look (data-sf-spinner). Sets aria-busy and disables the native button."
       },
       "disabled": {
         "type": "boolean",
@@ -509,7 +509,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/buttons/index.js",
-        "sha256": "ad27494ae2b17bc277130f72835a2c60476fddcb3fe00f624cb46984b11a8851"
+        "sha256": "830807ad0a44684df8554802c39ee7d50bbb18a757c5f8edc125aede78595997"
       }
     ],
     "generated_runtime": [

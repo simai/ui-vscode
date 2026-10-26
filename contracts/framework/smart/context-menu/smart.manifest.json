@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.context-menu",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "title": "Context Menu",
   "summary": "The Framework's action menu: data entries with icon, caption, value, shortcut, check, submenu, separator and heading, opened by openFor() into the top layer, anchored, with keyboard, typeahead and focus return. A host may still render its own items and own the lifecycle.",
   "kind": "smart",
@@ -546,7 +546,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/context-menu/index.js",
-        "sha256": "9bd28543965d1f8a3a5a738d02a1e4e8228a7194b3142352ef270e30978cc9d8"
+        "sha256": "2b6c3fedc78651c27e99726a4199c7845cbf867e6f229d4d20af75f8118725bb"
       },
       {
         "path": "src/smart/context-menu/js/templates/default.js",
@@ -554,7 +554,7 @@
       },
       {
         "path": "src/component/context-menu/scss/_css__context_menu.scss",
-        "sha256": "ef0c1029e819428e9f79afeff408bdd3fd9600fe7d0946503ceac7d0c047b702"
+        "sha256": "f22cbadd63c58fd94dc640c5ee2f319f0ba4ef3aca129666136458c93cb31d6e"
       },
       {
         "path": "src/component/context-menu/scss/_css__context_menu_custom.scss",

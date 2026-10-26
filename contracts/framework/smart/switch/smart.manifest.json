@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.switch",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Switch",
   "summary": "An on/off control for a setting that applies at once: a native checkbox with role=\"switch\", a track and a moving thumb, with a label, description and help text.",
   "kind": "smart",
@@ -72,6 +72,26 @@
       "value": {
         "type": "string",
         "default": ""
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name for a switch rendered without a visible label, as in a record panel that draws the label itself."
+      },
+      "inherited-value": {
+        "type": "string",
+        "default": "",
+        "description": "Whether the switch is on while it holds no value of its own: true/on or false/off. The knob stands where it says, quieter, with an «inherited» marker, and the checkbox submits nothing. With it set, «off» chosen by a person is kept as checked=\"false\" -- a value of its own -- and no `checked` at all means the inherited state; a reset button returns there."
+      },
+      "inherited-text": {
+        "type": "string",
+        "default": "",
+        "description": "The words of the marker shown while the inherited value applies. Unset, it follows the page's language («inherited», «наследуется»)."
+      },
+      "reset-label": {
+        "type": "string",
+        "default": "",
+        "description": "The accessible name of the button that returns the field to the inherited value. Unset, it follows the page's language («Reset to inherited», «Сбросить к наследуемому»)."
       }
     },
     "additionalProperties": false
@@ -205,6 +225,14 @@
         "type": "object",
         "description": "The element, for chaining."
       }
+    },
+    "resetToInherited": {
+      "summary": "Returns the field to its inherited value, as the reset button does: fires the cancellable sf-field:reset, then empties the own value and focuses the control. Returns whether it was reset (false without an inherited value, without an own value, while disabled or readonly, or when the event was prevented).",
+      "arguments": [],
+      "returns": {
+        "type": "boolean",
+        "description": "Whether the field was reset."
+      }
     }
   },
   "events": {
@@ -214,6 +242,26 @@
         "type": "object"
       },
       "canonical": true
+    },
+    "sf-field:reset": {
+      "summary": "The person pressed the reset back to the inherited value. Fired before the field is emptied and cancellable: preventDefault keeps the value. When it is not prevented the field empties, says so with its ordinary change, shows the inherited value again and takes focus back.",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The field's own value before the reset."
+          },
+          "inheritedValue": {
+            "type": "string",
+            "description": "The inherited value it returns to."
+          },
+          "name": {
+            "type": "string",
+            "description": "The form name, empty when the field has none."
+          }
+        }
+      }
     }
   },
   "state": {
@@ -254,7 +302,7 @@
       "Tab",
       "Space"
     ],
-    "focus": "Keep visible focus on the active control."
+    "focus": "Keep visible focus on the active control. After a reset back to the inherited value, focus returns to the control; while the value is inherited, the control carries it as aria-description and the visible marker is aria-hidden."
   },
   "presentation": {
     "themes": [
@@ -316,7 +364,23 @@
     "source_artifacts": [
       {
         "path": "src/smart/switch/index.js",
-        "sha256": "d79d2f07425471f49a96387437928759a1d6a99408ebb95c49e69b4b2cd1b69c"
+        "sha256": "723a1d29d51937a06e5f38d1601232709b06a7c02f3dac192fffa1e62dae1782"
+      },
+      {
+        "path": "src/smart/switch/rule.js",
+        "sha256": "c2235953a04aafc36207326d0ce146dd7d97fbaecbb32eeacb045ff1301d5119"
+      },
+      {
+        "path": "src/smart/switch/js/templates/default.js",
+        "sha256": "1ae5f62efa31e5ab80e763d416e0b57d4a861a8d1e117921b849b70f6afaa0af"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.js",
+        "sha256": "0c8658ab61678cd5f89badea902be244b92ba96240fb802c60438227f8f9faa9"
+      },
+      {
+        "path": "src/smart/helpers/inherited-value.css",
+        "sha256": "2a10b6d5c8e26c7d1541511c99257e9474b16d30c6e8352e96ed9b47f70b6a2a"
       }
     ],
     "generated_runtime": [

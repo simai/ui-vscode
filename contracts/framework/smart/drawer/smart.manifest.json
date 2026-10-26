@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.drawer",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "title": "Drawer",
   "summary": "Workspace side panel that keeps the page usable: docked column or modeless panel. Modal side panels belong to sf-modal; the modal Drawer mode is deprecated.",
   "kind": "smart",
@@ -45,8 +45,19 @@
           "left",
           "right",
           "inline-start",
-          "inline-end"
+          "inline-end",
+          "bottom"
         ]
+      },
+      "snap": {
+        "type": "string",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "half",
+          "full"
+        ],
+        "description": "A bottom sheet's resting height: its content's, half the room under the app bar, or all of it."
       },
       "overlay": {
         "type": "boolean",
@@ -86,6 +97,11 @@
         "type": "boolean",
         "default": true
       },
+      "controlled": {
+        "type": "boolean",
+        "default": false,
+        "description": "An outside switch (an element naming the drawer in aria-controls) opens and closes the panel: no close button while that switch is on screen."
+      },
       "close-placement": {
         "type": "string",
         "default": "inside",
@@ -115,6 +131,16 @@
         "type": "string",
         "default": "",
         "description": "How much of each drawer below shows past the one above it at the same edge, as a length (for example var(--sf-space-4)). A drawer stands depth × offset in from its edge, where depth counts the open, undocked drawers below it at that edge. Empty: drawers lie flush."
+      },
+      "dock-breakpoint": {
+        "type": "string",
+        "default": "",
+        "description": "From what width of the dock host (or the window, without a host) a docked drawer is a column of the page; narrower, it floats over the page. A length in rem, em or px. Empty: the --sf-drawer-dock-breakpoint variable where the drawer stands, else 48rem."
+      },
+      "block-start": {
+        "type": "string",
+        "default": "",
+        "description": "Where this panel starts from the top (an app bar's height); the --sf-drawer-block-start variable sets it for every panel."
       },
       "gutter": {
         "type": "string",
@@ -157,7 +183,7 @@
   "contracts": {
     "dock_host": {
       "type": "object",
-      "description": "A host element marked data-sf-drawer-dock-host receives padding-inline-start/end equal to the summed widths of open docked drawers per logical side, published as --sf-drawer-dock-inline-start/end on the document root. Narrow viewports (<48rem) keep zero padding.",
+      "description": "A host element marked data-sf-drawer-dock-host receives padding-inline-start/end equal to the summed widths of open docked drawers per logical side, published as --sf-drawer-dock-inline-start/end on the document root. A host narrower than the drawer's threshold (dock-breakpoint, else --sf-drawer-dock-breakpoint, else 48rem) keeps zero padding for it. A toggle switch outside the drawer (data-drawer=\"toggle\" naming it in aria-controls, or data-sf-drawer-toggle) hides and shows a docked column and carries aria-expanded. A docked drawer with the room is a column of the page (data-sf-drawer-column=\"true\" on its root): surface-0, no shadow; without the room it floats over the page with the raised surface and shadow. --sf-drawer-background overrides both.",
       "properties": {
         "attribute": {
           "const": "data-sf-drawer-dock-host"
@@ -166,7 +192,8 @@
           "const": [
             "--sf-drawer-dock-inline-start",
             "--sf-drawer-dock-inline-end",
-            "--sf-drawer-dock-block-start"
+            "--sf-drawer-dock-block-start",
+            "--sf-drawer-dock-breakpoint"
           ]
         }
       }
@@ -329,6 +356,20 @@
         "type": "object",
         "description": "The element, for chaining."
       }
+    },
+    "setSnap": {
+      "summary": "Sets a bottom sheet's resting height (auto, half or full) and dispatches drawer:snap when it changes. Returns the element.",
+      "arguments": [
+        {
+          "name": "snap",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The element, for chaining."
+      }
     }
   },
   "events": {
@@ -448,6 +489,20 @@
           },
           "root": {
             "description": "The rendered drawer root ([data-sf-drawer-root]) in its portal."
+          }
+        }
+      }
+    },
+    "drawer:snap": {
+      "summary": "A bottom sheet came to rest at another height (handle, swipe or setSnap()).",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "drawer": {
+            "type": "object"
+          },
+          "drawerId": {
+            "type": "string"
           }
         }
       }
@@ -598,11 +653,11 @@
     "source_artifacts": [
       {
         "path": "src/smart/drawer/index.js",
-        "sha256": "44a49488adfd4e6a1ea72e1ebb5b51ec5e266945f160a2bdf9034f73ca872af3"
+        "sha256": "2321a416edd59e199c5da99d38b472a881988e26209420d7e391da90fdb93ff6"
       },
       {
         "path": "src/smart/drawer/scss/_smart__drawer.scss",
-        "sha256": "a4beca1986d50810f5054a06d516ea8c06429d62c26b1ce7ce7dd0210783750a"
+        "sha256": "35c17d4211ddcab035f31f81b66fbf7444f6c632cf4815e3225ce57ebf2a1c6f"
       },
       {
         "path": "src/smart/drawer/rule.js",
@@ -610,7 +665,7 @@
       },
       {
         "path": "src/smart/drawer/docs.md",
-        "sha256": "7a8e2129484db8ce541364d6e98806560e556f572b71f781bbcf06e75b39d90a"
+        "sha256": "56e2c2e6767c9176aee03aff0418f9ec38ec73b5e628b144700faa54d64821ef"
       }
     ],
     "generated_runtime": [

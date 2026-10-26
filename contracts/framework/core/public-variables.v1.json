@@ -86,6 +86,13 @@
           "summary": "Space between the icon and the text.",
           "default": "var(--sf-space-1/4)",
           "since": "2026-10-13"
+        },
+        {
+          "name": "--sf-badge-ring-color",
+          "role": "ring-color",
+          "summary": "The ring that separates a badge anchored on an avatar, an icon or an icon button from its anchor: the colour of the surface the anchor sits on. Framework surfaces (menus, lists, drawers, modals, toasts) say their own; set it where a page paints a surface of its own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-21"
         }
       ]
     },
@@ -784,6 +791,13 @@
           "summary": "Space between the header, the body and the footer.",
           "default": "var(--sf-space-1)",
           "since": "2026-10-18"
+        },
+        {
+          "name": "--sf-modal-footer-gap",
+          "role": "gap",
+          "summary": "Space between the footer's actions, which stand at the end.",
+          "default": "var(--sf-space-1/2)",
+          "since": "2026-10-23"
         }
       ]
     },
@@ -1121,6 +1135,385 @@
           "varies_with": [
             "appearance"
           ]
+        }
+      ]
+    },
+    {
+      "component": "image-field",
+      "selector": ".sf-image-field",
+      "variables": [
+        {
+          "name": "--sf-image-field-background-color",
+          "role": "background",
+          "summary": "The well's fill at rest; drag-over and disabled keep their own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-24"
+        },
+        {
+          "name": "--sf-image-field-border-color",
+          "role": "border-color",
+          "summary": "The well's border at rest, dashed while the field is empty; drag-over, error and disabled keep their own.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-24"
+        },
+        {
+          "name": "--sf-image-field-border-width",
+          "role": "border-width",
+          "summary": "The well's border width on every side.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-24"
+        },
+        {
+          "name": "--sf-image-field-radius",
+          "role": "radius",
+          "summary": "The well's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-24"
+        },
+        {
+          "name": "--sf-image-field-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space inside the well before and after the thumbnail and the buttons.",
+          "default": "calc(var(--sf-ui-1--space-y-tightness-default) - var(--sf-px))",
+          "since": "2026-10-24",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-image-field-padding-block",
+          "role": "padding-block",
+          "summary": "Space inside the well above and below the thumbnail.",
+          "default": "calc(var(--sf-ui-1--space-y-tightness-default) - var(--sf-px))",
+          "since": "2026-10-24",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-image-field-gap",
+          "role": "gap",
+          "summary": "Space between the thumbnail, the name and the buttons; the rows of a narrow field keep their own.",
+          "default": "calc(var(--sf-ui-1--space-y-tightness-default) - var(--sf-px))",
+          "since": "2026-10-24",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-image-field-thumbnail-size",
+          "role": "size",
+          "summary": "The thumbnail's width and height: the control height one rung above the field's size.",
+          "default": "var(--sf-ui-2--control-height)",
+          "since": "2026-10-24",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-image-field-thumbnail-radius",
+          "role": "radius",
+          "summary": "The thumbnail's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-24"
+        },
+        {
+          "name": "--sf-image-field-thumbnail-background-color",
+          "role": "background",
+          "summary": "The thumbnail's fill behind a fitted image or the glyph of an empty one; the glyph keeps its colour, so a fill set here must keep it legible.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-24"
+        }
+      ]
+    },
+    {
+      "component": "accordion",
+      "selector": ".sf-accordion",
+      "variables": [
+        {
+          "name": "--sf-accordion-background-color",
+          "role": "background",
+          "summary": "A section's fill in the default appearance; outline and flush have none, and hover and pressed keep their own.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-accordion-border-color",
+          "role": "border-color",
+          "summary": "The colour of the outline appearance's border and of the line under a flush section.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-accordion-border-width",
+          "role": "border-width",
+          "summary": "The thickness of that border and line, and of the divider under an open section's header.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-accordion-radius",
+          "role": "radius",
+          "summary": "A section's corner radius; a flush section stays square.",
+          "default": "var(--sf-radius--surface)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-accordion-title-color",
+          "role": "color",
+          "summary": "The colour of a section's title in its header.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-accordion-content-color",
+          "role": "color",
+          "summary": "The colour of a section's content text.",
+          "default": "var(--sf-on-surface-variant)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-accordion-icon-color",
+          "role": "color",
+          "summary": "The colour of the marker (the chevron, or plus and minus) and of an icon before the title; a disabled section keeps its own.",
+          "default": "var(--sf-on-surface-variant)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-accordion-divider-color",
+          "role": "indicator-color",
+          "summary": "The colour of the line under an open section's header, and under a single section's.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "component": "quantity",
+      "selector": ".sf-quantity",
+      "variables": [
+        {
+          "name": "--sf-quantity-background-color",
+          "role": "background",
+          "summary": "The field's fill at rest; an error keeps its own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-quantity-border-color",
+          "role": "border-color",
+          "summary": "The field's border at rest; hover, pressed, error and disabled keep their own.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-quantity-border-width",
+          "role": "border-width",
+          "summary": "The field's border width on every side.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-quantity-radius",
+          "role": "radius",
+          "summary": "The field's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-quantity-color",
+          "role": "color",
+          "summary": "The number in the box; disabled keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-quantity-padding-inline",
+          "role": "padding-inline",
+          "summary": "Space inside the field before «−» and after «+»: by default the gap the steppers leave above and below, so they stand the same distance from every edge.",
+          "default": "calc((var(--sf-ui-1--control-height) - var(--sf-ui-1\\/2--control-height)) / 2 - var(--sf-px))",
+          "since": "2026-10-25",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-quantity-padding-block",
+          "role": "padding-block",
+          "summary": "Space inside the field above and below its content.",
+          "default": "calc(var(--sf-ui-1--space-y-tightness-default) - var(--sf-px))",
+          "since": "2026-10-25",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-quantity-gap",
+          "role": "gap",
+          "summary": "Space between the steppers and the box.",
+          "default": "var(--sf-space-2)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-quantity-stepper-radius",
+          "role": "radius",
+          "summary": "The corner radius of «−» and «+».",
+          "default": "var(--sf-radius-1\\/2)",
+          "since": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "component": "menu",
+      "selector": ".sf-menu",
+      "variables": [
+        {
+          "name": "--sf-menu-background-color",
+          "role": "background",
+          "summary": "The fill behind the whole list; none by default.",
+          "default": "transparent",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-menu-gap",
+          "role": "gap",
+          "summary": "The space between the rows of a list; the documentation tree keeps its own closer one.",
+          "default": "var(--sf-space-1/3)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-menu-item-color",
+          "role": "color",
+          "summary": "The colour of a row's words and icon at rest; a disabled row keeps its own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-menu-item-background-color",
+          "role": "background",
+          "summary": "A row's fill at rest; hover and an open branch keep their own.",
+          "default": "var(--sf-transparent)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-menu-item-border-color",
+          "role": "border-color",
+          "summary": "The colour of a row's hairline border at rest; hover and an open branch keep their own.",
+          "default": "var(--sf-surface-container)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-menu-item-radius",
+          "role": "radius",
+          "summary": "A row's corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-menu-submenu-background-color",
+          "role": "background",
+          "summary": "The fill of a horizontal menu's panel, which the counters in it are ringed with.",
+          "default": "var(--sf-elevation-2--surface)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "orientation"
+          ]
+        },
+        {
+          "name": "--sf-menu-submenu-border-color",
+          "role": "border-color",
+          "summary": "The colour of a horizontal menu's panel border.",
+          "default": "var(--sf-outline-variant)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "orientation"
+          ]
+        },
+        {
+          "name": "--sf-menu-submenu-radius",
+          "role": "radius",
+          "summary": "A horizontal menu's panel corner radius.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "orientation"
+          ]
+        }
+      ]
+    },
+    {
+      "component": "verification",
+      "selector": ".sf-verification",
+      "variables": [
+        {
+          "name": "--sf-verification-background-color",
+          "role": "background",
+          "summary": "A cell's fill at rest: the surface when bordered, the tonal fill when filled; a focused filled code, error and disabled keep their own.",
+          "default": "var(--sf-surface-0)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "appearance"
+          ]
+        },
+        {
+          "name": "--sf-verification-border-color",
+          "role": "border-color",
+          "summary": "A cell's border at rest; hover, the current cell, error and disabled keep their own, and a filled code has none.",
+          "default": "var(--sf-outline)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-verification-border-width",
+          "role": "border-width",
+          "summary": "The thickness of a cell's border.",
+          "default": "var(--sf-px)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-verification-radius",
+          "role": "radius",
+          "summary": "A cell's corner radius, and the focus ring's around the cells.",
+          "default": "var(--sf-radius--ui)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-verification-color",
+          "role": "color",
+          "summary": "The colour of the characters in the cells; error and disabled keep their own.",
+          "default": "var(--sf-on-surface)",
+          "since": "2026-10-25"
+        },
+        {
+          "name": "--sf-verification-cell-size",
+          "role": "size",
+          "summary": "A cell's width and height, the same at every size when set.",
+          "default": "var(--sf-title-height-6)",
+          "since": "2026-10-25",
+          "varies_with": [
+            "size"
+          ]
+        },
+        {
+          "name": "--sf-verification-gap",
+          "role": "gap",
+          "summary": "Space between the cells.",
+          "default": "var(--sf-space-1/3)",
+          "since": "2026-10-25"
         }
       ]
     }

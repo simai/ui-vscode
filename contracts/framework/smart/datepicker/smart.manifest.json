@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "id": "smart.datepicker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Datepicker",
   "summary": "Accessible date and date-range picker with popup and inline presentation, calendar navigation and host-owned values.",
   "kind": "composite",
@@ -49,12 +49,12 @@
       "value": {
         "type": "string",
         "default": "",
-        "description": "The ISO date (yyyy-mm-dd). As a property, [start, end] for a range; the attribute is the same as date."
+        "description": "The ISO date (yyyy-mm-dd). As a property, [start, end] for a range. The attribute is the initial value: once the date is cleared it stays empty."
       },
       "date": {
         "type": "string",
         "default": "",
-        "description": "The ISO date (yyyy-mm-dd) chosen; value is read when date is absent."
+        "description": "The ISO date (yyyy-mm-dd) chosen; value is read only when date is absent, so date=\"\" is a cleared value."
       },
       "start-value": {
         "type": "string",
@@ -114,7 +114,7 @@
       "format": {
         "type": "string",
         "default": "DD.MM.YYYY",
-        "description": "How the date is shown in the field, e.g. DD.MM.YYYY. The value stays ISO."
+        "description": "How the date is shown in the field and read when typed, e.g. DD.MM.YYYY: the whole text one date, a four-digit year from 1000 to 9999. The value stays ISO."
       },
       "root-class": {
         "type": "string",
@@ -191,6 +191,16 @@
         "default": false,
         "description": "Mark the field required in its form."
       },
+      "invalid": {
+        "type": "boolean",
+        "default": false,
+        "description": "Draw the field invalid: the error border and aria-invalid on the native input. Removing it restores the valid field."
+      },
+      "error-message": {
+        "type": "string",
+        "default": "",
+        "description": "The message under an invalid field; ignored while the field is valid."
+      },
       "icon-start": {
         "type": "string",
         "default": "calendar_today",
@@ -248,6 +258,16 @@
         "type": "string",
         "default": "",
         "description": "The chosen quick range's id. Set by a host it wins over start-value and end-value, and a relative one is resolved against today in the person's time zone when drawn; nothing is emitted for it."
+      },
+      "aria-label": {
+        "type": "string",
+        "default": "",
+        "description": "Accessible name for a date field rendered without a visible label."
+      },
+      "readonly": {
+        "type": "boolean",
+        "default": false,
+        "description": "Keeps the field read-only: the date is chosen on the grid only. A single date can be typed by default; a range is always chosen on the grid."
       }
     },
     "additionalProperties": false
@@ -568,11 +588,11 @@
     "source_artifacts": [
       {
         "path": "src/smart/datepicker/index.js",
-        "sha256": "f071d812c2310ea8823d59b022f638fde21605e1a9b16f7145f6cb8f7ef13fe3"
+        "sha256": "3d5194c8215b86e834b21cd5ed46925ae18d0aa524c06fbf54cef03113a47085"
       },
       {
         "path": "src/smart/datepicker/js/templates/default.js",
-        "sha256": "8da2241fcdeb43d58665da972b99d1531ae806fca1f66a18dee2fa4f47f5cfbe"
+        "sha256": "7c9b379eda8911e7e31ce7ed3076121fcb98b5d688d53eeca1af9e2f8bd98492"
       },
       {
         "path": "src/smart/datepicker/rule.js",
@@ -580,7 +600,7 @@
       },
       {
         "path": "src/smart/datepicker/docs/smart-datepicker-guide.md",
-        "sha256": "2a4d3b83d364e9d147250f8e58fa3926577245e74266ca26957e55801beabeb6"
+        "sha256": "6186dd8f081883431b8ce6292ee936dee08afaf7ce7a22ec914f9254fda0eeec"
       }
     ],
     "generated_runtime": [

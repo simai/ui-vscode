@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "id": "smart.list-item",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "List Item",
-  "summary": "Declarative option descriptor and visual row primitive owned by Dropdown.",
+  "summary": "Declarative option descriptor owned by Dropdown, and a general list row: supporting line, interactive rows with roving focus, sf-sortable items and pinned rows.",
   "kind": "smart",
   "reuse_mode": "whole",
   "lifecycle": "experimental",
@@ -14,7 +14,10 @@
     "render",
     "theme",
     "responsive",
-    "option-descriptor"
+    "option-descriptor",
+    "list-row",
+    "roving-focus",
+    "sortable-item"
   ],
   "custom_element": "sf-list-item",
   "templates": [
@@ -106,6 +109,26 @@
           "avatar",
           "color"
         ]
+      },
+      "supporting": {
+        "type": "string",
+        "default": "",
+        "description": "A second line under the title, one step of the size ladder smaller. Not used by a Dropdown option."
+      },
+      "interactive": {
+        "type": "boolean",
+        "default": false,
+        "description": "A row a person acts on: hover, focus and selection states, one Tab stop per list with arrow keys, Home and End, and sf-list-item-activate on click or Enter."
+      },
+      "sortable-item": {
+        "type": "string",
+        "default": "",
+        "description": "The row's item id in the surrounding sf-sortable list. The row carries data-sf-sortable-item and a drag handle; the list's keyboard reordering applies."
+      },
+      "pinned": {
+        "type": "boolean",
+        "default": false,
+        "description": "A row of an sf-sortable list that does not move: no handle, not an item of the list, its handle slot kept empty so the text columns line up."
       }
     },
     "additionalProperties": false
@@ -118,22 +141,48 @@
   },
   "contracts": {
     "standalone": {
-      "const": "Non-interactive visual preview without a synthetic role or Tab stop."
+      "const": "Non-interactive visual preview without a synthetic role or Tab stop, unless interactive or sortable-item makes it a list row."
     },
     "owned_option": {
       "const": "Dropdown owns listbox semantics, focus, selection, form state and events."
     },
     "decorations": {
       "const": "Icons, avatar images, color swatches and checkbox marks do not add focus targets."
+    },
+    "list_row": {
+      "const": "An interactive or sortable row is one stop of its list (the nearest sf-sortable, listbox, list or [data-sf-list], else its parent): roving tabindex, ArrowUp/ArrowDown/Home/End between rows; a keyboard reorder in progress keeps the arrows. One-line height is the control height of the size; two-line adds one line of the step below."
     }
   },
   "methods": {},
-  "events": {},
+  "events": {
+    "sf-list-item-activate": {
+      "summary": "An interactive row was clicked or took Enter (not a control inside it, and not Enter on a row of an sf-sortable list, where Enter picks the row up).",
+      "payload": {
+        "type": "object",
+        "required": [
+          "value",
+          "trigger"
+        ],
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "trigger": {
+            "enum": [
+              "pointer",
+              "keyboard"
+            ]
+          }
+        }
+      }
+    }
+  },
   "state": {
     "machines": {},
     "visual_states": [
       "default",
       "selected",
+      "active",
       "disabled"
     ]
   },
@@ -161,7 +210,7 @@
     "network_policy": "deny"
   },
   "accessibility": {
-    "role": "option when rendered by Dropdown; none in standalone preview",
+    "role": "option when rendered by Dropdown; none in standalone preview and list rows (the list owns the role; aria-current marks a selected row)",
     "accessible_name": "required",
     "keyboard": [
       "ArrowDown",
@@ -172,7 +221,7 @@
       "Space",
       "Escape"
     ],
-    "focus": "Owned by the parent Dropdown composite; standalone preview is not focusable."
+    "focus": "Owned by the parent Dropdown composite for options; a standalone preview is not focusable; an interactive or sortable row is a roving Tab stop of its list, with an inset focus ring."
   },
   "presentation": {
     "themes": [
@@ -237,7 +286,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/list-item/index.js",
-        "sha256": "b3f5d110f37b8344f272ab111cf358dbd75bfe961e9dc41d57ca102a80fbb157"
+        "sha256": "eccf58c306ff17a33e01103ef3fba97f0dfde2e5a878e3f5eb6037583d6c9f43"
       }
     ],
     "generated_runtime": [
@@ -250,12 +299,13 @@
     ]
   },
   "ai_guidance": {
-    "use_when": "Use sf-list-item as a direct child of sf-dropdown to declare an option value and presentation.",
+    "use_when": "Use sf-list-item as a direct child of sf-dropdown to declare an option, or as a list row: supporting for a second line, interactive for a row a person acts on, sortable-item inside sf-sortable, pinned for a row that stays in place.",
     "do_not": [
       "Do not copy generated ui-smart code",
       "Do not move host data or access decisions into the component",
-      "Do not use standalone sf-list-item as a button, link or independent checkbox",
-      "Do not place independently interactive controls inside a listbox option"
+      "Do not use a standalone sf-list-item without interactive as a button, link or independent checkbox",
+      "Do not place independently interactive controls inside a listbox option",
+      "Do not put data-sf-sortable-item on the sf-list-item host: it is boxless; use sortable-item"
     ],
     "required_reads": [
       "inputs",

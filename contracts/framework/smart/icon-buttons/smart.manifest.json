@@ -25,7 +25,8 @@
       "component.icon-buttons",
       "smart.icons",
       "smart.close",
-      "component.spinner"
+      "component.spinner",
+      "component.badges"
     ],
     "public_parts": []
   },
@@ -152,7 +153,7 @@
       "loading": {
         "type": "boolean",
         "default": false,
-        "description": "Loading state: the spinner in place of the icon, at the icon's size. Sets aria-busy and disables the native button."
+        "description": "Loading state: the spinner in place of the icon, at the icon's size, in the page's look (data-sf-spinner). Sets aria-busy and disables the native button."
       },
       "disabled": {
         "type": "boolean",
@@ -173,6 +174,26 @@
         "type": "string",
         "default": "",
         "description": "Accessible label."
+      },
+      "badge-count": {
+        "type": "string",
+        "default": "",
+        "description": "A count on the icon button (simai/ui-source#12): a whole number above 0 shows, 0 or empty hides the badge. Above badge-cap it reads «<cap>+»; the exact number joins the icon button's accessible name («Уведомления, 5 непрочитанных») and the badge's tooltip. On an anchor of size 1/3 or 1/2 a count is drawn as a dot."
+      },
+      "badge-dot": {
+        "type": "boolean",
+        "default": false,
+        "description": "A dot on the icon button, a count with no number: something new. Shown when badge-count is not set; with a count, the count is drawn as a dot. Its text equivalent («есть новое» / «new» by default, badge-label to change it) joins the accessible name."
+      },
+      "badge-cap": {
+        "type": "integer",
+        "default": 99,
+        "description": "The largest count drawn as a number; a larger one reads «<cap>+»."
+      },
+      "badge-label": {
+        "type": "string",
+        "default": "",
+        "description": "The words the badge adds to the accessible name and its tooltip, in place of the page language's default: for a dot the whole text equivalent; for a count the phrase in plural forms separated by «|» (one|few|many in Russian, one|other in English) with {count} where the number goes."
       },
       "variant": {
         "type": "string",
@@ -490,7 +511,7 @@
     "source_artifacts": [
       {
         "path": "src/smart/icon-buttons/index.js",
-        "sha256": "5c1408fd5125c2584f169c6803565bb053da420e5cc2d64daa1673cad72a36ce"
+        "sha256": "05e68e238c2e58bba406a4e89543d9ad28aa92050c1421e15686b90f121cff26"
       }
     ],
     "generated_runtime": [
