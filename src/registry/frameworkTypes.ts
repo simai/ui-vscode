@@ -24,6 +24,8 @@ export interface FrameworkTag {
     lifecycle: string;
     deprecated: Deprecation | null;
     docs: string[];
+    /** Path of the tag's page on the documentation site, when it has one. */
+    page: string | null;
     attributes: FrameworkAttribute[];
 }
 
@@ -75,6 +77,8 @@ export interface FrameworkRegistry {
     tags: FrameworkTag[];
     classes: FrameworkClass[];
     tokens: FrameworkToken[];
+    /** Documentation page path of each utility family that has one. */
+    utilityPages: Record<string, string>;
     /**
      * Real Framework names that are not suggested (not safe to suggest, or not
      * global tokens). Diagnostics never call them unknown.

@@ -39,6 +39,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Documentation pages are still published
+        run: npm run docs:check
       - name: Package
         id: package
         run: |

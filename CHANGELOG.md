@@ -2,6 +2,21 @@
 
 All notable changes to SIMAI Framework for VS Code (formerly SIMAI Framework IntelliSense) are listed here.
 
+## [0.3.2] - 2026-10-30
+
+### Fixed
+
+- Documentation links in hovers led to pages that do not exist, such as
+  `/smart.buttons`. Hovers now link to the real page of the tag or utility on
+  https://ui.simai.io, for example `/ru/smart-components/actions/buttons/`.
+  Links are built only from pages the site lists (`contracts/docs-pages.json`),
+  and the release and a weekly check fail if a recorded page disappears.
+
+### Changed
+
+- `sf.docs.baseUrl` now defaults to `https://ui.simai.io`, so the links work
+  without configuration. Set it to empty for no link.
+
 ## [0.3.1] - 2026-10-20
 
 ### Changed

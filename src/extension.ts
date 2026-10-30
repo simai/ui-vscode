@@ -56,7 +56,7 @@ const stylesheetLanguages = new Set(['css', 'scss', 'sass', 'less']);
 const markupLookbehindLines = 20;
 
 const settings = (): vscode.WorkspaceConfiguration => vscode.workspace.getConfiguration('sf');
-const docsBaseUrl = (): string => settings().get<string>('docs.baseUrl', '');
+const docsBaseUrl = (): string => settings().get<string>('docs.baseUrl', 'https://ui.simai.io');
 
 const diagnosticSource = 'SIMAI Framework';
 const severities: Record<string, vscode.DiagnosticSeverity> = {
