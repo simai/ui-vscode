@@ -97,7 +97,7 @@ Bitrix templates. In markup, class attributes, `sf-` tags and `--sf-` tokens in
 | `sf.diagnostics.enabled` | `true` | Report deprecated and likely misspelt Framework names. |
 | `sf.diagnostics.unknownSeverity` | `information` | `off`, `hint`, `information`, `warning` or `error` for likely misspellings. |
 | `sf.diagnostics.deprecatedSeverity` | `warning` | The same choices for deprecated tags and attributes. |
-| `sf.docs.baseUrl` | empty | Base URL of the SIMAI Framework documentation site. When set, hovers link to `<baseUrl>/<registry ID>`, for example `<baseUrl>/smart.buttons`. |
+| `sf.docs.baseUrl` | `https://ui.simai.io` | Base URL of the SIMAI Framework documentation site that hovers link to. Leave empty for no link. |
 
 ## What is suggested
 

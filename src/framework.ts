@@ -140,14 +140,14 @@ export function describeToken(index: FrameworkIndex, token: FrameworkToken): str
 }
 
 /**
- * Link to the SIMAI Framework documentation site for a registry entry. The
- * site serves one page per stable ID under the configured base URL
- * (sf.docs.baseUrl); without a base URL there is no link.
+ * Link to a page of the SIMAI Framework documentation site under the
+ * configured base URL (sf.docs.baseUrl). Without a page or a usable base URL
+ * there is no link.
  */
-export function docsLink(baseUrl: string | undefined, stableId: string): string | null {
+export function docsLink(baseUrl: string | undefined, page: string | null): string | null {
     const base = (baseUrl ?? '').trim().replace(/\/+$/, '');
-    if (!/^https:\/\/\S+$/.test(base)) return null;
-    return `${base}/${encodeURIComponent(stableId)}`;
+    if (!page || !/^https:\/\/\S+$/.test(base)) return null;
+    return `${base}${page}`;
 }
 
 export function describeClass(
@@ -163,7 +163,7 @@ export function describeClass(
         '```',
     ];
     if (item.breakpoint) lines.push('', `Applies from the \`${item.breakpoint}\` breakpoint.`);
-    const docs = docsLink(docsBaseUrl, item.id);
+    const docs = docsLink(docsBaseUrl, index.framework.utilityPages[item.family] ?? '/ru/utilities/');
     if (docs) lines.push('', `[SIMAI Framework docs](${docs})`);
     lines.push('', releaseLine(index, `\`${item.id}\` · ${item.lifecycle}`));
     return lines.join('\n');
@@ -174,9 +174,10 @@ export function describeTag(index: FrameworkIndex, tag: FrameworkTag, docsBaseUr
     if (tag.deprecated) lines.push('', deprecationLine(tag.deprecated));
     const attributes = tag.attributes.filter(attribute => !attribute.deprecated).map(item => `\`${item.name}\``);
     if (attributes.length > 0) lines.push('', `Attributes: ${attributes.join(', ')}`);
-    const links = tag.docs.map(url => `[Documentation](${url})`);
-    const docs = docsLink(docsBaseUrl, tag.id);
-    if (docs) links.unshift(`[SIMAI Framework docs](${docs})`);
+    const docs = docsLink(docsBaseUrl, tag.page);
+    const links = docs
+        ? [`[SIMAI Framework docs](${docs})`]
+        : tag.docs.map(url => `[Documentation](${url})`);
     if (links.length > 0) lines.push('', links.join(' · '));
     lines.push('', releaseLine(index, `\`${tag.id}\` · ${tag.lifecycle}`));
     return lines.join('\n');

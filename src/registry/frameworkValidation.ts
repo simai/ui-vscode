@@ -36,6 +36,12 @@ export function validateFrameworkRegistry(value: unknown): FrameworkRegistry {
     ) {
         throw new Error('framework registry sections are missing');
     }
+    for (const page of [
+        ...registry.tags.flatMap(tag => (tag.page === null ? [] : [tag.page])),
+        ...Object.values(registry.utilityPages ?? {}),
+    ]) {
+        if (!/^\/\S+\/$/.test(page)) throw new Error(`documentation page is not a path: ${page}`);
+    }
     unique(registry.tags.map(tag => tag.tag), 'tag');
     unique(registry.classes.map(item => item.name), 'class');
     unique(registry.tokens.map(token => token.name), 'token');

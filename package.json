@@ -2,7 +2,7 @@
   "name": "sf-vscode",
   "displayName": "SIMAI Framework for VS Code",
   "description": "Autocomplete and hovers for SIMAI Framework: sf- component tags and attributes, utility classes and --sf- design tokens with colour swatches and adaptive values.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "publisher": "SIMAI",
   "author": "Rim Zabarov and contributors",
   "license": "MIT",
@@ -96,9 +96,9 @@
         },
         "sf.docs.baseUrl": {
           "type": "string",
-          "default": "",
+          "default": "https://ui.simai.io",
           "pattern": "^(https://\\S+)?$",
-          "description": "Base URL of the SIMAI Framework documentation site. When set, hovers link to <baseUrl>/<registry ID>, for example <baseUrl>/smart.buttons. Leave empty for no link."
+          "description": "Base URL of the SIMAI Framework documentation site that hovers link to. Leave empty for no link."
         }
       }
     }
@@ -117,6 +117,8 @@
     "package": "vsce package",
     "package:ls": "vsce ls",
     "vendor:framework": "npm run compile && node ./out/generate/vendorFramework.js",
+    "vendor:docs": "npm run compile && node ./out/generate/vendorDocs.js",
+    "docs:check": "npm run compile && node ./out/generate/vendorDocs.js --check",
     "package:check": "vsce ls | node ./out/generate/checkPackage.js",
     "screenshots": "npm run compile && node ./out/test/runScreenshots.js"
   },

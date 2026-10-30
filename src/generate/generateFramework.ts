@@ -7,6 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { validateFrameworkRegistry } from '../registry/frameworkValidation';
 import { buildFramework } from './buildFramework';
+import { DocsPages } from './docsPages';
 import { buildSnippets } from './snippets';
 import {
     FrameworkPointer,
@@ -22,6 +23,7 @@ const pointerPath = path.join(repositoryRoot, 'contracts', 'framework.pointer.js
 const sizingContractPath = path.join(repositoryRoot, 'contracts', 'adaptive-sizing.v1.json');
 const outputPath = path.join(repositoryRoot, 'data', 'sf-framework.json');
 const snippetsPath = path.join(repositoryRoot, 'snippets', 'sf-framework.json');
+const docsPagesPath = path.join(repositoryRoot, 'contracts', 'docs-pages.json');
 
 const listFiles = (root: string, prefix = ''): string[] =>
     fs.readdirSync(path.join(root, prefix), { withFileTypes: true }).flatMap(item => {
@@ -66,6 +68,7 @@ const { registry, report } = buildFramework({
     utilityCss: select(/^utility\//, text),
     manifests: select(/^smart\//, file => json<RawSmartManifest>(file)),
     desktopMinWidthPx: sizingContract.modes.desktop.minWidthPx,
+    docPages: (JSON.parse(fs.readFileSync(docsPagesPath, 'utf8')) as DocsPages).pages,
 });
 validateFrameworkRegistry(registry);
 

@@ -28,6 +28,11 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Documentation pages are still published
+        run: |
+          npm ci
+          npm run docs:check
+
       - name: Compare releases
         id: compare
         env:

@@ -1,3 +1,4 @@
+import { DocsPages, familyPage, pagesFromSitemap, tagPage } from '../generate/docsPages';
 import * as assert from 'node:assert/strict';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -60,15 +61,51 @@ test('deprecations are reported with the configured kind', () => {
     assert.match(finding.message, /deprecated since 1\.3\.0: openFor/);
 });
 
-test('documentation links come from a configured https base URL only', () => {
-    assert.equal(docsLink('', 'smart.buttons'), null);
-    assert.equal(docsLink('http://insecure.example', 'smart.buttons'), null);
-    assert.equal(docsLink('https://docs.example/sf/', 'smart.buttons'), 'https://docs.example/sf/smart.buttons');
+test('documentation links need a real page and an https base URL', () => {
+    const page = '/ru/smart-components/actions/buttons/';
+    assert.equal(docsLink('', page), null);
+    assert.equal(docsLink('http://insecure.example', page), null);
+    assert.equal(docsLink('https://docs.example', null), null);
+    assert.equal(docsLink('https://docs.example/sf/', page), `https://docs.example/sf${page}`);
     const button = index.tagByName.get('sf-button')!;
     assert.doesNotMatch(describeTag(index, button), /SIMAI Framework docs/);
-    assert.match(
-        describeTag(index, button, 'https://docs.example'),
-        /\[SIMAI Framework docs\]\(https:\/\/docs\.example\/smart\.buttons\)/,
+    assert.ok(describeTag(index, button, 'https://docs.example').includes(
+        `[SIMAI Framework docs](https://docs.example${page})`,
+    ));
+});
+
+test('every link target in the data is a page the documentation site lists', () => {
+    const recorded = (JSON.parse(fs.readFileSync(
+        path.join(__dirname, '..', '..', 'contracts', 'docs-pages.json'), 'utf8',
+    )) as DocsPages).pages;
+    const targets = [
+        ...index.framework.tags.flatMap(tag => (tag.page ? [tag.page] : [])),
+        ...Object.values(index.framework.utilityPages),
+    ];
+    assert.ok(targets.length > 50, 'expected the data to link to many pages');
+    for (const target of targets) assert.ok(recorded.includes(target), `not on the site: ${target}`);
+    assert.ok(!targets.some(target => /smart\.|utility\.|component\./.test(target)), 'a registry ID is not a page');
+});
+
+test('registry names map to the site\'s own page names', () => {
+    const pages = [
+        '/ru/smart-components/actions/buttons/',
+        '/ru/smart-components/overlays/modal/',
+        '/ru/utilities/spacing/margin/',
+    ];
+    assert.equal(tagPage(pages, 'sf-button', 'smart.buttons'), pages[0]);
+    assert.equal(tagPage(pages, 'sf-button', 'smart.button'), pages[0]);
+    assert.equal(tagPage(pages, 'sf-modal', 'smart.modal'), pages[1]);
+    assert.equal(tagPage(pages, 'sf-unknown', 'smart.unknown'), null);
+    assert.equal(familyPage(pages, 'margin-ext'), pages[2]);
+    assert.equal(familyPage(pages, 'absent'), null);
+    assert.deepEqual(
+        pagesFromSitemap(
+            '<loc>https://site.example/ru/utilities/</loc><loc>https://site.example/ru/utilities/a/b/</loc>'
+            + '<loc>https://site.example/ru/guide/x/</loc><loc>https://other.example/ru/utilities/c/d/</loc>',
+            'https://site.example',
+        ),
+        ['/ru/utilities/a/b/'],
     );
 });
 

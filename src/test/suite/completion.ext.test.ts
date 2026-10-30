@@ -307,15 +307,15 @@ suite('PHP templates, snippets and documentation links', () => {
         assert.ok(snippet, 'sf-field snippet missing');
     });
 
-    test('hovers link to the configured documentation site', async () => {
+    test('hovers link to real pages of the documentation site', async () => {
         const config = vscode.workspace.getConfiguration('sf');
-        assert.doesNotMatch(await hoverText('html', '<sf-but|ton>'), /SIMAI Framework docs/);
+        const page = '/ru/smart-components/actions/buttons/';
+        assert.ok((await hoverText('html', '<sf-but|ton>')).includes(`[SIMAI Framework docs](https://ui.simai.io${page})`));
         await config.update('docs.baseUrl', 'https://docs.example', vscode.ConfigurationTarget.Global);
         try {
-            assert.match(
-                await hoverText('html', '<sf-but|ton>'),
-                /\[SIMAI Framework docs\]\(https:\/\/docs\.example\/smart\.buttons\)/,
-            );
+            assert.ok((await hoverText('html', '<sf-but|ton>')).includes(`[SIMAI Framework docs](https://docs.example${page})`));
+            await config.update('docs.baseUrl', '', vscode.ConfigurationTarget.Global);
+            assert.doesNotMatch(await hoverText('html', '<sf-but|ton>'), /SIMAI Framework docs/);
         } finally {
             await config.update('docs.baseUrl', undefined, vscode.ConfigurationTarget.Global);
         }

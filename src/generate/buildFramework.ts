@@ -15,6 +15,7 @@ import {
     RawPublicVariables,
     RawSmartManifest,
 } from './frameworkInputs';
+import { familyPage, tagPage } from './docsPages';
 
 export interface FrameworkInputs {
     pointer: FrameworkPointer;
@@ -28,6 +29,8 @@ export interface FrameworkInputs {
     manifests: Record<string, RawSmartManifest>;
     /** Desktop mode boundary from the adaptive sizing contract, in px. */
     desktopMinWidthPx: number;
+    /** Paths of the documentation site's reference pages. */
+    docPages?: string[];
 }
 
 export interface FrameworkReport {
@@ -275,6 +278,7 @@ function buildTags(
     registry: RawContractRegistry,
     safe: Set<string>,
     manifests: Record<string, RawSmartManifest>,
+    docPages: string[],
 ): FrameworkTag[] {
     const byId = new Map(Object.values(manifests).map(manifest => [manifest.id, manifest]));
     const tags: FrameworkTag[] = [];
@@ -311,6 +315,7 @@ function buildTags(
                 docs: entry.documentation_refs
                     .map(githubUrl)
                     .filter((url): url is string => url !== null),
+                page: tagPage(docPages, tag, entry.id),
                 attributes,
             });
         }
@@ -404,7 +409,14 @@ export function buildFramework(inputs: FrameworkInputs): {
     for (const component of inputs.publicVariables.components) {
         for (const variable of component.variables) knownTokens.add(variable.name);
     }
-    const tags = buildTags(registry, safe, inputs.manifests);
+    const docPages = inputs.docPages ?? [];
+    const tags = buildTags(registry, safe, inputs.manifests, docPages);
+    const classes = buildClasses(inputs.utilityCss, registry, safe);
+    const utilityPages: Record<string, string> = {};
+    for (const family of [...new Set(classes.map(item => item.family))].sort()) {
+        const page = familyPage(docPages, family);
+        if (page) utilityPages[family] = page;
+    }
     const suggestedTags = new Set(tags.map(tag => tag.tag));
     const knownTags = new Set(registry.entries.flatMap(entry => entry.runtime.tags ?? []));
 
@@ -422,8 +434,9 @@ export function buildFramework(inputs: FrameworkInputs): {
             },
             desktopMinWidth: `${desktopRem}rem`,
             tags,
-            classes: buildClasses(inputs.utilityCss, registry, safe),
+            classes,
             tokens,
+            utilityPages,
             knownTags: [...knownTags].filter(tag => !suggestedTags.has(tag)).sort(),
             knownTokens: [...knownTokens].filter(name => !suggested.has(name)).sort(),
         },
