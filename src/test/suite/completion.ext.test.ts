@@ -203,7 +203,7 @@ suite('hover provider', () => {
         const text = await hoverText('html', '<sf-but|ton></sf-button>');
         assert.match(text, /Buttons/);
         assert.match(text, /smart\.buttons` · experimental/);
-        assert.match(text, /\[Documentation\]\(https:\/\/github\.com\/simai\/ui\/blob\//);
+        assert.match(text, /\[SIMAI Framework docs\]\(https:\/\/ui\.simai\.io\/ru\/smart-components\/actions\/buttons\/\)/);
     });
 
     test('attributes show values and deprecation', async () => {
